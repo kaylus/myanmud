@@ -1,0 +1,227 @@
+- <Nov  3 16:03:56 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable asdf
+
+
+
+- <Nov  3 16:06:50 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable die
+
+
+
+- <Nov  3 16:09:31 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable die
+
+
+
+- <Nov  3 16:09:33 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable diesdaf
+
+
+
+- <Nov  3 16:11:20 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable asdf
+
+
+
+- <Nov  3 16:13:49 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function find_user
+
+
+
+- <Nov  3 16:13:55 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function find_player
+
+
+
+- <Nov  3 16:14:08 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function query_environment
+
+
+
+- <Nov  3 16:14:40 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   syntax error
+
+
+
+- <Nov  6 14:08:40 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable APIOBJREGD
+
+
+
+- <Nov  6 16:24:02 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable child
+
+
+
+- <Nov  6 16:24:05 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function child
+
+
+
+- <Nov  6 16:24:09 2006> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function children
+
+
+
+- <Nov  7 08:59:21 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+   54   undefined function indexof
+
+
+
+- <Nov  7 09:01:55 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  168   undefined function indexof
+
+
+
+- <Nov  7 09:02:44 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  224   undefined function indexof
+
+
+
+- <Nov  7 09:03:38 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   undefined function indexof
+
+
+
+- <Nov  7 09:05:09 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   syntax error
+
+
+
+- <Nov  7 09:05:34 2006> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   bad argument types for & (int, int *)
+
+
+
+- <Oct 21 23:27:46 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   bad argument types for & (int, int *)
+
+
+
+- <Oct 21 23:29:53 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   bad argument types for & (int, int *)
+
+
+
+- <Oct 21 23:30:47 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   bad argument types for & (int, int *)
+
+
+
+- <Oct 21 23:32:48 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  295   bad argument types for & (int, int *)
+
+
+
+- <Oct 22 00:25:50 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+   56   parse error
+
+
+
+- <Oct 22 17:55:18 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   parse error
+
+
+
+- <Oct 22 18:32:12 2007> /usr/System/sys/errord Jeb:
+	Compile errors in /usr/System/obj/wiztool.c
+  168   undeclared variable T_INT
+  168   bad case expression
+  170   undeclared variable T_NIL
+  173   undeclared variable T_STRING
+  178   undeclared variable T_OBJECT
+
+
+
+- <Oct 22 19:02:11 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable DRIVER
+
+
+
+- <Oct 22 19:02:34 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable OBJECTD
+
+
+
+- <Oct 22 20:22:31 2007> /usr/System/sys/errord Jeb:
+	Compile errors in /usr/System/lib/play_tool.c
+   23   bad lvalue for assignment
+   38   parse error
+
+
+
+- <Oct 22 20:22:31 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/admin/_code
+   10   parse error
+
+
+
+- <Oct 22 20:25:10 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/System/lib/play_tool.c
+   39   parse error
+
+
+
+- <Oct 22 20:32:11 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undeclared variable dagger
+
+
+
+- <Oct 22 20:45:35 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   too few arguments for function function_object
+
+
+
+- <Oct 22 22:54:37 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function lowercase
+
+
+
+- <Oct 22 22:54:39 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function lowercase
+
+
+
+- <Oct 22 22:55:04 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function lower
+
+
+
+- <Oct 22 22:55:08 2007> /usr/System/sys/errord Jeb:
+	Compile error in /usr/jeb/_code
+   10   undefined function lowercase
+
+
+

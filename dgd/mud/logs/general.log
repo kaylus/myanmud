@@ -1,0 +1,88 @@
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/objregd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/objectd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/logd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/errord
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/initd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/wiztool
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/user
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/userd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/accessd
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/rsrc
+
+
+- <Oct 22 00:45:42 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/rsrcd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/objregd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/objectd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/logd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/sys/errord
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /usr/System/initd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/wiztool
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/user
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/userd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/accessd
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/obj/rsrc
+
+
+- <Oct 22 17:12:11 2007> /usr/System/sys/objectd /usr/System/sys/objectd:
+	should compile /kernel/sys/rsrcd
+
+
