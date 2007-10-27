@@ -23,6 +23,7 @@ private int _bits;       /* bit field */
 /*int catch_tell(string str);*/
 
 void create(varargs int clone){
+	ROOMD->add_room(this_object());/* register with ROOMD */
 	set_short("Nondescript Room");
 	set_long("Bland, tasteless, lifeless, etc.");
 }

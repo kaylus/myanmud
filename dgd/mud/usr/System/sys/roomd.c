@@ -6,6 +6,20 @@
 
 
 object *rooms; /* handles on rooms */
+object start_room; /* start room */
+
+object add_room(object room){/* add a room to the register */
+	if(!rooms)
+		rooms = ({});
+
+	if(!room->is_room())
+		error("Object is not a room!");
+
+	rooms += ({ room });
+	LOGD->log(object_name(room) + " added to ROOMD.", "roomd");
+	return room;
+}
+
 
 void create(varargs int clone){
 	rooms = ({});
@@ -14,12 +28,12 @@ void create(varargs int clone){
 	if(!find_object(ROOM)) compile_object(ROOM);
 
 	/* create a start room */
-	rooms += ({ clone_object(ROOM) });
-	rooms[0]->set_short("Start room");
-	rooms[0]->set_long("This is the ubiquitous start room.\n");
+	start_room = clone_object(ROOM);
+	start_room->set_short("Start room");
+	start_room->set_long("This is the ubiquitous start room.\n");
 }
 
 object query_start_room(){/* return the default room */
-	return rooms[0];
+	return start_room;
 }
 
