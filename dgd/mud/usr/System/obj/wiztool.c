@@ -299,7 +299,7 @@ static void cmd_ls(object user, string cmd, string str)
 		dirlist += str + "\n";
 		break;
 	    }
-	    dirlist += (str + "                                        ")
+	    dirlist += (str + "                                                    ")
 		       [0 .. max];
 	}
     }
