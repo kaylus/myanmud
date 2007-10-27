@@ -204,7 +204,7 @@ static void cmd_ls(object user, string cmd, string str)
 {
     mixed *files, *objects;
     string *names, timestr, dirlist, directory;
-    int *sizes, *times, long, ancient, i, j, sz, max, len, rows, time;
+    int *sizes, *times, long, ancient, i, j, sz, max, len, rows, time, adjust;
 
     if (!str) {
 	str = ".";
@@ -291,16 +291,20 @@ static void cmd_ls(object user, string cmd, string str)
 
 	    if (sizes[j] < 0) {
 		str = ESC + "[34;1m" + str + "/" + ESC + "[0m";
+		adjust = 11;
 	    } else if (objects[j]) {
 		str = ESC + "[32;1m" + str + "*" + ESC + "[0m";
-	    }
+		adjust = 11;
+	    } else {
+		adjust = 0;
+		}
 	    j += rows;
 	    if (j >= sz) {
 		dirlist += str + "\n";
 		break;
 	    }
 	    dirlist += (str + "                                                    ")
-		       [0 .. max];
+		       [0 .. (max + adjust)];
 	}
     }
     message(dirlist);
