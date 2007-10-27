@@ -41,7 +41,7 @@ static void create(varargs int clone)
 	user::create();
 	access::create();
 	alias::create();
-	
+
 	accinit = TRUE;
 	state = ([ ]);
 	/*if(!body) body = clone_object(BODY);/* find body in storage? */
@@ -102,11 +102,11 @@ int login(string str)
 	  sscanf(str, "%*s/") != 0) {
 	    return MODE_DISCONNECT;
 	}
-	Name = name = lowercase(str);
+	name = lowercase(str);
 	Name = capitalize(name);
 
 	found_user = restore_object(USR_SAVE_DIR + "/" + str + ".pwd");
-	body = (body_name)?find_object(body_name):body;
+	body = (body_name)?find_object(body_name):body; /* request body from userd? */
 	LOGD->log(Name+" body in storage = " + ((body)?object_name(body):"No body"), "body_log");
 	/* check for stored body, remove from storage? */
 	if(!body || !body->awaken()){
