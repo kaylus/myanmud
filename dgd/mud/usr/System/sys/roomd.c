@@ -14,7 +14,7 @@ void create(varargs int clone){
 	if(!find_object(ROOM)) compile_object(ROOM);
 
 	/* create a start room */
-	rooms += clone_object(ROOM);
+	rooms += ({ clone_object(ROOM) });
 	rooms[0]->set_short("Start room");
 	rooms[0]->set_long("This is the ubiquitous start room.\n");
 }
