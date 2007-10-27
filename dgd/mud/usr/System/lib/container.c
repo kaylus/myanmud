@@ -41,6 +41,9 @@ atomic void receive_object(object ob, varargs int slide){
     if(!inventory)
 	inventory = ({});
 
+	if(ob->prevent_get())
+		error("This object cannot be in inventory.");
+
     inventory += ({ ob });
     if(!slide)
 	::receive_object(ob); /* this is the weight check */
