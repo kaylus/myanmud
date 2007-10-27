@@ -272,7 +272,7 @@ static void cmd_ls(object user, string cmd, string str)
 	j = i;
 	for (;;) {
 	    if (long) {
-		str = "            ";
+		str = "                        ";
 		if (sizes[j] >= 0) {
 		    str += (string) sizes[j];
 		}
