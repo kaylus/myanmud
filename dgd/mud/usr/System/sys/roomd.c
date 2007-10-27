@@ -8,6 +8,7 @@
 
 object *rooms; /* handles on rooms */
 object start_room; /* start room */
+object meat_locker; /* meat locker */
 
 /* To flip a direction. */
 
@@ -41,10 +42,18 @@ void create(varargs int clone){
 	start_room = clone_object(ROOM);
 	start_room->set_short("Start room");
 	start_room->set_long("This is the ubiquitous start room.\n");
+
+	meat_locker = clone_object(ROOM);
+	meat_locker->set_short("This is the meat locker");
+	meat_locker->set_long("This is where inactive bodies go to play.\n");
 }
 
 object query_start_room(){/* return the default room */
 	return start_room;
+}
+
+object query_meat_locker(){/* return meat locker */
+	return meat_locker;
 }
 
 object *query_rooms(){/* return rooms */

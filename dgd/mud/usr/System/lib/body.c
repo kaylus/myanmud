@@ -101,11 +101,10 @@ int message(string str){
 }
 
 void stasis(){/* put body into stasis */
-    object room;
 
     end_room = environment;
-    room = clone_object(ROOM); /* storage unit for now */
-    this_object()->move(room, "", 1);/* stored */
+
+    this_object()->move(ROOMD->query_meat_locker(), "", 1);/* stored */
     end_room->message("Juggling body.\n");
     LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
 }
@@ -116,9 +115,7 @@ int awaken(){
 
     user = previous_object();
     if(!end_room){/* room is no more */
-	end_room = clone_object(ROOM); /* temp room */
-	end_room->set_short("Temp Room");
-	end_room->set_long("Temporary residence.");
+		end_room = ROOMD->query_start_room(); /* set to start room */
     }
 
     previous_object()->message("Your body awakens.\n");
@@ -608,7 +605,7 @@ int input(string str){
 	cmd = str;
 	args = "";
     }
-    
+
     /* do some alias stuff */
     if(user->query_alias(cmd)){/* found alias */
     	cmd = user->query_alias(cmd);
