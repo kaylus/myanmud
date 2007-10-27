@@ -51,7 +51,7 @@ object *query_rooms(){/* return rooms */
 	return rooms;
 }
 
-void connect_rooms(object room1, object room2, string via, varargs via2){/* connect room1 with room2 with exit name via */
+void connect_rooms(object room1, object room2, string via, varargs string via2){/* connect room1 with room2 with exit name via */
 	if(!room1->is_room() || !room2->is_room())
 		error("Object not a room");
 
