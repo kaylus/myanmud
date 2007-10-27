@@ -104,7 +104,7 @@ void stasis(){/* put body into stasis */
 
     end_room = environment;
 
-    this_object()->move(ROOMD->query_meat_locker(), "", 1);/* stored */
+    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored */
     end_room->message("Juggling body.\n");
     LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
 }
@@ -120,7 +120,7 @@ int awaken(){
 
     previous_object()->message("Your body awakens.\n");
     end_room->message(previous_object()->query_Name()+" enters the room from stasis.\n");
-    this_object()->move(end_room, "", 1);
+    this_object()->move(end_room, "", 1, 1);
     LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" awakening\n", "body_log");
     return 1;
 }
@@ -651,7 +651,7 @@ string flip_dir(string dir){
 }
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */
-atomic void move(mixed dest, string direction, varargs int silent){
+atomic void move(mixed dest, string direction, varargs int silent, int nolook){
     object old_env;
 
     if(!dest)
@@ -662,8 +662,11 @@ atomic void move(mixed dest, string direction, varargs int silent){
 	dest = find_object(dest);
     }
     ::move(dest);
-    /* Let the player take a peek at his new environment, add in brief support? */
-    this_object()->message(environment->query_long());
+
+    if(!nolook){
+		/* Let the player take a peek at his new environment, add in brief support? */
+		this_object()->message(environment->query_long());
+	}
 
     if(silent) return;
 
