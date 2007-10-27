@@ -180,7 +180,7 @@ static void cmd_clone(object user, string cmd, string str)
 	str = object_name(obj);
 	break;
     }
-	
+
     if (sscanf(str, "%*s" + CLONABLE_SUBDIR + "%*s#") != 1) {
 	message("Not a master object.\n");
     } else if (!obj) {
@@ -194,6 +194,114 @@ static void cmd_clone(object user, string cmd, string str)
   	    catch(obj->move(user->query_body()));
 	}
     }
+}
+
+/*
+ * NAME:	cmd_ls() override of inherited
+ * DESCRIPTION:	list files
+ */
+static void cmd_ls(object user, string cmd, string str)
+{
+    mixed *files, *objects;
+    string *names, timestr, dirlist;
+    int *sizes, *times, long, ancient, i, j, sz, max, len, rows, time;
+
+    if (!str) {
+	str = ".";
+    } else if (sscanf(str, "-%s", str) != 0) {
+	long = 1;
+	if (str == "l") {
+	    str = ".";
+	} else if (sscanf(str, "l %s", str) == 0) {
+	    message("Usage: " + cmd + " [-l] [<file> ...]\n");
+	    return;
+	}
+    }
+
+    files = expand(str, 1, FALSE);	/* must exist, short file names */
+
+    if (files[4] == 1 && sizeof(files[0]) == 1 && files[1][0] == -2) {
+	str = files[0][0];
+	if (str[0] != '/') {
+	    str = directory + "/" + str;
+	}
+	files = get_dir(str + "/*");
+	if (!files) {
+	    message(str + ": Access denied.\n");
+	    return;
+	}
+    }
+
+    names = files[0];
+    sz = sizeof(names);
+    if (sz == 0) {
+	return;
+    }
+    sizes = files[1];
+    times = files[2];
+    objects = files[3];
+
+    for (i = 0; i < sz; i++) {
+	j = strlen(names[i]);
+	if (j > max) {
+	    max = j;
+	}
+	j = sizes[i];
+	if (j > len) {
+	    len = j;
+	}
+    }
+    if (long) {
+	len = strlen((string) len) + 1;
+	max += len + 14;
+	ancient = time() - 6 * 30 * 24 * 60 * 60;
+    }
+
+    max += 2;
+    j = (79 + 2) / (max + 1);
+    if (j == 0) {
+	rows = sz;
+    } else {
+	rows = (sz + j - 1) / j;
+    }
+
+    dirlist = "";
+    for (i = 0; i < rows; i++) {
+	j = i;
+	for (;;) {
+	    if (long) {
+		str = "            ";
+		if (sizes[j] >= 0) {
+		    str += (string) sizes[j];
+		}
+
+		time = times[j];
+		timestr = ctime(time);
+		if (time >= ancient) {
+		    timestr = timestr[3 .. 15];
+		} else {
+		    timestr = timestr[3 .. 10] + timestr[19 .. 23];
+		}
+		str = str[strlen(str) - len ..] + timestr + " " + names[j];
+	    } else {
+		str = names[j];
+	    }
+
+	    if (sizes[j] < 0) {
+		str = ESC + "]34;1m" + str + "/" + ESC + "]0m";
+	    } else if (objects[j]) {
+		str = ESC + "]32;1m" + str + "*" + ESC + "]0m";
+	    }
+	    j += rows;
+	    if (j >= sz) {
+		dirlist += str + "\n";
+		break;
+	    }
+	    dirlist += (str + "                                        ")
+		       [0 .. max];
+	}
+    }
+    message(dirlist);
 }
 
 /*
