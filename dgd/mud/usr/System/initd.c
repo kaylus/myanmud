@@ -69,6 +69,9 @@ driver->message("Initd: telnet manager...\n");
     if (!find_object (HEARTD))
         compile_object (HEARTD);
 
+    if (!find_object (HELPD))
+	compile_object (HELPD);
+
 
 
     /* create some savage resources */

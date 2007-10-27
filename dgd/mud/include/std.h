@@ -28,4 +28,5 @@
 
 # define HEARTD "/usr/common/sys/heartd"
 # define LOGD "/usr/System/sys/logd" /* logger */
+# define HELPD "/usr/System/sys/helpd" /* helper daemon */
 

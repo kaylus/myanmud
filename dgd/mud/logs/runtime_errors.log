@@ -1018,3 +1018,125 @@
 
 
 
+- <Oct 26 22:46:45 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/helpd.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   73      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 26 22:47:59 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:48:01 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:48:03 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:48:26 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:49:47 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:49:50 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:50:10 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:50:13 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+
+- <Oct 26 22:52:27 2007> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  278      ~System/obj/user         receive_message
+        ~System/sys/helpd
+   26      -                        help
+
+
+

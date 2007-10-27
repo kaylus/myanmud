@@ -225,3 +225,10 @@
 
 
 
+- <Oct 26 22:46:45 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/helpd.c
+   30   parse error
+   42   parse error
+
+
+

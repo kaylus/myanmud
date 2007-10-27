@@ -56,6 +56,8 @@ string query_Name(){ return Name; }
 
 string query_name(){ return name; }
 
+object query_wiztool(){ return wiztool; } /* hacked in for use to check if someone is a wiz */
+
 /*
  * NAME:	tell_audience()
  * DESCRIPTION:	send message to listening users
@@ -273,9 +275,7 @@ int receive_message(string str)
 			if (sscanf(str, "%*s %s", str) == 0)/* default help */
 			    str = "help";
 
-			cmd = read_file("/help/"+str);
-			if(!cmd && wiztool)
-			    cmd = read_file("/help/wiz/"+str);
+			cmd = HELPD->help(str);
 
 			if(!cmd){
 			    message("No help on that subject.\n");
