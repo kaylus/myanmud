@@ -268,7 +268,7 @@ int receive_message(string str)
 		    str = nil;
 		    break;
 
-		case "help":/* find player help files */
+		case "help":/* find player help files, change this over to helpd */
 		    if(sscanf(str, "%*s/%*s") > 0 || sscanf(str, "%*s..%*s") > 0){
 			message("Usage: help <topic>\n");
 		    }else{

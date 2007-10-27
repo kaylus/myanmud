@@ -20,6 +20,10 @@ string help(string topic){/* a request is made for help */
     string *dirs, str;
     int i;
     /* add in some dummy checking for ../ str? */
+    if(sscanf(topic, "%*s..%*s") > 0){/* someone's being naughty? */
+    	LOGD->log("Faulty help " + topic + "\n " + this_user()->query_Name(), "helpd");
+    	return "No such topic.\n";
+	}
     if(this_user()->query_wiztool()){/* check wiz commands */
 	dirs = help["wiz"];
 	for(i=sizeof(dirs);--i>=0;){
@@ -36,5 +40,5 @@ string help(string topic){/* a request is made for help */
     }
     /* check more or return fail string */
     return "No such topic.\n";
-}			
+}
 
