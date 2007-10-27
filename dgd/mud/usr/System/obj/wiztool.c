@@ -254,7 +254,7 @@ static void cmd_ls(object user, string cmd, string str)
 	}
     }
     if (long) {
-	len = strlen((string) len) + 1;
+	len = strlen((string) len) + 1 + 11;/* Hymael added some for colors */
 	max += len + 14;
 	ancient = time() - 6 * 30 * 24 * 60 * 60;
     }
