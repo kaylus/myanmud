@@ -290,9 +290,9 @@ static void cmd_ls(object user, string cmd, string str)
 	    }
 
 	    if (sizes[j] < 0) {
-		str = ESC + "]34;1m" + str + "/" + ESC + "]0m";
+		str = ESC + "[34;1m" + str + "/" + ESC + "[0m";
 	    } else if (objects[j]) {
-		str = ESC + "]32;1m" + str + "*" + ESC + "]0m";
+		str = ESC + "[32;1m" + str + "*" + ESC + "[0m";
 	    }
 	    j += rows;
 	    if (j >= sz) {
