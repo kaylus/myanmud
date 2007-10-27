@@ -355,3 +355,29 @@
 	Jeb fabricating body
 
 
+- <Oct 26 21:46:25 2007> /usr/System/obj/user#47 Hymael:
+	Hymael body in storage = No body
+
+- <Oct 26 21:46:25 2007> /usr/System/obj/user#47 Hymael:
+	Hymael fabricating body
+
+
+- <Oct 26 21:48:36 2007> /usr/System/obj/user#47 Hymael:
+	Hymael entered logout
+
+
+- <Oct 26 21:48:36 2007> /usr/System/obj/user#47 Hymael:
+	Name = hymael body = /usr/System/obj/body#48
+
+
+- <Oct 26 21:48:36 2007> /usr/System/obj/body#48 Hymael:
+	Name = Hymael body = /usr/System/obj/body#48 going into stasis
+
+
+- <Oct 26 21:48:40 2007> /usr/System/obj/user#46 Hymael:
+	Hymael body in storage = /usr/System/obj/body#48
+
+- <Oct 26 21:48:40 2007> /usr/System/obj/body#48 Hymael:
+	Name = Hymael body = /usr/System/obj/body#48 awakening
+
+
