@@ -61,16 +61,20 @@ driver->message("Initd: telnet manager...\n");
     /* binaryd */
     if (!find_object (BIN_MANAGER))
 	compile_object (BIN_MANAGER);
+	driver->message("Initd: binary manager...\n");
 
-    /* default room object */
-    if (!find_object (ROOM))
-	compile_object (ROOM);
+    /* room daemon */
+    if (!find_object (ROOMD))
+	compile_object (ROOMD);
+	driver->message("Initd: roomd...\n");
 
     if (!find_object (HEARTD))
         compile_object (HEARTD);
+    driver->message("Initd: heartd...\n");
 
     if (!find_object (HELPD))
 	compile_object (HELPD);
+	driver->message("Initd: helpd...\n");
 
 
 

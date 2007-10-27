@@ -116,10 +116,7 @@ int login(string str)
 
 	    LOGD->log(Name+" fabricating body\n", "body_log");
 	    set_body(create_body());
-	    room = clone_object(ROOM);
-	    room->set_short(Name+"'s Start Room");
-	    room->set_long("Mist floats around and settles over your steaming body.\n");
-	    body->move(room, "");
+	    body->move(ROOMD->query_start_room(), "");
 	}
 
 	if (password) {
