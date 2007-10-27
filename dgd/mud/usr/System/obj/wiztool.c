@@ -203,7 +203,7 @@ static void cmd_clone(object user, string cmd, string str)
 static void cmd_ls(object user, string cmd, string str)
 {
     mixed *files, *objects;
-    string *names, timestr, dirlist;
+    string *names, timestr, dirlist, directory;
     int *sizes, *times, long, ancient, i, j, sz, max, len, rows, time;
 
     if (!str) {
@@ -217,6 +217,8 @@ static void cmd_ls(object user, string cmd, string str)
 	    return;
 	}
     }
+
+    directory = query_directory();
 
     files = expand(str, 1, FALSE);	/* must exist, short file names */
 
