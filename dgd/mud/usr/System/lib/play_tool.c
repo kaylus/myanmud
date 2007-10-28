@@ -452,38 +452,27 @@ cmd_get (string str)/* add in all kinds of functionality */
 }
 
 
-mixed
-cmd_drop (string str)/* add in all kinds of functionality */
-{
+mixed cmd_drop (string str){/* add in all kinds of functionality */
     object thing;
 
-    if (!str || !strlen (str))
-    {
-	return "Usage: drop <item>\n";
+    if (!str || !strlen (str)){
+		return "Usage: drop <item>\n";
     }
+
     thing = this_object ()->present (str);
     if (thing){/* thing exists in our inventory */
 
-	if(thing->prevent_drop()){
-	    return "You can't drop that item.\n";
-	}
+		if(thing->prevent_drop()){
+			return "You can't drop that item.\n";
+		}
 
-	if ((str = catch (thing->move(this_object ()->query_environment()))))
-	{
-	    return str;
-	}
+		if ((str = catch (thing->move(this_object ()->query_environment() )))){
+			return str;
+		}
 
-	this_object ()->message ("You drop " + thing->query_short () + ".\n");
-	this_object ()->query_environment ()->message (this_object ()->
-	  query_Name () +
-	  " drops " +
-	  thing->
-	  query_short () +
-	  ".\n", (
-	  {
-	    this_object
-	    ()}
-	));
+		this_object ()->message ("You drop " + thing->query_short () + ".\n");
+		this_object ()->query_environment ()->message (this_object ()->query_Name () +
+		  " drops " + thing->query_short() + ".\n", ({ this_object() }) ));
     }
     this_object ()->message ("No " + str + " to drop.\n");
     return 1;
