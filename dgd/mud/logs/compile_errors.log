@@ -232,3 +232,57 @@
 
 
 
+- <Oct 27 12:03:10 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/wiztool.c
+  226   undeclared variable directory
+
+
+
+- <Oct 27 12:57:09 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undeclared variable files
+
+
+
+- <Oct 27 12:57:14 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undefined function files
+
+
+
+- <Oct 27 13:51:31 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/roomd.c
+   17   bad argument types for += (object *, object)
+
+
+
+- <Oct 27 14:26:31 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/roomd.c
+   54   missing type for parameter via2
+
+
+
+- <Oct 28 11:31:44 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/play_tool.c
+  433   parse error
+
+
+
+- <Oct 28 11:33:11 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/play_tool.c
+  451   parse error
+
+
+
+- <Oct 28 11:37:15 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/limb.c
+   27   undefined function lower_case
+
+
+
+- <Oct 28 11:37:29 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undeclared variable lowercase
+
+
+

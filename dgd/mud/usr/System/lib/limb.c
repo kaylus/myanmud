@@ -24,7 +24,7 @@ void set_limb(string name, string part){
     name = capitalize(name);
     set_short(name+"'s "+part);
     set_long(name+"'s "+part+", they'd appreciate if you returned it.\n");
-    id += ({ lower_case(name)+"'s "+part, part });
+    id += ({ lowercase(name)+"'s "+part, part });
 }
 
 void decay(){

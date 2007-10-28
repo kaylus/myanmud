@@ -1140,3 +1140,191 @@
 
 
 
+- <Oct 27 12:03:10 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 27 12:45:50 2007> /usr/System/sys/errord Hymael:
+	Invalid string range
+        /kernel/obj/binary#48
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#49 "hymael"
+  311      ~System/obj/user         receive_message
+        ~System/obj/wiztool#52
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  104      ~System/obj/wiztool      process
+  287      -                        cmd_ls
+
+
+
+- <Oct 27 12:50:13 2007> /usr/System/sys/errord Hymael:
+	Invalid string range
+        /kernel/obj/binary#48
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#49 "hymael"
+  311      ~System/obj/user         receive_message
+        ~System/obj/wiztool#52
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  104      ~System/obj/wiztool      process
+  287      -                        cmd_ls
+
+
+
+- <Oct 27 13:51:31 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/roomd.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   68      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 27 14:26:31 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/roomd.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   68      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 28 11:31:44 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 28 11:33:11 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 28 11:36:04 2007> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  488      ~System/lib/play_tool    cmd_drop
+
+
+
+- <Oct 28 11:37:00 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/corpse
+   36      ~System/lib/corpse   decay
+
+
+
+- <Oct 28 11:37:15 2007> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/limb.c"
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  308      ~System/obj/user         receive_message
+        ~System/obj/wiztool#54
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  104      ~System/obj/wiztool      process
+  978      /kernel/lib/wiztool      cmd_compile
+  251      -                        compile_object
+  354      /kernel/lib/auto         compile_object
+
+
+
+- <Oct 28 11:38:47 2007> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  488      ~System/lib/play_tool    cmd_drop
+
+
+
+- <Oct 28 11:39:41 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/limb
+   41      ~System/lib/limb   decay
+
+
+
+- <Oct 28 11:42:53 2007> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  488      ~System/lib/play_tool    cmd_drop
+
+
+
