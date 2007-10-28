@@ -412,3 +412,82 @@ cmd_wealth (string str)
   this_object ()->message (this_object ()->query_wealth ());
   return 1;
 }
+
+mixed
+cmd_get (string str)/* add in all kinds of functionality */
+{
+  object thing;
+
+  if (!str || !strlen (str))
+    {
+      return "Usage: get <item>\n";
+    }
+  thing = this_object ()->query_environment()->present (str);
+  if (thing){/* thing exists in our environment */
+
+	if(thing->prevent_get()){
+		return "You can't get that item.\n";
+	}
+
+    if ((str = catch (thing->move(this_object ())))
+	{
+	  return str;
+	}
+
+	this_object ()->message ("You take " + thing->query_short () + ".\n");
+	this_object ()->query_environment ()->message (this_object ()->
+							 query_Name () +
+							 " takes " +
+							 thing->
+							 query_short () +
+							 ".\n", (
+								       {
+								       this_object
+								       ()}
+							 ));
+	}
+      return 1;
+  }
+  this_object ()->message ("No " + str + " to get.\n");
+  return 1;
+}
+
+
+mixed
+cmd_drop (string str)/* add in all kinds of functionality */
+{
+  object thing;
+
+  if (!str || !strlen (str))
+    {
+      return "Usage: drop <item>\n";
+    }
+  thing = this_object ()->present (str);
+  if (thing){/* thing exists in our inventory */
+
+	if(thing->prevent_drop()){
+		return "You can't drop that item.\n";
+	}
+
+    if ((str = catch (thing->move(this_object ()->query_environment())))
+	{
+	  return str;
+	}
+
+	this_object ()->message ("You drop " + thing->query_short () + ".\n");
+	this_object ()->query_environment ()->message (this_object ()->
+							 query_Name () +
+							 " drops " +
+							 thing->
+							 query_short () +
+							 ".\n", (
+								       {
+								       this_object
+								       ()}
+							 ));
+	}
+      return 1;
+  }
+  this_object ()->message ("No " + str + " to drop.\n");
+  return 1;
+}
