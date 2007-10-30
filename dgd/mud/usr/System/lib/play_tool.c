@@ -417,6 +417,7 @@ mixed
 cmd_get (string str)/* add in all kinds of functionality */
 {
     object thing;
+    string err;
 
     if (!str || !strlen (str))
     {
@@ -429,9 +430,9 @@ cmd_get (string str)/* add in all kinds of functionality */
 	    return "You can't get that item.\n";
 	}
 
-	if ((str = catch (thing->move(this_object ()))))
+	if ((err = catch (thing->move(this_object ()))))
 	{
-	    return str;
+	    return err;
 	}
 
 	this_object ()->message ("You take " + thing->query_short () + ".\n");
@@ -454,6 +455,7 @@ cmd_get (string str)/* add in all kinds of functionality */
 
 mixed cmd_drop (string str){/* add in all kinds of functionality */
     object thing;
+    string err;
 
     if (!str || !strlen (str)){
 		return "Usage: drop <item>\n";
@@ -466,15 +468,14 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
 			return "You can't drop that item.\n";
 		}
 
-		if ((str = catch (thing->move(this_object ()->query_environment() )))){
-			return str;
+		if ((err = catch (thing->move(this_object ()->query_environment() )))){
+			return err;
 		}
 
 		this_object ()->message ("You drop " + thing->query_short () + ".\n");
 		this_object ()->query_environment ()->message (this_object ()->query_Name () +
 		  " drops " + thing->query_short() + ".\n", ({ this_object() }) );
     }
-    /*str = "No " + str + " to drop.\n";*/
-    this_object ()->message (str);
+    this_object ()->message ("No " + str + " to drop.\n");
     return 1;
 }
