@@ -474,6 +474,7 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
 		this_object ()->query_environment ()->message (this_object ()->query_Name () +
 		  " drops " + thing->query_short() + ".\n", ({ this_object() }) );
     }
-    this_object ()->message ("No " + str + " to drop.\n");
+    str = "No " + str + " to drop.\n";
+    this_object ()->message (str);
     return 1;
 }
