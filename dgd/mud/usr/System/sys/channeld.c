@@ -102,3 +102,6 @@ mapping get_channels(){
 	return channels;
 }
 
+/* tune out all, function used to log someone out */
+
+/* tune in at log in */
