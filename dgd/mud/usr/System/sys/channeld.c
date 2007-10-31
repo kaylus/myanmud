@@ -19,6 +19,7 @@ int tune(string channel){
 	int i;
 
 	if(!channel || (i = member_array(channel, map_indices(channels))) == -1 || !previous_object()->is_user()){
+		LOGD->log("Channel improper.\n", "channel");
 		return 0;
 	}
 
