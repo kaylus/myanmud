@@ -482,3 +482,11 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
     this_object ()->message ("No " + str + " to drop.\n");
     return 1;
 }
+
+/* channeld */
+mixed cmd_show (string str){
+	if (!str || !strlen(str))
+		return "Usage: show <channel>\n";
+
+	this_object()->message(CHANNELD->show(str));
+}
