@@ -60,8 +60,8 @@ string show(string channel){
 	}
 
 	indies = channels[channel];
-	ret = "Channel " + channel + "is currently listened to by:\n";
-	for(i = sizeof(indies); --i;){
+	ret = "Channel <" + channel + "> is currently listened to by:\n";
+	for(i = sizeof(indies); i--;){
 		ret += indies[i]->query_Name() + " ";
 	}
 
