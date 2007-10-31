@@ -18,7 +18,7 @@ void create(){/* inits */
 int tune(string channel){
 	int i;
 
-	if(!channel || (i = member_array(channel, map_indices(channels))) == -1 || !previous_object()->is_user()){
+	if(!channel || (i = member_array(channel, map_indices(channels))) == -1 || !previous_object()->is_body()){
 		LOGD->log("Channel improper.\n", "channel");
 		return 0;
 	}
