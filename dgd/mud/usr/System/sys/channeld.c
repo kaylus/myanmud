@@ -98,5 +98,7 @@ void broadcast(string channel, string message, varargs object except){
 	}
 }
 
-
+mapping get_channels(){
+	return channels;
+}
 
