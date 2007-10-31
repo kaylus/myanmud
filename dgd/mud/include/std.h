@@ -30,3 +30,4 @@
 # define LOGD "/usr/System/sys/logd" /* logger */
 # define HELPD "/usr/System/sys/helpd" /* helper daemon */
 # define ROOMD "/usr/System/sys/roomd" /* room daemon */
+# define CHANNELD "/usr/System/sys/channeld" /* channel daemon */

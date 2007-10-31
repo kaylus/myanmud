@@ -76,6 +76,10 @@ driver->message("Initd: telnet manager...\n");
 	compile_object (HELPD);
 	driver->message("Initd: helpd...\n");
 
+	if (!find_object (CHANNELD))
+		compile_object (CHANNELD);
+	driver->message("Initd: channeld...\n");
+
 
 
     /* create some savage resources */
