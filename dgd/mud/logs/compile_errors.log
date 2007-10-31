@@ -286,3 +286,69 @@
 
 
 
+- <Oct 28 11:48:24 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/play_tool.c
+  475   parse error
+
+
+
+- <Oct 29 20:21:55 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/play_tool.c
+  475   parse error
+
+
+
+- <Oct 30 17:19:49 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   bad argument types for & (mixed *, string)
+
+
+
+- <Oct 30 17:19:53 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   parse error
+
+
+
+- <Oct 30 17:20:06 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   parse error
+
+
+
+- <Oct 30 17:20:15 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   parse error
+
+
+
+- <Oct 30 17:20:19 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   bad argument types for & (mixed *, string)
+
+
+
+- <Oct 30 17:21:09 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   bad argument 2 for function member_array (needs mixed *)
+
+
+
+- <Oct 30 19:15:02 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undefined function keys
+
+
+
+- <Oct 30 19:29:39 2007> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   bad argument types for - (mixed *, string)
+
+
+
+- <Oct 30 21:52:37 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/channeld.c
+   74   missing type for parameter except
+
+
+

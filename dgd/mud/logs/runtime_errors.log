@@ -1328,3 +1328,99 @@
 
 
 
+- <Oct 28 11:48:24 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 29 20:21:55 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Oct 29 20:24:41 2007> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  477      ~System/lib/play_tool    cmd_drop
+
+
+
+- <Oct 29 20:27:21 2007> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  477      ~System/lib/play_tool    cmd_drop
+
+
+
+- <Oct 29 23:03:53 2007> /usr/System/sys/errord Hymael:
+	Bad argument 1 for function message
+        /kernel/obj/binary#51
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  621      ~System/lib/body         input
+  478      ~System/lib/play_tool    cmd_drop
+   98      ~System/lib/body         message
+        ~System/obj/user#52 "hymael"
+   92      /kernel/lib/user         message
+
+
+
+- <Oct 30 21:52:37 2007> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/channeld.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   80      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+

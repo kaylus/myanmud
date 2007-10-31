@@ -55,8 +55,8 @@ cmd_test (string str)
 	return "Must put something after test.\n";
 
 
-	CHANNELD->tune("myan");
-	CHANNELD->broadcast("myan", str);
+    this_object()->message("tune return : " + CHANNELD->tune("myan") + "\n");
+    CHANNELD->broadcast("myan", str);
     return 1;
 }
 
@@ -460,24 +460,24 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
     string err;
 
     if (!str || !strlen (str)){
-		return "Usage: drop <item>\n";
+	return "Usage: drop <item>\n";
     }
 
     thing = this_object ()->present (str);
     if (thing){/* thing exists in our inventory */
 
-		if(thing->prevent_drop()){
-			return "You can't drop that item.\n";
-		}
+	if(thing->prevent_drop()){
+	    return "You can't drop that item.\n";
+	}
 
-		if ((err = catch (thing->move(this_object ()->query_environment() )))){
-			return err;
-		}
+	if ((err = catch (thing->move(this_object ()->query_environment() )))){
+	    return err;
+	}
 
-		this_object ()->message ("You drop " + thing->query_short () + ".\n");
-		this_object ()->query_environment ()->message (this_object ()->query_Name () +
-		  " drops " + thing->query_short() + ".\n", ({ this_object() }) );
-		return 1;
+	this_object ()->message ("You drop " + thing->query_short () + ".\n");
+	this_object ()->query_environment ()->message (this_object ()->query_Name () +
+	  " drops " + thing->query_short() + ".\n", ({ this_object() }) );
+	return 1;
     }
     this_object ()->message ("No " + str + " to drop.\n");
     return 1;
