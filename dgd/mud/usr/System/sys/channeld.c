@@ -71,7 +71,7 @@ string show(string channel){
 /* valid tunes */
 
 /* broadcast_channel */
-void broadcast(string channel, string message, varargs except){
+void broadcast(string channel, string message, varargs object except){
 	int emote, i;
 	object *listeners;
 
