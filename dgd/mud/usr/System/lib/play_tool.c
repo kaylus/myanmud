@@ -54,8 +54,9 @@ cmd_test (string str)
     if (!strlen (str))
 	return "Must put something after test.\n";
 
-    this_object ()->message ("Tested changed.\n");
 
+	CHANNELD->tune("myan");
+	CHANNELD->broadcast("myan", str);
     return 1;
 }
 
