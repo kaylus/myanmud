@@ -525,6 +525,15 @@ mixed cmd_show (string str){
     return 1;
 }
 
+mixed cmd_tune (string str){
+    if (!strlen (str))
+	return "Usage: tune <channel>\n";
+
+    this_object()->message("Tune: " + CHANNELD->tune(str) + "\n");
+    CHANNELD->broadcast("myan", str);
+    return 1;
+}
+
 /* xa - command to show, in brief, another person's injuries */
 mixed cmd_xa (string str){
     object target;
