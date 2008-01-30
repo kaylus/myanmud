@@ -485,8 +485,27 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
 
 /* channeld */
 mixed cmd_show (string str){
-	if (!str || !strlen(str))
-		return "Usage: show <channel>\n";
+    if (!str || !strlen(str))
+	return "Usage: show <channel>\n";
 
-	this_object()->message(CHANNELD->show(str));
+    this_object()->message(CHANNELD->show(str));
+}
+
+/* xa - command to show, in brief, another person's injuries */
+mixed cmd_xa (string str){
+    object target;
+    if (!str || !strlen(str)){/* target an attacker */
+	target = this_object()->query_target();
+	if(!target)return "Not currently in combat!\n";
+
+	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n"); 
+	return 1;
+    }
+
+    target = this_object()->query_environment()->present(str);
+    if (target && target->query_has_health()) {
+	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
+	return 1;
+    }
+    return "No such thing to xa.\n";
 }

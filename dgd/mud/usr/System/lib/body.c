@@ -79,17 +79,17 @@ static void create(varargs int clone){ /* allocates for speed */
 }
 
 string query_subjective(){
-	/*switch(query_gender())*/
-	return "it";
+    /*switch(query_gender())*/
+    return "it";
 }
 
 void evt_heart_beat(object obj){
-	/*LOGD->log("Heart beat working...", "heartd");*/
-	catch(do_tick());
+    /*LOGD->log("Heart beat working...", "heartd");*/
+    catch(do_tick());
 }
 
 int allow_subscribe(object obj, string name){
-	return 1;
+    return 1;
 }
 
 /* work horse of player messages, replaces catch_tell */
@@ -115,7 +115,7 @@ int awaken(){
 
     user = previous_object();
     if(!end_room){/* room is no more */
-		end_room = ROOMD->query_start_room(); /* set to start room */
+	end_room = ROOMD->query_start_room(); /* set to start room */
     }
 
     previous_object()->message("Your body awakens.\n");
@@ -593,7 +593,7 @@ string query_long() {
 	}
     }
 
-    return ret;
+    return ret + query_xa();
 }
 /* input command decipherer */
 int input(string str){
@@ -608,7 +608,7 @@ int input(string str){
 
     /* do some alias stuff */
     if(user->query_alias(cmd)){/* found alias */
-    	cmd = user->query_alias(cmd);
+	cmd = user->query_alias(cmd);
     }
 
     /* return is as follows
@@ -664,9 +664,9 @@ atomic void move(mixed dest, string direction, varargs int silent, int nolook){
     ::move(dest);
 
     if(!nolook){
-		/* Let the player take a peek at his new environment, add in brief support? */
-		this_object()->message(environment->query_long());
-	}
+	/* Let the player take a peek at his new environment, add in brief support? */
+	this_object()->message(environment->query_long());
+    }
 
     if(silent) return;
 

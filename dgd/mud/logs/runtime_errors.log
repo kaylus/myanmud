@@ -1424,3 +1424,41 @@
 
 
 
+- <Jan 29 17:16:46 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/limb
+   41      ~System/lib/limb   decay
+
+
+
+- <Jan 29 17:28:38 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/limb
+   41      ~System/lib/limb   decay
+
+
+
+- <Jan 29 21:24:57 2008> /usr/System/sys/errord Hymael:
+	Cannot recompile inherited object
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  308      ~System/obj/user         receive_message
+        ~System/obj/wiztool#55
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  104      ~System/obj/wiztool      process
+  978      /kernel/lib/wiztool      cmd_compile
+  251      -                        compile_object
+  354      /kernel/lib/auto         compile_object
+
+
+
+- <Jan 29 21:31:22 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/limb
+   41      ~System/lib/limb   decay
+
+
+
