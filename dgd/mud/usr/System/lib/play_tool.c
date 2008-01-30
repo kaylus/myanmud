@@ -483,12 +483,46 @@ mixed cmd_drop (string str){/* add in all kinds of functionality */
     return 1;
 }
 
+/* give command in form give item to person */
+mixed cmd_give (string str){/* add in all kinds of functionality */
+    object thing, person;
+    string err, item, target;
+
+    if (!str || !strlen (str) || sscanf(str, "%s to %s", item, target) != 2){
+	return "Usage: give <item> to <person>\n";
+    }
+
+    thing = this_object ()->present (item);
+    if (thing){/* thing exists in our inventory */
+
+	if(thing->prevent_drop()){
+	    return "You can't move that item!\n";
+	}
+
+	person = this_object()->query_environment()->present(target);
+	if(!person || !person->is_body())return "Not a valid recipient.\n";
+
+	if ((err = catch (thing->move(person) ))){
+	    return err;
+	}
+
+	this_object ()->message ("You give " + thing->query_short () + " to " + person->query_Name() + ".\n");
+	person->message(this_object()->query_Name() + " gives you " + thing->query_short() + ".\n");
+	this_object ()->query_environment ()->message (this_object ()->query_Name () +
+	  " gives " + thing->query_short() + " to " + person->query_Name() + ".\n", ({ this_object(), person }) );
+	return 1;
+    }
+    this_object ()->message ("No " + str + " to give.\n");
+    return 1;
+}
+
 /* channeld */
 mixed cmd_show (string str){
     if (!str || !strlen(str))
 	return "Usage: show <channel>\n";
 
     this_object()->message(CHANNELD->show(str));
+    return 1;
 }
 
 /* xa - command to show, in brief, another person's injuries */
@@ -498,7 +532,7 @@ mixed cmd_xa (string str){
 	target = this_object()->query_target();
 	if(!target)return "Not currently in combat!\n";
 
-	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n"); 
+	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
 	return 1;
     }
 
