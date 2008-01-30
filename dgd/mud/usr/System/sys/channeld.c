@@ -61,9 +61,9 @@ string show(string channel){
 
 	indies = channels[channel];
 	ret = "Channel <" + channel + "> is currently listened to by:\n";
-	for(i = sizeof(indies); i-- >= 0;){
-		channel = (string)indies[i]->query_Name();
-		ret += (string)channel + " ";
+	for(i = sizeof(indies); i-- > 0;){
+		channel = indies[i]->query_Name();
+		ret += channel + " ";
 	}
 
 	return ret + "\n";
