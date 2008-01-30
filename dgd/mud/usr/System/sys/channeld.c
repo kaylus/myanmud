@@ -44,11 +44,10 @@ int tune(string channel){
 }
 
 /* show users tuned to a channel returns a printable string */
-mixed show(string channel){
+string show(string channel){
 	int i;
-	object player;
-	mixed indies;
-	mixed ret;
+	object player, *indies;
+	string ret;
 
 	/* check if previous_object() can tune channel */
 	if(channel == "wiz" && !previous_object()->query_wiztool()){/* be sure it's a wiz */
@@ -64,16 +63,12 @@ mixed show(string channel){
 	}
 
 	indies = channels[channel];
-	/*ret = "Channel <" + channel + "> is currently listened to by:\n";*/
-	/*for(i = sizeof(indies); --i >= 0;){
-		if(indies[i]){
-			player = find_player((string)indies[i]);
-			if(player) ret += player->query_Name() + " ";
-		}
+	ret = "Channel <" + channel + "> is currently listened to by:\n";
+	for(i = sizeof(indies); --i >= 0;){
+		ret += indies[i]->query_Name() + " ";
 	}
 
-	return ret + "\n";*/
-	return indies;
+	return ret + "\n";
 }
 
 
