@@ -1646,5 +1646,6 @@ static object find_player(string str){
 	if(users[i]->query_name() == str){
 	    return users[i]->query_body();
 	}
+	}
 	return nil;
 }
