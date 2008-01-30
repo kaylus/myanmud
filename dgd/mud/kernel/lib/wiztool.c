@@ -889,7 +889,7 @@ static void cmd_code(object user, string cmd, string str)
 	str = "";
     }
     str = "# include <float.h>\n# include <limits.h>\n" +
-	  "# include <status.h>\n# include <trace.h>\n" +
+	  "# include <status.h>\n# include <trace.h>\n# include <kernel/user.h>\n" +
 	  "# include <type.h>\n" + str + "\n" +
 	  "mixed exec(object user, mixed argv...) {\n" +
 	  "    mixed a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;\n\n" +
@@ -1007,7 +1007,7 @@ static void cmd_clone(object user, string cmd, string str)
 	str = object_name(obj);
 	break;
     }
-	
+
     if (sscanf(str, "%*s" + CLONABLE_SUBDIR + "%*s#") != 1) {
 	message("Not a master object.\n");
     } else if (!obj) {
