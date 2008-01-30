@@ -3,6 +3,7 @@
  * this daemon handles all channel functionality, it may talk with logd
  * to make more useful reporting of errors and events
  */
+#include <kernel/user.h>
 #define CHANS ([ "wiz" : ({}), "myan" : ({}) ])
 
 mapping backlogs, channels; /* a mapping of the backlogs of channels, and  tuned users */
