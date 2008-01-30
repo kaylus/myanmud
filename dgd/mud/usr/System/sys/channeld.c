@@ -66,7 +66,7 @@ string show(string channel){
 	indies = channels[channel];
 	ret = "Channel <" + channel + "> is currently listened to by:\n";
 	for(i = sizeof(indies); --i >= 0;){
-		if(indies[i] && typeof(indies[i]) == T_STRING){
+		if(indies[i]){
 			player = find_player((string)indies[i]);
 			if(player) ret += player->query_Name() + " ";
 		}
