@@ -4,6 +4,7 @@
  * to make more useful reporting of errors and events
  */
 #include <kernel/user.h>
+#include <type.h>
 #define CHANS ([ "wiz" : ({}), "myan" : ({}) ])
 
 mapping backlogs, channels; /* a mapping of the backlogs of channels, and  tuned users */
@@ -64,8 +65,10 @@ string show(string channel){
 	indies = channels[channel];
 	ret = "Channel <" + channel + "> is currently listened to by:\n";
 	for(i = sizeof(indies); i-- > 0;){
+		if(indies[i] && typeof(indies[i]) == T_STRING){
 		player = find_player(indies[i]);
 		if(player) ret += player->query_Name() + " ";
+		}
 	}
 
 	return ret + "\n";
