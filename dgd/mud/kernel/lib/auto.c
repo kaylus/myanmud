@@ -1606,8 +1606,8 @@ static string lowercase(string str){
 			str[x] += 'a' - 'A';
 	}
 	return str;
-}	
-	
+}
+
 
 /* wrap function - Hymael */
 static string wrap(string str, int len){
@@ -1629,4 +1629,22 @@ static string wrap(string str, int len){
                 }
                 if(str!="")ret+=str;
                 return ret;
+}
+
+
+/* find_player */
+static object find_player(string str){
+	object *users;
+	int i;
+
+	str = lowercase(str);/* lowercase */
+    users = users();
+    if(!(i = sizeof(users)))
+	return nil;
+
+    while(i--){
+	if(users[i]->query_name() == str){
+	    return users[i]->query_body();
+	}
+	return nil;
 }

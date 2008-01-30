@@ -45,6 +45,7 @@ int tune(string channel){
 /* show users tuned to a channel returns a printable string */
 string show(string channel){
 	int i;
+	object player;
 	string *indies, ret;
 
 	/* check if previous_object() can tune channel */
@@ -63,7 +64,8 @@ string show(string channel){
 	indies = channels[channel];
 	ret = "Channel <" + channel + "> is currently listened to by:\n";
 	for(i = sizeof(indies); i-- > 0;){
-		ret += find_object(USERD)->find_user(indies[i])->query_Name() + " ";
+		player = find_player(indies[i]);
+		if(player) ret += player->query_Name() + " ";
 	}
 
 	return ret + "\n";
