@@ -529,8 +529,16 @@ mixed cmd_tune (string str){
     if (!strlen (str))
 	return "Usage: tune <channel>\n";
 
-    this_object()->message("Tune: " + CHANNELD->tune(str) + "\n");
-    CHANNELD->broadcast("myan", str);
+	switch(CHANNELD->tune(str)){
+		case -1:
+			this_object()->message("You tune out of channel " + str + "\n");
+			break;
+		case 1:
+			this_object()->message("You tune into channel " + str + "\n");
+			break;
+		case 0:
+			this_object()->message("You cannot tune into that channel.\n");
+	}
     return 1;
 }
 
