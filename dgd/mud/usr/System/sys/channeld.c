@@ -50,7 +50,7 @@ string show(string channel){
 	string ret;
 
 	/* check if previous_object() can tune channel */
-	if(channel == "wiz" && !previous_object()->query_wiztool()){/* be sure it's a wiz */
+	if(channel == "wiz" && !previous_object()->query_wiztool()){/* be sure it's a wiz, do something here to make this functional */
 		return "You can't check this line.\n";
 	}
 
