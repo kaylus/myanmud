@@ -1462,3 +1462,10 @@
 
 
 
+- <Jan 31 18:12:08 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        ~System/obj/limb
+   41      ~System/lib/limb   decay
+
+
+
