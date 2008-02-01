@@ -16,8 +16,7 @@
 
 
 /* look function */
-mixed
-cmd_look (string str)
+mixed cmd_look (string str)/* general */
 {
     object item;
 
@@ -54,8 +53,7 @@ mixed cmd_test (string str)
 }
 
 /* go in a direction */
-mixed
-cmd_go (string str)
+mixed cmd_go (string str)/* movement */
 {
     object environ, dest;
     string err;
@@ -77,8 +75,7 @@ cmd_go (string str)
     return 1;
 }
 
-mixed
-cmd_beep (string str)
+mixed cmd_beep (string str)/* interaction */
 {
     object person;
 
@@ -123,8 +120,7 @@ cmd_beep (string str)
     return 1;
 }
 
-mixed
-cmd_kill (string str)
+mixed cmd_kill (string str)/* combat */
 {
     object room, thing;
     string name, tname;
@@ -170,8 +166,7 @@ cmd_kill (string str)
     return 1;
 }
 
-mixed
-cmd_inventory (string str)
+mixed cmd_inventory (string str)/* general */
 {
 
     object *stuff;
@@ -204,8 +199,7 @@ cmd_inventory (string str)
     return 1;
 }
 
-mixed
-cmd_wield (string str)
+mixed cmd_wield (string str)/* equipment */
 {
     object thing;
 
@@ -243,8 +237,7 @@ cmd_wield (string str)
     return 1;
 }
 
-mixed
-cmd_unwield (string str)
+mixed cmd_unwield (string str)/* equipment */
 {
     object thing;
 
@@ -283,8 +276,7 @@ cmd_unwield (string str)
     return 1;
 }
 
-mixed
-cmd_equip (string str)
+mixed cmd_equip (string str)/* equipment */
 {
     object thing;
 
@@ -322,8 +314,7 @@ cmd_equip (string str)
     return 1;
 }
 
-mixed
-cmd_unequip (string str)
+mixed cmd_unequip (string str)/* equipment */
 {
     object thing;
 
@@ -361,15 +352,13 @@ cmd_unequip (string str)
     return 1;
 }
 
-mixed
-cmd_hp (string str)
+mixed cmd_hp (string str)/* combat */
 {
     this_object ()->message ("Status:" + this_object ()->query_diagram ());
     return 1;
 }
 
-mixed
-cmd_score (string str)
+mixed cmd_score (string str)/* combat */
 {
     mapping stats;
     int i;
@@ -393,22 +382,19 @@ cmd_score (string str)
     return 1;
 }
 
-mixed
-cmd_skills (string str)
+mixed cmd_skills (string str)/* skills */
 {
     this_object ()->message (this_object ()->query_skills ());
     return 1;
 }
 
-mixed
-cmd_wealth (string str)
+mixed cmd_wealth (string str)
 {
     this_object ()->message (this_object ()->query_wealth ());
     return 1;
 }
 
-mixed
-cmd_get (string str)/* add in all kinds of functionality */
+mixed cmd_get (string str)/* add in all kinds of functionality */
 {
     object thing;
     string err;
