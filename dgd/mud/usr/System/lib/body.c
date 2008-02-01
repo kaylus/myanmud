@@ -620,7 +620,9 @@ int input(string str){
     /* body bin, make this a loop */
 
     /* channeld check */
-    if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+    catch{
+		if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+	}
 
     ret_fail = call_other(this_object(), "cmd_" + cmd, args);/* change to call_limited? */
 

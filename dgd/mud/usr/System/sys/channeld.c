@@ -11,7 +11,8 @@ mapping backlogs, channels; /* a mapping of the backlogs of channels, and  tuned
 				  /* people tuned? or add an inherited for user.c */
 
 void create(){/* inits */
-	backlogs = channels = CHANS;
+	backlogs = CHANS;
+	channels = CHANS;
 }
 
 /* a request for tuning of a channel, do previous_object check?
@@ -92,12 +93,19 @@ void broadcast(string channel, string message, varargs object except){
 		message = message[1..];
 	}
 
+	message = (emote) ? "[" + channel + "] " + previous_object()->query_Name() + " " + message + "\n" :
+				                        previous_object()->query_Name() + " [" + channel + "] " + message + "\n";
+
 	listeners = channels[channel] - ({ except });
 	for(i = sizeof(listeners); i--; ){
-		listeners[i]->message((emote) ? "[" + channel + "] " + previous_object()->query_Name() + " " + message + "\n" :
-				                        previous_object()->query_Name() + " [" + channel + "] " + message + "\n");
+		listeners[i]->message(message);
 
 	}
+
+	/* add to backlog */
+	backlogs[channel] += ({ message });
+	if(sizeof(backlogs[channel]) > 10)
+		backlogs[channel] = backlogs[channel][1..];
 }
 
 mapping get_channels(){
@@ -107,7 +115,7 @@ mapping get_channels(){
 int cmd_channel(string chan, string mess){ /* this is called when a command is issued, to see if it matches a tuned in channel */
 	if(!chan || !strlen(chan)) return 0;
 
-	if(channels[chan] && channels[chan] & ({ previous_object() })){/* valid channel */
+	if(channels[chan] && sizeof(channels[chan] & ({ previous_object() }))){/* valid channel */
 		broadcast(chan, mess);
 		/* do the you return different? */
 		return 1;
@@ -117,5 +125,30 @@ int cmd_channel(string chan, string mess){ /* this is called when a command is i
 }
 
 /* tune out all, function used to log someone out */
+string *tuneout(varargs object player){
+	mixed *keys, ret;
+	int i;
+
+	keys = map_indices(channels);
+	if(!player)
+		player = previous_object();
+
+	if(!player->is_body())return ({});
+
+	ret = ({});
+	for(i = sizeof(keys);i--;){
+		if(sizeof(channels[keys[i]] & ({player}))){/* player tuned to channel */
+			channels[keys[i]] -= ({player});
+			ret += ({keys[i]});
+		}
+	}
+	return ret;
+}
 
 /* tune in at log in */
+
+
+/* return backlogs */
+mapping get_backlogs(){
+	return backlogs;
+}

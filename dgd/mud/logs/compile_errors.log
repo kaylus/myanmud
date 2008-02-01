@@ -382,3 +382,52 @@
 
 
 
+- <Jan 31 23:44:52 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/channeld.c
+  105   bad argument types for += (mapping, mixed *)
+
+
+
+- <Feb  1 00:07:03 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/channeld.c
+  107   bad argument 1 for function sizeof (needs mixed *)
+  107   syntax error
+
+
+
+- <Feb  1 00:07:36 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/channeld.c
+  107   bad argument 1 for function sizeof (needs mixed *)
+  108   syntax error
+
+
+
+- <Feb  1 00:08:01 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/channeld.c
+  135   returned value doesn't match string * (int)
+  137   incompatible types for = (string, mixed *)
+  141   bad argument types for += (string, mixed *)
+  144   returned value doesn't match string * (string)
+
+
+
+- <Feb  1 00:08:30 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/channeld.c
+  137   incompatible types for = (string, mixed *)
+  141   bad argument types for += (string, mixed *)
+  144   returned value doesn't match string * (string)
+
+
+
+- <Feb  1 00:14:18 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  623   syntax error
+
+
+
+- <Feb  1 00:18:38 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
