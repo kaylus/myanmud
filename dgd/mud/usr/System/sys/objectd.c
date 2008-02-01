@@ -127,6 +127,8 @@ void include(string from, string path){
  * call.
  */
 int touch(object obj, string function){
+	/* upgrade calls should be made here, that would be things in order to update old objects to new objects */
+
 	return 0;
 }
 
