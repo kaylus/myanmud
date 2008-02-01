@@ -1469,3 +1469,17 @@
 
 
 
+- <Jan 31 23:20:47 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/channeld.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   80      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+

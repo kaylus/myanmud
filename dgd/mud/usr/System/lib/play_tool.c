@@ -48,16 +48,9 @@ cmd_look (string str)
     return "You cannot see that.\n";
 }
 
-mixed
-cmd_test (string str)
+mixed cmd_test (string str)
 {
-    if (!strlen (str))
-	return "Must put something after test.\n";
-
-
-    this_object()->message("tune return : " + CHANNELD->tune("myan") + "\n");
-    CHANNELD->broadcast("myan", str);
-    return 1;
+    return "die\n";
 }
 
 /* go in a direction */
@@ -559,4 +552,9 @@ mixed cmd_xa (string str){
 	return 1;
     }
     return "No such thing to xa.\n";
+}
+
+/* date - shows the current date/time of the mud's server */
+mixed cmd_date (string str){
+	return "Date: " + ctime(time()) + "\n";
 }

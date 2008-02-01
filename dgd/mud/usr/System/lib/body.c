@@ -612,12 +612,16 @@ int input(string str){
     }
 
     /* return is as follows
-	    1 - action done, end command search
-	    nil - continue seek
-	    string - fail string, continue seek
- */
+	 *  1 - action done, end command search
+	 *  nil - continue seek
+	 *  string - fail string, continue seek
+     */
 
     /* body bin, make this a loop */
+
+    /* channeld check */
+    if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+
     ret_fail = call_other(this_object(), "cmd_" + cmd, args);/* change to call_limited? */
 
     switch(typeof(ret_fail)){

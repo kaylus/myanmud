@@ -765,3 +765,68 @@
 	Teste fabricating body
 
 
+- <Jan 31 22:46:13 2008> /usr/System/obj/user#54 Hymael:
+	Hymael body in storage = No body
+
+- <Jan 31 22:46:13 2008> /usr/System/obj/user#54 Hymael:
+	Hymael fabricating body
+
+
+- <Jan 31 22:56:10 2008> /usr/System/obj/user#54 Hymael:
+	Hymael body in storage = /usr/System/obj/body#55
+
+- <Jan 31 22:56:10 2008> /usr/System/obj/body#55 Hymael:
+	Name = Hymael body = /usr/System/obj/body#55 awakening
+
+
+- <Jan 31 22:56:11 2008> /usr/System/obj/user#54 Hymael:
+	Hymael entered logout
+
+
+- <Jan 31 23:20:26 2008> /usr/System/obj/user#54 Hymael:
+	Hymael entered logout
+
+
+- <Jan 31 23:20:26 2008> /usr/System/obj/user#54 Hymael:
+	Name = hymael body = /usr/System/obj/body#55
+
+
+- <Jan 31 23:20:26 2008> /usr/System/obj/body#55 Hymael:
+	Name = Hymael body = /usr/System/obj/body#55 going into stasis
+
+
+- <Jan 31 23:20:35 2008> /usr/System/obj/user#54 Hymael:
+	Hymael body in storage = /usr/System/obj/body#55
+
+- <Jan 31 23:20:35 2008> /usr/System/obj/body#55 Hymael:
+	Name = Hymael body = /usr/System/obj/body#55 awakening
+
+
+- <Jan 31 23:21:39 2008> /usr/System/obj/user#53 Hymael:
+	Hymael body in storage = No body
+
+- <Jan 31 23:21:39 2008> /usr/System/obj/user#53 Hymael:
+	Hymael fabricating body
+
+
+- <Jan 31 23:21:52 2008> /usr/System/obj/user#57 Teste:
+	Teste body in storage = No body
+
+- <Jan 31 23:21:52 2008> /usr/System/obj/user#57 Teste:
+	Teste fabricating body
+
+
+- <Jan 31 23:24:34 2008> /usr/System/obj/user#53 Hymael:
+	Hymael body in storage = No body
+
+- <Jan 31 23:24:34 2008> /usr/System/obj/user#53 Hymael:
+	Hymael fabricating body
+
+
+- <Jan 31 23:24:36 2008> /usr/System/obj/user#57 Teste:
+	Teste body in storage = No body
+
+- <Jan 31 23:24:36 2008> /usr/System/obj/user#57 Teste:
+	Teste fabricating body
+
+

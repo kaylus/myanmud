@@ -104,6 +104,18 @@ mapping get_channels(){
 	return channels;
 }
 
+int cmd_channel(string chan, string mess){ /* this is called when a command is issued, to see if it matches a tuned in channel */
+	if(!chan || !strlen(chan)) return 0;
+
+	if(channels[chan] && channels[chan] & ({ previous_object() })){/* valid channel */
+		broadcast(chan, mess);
+		/* do the you return different? */
+		return 1;
+	}
+
+	return 0;
+}
+
 /* tune out all, function used to log someone out */
 
 /* tune in at log in */

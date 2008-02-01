@@ -358,3 +358,27 @@
 
 
 
+- <Jan 31 23:09:23 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Jan 31 23:09:32 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Jan 31 23:10:39 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Jan 31 23:20:47 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/channeld.c
+  110   syntax error
+
+
+
