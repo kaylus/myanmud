@@ -431,3 +431,70 @@
 
 
 
+- <Feb  1 13:19:21 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   too few arguments for function function_object
+
+
+
+- <Feb  1 14:30:23 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+   54   undefined function indexof
+
+
+
+- <Feb  1 15:06:00 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   undefined function all_trace
+
+
+
+- <Feb  1 15:21:20 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   invalid string range
+
+
+
+- <Feb  1 15:21:33 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Feb  1 15:22:21 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Feb  1 15:22:30 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Feb  1 15:23:22 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   bad argument 1 for function read_file (needs string)
+
+
+
+- <Feb  1 15:23:31 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   syntax error
+
+
+
+- <Feb  1 15:33:22 2008> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   too few arguments for function block_input
+   11   void value not ignored
+
+
+
+- <Feb  1 15:33:32 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   void value not ignored
+
+
+

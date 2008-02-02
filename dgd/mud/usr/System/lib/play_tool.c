@@ -49,7 +49,7 @@ mixed cmd_look (string str)/* general */
 
 mixed cmd_test (string str)
 {
-    return "die\n";
+    return "new die\n";
 }
 
 /* go in a direction */
@@ -508,16 +508,16 @@ mixed cmd_tune (string str){
     if (!strlen (str))
 	return "Usage: tune <channel>\n";
 
-	switch(CHANNELD->tune(str)){
-		case -1:
-			this_object()->message("You tune out of channel " + str + "\n");
-			break;
-		case 1:
-			this_object()->message("You tune into channel " + str + "\n");
-			break;
-		case 0:
-			this_object()->message("You cannot tune into that channel.\n");
-	}
+    switch(CHANNELD->tune(str)){
+    case -1:
+	this_object()->message("You tune out of channel " + str + "\n");
+	break;
+    case 1:
+	this_object()->message("You tune into channel " + str + "\n");
+	break;
+    case 0:
+	this_object()->message("You cannot tune into that channel.\n");
+    }
     return 1;
 }
 
@@ -542,5 +542,5 @@ mixed cmd_xa (string str){
 
 /* date - shows the current date/time of the mud's server */
 mixed cmd_date (string str){
-	return "Date: " + ctime(time()) + "\n";
+    return "Date: " + ctime(time()) + "\n";
 }

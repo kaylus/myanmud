@@ -1693,3 +1693,683 @@
 
 
 
+- <Feb  1 13:13:00 2008> /usr/System/sys/errord Hymael:
+	Too many callouts
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  308      ~System/obj/user         receive_message
+        ~System/obj/wiztool#55
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+        /kernel/sys/rsrcd
+  377      -                        update_ticks
+        /kernel/obj/rsrc#21
+  278      /kernel/obj/rsrc         update_ticks
+  791      /kernel/lib/auto         call_out
+
+
+
+- <Feb  1 13:26:31 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   53      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:28:45 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   53      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   62      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:33:13 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:35:39 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:44:12 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:47:33 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   58      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:48:56 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   60      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:53:53 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:55:13 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:55:58 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:57:35 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 13:59:40 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:04:10 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:06:24 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:10:55 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:11:31 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:11:55 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:12:16 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:12:46 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:13:04 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:13:47 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:14:26 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:14:43 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:16:32 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Value is not a string
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:17:20 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 (array) for kfun object_name
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:19:09 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	die fucker
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:22:37 2008> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  308      ~System/obj/user         receive_message
+        ~System/obj/wiztool#55
+   38      ~System/obj/wiztool      input
+  761      /kernel/lib/auto         call_limited
+  104      ~System/obj/wiztool      process
+  978      /kernel/lib/wiztool      cmd_compile
+  251      -                        compile_object
+  355      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  1 14:30:23 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:31:34 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  360      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:32:15 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  360      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  360      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  355      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:32:38 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:34:38 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:35:27 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:37:40 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:38:07 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:38:32 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:39:55 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:41:02 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:42:09 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:42:36 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:50:41 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 14:52:33 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  1 15:04:20 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Cannot recompile inherited object
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   52      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+   61      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+

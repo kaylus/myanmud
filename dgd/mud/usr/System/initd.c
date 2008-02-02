@@ -32,48 +32,49 @@ create (varargs int clone)
 	set_access("common", "/", FULL_ACCESS);
 
 
-
     /* For later, when you start setting more managers */
     driver = find_object (DRIVER);
     /*find_object(LOGD)->log("Driver is = "+DRIVER, "initd");*/
-driver->message("Initd...\n");
+	driver->message("Initd...\n");
 
 
     /* errord */
     if (!find_object (ERRORD))
-	compile_object (ERRORD);
-driver->message("Initd: errord...\n");
+		compile_object (ERRORD);
+	driver->message("Initd: errord...\n");
 	/* logd */
 	if (!find_object (LOGD))
 		compile_object(LOGD);
-driver->message("Initd: logd...\n");
+	driver->message("Initd: logd...\n");
 
     /* objectd */
-   if(!find_object(OBJECTD))
-	compile_object(OBJECTD);
-driver->message("Initd: objectd...\n");
+   	if(!find_object(OBJECTD))
+		compile_object(OBJECTD);
+	driver->message("Initd: objectd...\n");
 
-    /* telnetd */
+	/* telnetd */
     if (!find_object (TEL_MANAGER))
-	compile_object (TEL_MANAGER);
-driver->message("Initd: telnet manager...\n");
+		compile_object (TEL_MANAGER);
+	driver->message("Initd: telnet manager...\n");
 
     /* binaryd */
     if (!find_object (BIN_MANAGER))
-	compile_object (BIN_MANAGER);
+		compile_object (BIN_MANAGER);
 	driver->message("Initd: binary manager...\n");
 
     /* room daemon */
     if (!find_object (ROOMD))
-	compile_object (ROOMD);
+		compile_object (ROOMD);
 	driver->message("Initd: roomd...\n");
+
+
 
     if (!find_object (HEARTD))
         compile_object (HEARTD);
     driver->message("Initd: heartd...\n");
 
     if (!find_object (HELPD))
-	compile_object (HELPD);
+		compile_object (HELPD);
 	driver->message("Initd: helpd...\n");
 
 	if (!find_object (CHANNELD))
