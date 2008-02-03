@@ -544,3 +544,39 @@ mixed cmd_xa (string str){
 mixed cmd_date (string str){
     return "Date: " + ctime(time()) + "\n";
 }
+
+
+/* alias command - to set and query aliases */
+mixed cmd_alias (string str){
+	string alias, set, a, b;
+
+	if(!str || !strlen(str)){/* we execute the command to list aliases */
+		this_object()->message("Current aliases:" + this_object()->query_user()->query_alias());
+		return 1;
+	}
+
+	alias = this_object()->query_user()->query_alias(explode(str, " ")[0]);
+	if(sscanf(str, "%s %s", a, b) < 2){/* alias query */
+		if(alias == str){/* no alias */
+			return "No such alias.\n";
+		}
+		this_object()->message("Alias: " + str + " = " + alias + "\n");
+		return 1;
+	}
+
+	sscanf(str, "%s %s", str, set);
+
+	/* if we reach here, we're modifying aliases */
+	if(!set) return "Usage: alias <name> <value>\n";
+
+	this_object()->message(this_object()->query_user()->add_alias(str, set));
+	return 1;
+}
+
+/* remove given alias */
+mixed cmd_unalias (string str){
+	if(!str || !strlen(str)) return "Usage: unalias <alias>\n";
+
+	this_object()->message(this_object()->query_user()->remove_alias(str));
+	return 1;
+}

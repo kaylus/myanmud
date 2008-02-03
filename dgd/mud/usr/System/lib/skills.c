@@ -12,7 +12,7 @@ static mapping mod_skills;             /* current skill mods */
 
 void delta_skill(string skill, varargs int val){
     if(!skills) skills = ([]);
-    if(!skills[skill]) skills[skill] = 0;
+    if(!skills[skill]) skills[skill] = NOT_SKILLED;
 
     if(!val) val = 1;
 

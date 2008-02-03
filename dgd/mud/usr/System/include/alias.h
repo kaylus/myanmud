@@ -4,6 +4,8 @@
  */
 
 /* default aliases */
-# define DEF_ALIASES ([ "l" : "look", "w" : "go west", "e" : "go east", "s": "go south", "n" : "go north", "u" : "go up", "d" : "go down", "nw" : "go northwest", "ne" : "go northeast", "sw" : "go southwest", "se" : "go southeast", "i" : "inventory" ])
+# define DEF_ALIASES ([ "l" : "look", "w" : "go west", "e" : "go east", "s": "go south", "n" \
+: "go north", "u" : "go up", "d" : "go down", "nw" : "go northwest", "ne" : "go northeast", "sw" \
+: "go southwest", "se" : "go southeast", "i" : "inventory" ])
 
 

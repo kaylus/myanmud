@@ -5531,3 +5531,63 @@
 - <Feb  1 15:05:08 2008> /usr/System/sys/telnetd /usr/System/sys/telnetd:
 	in telnetd
 
+- <Feb  2 15:45:52 2008> /usr/System/obj/body#54 Hymael:
+	argx = west
+
+- <Feb  2 15:46:59 2008> /usr/System/obj/body#54 Hymael:
+	args = west
+
+- <Feb  2 15:47:58 2008> /usr/System/obj/body#54 Hymael:
+	args = west
+
+- <Feb  2 15:47:59 2008> /usr/System/obj/body#54 Hymael:
+	args = down
+
+- <Feb  2 15:50:49 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = ls args = 
+
+- <Feb  2 15:50:56 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = go west args = west
+
+- <Feb  2 15:52:01 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = shutdown args = 
+
+- <Feb  2 15:52:10 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = ls args = 
+
+- <Feb  2 15:52:11 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = hp args = 
+
+- <Feb  2 15:52:12 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = score args = 
+
+- <Feb  2 15:52:15 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = score args = 
+
+- <Feb  2 15:52:16 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = go west args = west
+
+- <Feb  2 15:52:19 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = go west args = west
+
+- <Feb  2 15:52:20 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = go south args = south
+
+- <Feb  2 15:52:21 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = go down args = down
+
+- <Feb  2 15:52:22 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = ls args = 
+
+- <Feb  2 15:52:22 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = cd args = /
+
+- <Feb  2 15:52:23 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = ls args = 
+
+- <Feb  2 15:52:27 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = ls args = 
+
+- <Feb  2 15:53:46 2008> /usr/System/obj/body#54 Hymael:
+	In alias cmd = shutdown args = 
+

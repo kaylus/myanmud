@@ -2373,3 +2373,128 @@
 
 
 
+- <Feb  2 15:05:07 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:05:39 2008> /usr/System/sys/errord Hymael:
+	Value is not a string
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#54 "hymael"
+  627      ~System/lib/body         input
+  554      ~System/lib/play_tool    cmd_alias
+
+
+
+- <Feb  2 15:06:41 2008> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#54 "hymael"
+  627      ~System/lib/body         input
+  563      ~System/lib/play_tool    cmd_alias
+
+
+
+- <Feb  2 15:15:02 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/body.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:27:43 2008> /usr/System/sys/errord Hymael:
+	Value is not a string
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#54 "hymael"
+  631      ~System/lib/body         input
+  554      ~System/lib/play_tool    cmd_alias
+
+
+
+- <Feb  2 15:27:46 2008> /usr/System/sys/errord Hymael:
+	Bad argument 2 for kfun +
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#54 "hymael"
+  631      ~System/lib/body         input
+  563      ~System/lib/play_tool    cmd_alias
+
+
+
+- <Feb  2 15:35:55 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/play_tool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:36:34 2008> /usr/System/sys/errord Hymael:
+	Value is not a string
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  303      ~System/obj/user         receive_message
+        ~System/obj/body#54 "hymael"
+  631      ~System/lib/body         input
+  554      ~System/lib/play_tool    cmd_alias
+
+
+

@@ -607,8 +607,12 @@ int input(string str){
     }
 
     /* do some alias stuff */
-    if(user->query_alias(cmd)){/* found alias */
+    if(user->query_alias(cmd) != cmd){/* found alias */
+    string argx;
 	cmd = user->query_alias(cmd);
+	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
+		args = argx + args;
+	}
     }
 
     /* return is as follows
