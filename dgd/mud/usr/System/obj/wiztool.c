@@ -47,6 +47,7 @@ static void process(string str)
 {
     string arg;
 
+	/* add in redirect to any object, sort of like editor? */
     if (query_editor(this_object())) {
 	if (strlen(str) != 0 && str[0] == '!') {
 	    str = str[1 ..];

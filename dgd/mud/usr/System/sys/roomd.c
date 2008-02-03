@@ -27,7 +27,6 @@ object add_room(object room){/* add a room to the register */
 		error("Object is not a room!");
 
 	rooms += ({ room });
-	LOGD->log(object_name(room) + " added to ROOMD.", "roomd");
 	return room;
 }
 

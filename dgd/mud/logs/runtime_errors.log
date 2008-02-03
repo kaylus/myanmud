@@ -2498,3 +2498,23 @@
 
 
 
+- <Feb  2 18:07:41 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/body.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   38      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+

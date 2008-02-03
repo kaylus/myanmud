@@ -536,3 +536,28 @@
 
 
 
+- <Feb  2 18:06:51 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   too few arguments for function query_editor
+
+
+
+- <Feb  2 18:07:41 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  610   undefined function query_wiztool
+
+
+
+- <Feb  2 18:14:19 2008> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   illegal character: '@'
+   11   undeclared variable TLSVAR
+
+
+
+- <Feb  2 18:14:20 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   undeclared variable TLSVAR2
+
+
+

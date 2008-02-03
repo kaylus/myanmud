@@ -109,12 +109,10 @@ int login(string str)
 
 	found_user = restore_object(USR_SAVE_DIR + "/" + str + ".pwd");
 	body = (body_name)?find_object(body_name):body; /* request body from userd? */
-	LOGD->log(Name+" body in storage = " + ((body)?object_name(body):"No body"), "body_log");
 	/* check for stored body, remove from storage? */
 	if(!body || !body->awaken()){
 	    object room;
 
-	    LOGD->log(Name+" fabricating body\n", "body_log");
 	    set_body(create_body());
 	    body->move(ROOMD->query_start_room(), "");
 	}
@@ -152,10 +150,8 @@ int login(string str)
  */
 void logout(int quit)
 {
-    LOGD->log(Name+" entered logout\n", "body_log");
     if (previous_program() == LIB_CONN && --nconn == 0) {
 	body_name = object_name(body);
-	LOGD->log("Name = "+name+" body = "+body_name+"\n", "body_log");
 
 	save_object(USR_SAVE_DIR + "/" + name + ".pwd");
 
@@ -188,6 +184,7 @@ int receive_message(string str)
 	object user, *users;
 	int i, sz;
 
+	/* is this where we should redirect to game object input? */
 	switch (state[previous_object()]) {
 	case STATE_NORMAL:
 	    cmd = str;

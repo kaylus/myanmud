@@ -8,4 +8,4 @@
 : "go north", "u" : "go up", "d" : "go down", "nw" : "go northwest", "ne" : "go northeast", "sw" \
 : "go southwest", "se" : "go southeast", "i" : "inventory" ])
 
-
+/* add in restricted aliases */

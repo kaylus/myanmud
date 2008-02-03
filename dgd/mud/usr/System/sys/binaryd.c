@@ -8,7 +8,6 @@ static void create (varargs int clone){
 }
 
 object select (string str){
-  	LOGD->log("Str = " + str + "\n", "log_select");
   	return clone_object (SYSTEM_USER);
 }
 

@@ -580,3 +580,9 @@ mixed cmd_unalias (string str){
 	this_object()->message(this_object()->query_user()->remove_alias(str));
 	return 1;
 }
+
+/* rudimentary bug reporting */
+mixed cmd_bug (string str){
+	editor("e /logs/bugs.log");
+	return 1;
+}

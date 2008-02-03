@@ -607,7 +607,7 @@ int input(string str){
     }
 
     /* do some alias stuff */
-    if(user->query_alias(cmd) != cmd){/* found alias */
+    if(user->query_alias(cmd) != cmd && !query_editor(user->query_wiztool())){/* found alias */
     string argx;
 	cmd = user->query_alias(cmd);
 	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
