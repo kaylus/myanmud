@@ -530,3 +530,9 @@
 
 
 
+- <Feb  2 17:17:02 2008> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   11   undefined function state
+
+
+

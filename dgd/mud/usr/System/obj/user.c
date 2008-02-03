@@ -226,8 +226,8 @@ int receive_message(string str)
 		    if (sscanf(str, "%*s %s", str) == 0) {
 			message("Usage: say <text>\n");
 		    } else {
-			tell_audience(Name + " says: " + str + "\n");
-			message("You say: " + str +"\n");
+			tell_audience(Name + " says, \"" + str + "\"\n");
+			message("You say, \"" + str +"\"\n");
 		    }
 		    str = nil;
 		    break;
@@ -236,8 +236,8 @@ int receive_message(string str)
 		    if (sscanf(str, "%*s %s", str) == 0) {
 			message("Usage: emote <text>\n");
 		    } else {
-			tell_audience(Name + " " + str + "\n");
-			message(Name + " " + str + "\n");
+			tell_audience(Name + " " + str + ".\n");
+			message(Name + " " + str + ".\n");
 		    }
 		    str = nil;
 		    break;
@@ -247,12 +247,14 @@ int receive_message(string str)
 		      !(user=find_user(cmd))) {
 			message("Usage: tell <user> <text>\n");
 		    } else {
-			user->message(Name + " tells you: " + str + "\n");
+			user->message(Name + " tells you, \"" + str + "\"\n");
+			message("You tell " + user->query_Name() + ", \"" + str + "\"\n");
 		    }
 		    str = nil;
 		    break;
 
 		case "users":
+		case "who":
 		    users = users();
 		    str = "Logged on:";
 		    for (i = 0, sz = sizeof(users); i < sz; i++) {
