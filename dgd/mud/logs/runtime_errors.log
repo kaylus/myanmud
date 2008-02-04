@@ -2518,3 +2518,133 @@
 
 
 
+- <Feb  3 22:00:42 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 22:02:04 2008> /usr/System/sys/errord Hymael:
+	Bad argument 2 (object) for function message
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  307      ~System/obj/user         receive_message
+        ~System/obj/wiztool#55
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  106      ~System/obj/wiztool      process
+  328      -                        cmd_dest
+
+
+
+- <Feb  3 22:03:46 2008> /usr/System/sys/errord Hymael:
+	Bad argument 2 (object) for function message
+        /kernel/obj/binary#52
+   88      /kernel/obj/binary       receive_message
+  199      /kernel/lib/connection   receive_message
+        ~System/obj/user#54 "hymael"
+  307      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   38      ~System/obj/wiztool      input
+  760      /kernel/lib/auto         call_limited
+  106      ~System/obj/wiztool      process
+  328      -                        cmd_dest
+
+
+
+- <Feb  3 22:16:31 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 22:17:59 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 22:18:18 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 22:19:01 2008> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/wiztool.c"
+        /kernel/sys/driver
+  447      -                  initialize
+  429      -                  _initialize
+        /kernel/sys/rsrcd
+  609      -                  initd
+  359      /kernel/lib/auto   compile_object
+        ~System/initd
+   57      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+    6      -                  create
+  359      /kernel/lib/auto   compile_object
+        ~System/obj/user
+   37      -                  create
+  354      /kernel/lib/auto   compile_object
+
+
+

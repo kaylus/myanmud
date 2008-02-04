@@ -76,6 +76,7 @@ static void process(string str)
     case "compile":
     case "clone":
     case "destruct":
+    case "dest":
 
     case "cd":
     case "pwd":
@@ -130,7 +131,7 @@ static void cmd_summon(object user, string cmd, string str)
     if(!(i = sizeof(users)))
 	return;
 
-    while(i--){
+    while(i--){/* code to use find_player() */
 	if(users[i]->query_name() == str){
 	    player = users[i]->query_body();
 	    break;
@@ -314,6 +315,72 @@ static void cmd_ls(object user, string cmd, string str)
 /*
  * dest: destructs an object in wizard's inventory or environ
  */
+static void cmd_dest(object user, string cmd, string str){
+	mixed thing;
+	int i;
 
+	if(!str || !strlen(str)){
+		message("Usage: dest <object>\n");
+		return;
+	}
+	/* add in check for $num functionality */
+	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
+		message("You destruct : "+thing->query_short()+".\n");/* may have to make query_short more elaborate */
+		destruct_object(thing);
+		return;
+	}
 
+	/* check inventory */
+	if(thing = user->query_body()->present(str)){
+		message("You destruct : "+thing->query_short()+".\n");
+		user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
+		destruct_object(thing);
+		return;
+	}
+
+	/* check environment */
+	if(thing = user->query_body()->query_environment()->present(str)){
+		message("You destruct : "+thing->query_short()+".\n");
+		user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
+		destruct_object(thing);
+		return;
+	}
+	message("No "+str +" to dest.\n");
+}
+
+/*
+ * more: pager for a file
+ */
+
+/*
+ * home: returns you to your workroom
+ */
+
+/*
+ * goto: trans you to the named room, or player
+ */
+
+/*
+ * invis: turns you invis, requires the coding of a query_vision
+ */
+
+/*
+ * tail: prints the last bit of a file
+ */
+
+/*
+ * gauge: calculates the given ticks/time of the given command
+ */
+
+/*
+ * force: forces a body to do a command
+ */
+
+/*
+ * nuke: destroys a given player/wiz
+ */
+
+/*
+ * wall: realm echo
+ */
 

@@ -27,6 +27,7 @@ static int nconn;		/* # of connections */
 static int accinit;		/* access interface initialized */
 object body;            /* subjects body, some sort of saving mechanism */
 string body_name;       /* hackish */
+static object input_to_obj;        /* input to object */
 
 /*
  * NAME:	create()
@@ -173,6 +174,30 @@ void logout(int quit)
 }
 
 /*
+ * NAME:        input_to()
+ * DESCRIPTION: this is how to redirect an input to an object.  Only one redirect at a time
+ *              The object should define a function input(), if it doesn't it is not a valid
+ *              input_to object. Input will return 0 if it wants to be removed
+ */
+void input_to(object obj){
+	/* check if we already have an inputting object */
+	if(input_to_obj && !query_editor(wiztool)){
+		error("Already inputing to an object.\n");
+		return;
+	}
+	/* check for an input in given object */
+	if(!function_object("input", obj)){
+		error("Ineligible input object.\n");
+		return;
+	}
+	input_to_obj = obj;
+	/* check for an init_input function, then call it */
+	if(function_object("init_input", obj)){
+		obj->init_input();
+	}
+}
+
+/*
  * NAME:	receive_message()
  * DESCRIPTION:	process a message from the user
  * TODO: aliasing system
@@ -193,6 +218,14 @@ int receive_message(string str)
 	    }
 
 	    if (!wiztool || !query_editor(wiztool) || cmd != str) {
+		/* check input_to, add in work around ! */
+		if(input_to_obj){
+			if(!input_to_obj->input(str)){
+				/* remove input object */
+				input_to_obj = nil;
+			}
+			break;
+		}
 		/* check standard commands */
 		if (strlen(cmd) != 0) {
 		    switch (cmd[0]) {
