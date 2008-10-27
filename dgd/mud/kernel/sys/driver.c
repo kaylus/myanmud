@@ -202,7 +202,7 @@ void compiling(string path)
 	    }
 	    rsrcd->rsrc_incr("System", "objects", nil, 1, TRUE);
 	    if (objectd) {
-		objectd->compile_lib("System", AUTO, nil);
+		objectd->compile_lib("System", AUTO, ({ }));
 	    }
 	}
 	if (objectd) {
@@ -216,7 +216,7 @@ void compiling(string path)
  * NAME:	compile()
  * DESCRIPTION:	object compiled
  */
-void compile(object obj, string owner, string source)
+void compile(object obj, string owner, string source...)
 {
     if (previous_program() == AUTO) {
 	if (objectd) {
@@ -229,7 +229,7 @@ void compile(object obj, string owner, string source)
  * NAME:	compile_lib()
  * DESCRIPTION:	inherited object compiled
  */
-void compile_lib(string path, string owner, string source)
+void compile_lib(string path, string owner, string source...)
 {
     if (previous_program() == AUTO) {
 	if (objectd) {
@@ -653,7 +653,7 @@ static object inherit_program(string from, string path, int priv)
 	}
 	rsrcd->rsrc_incr(creator, "objects", nil, 1, TRUE);
 	if (objectd) {
-	    objectd->compile_lib(creator, path, nil, TLSVAR3[1 ..]...);
+	    objectd->compile_lib(creator, path, ({ }), TLSVAR3[1 ..]...);
 
 	    objectd->compiling(from);
 	}
@@ -665,8 +665,40 @@ static object inherit_program(string from, string path, int priv)
 }
 
 /*
+ * NAME:	include_file()
+ * DESCRIPTION:	translate and return an include path, or the contents of the
+ *		file as an array of strings
+ */
+static mixed include_file(string from, string path)
+{
+    if (strlen(path) != 0 && path[0] != '~' && sscanf(path, "%*s/../") == 0 &&
+	(sscanf(path, "/include/%*s") != 0 || sscanf(path, "%*s/") == 0)) {
+	/*
+	 * safe include: skip access check
+	 */
+	if (path[0] != '/') {
+	    path = normalize_path(path, from + "/..", creator(from));
+	}
+    } else {
+	path = normalize_path(path, from + "/..", creator(from));
+	if (!accessd->access(from, path, READ_ACCESS)) {
+	    return nil;
+	}
+    }
+    if (objectd) {
+	mixed result;
+
+	result = objectd->include_file(TLSVAR3[0], from, path);
+	if (sscanf(from, "/kernel/%*s") == 0) {
+	    return result;
+	}
+    }
+    return path;
+}
+
+/*
  * NAME:	path_include()
- * DESCRIPTION:	translate an include path
+ * DESCRIPTION:	translate an include path (obsolete)
  */
 static string path_include(string from, string path)
 {
@@ -799,27 +831,15 @@ static void interrupt()
 }
 
 /*
- * NAME:	runtime_error()
- * DESCRIPTION:	log a runtime error
+ * NAME:	_runtime_error()
+ * DESCRIPTION:	handle runtime error, with proper TLS on the stack
  */
-static void runtime_error(string str, int caught, int ticks)
+private void _runtime_error(mixed tls, string str, int caught, int ticks,
+			    mixed **trace)
 {
-    mixed **trace, tls;
     string line, function, progname, objname;
     int i, sz, len;
     object user;
-
-    trace = call_trace();
-    tls = trace[1][TRACE_FIRSTARG];
-
-    if (caught == 2 && trace[1][TRACE_PROGNAME] == DRIVER) {
-	/* top-level catch in driver object: ignore */
-	caught = 0;
-    } else if (caught != 0 && ticks < 0 &&
-	       sscanf(trace[caught - 1][TRACE_PROGNAME], "/kernel/%*s") != 0) {
-	tls[1] = str;
-	return;
-    }
 
     i = sz = sizeof(trace) - 1;
 
@@ -897,6 +917,36 @@ static void runtime_error(string str, int caught, int ticks)
 	    }
 	}
     }
+}
+
+/*
+ * NAME:	runtime_error()
+ * DESCRIPTION:	log a runtime error
+ */
+static void runtime_error(string str, int caught, int ticks)
+{
+    mixed **trace, tls;
+
+    trace = call_trace();
+
+    if (sizeof(trace) == 1) {
+	/* top-level error */
+	tls = allocate(tls_size);
+    } else {
+	tls = trace[1][TRACE_FIRSTARG];
+	trace[1][TRACE_FIRSTARG] = nil;
+	if (caught == 2 && trace[1][TRACE_PROGNAME] == DRIVER) {
+	    /* top-level catch in driver object: ignore */
+	    caught = 0;
+	} else if (caught != 0 && ticks < 0 &&
+		   sscanf(trace[caught - 1][TRACE_PROGNAME],
+			  "/kernel/%*s") != 0) {
+	    tls[1] = str;
+	    return;
+	}
+    }
+
+    _runtime_error(tls, str, caught, ticks, trace);
 }
 
 /*
