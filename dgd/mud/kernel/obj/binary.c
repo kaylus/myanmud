@@ -6,6 +6,7 @@ inherit LIB_CONN;	/* basic connection object */
 
 object driver;		/* driver object */
 string buffer;		/* buffered input */
+int flushing;		/* pending input flush? */
 
 /*
  * NAME:	create()
@@ -106,16 +107,28 @@ static void receive_message(string str)
  */
 void set_mode(int mode)
 {
-    string str;
-
     if (KERNEL() || SYSTEM()) {
 	::set_mode(mode);
-	if (mode == MODE_RAW && strlen(buffer) != 0) {
-	    /* flush buffer */
-	    str = buffer;
-	    buffer = "";
-	    ::receive_message(nil, str);
+	if (!flushing && mode == MODE_RAW && strlen(buffer) != 0) {
+	    call_out("flush", 0);
+	    flushing = TRUE;
 	}
+    }
+}
+
+/*
+ * NAME:	flush()
+ * DESCRIPTION:	flush the input buffer after a switch to binary mode
+ */
+static void flush()
+{
+    string str;
+
+    flushing = FALSE;
+    if (query_mode() == MODE_RAW && strlen(buffer) != 0) {
+	str = buffer;
+	buffer = "";
+	::receive_message(allocate(driver->query_tls_size()), str);
     }
 }
 
