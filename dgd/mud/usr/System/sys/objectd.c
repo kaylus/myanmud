@@ -54,7 +54,7 @@ void compiling(string path){
  * compiled from that string.  Called just before the object is
  * initialized with create(0).
  */
-void compile(string owner, object obj, string source, string inherited...){
+void compile(string owner, object obj, string *source, string inherited...){
 	return;
 }
 
@@ -63,8 +63,8 @@ void compile(string owner, object obj, string source, string inherited...){
  * DESCRIPTION:   The given inheritable object has just been compiled.  If source is
  * non-nil, it was compiled from that string.
  */
-void compile_lib(string owner, string path, string source, string inherited...){
-	return;
+void compile_lib(string owner, string path, string *source, string inherited...){
+        return;
 }
 
 /*
@@ -99,25 +99,15 @@ void destruct_lib(string owner, string path){
 void remove_program(string owner, string path, int timestamp, int index){
 	return;
 }
-
-/*
- * NAME:  path_special()
- * DESCRIPTION: If the standard include file contains the line `# include "AUTO"',
- *	this function is called so a file can be included that depends on
- *	what file is currently being compiled.
- */
-string path_special(string compiled){
-	return nil;
+/* NAME: include_file()
+* * DESCRIPTION: translate and return an include path, or the contents of the
+* * file as an array of strings
+* */
+static mixed include_file(string compiled, string from, string path)
+{
+return path;/* softy */
 }
 
-/*
- * NAME:   include()
- * DESCRIPTION:  The file `path' (which might not exist) is about to be included by
- * `from'.
- */
-void include(string from, string path){
-	return;
-}
 
 /*
  * NAME:  touch()

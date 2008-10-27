@@ -52,7 +52,7 @@ create (varargs int clone)
 		compile_object(OBJECTD);
 	driver->message("Initd: objectd...\n");
 
-	/* telnetd */
+    /* telnetd */
     if (!find_object (TEL_MANAGER))
 		compile_object (TEL_MANAGER);
 	driver->message("Initd: telnet manager...\n");
