@@ -1,8 +1,6 @@
 # define TRUE	1
 # define FALSE	0
 
-# undef SYS_PERSISTENT
-
 # define OBJECT "/usr/System/lib/object" /* object */
 # define WEIGHT "/usr/System/lib/weight" /* weight logic */
 # define CONTAINER "/usr/System/lib/container" /* container */
