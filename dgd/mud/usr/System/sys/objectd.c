@@ -103,9 +103,9 @@ void remove_program(string owner, string path, int timestamp, int index){
 * * DESCRIPTION: translate and return an include path, or the contents of the
 * * file as an array of strings
 * */
-static mixed include_file(string compiled, string from, string path)
+mixed include_file(string compiled, string from, string path)
 {
-return path;/* softy */
+        return path;/* softy */
 }
 
 
