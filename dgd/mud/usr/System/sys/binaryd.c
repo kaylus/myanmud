@@ -1,5 +1,6 @@
 #include <kernel/user.h>
 #include <config.h>
+#include <status.h>
 
 static void create (varargs int clone){
   	if (!find_object (SYSTEM_USER))
@@ -16,5 +17,5 @@ int query_timeout (object connection){
 }
 
 string query_banner (object connection){
-  	return "\033[18mS.O.S.S.\nWhat's your name? \033[0m";
+	return "\033[18mS.O.S.S.\n(" + status()[ST_VERSION] +")\n\nWhat's thy name? \033[0m";
 }

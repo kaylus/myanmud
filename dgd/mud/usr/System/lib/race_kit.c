@@ -4,7 +4,9 @@
  */
 
 #include <race_kit.h>
-#define STAGES ({"What gender do you wish to be?\n", "What race do you wish to be?\n" })
+#define STAGES ({"What gender do you wish to be?\n",\
+                 "What race do you wish to be?\n", \
+                 "Keep these stats?\n" })
 string gender, race; /* contain race and gender */
 int stage; /* what stage of input we're at */
 
@@ -33,11 +35,26 @@ object input_to(string str){/* this function receives the initial quest for buil
 			this_object()->message(implode(RACES, " ")+"\n");
 			return this_object();
 		}
+		stage = 2;
 		this_object()->message("Your race set to "+str+"\n");
 		race = str;
-		stage = 2; /* forward facing */
+		this_object()->roll_stats(); /* roll stats up with race */
+		this_object()->cmd_score();
+		this_object()->message("\n" + STAGES[stage]);
+		
 		/* pass on to something else? */
-		return nil;
+		return this_object();
+	case 2: /* we're checking stats */
+		if(!str || str == "y" || str == "yes"){
+			this_object()->message("Good.\n");
+			stage = 3;
+			return nil;
+		}
+		this_object()->roll_stats(); /* roll stats up with race */
+		this_object()->cmd_score();
+		this_object()->message("\n" + STAGES[stage]);
+		return this_object();
+		
 	}
 	return nil;
 }

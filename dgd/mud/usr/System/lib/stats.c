@@ -2,18 +2,22 @@
  *                     stats.c                            *
  *  -Hymael                                               *
  **********************************************************/
-#define ATTRIBUTES ({ "strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma" })
-#define ROLL_STAT  ( random(6) + random(6) + random(6) + 3 )
+ 
+#include <race_kit.h>
 
 mapping stats;           		/* our stats */
 static mapping stats_boost;     /* temporary stat boosts */
 
 void roll_stats(){/* this will randomly populate stats */
     int i;
+    string race;
+    
+    race = this_object()->query_race();
+    if (race == "raceless") race = RACES[0];/* default for no adjustments */
     if(!stats) stats = ([]);
     i = sizeof(ATTRIBUTES);
     while(--i >= 0){
-	stats[ATTRIBUTES[i]] = ROLL_STAT;
+	stats[ATTRIBUTES[i]] = ROLL_STAT + MAP_RACES[race][RACE_ATTRIBUTES][i];
     }
 }
 

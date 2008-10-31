@@ -358,7 +358,7 @@ mixed cmd_hp (string str)/* combat */
     return 1;
 }
 
-mixed cmd_score (string str)/* combat */
+mixed cmd_score (varargs string str)/* combat */
 {
     mapping stats;
     int i;
@@ -368,7 +368,7 @@ mixed cmd_score (string str)/* combat */
     attributes = map_indices (stats);
     i = sizeof (attributes);
 
-    str = this_object ()->query_Name () + "\n";
+    str = this_object ()->query_Name () + " a " + this_object()->query_gender() + " " + this_object()->query_race() + "\n";
     str += this_object ()->query_diagram ();
 
     while (i--)

@@ -12,6 +12,7 @@
 # define WEALTH "/usr/System/lib/wealth" /* wealth */
 # define PLAY_TOOL "/usr/System/lib/play_tool"
 # define RACE_KIT "/usr/System/lib/race_kit" /* race info */
+# define ALIAS "/usr/System/lib/alias" /* alias */
 /* player user interface tool,
    not sure if this is proper route, make object
    for easy redirection? */

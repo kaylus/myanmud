@@ -6,7 +6,7 @@
 inherit LIB_USER;
 inherit user API_USER;
 inherit access API_ACCESS;
-inherit alias "/usr/System/lib/alias"; /* alias toolbox */
+inherit ALIAS; /* alias toolbox */
 
 
 # define STATE_NORMAL		0
