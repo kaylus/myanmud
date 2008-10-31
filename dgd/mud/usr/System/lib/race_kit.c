@@ -16,32 +16,38 @@ string query_race(){
 	return (race) ? race : "raceless";
 }
 
-int input_to(string str){/* this function receives the initial quest for building a body */
+object input_to(string str){/* this function receives the initial quest for building a body */
 	switch(stage){
 	case 0: /* gender */
 		if(!str || !sizeof(({ "male", "female" }) & ({ str }))){
 			this_object()->message("Male or female?\n");
-			return 0;
+			return this_object();
 		}
 		/* valid gender */
 		gender = str;
 		stage = 1; /* race */
 		this_object()->message(STAGES[stage]);
-		return 0;
+		return this_object();
         case 1: /* race */
 		if(!str || !sizeof(RACES & ({ str }))){
 			this_object()->message(implode(RACES, " ")+"\n");
-			return 0;
+			return this_object();
 		}
 		this_object()->message("Your race set to "+str+"\n");
 		race = str;
 		stage = 2; /* forward facing */
 		/* pass on to something else? */
-		return 1;
+		return nil;
 	}
+	return nil;
 }
 
 void init_input(){/* initialize racial/gender setting */
 	stage = 0; /* stage 0 = gender */
 	this_object()->message(STAGES[stage]);
+}
+
+object input_done(){
+	this_object()->move(ROOMD->query_start_room(), "");
+	return nil;/* get out of input to object code */
 }

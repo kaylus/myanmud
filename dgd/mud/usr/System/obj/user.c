@@ -14,7 +14,7 @@ inherit alias "/usr/System/lib/alias"; /* alias toolbox */
 # define STATE_OLDPASSWD	2
 # define STATE_NEWPASSWD1	3
 # define STATE_NEWPASSWD2	4
-# define STATE_INITCHAR         5
+# define STATE_INPUTOBJ         5
 
 # define USR_SAVE_DIR  "/usr/System/data"
 
@@ -178,7 +178,7 @@ void logout(int quit)
  */
 void input_to(object obj){
 	/* check if we already have an inputting object */
-	if(input_to_obj && !query_editor(wiztool)){
+	if(input_to_obj || query_editor(wiztool)){
 		error("Already inputing to an object.\n");
 		return;
 	}
@@ -188,10 +188,28 @@ void input_to(object obj){
 		return;
 	}
 	input_to_obj = obj;
+	state[previous_object()] = STATE_INPUTOBJ;/* turn input toward obj section */
 	/* check for an init_input function, then call it */
 	if(function_object("init_input", obj)){
 		obj->init_input();
 	}
+	
+}
+
+object _input_to(string str){/* internal call that handles input stuff to objects, returns input_to_obj, nil if we want to remove */
+	object temp_obj;
+	if(!input_to_obj)return nil;
+	
+	temp_obj = input_to_obj;
+	input_to_obj = input_to_obj->input_to(str);
+	
+	if(!input_to_obj){/* inputs done */
+		if(function_object("input_done", temp_obj)){/* tie up function, optional */
+			return (input_to_obj = temp_obj->input_done());/* function should return nil, if no more input to obj, or a new object */
+		}
+		return input_to_obj;
+	}
+	return input_to_obj;
 }
 
 /*
@@ -208,7 +226,19 @@ int receive_message(string str)
 
 	/* is this where we should redirect to game object input? */
 	switch (state[previous_object()]) {
-	case STATE_NORMAL:
+	case STATE_INPUTOBJ:
+		if(input_to_obj){
+			input_to_obj = _input_to(str);
+			if(!input_to_obj){
+				state[previous_object()] = STATE_NORMAL;
+			}
+			return MODE_ECHO;
+		}else{
+			state[previous_object()] = STATE_NORMAL;
+		}
+		/* flow into state_normal */	
+		
+	case STATE_NORMAL:/* add in an explicit state set to normal? */
 	    cmd = str;
 	    if (strlen(str) != 0 && str[0] == '!') {
 		cmd = cmd[1 ..];
@@ -216,13 +246,7 @@ int receive_message(string str)
 
 	    if (!wiztool || !query_editor(wiztool) || cmd != str) {
 		/* check input_to, add in work around ! */
-		if(input_to_obj){
-			if(input_to_obj->input_to(str)){
-				/* remove input object */
-				input_to_obj = nil;
-			}
-			break;
-		}
+
 		/* check standard commands */
 		if (strlen(cmd) != 0) {
 		    switch (cmd[0]) {
@@ -360,7 +384,6 @@ int receive_message(string str)
 	    	/* check for stored body, remove from storage? */
 	    if(!body || !body->awaken()){
 		set_body(create_body());
-	        state[previous_object()] = STATE_INITCHAR;
 	        input_to(body);
             } else {
 		state[previous_object()] = STATE_NORMAL;
@@ -368,21 +391,7 @@ int receive_message(string str)
             }
 	    return MODE_ECHO;
 	
-        case STATE_INITCHAR:
-            if(input_to_obj){
-		if(input_to_obj->input_to(str)){/* we're done with the obj */
-			/* remove input object */
-			input_to_obj = nil;
-			state[previous_object()] = STATE_NORMAL;
-                        body->move(ROOMD->query_start_room(), "");
-                        return MODE_ECHO;
-		}
-		return MODE_ECHO;
-		break;
-	    }else{
-		state[previous_object()] = STATE_NORMAL;
-	    }
-	    return MODE_ECHO;	
+
 	case STATE_OLDPASSWD:
 	    if (crypt(str, password) != password) {
 		message("\nBad password.\n");
