@@ -80,7 +80,12 @@ static void create(varargs int clone){ /* allocates for speed */
 }
 
 string query_subjective(){
-    /*switch(query_gender())*/
+    switch(query_gender()){
+	case "male":
+	return "he";
+	case "female":
+	return "she";
+    }
     return "it";
 }
 
@@ -560,7 +565,7 @@ string query_long() {
     object *inventory, *worn_items, *wielded_items;
 
     inventory = this_object()->query_inventory();
-    ret = "";
+    ret = capitalize(query_race()) + " " + query_gender()+"\n";
     total = 0;
     if (wielded){
 	wielded_items = map_values(wielded);
@@ -584,9 +589,9 @@ string query_long() {
     }
     ret += "\n";
     if (!inventory || ((sz=sizeof(inventory))-total)==0) {
-	ret += capitalize(this_object()->query_subjective())+" is not carrying anything.\n";
+	ret += capitalize(query_subjective())+" is not carrying anything.\n";
     } else {
-	ret += capitalize(this_object()->query_subjective())+" is carrying:\n";
+	ret += capitalize(query_subjective())+" is carrying:\n";
 	for (i=0; i<sz; i++){
 	    if(worn_items && member_array(inventory[i], worn_items) > -1)continue;
 	    if(wielded_items && member_array(inventory[i], wielded_items)>-1)continue;

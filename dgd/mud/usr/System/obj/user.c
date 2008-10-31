@@ -30,7 +30,6 @@ object body;            /* subjects body, some sort of saving mechanism */
 string body_name;       /* hackish */
 static object input_to_obj;        /* input to object */
 
-static void input_to(object); /* proto */
 
 /*
  * NAME:	create()
@@ -184,7 +183,7 @@ void input_to(object obj){
 		return;
 	}
 	/* check for an input in given object */
-	if(!function_object("input", obj)){
+	if(!function_object("input_to", obj)){
 		error("Ineligible input object.\n");
 		return;
 	}
@@ -218,7 +217,7 @@ int receive_message(string str)
 	    if (!wiztool || !query_editor(wiztool) || cmd != str) {
 		/* check input_to, add in work around ! */
 		if(input_to_obj){
-			if(!input_to_obj->input(str)){
+			if(input_to_obj->input_to(str)){
 				/* remove input object */
 				input_to_obj = nil;
 			}
@@ -362,7 +361,7 @@ int receive_message(string str)
 	    if(!body || !body->awaken()){
 		set_body(create_body());
 	        state[previous_object()] = STATE_INITCHAR;
-	        this_object()->input_to(body);
+	        input_to(body);
             } else {
 		state[previous_object()] = STATE_NORMAL;
 		body->move(ROOMD->query_start_room(), "");
@@ -371,7 +370,7 @@ int receive_message(string str)
 	
         case STATE_INITCHAR:
             if(input_to_obj){
-		if(input_to_obj->input(str)){/* we're done with the obj */
+		if(input_to_obj->input_to(str)){/* we're done with the obj */
 			/* remove input object */
 			input_to_obj = nil;
 			state[previous_object()] = STATE_NORMAL;
@@ -380,9 +379,10 @@ int receive_message(string str)
 		}
 		return MODE_ECHO;
 		break;
+	    }else{
+		state[previous_object()] = STATE_NORMAL;
 	    }
-	    
-	    break;	
+	    return MODE_ECHO;	
 	case STATE_OLDPASSWD:
 	    if (crypt(str, password) != password) {
 		message("\nBad password.\n");
