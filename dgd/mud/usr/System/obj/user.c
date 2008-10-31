@@ -14,6 +14,7 @@ inherit alias "/usr/System/lib/alias"; /* alias toolbox */
 # define STATE_OLDPASSWD	2
 # define STATE_NEWPASSWD1	3
 # define STATE_NEWPASSWD2	4
+# define STATE_INITCHAR         5
 
 # define USR_SAVE_DIR  "/usr/System/data"
 
@@ -28,6 +29,8 @@ static int accinit;		/* access interface initialized */
 object body;            /* subjects body, some sort of saving mechanism */
 string body_name;       /* hackish */
 static object input_to_obj;        /* input to object */
+
+static void input_to(object); /* proto */
 
 /*
  * NAME:	create()
@@ -48,6 +51,8 @@ static void create(varargs int clone)
 	/*if(!body) body = clone_object(BODY);/* find body in storage? */
     }
 }
+
+int is_user(){ return 1; }
 
 /* get subject's body */
 object query_body(){ return body; }
@@ -108,15 +113,8 @@ int login(string str)
 	name = lowercase(str);
 	Name = capitalize(name);
 
-	found_user = restore_object(USR_SAVE_DIR + "/" + str + ".pwd");
+	found_user = restore_object(USR_SAVE_DIR + "/" + name + ".pwd");
 	body = (body_name)?find_object(body_name):body; /* request body from userd? */
-	/* check for stored body, remove from storage? */
-	if(!body || !body->awaken()){
-	    object room;
-
-	    set_body(create_body());
-	    body->move(ROOMD->query_start_room(), "");
-	}
 
 	if (password) {
 	    /* check password */
@@ -130,13 +128,13 @@ int login(string str)
 		access::create();
 		accinit = TRUE;
 	    }
-	    if (str != "admin" && sizeof(query_users() & ({ str })) == 0) {
+	    if (name != "admin" && sizeof(query_users() & ({ name })) == 0) {
 		message("> ");
 		state[previous_object()] = STATE_NORMAL;
 		return MODE_ECHO;
 	    }
 	    if (!wiztool) {
-		wiztool = clone_object(SYSTEM_WIZTOOL, str);
+		wiztool = clone_object(SYSTEM_WIZTOOL, name);
 	    }
 	    message("Pick a new password:");
 	    state[previous_object()] = STATE_NEWPASSWD1;
@@ -360,8 +358,31 @@ int receive_message(string str)
 	    (name == "admin" || sizeof(query_users() & ({ name })) != 0)) {
 		wiztool = clone_object(SYSTEM_WIZTOOL, name);
 	    }
-	    break;
-
+	    	/* check for stored body, remove from storage? */
+	    if(!body || !body->awaken()){
+		set_body(create_body());
+	        state[previous_object()] = STATE_INITCHAR;
+	        this_object()->input_to(body);
+            } else {
+		state[previous_object()] = STATE_NORMAL;
+		body->move(ROOMD->query_start_room(), "");
+            }
+	    return MODE_ECHO;
+	
+        case STATE_INITCHAR:
+            if(input_to_obj){
+		if(input_to_obj->input(str)){/* we're done with the obj */
+			/* remove input object */
+			input_to_obj = nil;
+			state[previous_object()] = STATE_NORMAL;
+                        body->move(ROOMD->query_start_room(), "");
+                        return MODE_ECHO;
+		}
+		return MODE_ECHO;
+		break;
+	    }
+	    
+	    break;	
 	case STATE_OLDPASSWD:
 	    if (crypt(str, password) != password) {
 		message("\nBad password.\n");

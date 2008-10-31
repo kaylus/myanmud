@@ -17,6 +17,7 @@ inherit WEAPON; /* for attacking with fists */
 inherit SKILLS; /* skills */
 inherit PLAY_TOOL; /* player command interface */
 inherit WEALTH;
+inherit RACE_KIT;  /* player's race/gender */
 
 /* direction mappings */
 #define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
