@@ -6,7 +6,7 @@
 inherit LIB_USER;
 inherit user API_USER;
 inherit access API_ACCESS;
-inherit ALIAS; /* alias toolbox */
+inherit alias ALIAS; /* alias toolbox */
 
 
 # define STATE_NORMAL		0
@@ -178,7 +178,7 @@ void logout(int quit)
  */
 void input_to(object obj){
 	/* check if we already have an inputting object */
-	if(input_to_obj || query_editor(wiztool)){
+	if(input_to_obj || query_editor(/*wiztool*/)){
 		error("Already inputing to an object.\n");
 		return;
 	}

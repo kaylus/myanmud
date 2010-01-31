@@ -669,7 +669,7 @@ static object inherit_program(string from, string path, int priv)
  * DESCRIPTION:	translate and return an include path, or the contents of the
  *		file as an array of strings
  */
-static mixed include_file(string from, string path)
+mixed include_file(string compiled, string from, string path)
 {
     if (strlen(path) != 0 && path[0] != '~' && sscanf(path, "%*s/../") == 0 &&
 	(sscanf(path, "/include/%*s") != 0 || sscanf(path, "%*s/") == 0)) {
