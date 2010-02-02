@@ -1,0 +1,43 @@
+- <Feb  1 23:12:48 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/lib/container.c
+   75   undefined function this_player
+   75   undefined function this_player
+   75   undefined function this_player
+   77   undefined function this_player
+   84   undefined function this_player
+
+
+
+- <Feb  1 23:18:45 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/lib/container.c
+  112   returned value doesn't match int (string)
+  116   returned value doesn't match int (string)
+  128   returned value doesn't match int (string)
+  139   returned value doesn't match int (string)
+
+
+
+- <Feb  1 23:41:27 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  112   undefined function lower_case
+
+
+
+- <Feb  1 23:41:49 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  653   syntax error
+
+
+
+- <Feb  1 23:43:19 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  651   bad argument types for - (mixed *, object)
+
+
+
+- <Feb  1 23:47:07 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  617   undefined function query_wiztool
+
+
+
