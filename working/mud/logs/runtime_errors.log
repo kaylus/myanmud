@@ -1599,3 +1599,95 @@
 
 
 
+- <Feb  3 01:02:13 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 2 for kfun function_object
+        /kernel/obj/binary#60
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#60
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#61
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  774      -                        clone
+
+
+
+- <Feb  3 01:03:30 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 2 for kfun function_object
+        /kernel/obj/binary#62
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#62
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#60
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  774      -                        clone
+
+
+
+- <Feb  3 01:15:02 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 2 for kfun function_object
+        /kernel/obj/binary#57
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#57
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#58
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  774      -                        clone
+
+
+
+- <Feb  3 01:17:37 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 01:17:56 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#57
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#57
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#58
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  780      -                        clone
+
+
+

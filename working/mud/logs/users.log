@@ -779,3 +779,66 @@
 - <Feb  3 00:27:56 2010> /usr/System/obj/body#60 Hymael:
 	awaken called by /usr/System/obj/user
 
+- <Feb  3 01:01:40 2010> /usr/System/obj/user#58 Hymael:
+	Hymael logging in.
+
+- <Feb  3 01:01:40 2010> /usr/System/obj/user#58 Hymael:
+	Restoring hymael
+
+- <Feb  3 01:01:42 2010> /usr/System/obj/user#58 Hymael:
+	Going into awaken with  no body
+
+- <Feb  3 01:01:52 2010> /usr/System/obj/user#58 Hymael:
+	Saving hymael
+
+- <Feb  3 01:01:54 2010> /usr/System/obj/user#57 Hymael:
+	Hymael logging in.
+
+- <Feb  3 01:01:54 2010> /usr/System/obj/user#57 Hymael:
+	Restoring hymael
+
+- <Feb  3 01:01:56 2010> /usr/System/obj/user#57 Hymael:
+	Going into awaken with /usr/System/obj/body#59
+
+- <Feb  3 01:01:56 2010> /usr/System/obj/body#59 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  3 01:02:15 2010> /usr/System/obj/user#62 Passe:
+	Passe logging in.
+
+- <Feb  3 01:02:15 2010> /usr/System/obj/user#62 Passe:
+	Restoring passe
+
+- <Feb  3 01:03:28 2010> /usr/System/obj/user#62 Passe:
+	Saving passe
+
+- <Feb  3 01:15:03 2010> /usr/System/obj/user#59 Pas:
+	Pas logging in.
+
+- <Feb  3 01:15:03 2010> /usr/System/obj/user#59 Pas:
+	Restoring pas
+
+- <Feb  3 01:28:44 2010> /usr/System/obj/user#60 Hymael:
+	Hymael logging in.
+
+- <Feb  3 01:28:44 2010> /usr/System/obj/user#60 Hymael:
+	Restoring hymael
+
+- <Feb  3 01:28:45 2010> /usr/System/obj/user#60 Hymael:
+	Going into awaken with  no body
+
+- <Feb  3 01:28:55 2010> /usr/System/obj/user#60 Hymael:
+	Saving hymael
+
+- <Feb  3 01:29:07 2010> /usr/System/obj/user#57 Hymael:
+	Hymael logging in.
+
+- <Feb  3 01:29:07 2010> /usr/System/obj/user#57 Hymael:
+	Restoring hymael
+
+- <Feb  3 01:29:08 2010> /usr/System/obj/user#57 Hymael:
+	Going into awaken with /usr/System/obj/body#61
+
+- <Feb  3 01:29:08 2010> /usr/System/obj/body#61 Hymael:
+	awaken called by /usr/System/obj/user
+

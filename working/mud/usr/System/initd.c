@@ -51,6 +51,7 @@ create (varargs int clone)
   _load (CHANNELD);
   _load (ANSID);
   _load (HELPD);
+  _load (DEFAULT_USER);
 
   /* create some savage resources */
   /*rsrcd = find_object(RSRCD);

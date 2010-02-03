@@ -41,3 +41,7 @@ void set_index(int ind, mixed value) {
   }
   val[ind] = value;
 }
+
+int query_size(){
+ return size; 
+}
