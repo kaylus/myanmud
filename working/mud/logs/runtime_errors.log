@@ -1078,3 +1078,524 @@
 
 
 
+- <Feb  2 22:35:31 2010> /usr/System/sys/errord Hymael:
+	Cannot inherit "/usr/System/lib/weapon"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:11:12 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/sys/attic/objectdprop.c"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:11:39 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/sys/attic/objectdprop.c"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:12:29 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/sys/attic/objectdprop.c"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:14:08 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/sys/attic/objectdprop.c"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:14:51 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/sys/attic/objectdprop.c"
+        /kernel/obj/binary#55
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#55
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#56
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#56
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#56
+        ~System/obj/wiztool#56
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#56
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#56
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#56
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:18:26 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/telnetd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   47      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 23:22:49 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 23:23:15 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   49      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/roomd
+        ~System/sys/roomd
+   41      -                  create
+        ~System/sys/roomd
+  449      /kernel/lib/auto   clone_object
+        ~System/obj/room#47
+        /kernel/sys/driver
+  260      -                  clone
+        ~System/sys/objectd
+  487      -                  clone
+
+
+
+- <Feb  2 23:28:16 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   49      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/roomd
+        ~System/sys/roomd
+   41      -                  create
+        ~System/sys/roomd
+  449      /kernel/lib/auto   clone_object
+        ~System/obj/room#47
+        /kernel/sys/driver
+  260      -                  clone
+        ~System/sys/objectd
+  487      -                  clone
+
+
+
+- <Feb  2 23:31:06 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Array index out of range
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   49      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/roomd
+        ~System/sys/roomd
+   41      -                  create
+        ~System/sys/roomd
+  449      /kernel/lib/auto   clone_object
+        ~System/obj/room#47
+        /kernel/sys/driver
+  260      -                  clone
+        ~System/sys/objectd
+  487      -                  clone
+
+
+
+- <Feb  2 23:39:55 2010> /usr/System/sys/errord Hymael:
+	Cannot recompile inherited object
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#60
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#60
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#60
+        ~System/obj/wiztool#60
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#60
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#60
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#60
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 23:41:33 2010> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#60
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#60
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#60
+        ~System/obj/wiztool#60
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#60
+  925      /kernel/lib/wiztool      cmd_code
+        ~System/obj/wiztool#60
+  310      /kernel/lib/wiztool      destruct_object
+        ~System/obj/wiztool#60
+  269      /kernel/lib/auto         destruct_object
+        /kernel/sys/driver
+  271      -                        destruct
+        ~System/sys/objectd
+  504      -                        destruct
+
+
+
+- <Feb  2 23:41:47 2010> /usr/System/sys/errord Hymael:
+	Array index out of range
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#59 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#60
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#60
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#60
+        ~System/obj/wiztool#60
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#60
+  898      /kernel/lib/wiztool      cmd_code
+        ~System/obj/wiztool#60
+  310      /kernel/lib/wiztool      destruct_object
+        ~System/obj/wiztool#60
+  269      /kernel/lib/auto         destruct_object
+        /kernel/sys/driver
+  271      -                        destruct
+        ~System/sys/objectd
+  504      -                        destruct
+
+
+
+- <Feb  3 00:20:28 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:20:53 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:21:49 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/objectd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:23:11 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Could not compile "/usr/System/obj/heavey_array.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/objectd
+        ~System/sys/objectd
+  108      -                  create
+        ~System/sys/objectd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:31:25 2010> /usr/System/sys/errord Hymael:
+	Cannot recompile inherited object
+        /kernel/obj/binary#59
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#59
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#57 "hymael"
+  376      ~System/obj/user         receive_message
+        ~System/obj/wiztool#64
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#64
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#64
+        ~System/obj/wiztool#64
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#64
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#64
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#64
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  3 00:36:13 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/sys/telnetd.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   47      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:38:41 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 3 (array) for function compile
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   47      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  3 00:40:24 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#57
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#57
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#58
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  774      -                        clone
+
+
+

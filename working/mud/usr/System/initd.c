@@ -32,8 +32,9 @@ create (varargs int clone)
 
   /* System requires root access */
   /* The kernel defines this as well, this is here for example */
-  set_access ("common", "/", READ_ACCESS);	/* changed for security
-						   /* may have to add in other things to common, will they have to write? */
+  set_access ("common", "/", READ_ACCESS);	/* changed for security*/
+  access::set_global_access("common", READ_ACCESS);						  
+  /* may have to add in other things to common, will they have to write? */
 
   /* For later, when you start setting more managers */
   driver = find_object (DRIVER);

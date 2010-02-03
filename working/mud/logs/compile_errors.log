@@ -137,3 +137,79 @@
 
 
 
+- <Feb  2 23:11:12 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/sys/attic/objectdprop.c
+  411   syntax error
+
+
+
+- <Feb  2 23:11:39 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/sys/attic/objectdprop.c
+  434   syntax error
+
+
+
+- <Feb  2 23:12:29 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/sys/attic/objectdprop.c
+  451   syntax error
+  459   undeclared variable path
+
+
+
+- <Feb  2 23:14:08 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/sys/attic/objectdprop.c
+  451   syntax error
+  459   undeclared variable path
+
+
+
+- <Feb  2 23:14:51 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/sys/attic/objectdprop.c
+  452   syntax error
+  459   undeclared variable path
+
+
+
+- <Feb  2 23:18:26 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/telnetd.c
+    1   cannot include "kernel/user.h"
+    2   cannot include "config.h"
+    5   undeclared variable SYSTEM_USER
+    8   undeclared variable USERD
+
+
+
+- <Feb  2 23:22:49 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  581   function must return value
+
+
+
+- <Feb  3 00:20:28 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/objectd.c
+  105   undeclared variable HEAVY_ARRAY
+  118   undeclared variable ISSUE_LWO
+
+
+
+- <Feb  3 00:20:53 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+  118   undeclared variable ISSUE_LWO
+
+
+
+- <Feb  3 00:21:49 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/sys/objectd.c
+ 1230   undeclared variable TELNETD
+
+
+
+- <Feb  3 00:36:13 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/sys/telnetd.c
+    1   cannot include "kernel/user.h"
+    2   cannot include "config.h"
+    5   undeclared variable SYSTEM_USER
+    8   undeclared variable USERD
+
+
+
