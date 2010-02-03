@@ -1,0 +1,108 @@
+- <Feb  2 14:23:31 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  174   too few arguments for function query_editor
+
+
+
+- <Feb  2 14:24:05 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  203   syntax error
+
+
+
+- <Feb  2 14:26:45 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  203   syntax error
+
+
+
+- <Feb  2 15:16:06 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  184   bad argument 1 for function previous_object (needs int)
+
+
+
+- <Feb  2 15:22:15 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  380   syntax error
+
+
+
+- <Feb  2 15:34:58 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  185   undeclared variable connection
+
+
+
+- <Feb  2 16:52:50 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/ansi_parser.c
+   12   syntax error
+
+
+
+- <Feb  2 16:54:20 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/ansi_parser.c
+   12   syntax error
+
+
+
+- <Feb  2 16:54:35 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/ansi_parser.c
+   13   syntax error
+
+
+
+- <Feb  2 16:55:11 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/ansi_parser.c
+   30   varargs must be in parameter list
+   31   syntax error
+   53   undeclared variable data
+
+
+
+- <Feb  2 16:55:47 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/ansi_parser.c
+   31   syntax error
+   53   undeclared variable data
+
+
+
+- <Feb  2 16:56:23 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/ansi_parser.c
+   31   syntax error
+   53   undeclared variable data
+
+
+
+- <Feb  2 16:56:47 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/ansi_parser.c
+   31   syntax error
+   53   undeclared variable data
+
+
+
+- <Feb  2 16:59:22 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/ansi_parser.c
+   26   undefined function replace_string
+
+
+
+- <Feb  2 17:07:30 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   unterminated string
+   11   syntax error
+
+
+
+- <Feb  2 17:33:06 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  424   syntax error
+
+
+
+- <Feb  2 18:03:23 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undefined function query_users
+
+
+

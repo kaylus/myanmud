@@ -1,0 +1,779 @@
+- <Feb  2 13:54:19 2010> /usr/System/sys/errord Hymael:
+	No such resource owner: hymael
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  195      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  131      ~System/obj/user         login
+        ~System/obj/user#51 "hymael"
+  421      /kernel/lib/auto         clone_object
+        /kernel/sys/rsrcd
+  226      -                        rsrc_get
+
+
+
+- <Feb  2 13:56:10 2010> /usr/System/sys/errord Hymael:
+	Cannot create temporary save file "/usr/System/data/_tmp0001"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  397      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 14:13:21 2010> /usr/System/sys/errord Askari:
+	Cannot create temporary save file "/usr/System/data/_tmp0002"
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "askari"
+  397      ~System/obj/user         receive_message
+        ~System/obj/user#53 "askari"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 14:23:31 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 14:24:05 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 14:26:45 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 14:27:30 2010> /usr/System/sys/errord Hymael:
+	Cannot create temporary save file "/usr/System/data/_tmp0001"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  402      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 14:27:53 2010> /usr/System/sys/errord Hymael:
+	Cannot create temporary save file "/usr/System/data/_tmp0002"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  402      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 14:30:09 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:30:13 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:38 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:45 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:47 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:49 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:55 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:34:57 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#53
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#53
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  346      ~System/obj/user         receive_message
+        ~System/obj/body#50 "hymael"
+  651      ~System/lib/body         input
+
+
+
+- <Feb  2 14:39:19 2010> /usr/System/sys/errord Hymael:
+	Cannot create temporary save file "/usr/System/data/_tmp0001"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  402      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 14:43:27 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun query_editor
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  374      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+  174      ~System/obj/user         input_to
+
+
+
+- <Feb  2 15:16:06 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:22:15 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:34:58 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 15:45:49 2010> /usr/System/sys/errord Hymael:
+	Insufficient arguments for function cmd_score
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  227      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+  199      ~System/obj/user         _input_to
+        ~System/obj/body#52 "hymael"
+   44      ~System/lib/race_kit     input_to
+
+
+
+- <Feb  2 15:45:53 2010> /usr/System/sys/errord Hymael:
+	Insufficient arguments for function cmd_score
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  227      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+  199      ~System/obj/user         _input_to
+        ~System/obj/body#52 "hymael"
+   56      ~System/lib/race_kit     input_to
+
+
+
+- <Feb  2 15:46:00 2010> /usr/System/sys/errord Hymael:
+	Insufficient arguments for function cmd_score
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  227      ~System/obj/user         receive_message
+        ~System/obj/user#51 "hymael"
+  199      ~System/obj/user         _input_to
+        ~System/obj/body#52 "hymael"
+   56      ~System/lib/race_kit     input_to
+
+
+
+- <Feb  2 15:55:02 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  317      ~System/obj/user         receive_message
+
+
+
+- <Feb  2 16:06:15 2010> /usr/System/sys/errord Hymael:
+	Cannot inherit "/usr/System/lib/weapon"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:07:34 2010> /usr/System/sys/errord Hymael:
+	Cannot inherit "/usr/System/lib/armor"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:13:48 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Bad argument 1 for kfun +
+        ~System/obj/limb
+        ~System/obj/limb
+        ~System/obj/limb
+   34      ~System/lib/limb   decay
+
+
+
+- <Feb  2 16:36:10 2010> /usr/System/sys/errord Hymael:
+	Cannot recompile inherited object
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:39:06 2010> /usr/System/sys/errord Hymael:
+	Cannot inherit "/usr/System/lib/armor"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:47:07 2010> /usr/System/sys/errord Hymael:
+	Cannot inherit "/usr/System/lib/weapon"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:52:50 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:54:20 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:54:35 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:55:11 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:55:47 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:56:23 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:56:47 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 16:59:22 2010> /usr/System/sys/errord Hymael:
+	Failed to compile "/usr/System/lib/ansi_parser.c"
+        /kernel/obj/binary#50
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#50
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#51 "hymael"
+  350      ~System/obj/user         receive_message
+        ~System/obj/wiztool#57
+   38      ~System/obj/wiztool      input
+        ~System/obj/wiztool#57
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#57
+        ~System/obj/wiztool#57
+  106      ~System/obj/wiztool      process
+        ~System/obj/wiztool#57
+  997      /kernel/lib/wiztool      cmd_compile
+        ~System/obj/wiztool#57
+  256      /kernel/lib/wiztool      compile_object
+        ~System/obj/wiztool#57
+  356      /kernel/lib/auto         compile_object
+
+
+
+- <Feb  2 17:33:06 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 17:41:40 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun sscanf
+        /kernel/obj/binary#51
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#51
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  345      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  638      ~System/lib/body         input
+        ~System/obj/body#53 "hymael"
+   48      ~System/lib/play_tool    cmd_look
+
+
+
+- <Feb  2 17:42:18 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun sscanf
+        /kernel/obj/binary#51
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#51
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  345      ~System/obj/user         receive_message
+        ~System/obj/body#53 "hymael"
+  638      ~System/lib/body         input
+        ~System/obj/body#53 "hymael"
+   48      ~System/lib/play_tool    cmd_look
+
+
+
