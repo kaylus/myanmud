@@ -116,6 +116,7 @@ void stasis(){/* put body into stasis */
 }
 
 int awaken(){
+  LOGD->log("awaken called by " +previous_program(), "users");
     if(previous_program() != SYSTEM_USER)
 	return 0;
 

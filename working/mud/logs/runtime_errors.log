@@ -921,3 +921,160 @@
 
 
 
+- <Feb  2 21:44:19 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 21:45:15 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 21:50:40 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/body.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  361      /kernel/lib/auto   compile_object
+        ~System/obj/user
+        ~System/obj/user
+   40      -                  create
+        ~System/obj/user
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 21:51:02 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/lib/body.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  361      /kernel/lib/auto   compile_object
+        ~System/obj/user
+        ~System/obj/user
+   40      -                  create
+        ~System/obj/user
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 21:53:46 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun object_name
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  394      ~System/obj/user         receive_message
+
+
+
+- <Feb  2 21:54:20 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Failed to compile "/usr/System/obj/user.c"
+        /kernel/sys/driver
+  440      -                  initialize
+        /kernel/sys/driver
+  423      -                  _initialize
+        /kernel/sys/rsrcd
+  530      -                  initd
+        /kernel/sys/rsrcd
+  361      /kernel/lib/auto   compile_object
+        ~System/initd
+        ~System/initd
+   46      -                  create
+        ~System/initd
+   16      -                  _load
+        ~System/initd
+  361      /kernel/lib/auto   compile_object
+        ~System/sys/telnetd
+        ~System/sys/telnetd
+    6      -                  create
+        ~System/sys/telnetd
+  356      /kernel/lib/auto   compile_object
+
+
+
+- <Feb  2 21:54:48 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun object_name
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  394      ~System/obj/user         receive_message
+
+
+

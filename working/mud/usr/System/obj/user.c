@@ -16,7 +16,7 @@ inherit alias "/usr/System/lib/alias"; /* alias toolbox */
 # define STATE_NEWPASSWD2	4
 # define STATE_INPUTOBJ         5
 
-/*# define USR_SAVE_DIR  "/usr/System/data"*/
+# define USR_SAVE_DIR  "/usr/System/data"
 
 static string name;		/* user name */
 static string Name;		/* capitalized user name */
@@ -26,7 +26,7 @@ static string newpasswd;	/* new password */
 static object wiztool;		/* command handler */
 static int nconn;		/* # of connections */
 object body;            /* subjects body, some sort of saving mechanism */
-/*string body_name;       /* hackish */
+string body_name;       /* hackish */
 static object input_to_obj;        /* input to object */
 
 
@@ -95,6 +95,27 @@ void set_body(object obj){
 	body = obj;
 }
 
+/* save function */
+void _save(){
+  string caught;
+  if(!name || strlen(name) < 1){ error("Trying to save unnamed."); }
+  
+  LOGD->log("Saving " + name, "users");
+  if(body)body_name = object_name(body);
+  caught = catch(save_object(USR_SAVE_DIR + "/" + name + ".pwd"));
+  if(caught)LOGD->log("Error in player save " + caught +"\n", "users");
+}
+/* restore me */
+void _restore(){
+  string caught;
+  if(!name || strlen(name) < 1){ error("Trying to restore unnamed."); }
+  
+  LOGD->log("Restoring " + name, "users");
+  caught = catch(restore_object(USR_SAVE_DIR + "/" + name + ".pwd"));
+  if(body_name)body = find_object(body_name);
+  
+  if(caught)LOGD->log("Error in player restore " + caught +"\n", "users");
+}
 /*
  * NAME:	login()
  * DESCRIPTION:	login a new user
@@ -114,7 +135,7 @@ int login(string str)
 	name = lowercase(str);
 	Name = capitalize(name);
 	LOGD->log(Name+" logging in.", "users");
-	restore_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
+	_restore();
 	/*body = (body_name)?find_object(body_name):body; /* request body from userd? */
 
 	if (password) {
@@ -149,8 +170,8 @@ int login(string str)
 void logout(int quit)
 {
     if (previous_program() == LIB_CONN && --nconn == 0 || previous_program() == "~System/initd") {
-	save_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
-
+	
+        _save();
 	body->stasis();/* store body */
 
 	if (query_conn()) {
@@ -373,6 +394,7 @@ int receive_message(string str)
 		issue_wiztool();
 	    }
 	    	/* check for stored body, remove from storage? */
+		LOGD->log("Going into awaken with " + ( (body == nil) ? " no body" : object_name(body)), "users");
 	    if(!body || !body->awaken()){
 		set_body(create_body());
 	        input_to(body);	  
@@ -404,7 +426,7 @@ int receive_message(string str)
 		/* Hymael testing out player saves */
 		if (wiztool) {
 		/* save wizards only */
-		save_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
+		_save();
 		}
 		message("\nPassword changed.\n");
 	    } else {

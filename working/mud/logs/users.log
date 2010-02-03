@@ -508,3 +508,187 @@
 - <Feb  2 21:06:24 2010> /usr/System/obj/user#53 Hymael:
 	Hymael logging in.
 
+- <Feb  2 21:42:44 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:42:53 2010> /usr/System/obj/user#53 Hymael:
+	Error in player save Access denied
+
+
+- <Feb  2 21:45:53 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:46:05 2010> /usr/System/obj/user#52 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:47:12 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:47:12 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:47:22 2010> /usr/System/obj/user#53 Hymael:
+	Saving hymael
+
+- <Feb  2 21:47:24 2010> /usr/System/obj/user#52 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:47:24 2010> /usr/System/obj/user#52 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:51:39 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:51:39 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:51:50 2010> /usr/System/obj/user#53 Hymael:
+	Saving hymael
+
+- <Feb  2 21:51:54 2010> /usr/System/obj/user#52 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:51:54 2010> /usr/System/obj/user#52 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:53:45 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:53:45 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:54:48 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:54:48 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:55:45 2010> /usr/System/obj/user#53 Hymale:
+	Hymale logging in.
+
+- <Feb  2 21:55:45 2010> /usr/System/obj/user#53 Hymale:
+	Restoring hymale
+
+- <Feb  2 21:55:49 2010> /usr/System/obj/user#53 Hymale:
+	Saving hymale
+
+- <Feb  2 21:55:51 2010> /usr/System/obj/user#54 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:55:51 2010> /usr/System/obj/user#54 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:55:52 2010> /usr/System/obj/user#54 Hymael:
+	Going into awaken with  no body
+
+- <Feb  2 21:56:00 2010> /usr/System/obj/user#54 Hymael:
+	Saving hymael
+
+- <Feb  2 21:56:02 2010> /usr/System/obj/user#52 Hymael:
+	Hymael logging in.
+
+- <Feb  2 21:56:02 2010> /usr/System/obj/user#52 Hymael:
+	Restoring hymael
+
+- <Feb  2 21:56:03 2010> /usr/System/obj/user#52 Hymael:
+	Going into awaken with  no body
+
+- <Feb  2 22:01:20 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:01:20 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:01:21 2010> /usr/System/obj/user#53 Hymael:
+	Going into awaken with  no body
+
+- <Feb  2 22:01:28 2010> /usr/System/obj/user#53 Hymael:
+	Saving hymael
+
+- <Feb  2 22:01:34 2010> /usr/System/obj/user#52 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:01:34 2010> /usr/System/obj/user#52 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:01:35 2010> /usr/System/obj/user#52 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:01:35 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  2 22:02:00 2010> /usr/System/obj/user#52 Hymael:
+	Saving hymael
+
+- <Feb  2 22:02:02 2010> /usr/System/obj/user#53 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:02:02 2010> /usr/System/obj/user#53 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:02:03 2010> /usr/System/obj/user#53 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:02:03 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  2 22:02:27 2010> /usr/System/obj/user#53 /usr/System/obj/user:
+	Saving hymael
+
+- <Feb  2 22:02:43 2010> /usr/System/obj/user#55 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:02:43 2010> /usr/System/obj/user#55 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:02:44 2010> /usr/System/obj/user#55 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:02:44 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  2 22:04:29 2010> /usr/System/obj/user#55 /usr/System/obj/user:
+	Saving hymael
+
+- <Feb  2 22:04:57 2010> /usr/System/obj/user#55 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:04:57 2010> /usr/System/obj/user#55 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:04:57 2010> /usr/System/obj/user#55 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:04:57 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  2 22:05:29 2010> /usr/System/obj/user#55 /usr/System/obj/user:
+	Saving hymael
+
+- <Feb  2 22:05:47 2010> /usr/System/obj/user#55 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:05:47 2010> /usr/System/obj/user#55 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:05:48 2010> /usr/System/obj/user#55 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:05:48 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+
+- <Feb  2 22:09:09 2010> /usr/System/obj/user#55 /usr/System/obj/user:
+	Saving hymael
+
+- <Feb  2 22:09:22 2010> /usr/System/obj/user#59 Hymael:
+	Hymael logging in.
+
+- <Feb  2 22:09:22 2010> /usr/System/obj/user#59 Hymael:
+	Restoring hymael
+
+- <Feb  2 22:09:23 2010> /usr/System/obj/user#59 Hymael:
+	Going into awaken with /usr/System/obj/body#54
+
+- <Feb  2 22:09:23 2010> /usr/System/obj/body#54 Hymael:
+	awaken called by /usr/System/obj/user
+

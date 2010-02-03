@@ -106,3 +106,34 @@
 
 
 
+- <Feb  2 21:44:19 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  103   syntax error
+
+
+
+- <Feb  2 21:45:15 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  103   syntax error
+
+
+
+- <Feb  2 21:50:40 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile errors in /usr/System/lib/body.c
+  119   bad argument 1 for function object_name (needs object)
+  119   undeclared variable name
+
+
+
+- <Feb  2 21:51:02 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/body.c
+  119   undeclared variable name
+
+
+
+- <Feb  2 21:54:20 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/obj/user.c
+  394   bad argument types for + (string, object)
+
+
+
