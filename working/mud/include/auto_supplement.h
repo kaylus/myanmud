@@ -105,7 +105,7 @@
  
  /* this_player() hacked in */
  static object this_player(){
-   return ((this_user()->query_body())?this_user()->query_body():this_user());
+   return ((this_user()->query_body()) ? this_user()->query_body():this_user());
  }
  
 /* replace_string - Hymael */

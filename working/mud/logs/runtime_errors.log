@@ -777,3 +777,43 @@
 
 
 
+- <Feb  2 19:29:20 2010> /usr/System/sys/errord Hymael:
+	Value is not a string
+        /kernel/obj/binary#51
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#51
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  355      ~System/obj/user         receive_message
+        ~System/obj/wiztool#58
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#58
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#58
+        ~System/obj/wiztool#58
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#58
+  199      ~System/obj/wiztool      cmd_clone
+
+
+
+- <Feb  2 19:29:32 2010> /usr/System/sys/errord Hymael:
+	Value is not a string
+        /kernel/obj/binary#51
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#51
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#52 "hymael"
+  355      ~System/obj/user         receive_message
+        ~System/obj/wiztool#58
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#58
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#58
+        ~System/obj/wiztool#58
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#58
+  199      ~System/obj/wiztool      cmd_clone
+
+
+

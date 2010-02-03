@@ -104,6 +104,7 @@ static void process(string str)
 
     case "spectrum":
     case "summon":
+    case "goto":
 	call_other(this_object(), "cmd_" + str, user, str, arg);
 	break;
 
@@ -195,7 +196,7 @@ static void cmd_clone(object user, string cmd, string str)
 	} else if (obj) {
 	    store(obj);
   	    catch(obj->move(user->query_body()));
-	    message("You clone "+obj->query_name()+".\n");
+	    message("You clone "+obj->query_short()+".\n");
 	}
     }
 }
@@ -361,6 +362,38 @@ static void cmd_dest(object user, string cmd, string str){
 /*
  * goto: trans you to the named room, or player
  */
+
+static void cmd_goto(object user, string cmd, string str){
+	mixed thing;
+	int i;
+
+	if(!str || !strlen(str)){
+		message("Usage: goto <object/room>\n");
+		return;
+	}
+	/* add in check for $num functionality */
+	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
+	        if(thing <- "/usr/System/obj/room"){/* suitable destination */
+		  this_player()->move(thing, "", 1);
+		  message("You move to " + thing->query_short() + ".\n");
+		  return;
+		}
+	}else{
+	  thing = find_player(thing);
+		if(thing && thing->is_player()){
+		  this_player()->move(thing->query_environment(), "", 1);
+		  message("You move to " + thing->query_Name() + "'s room.\n");
+		  thing->message(this_player()->query_Name() + " appears in your room.\n");
+		  /* add message to others */
+		  return;
+		}
+		/* add in instance of file */
+		
+	}
+message("Not a suitable destination.\n");/* may have to make query_short more elaborate */
+		return;
+	message("No "+str +" to dest.\n");
+}
 
 /*
  * invis: turns you invis, requires the coding of a query_vision
