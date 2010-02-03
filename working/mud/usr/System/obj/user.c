@@ -16,7 +16,7 @@ inherit alias "/usr/System/lib/alias"; /* alias toolbox */
 # define STATE_NEWPASSWD2	4
 # define STATE_INPUTOBJ         5
 
-# define USR_SAVE_DIR  "/usr/System/data"
+/*# define USR_SAVE_DIR  "/usr/System/data"*/
 
 static string name;		/* user name */
 static string Name;		/* capitalized user name */
@@ -114,7 +114,7 @@ int login(string str)
 	name = lowercase(str);
 	Name = capitalize(name);
 	LOGD->log(Name+" logging in.", "users");
-	restore_object(USR_SAVE_DIR + "/" + name + ".pwd");
+	restore_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
 	/*body = (body_name)?find_object(body_name):body; /* request body from userd? */
 
 	if (password) {
@@ -148,8 +148,8 @@ int login(string str)
  */
 void logout(int quit)
 {
-    if (previous_program() == LIB_CONN && --nconn == 0) {
-	save_object(USR_SAVE_DIR + "/" + name + ".pwd");
+    if (previous_program() == LIB_CONN && --nconn == 0 || previous_program() == "~System/initd") {
+	save_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
 
 	body->stasis();/* store body */
 
@@ -404,7 +404,7 @@ int receive_message(string str)
 		/* Hymael testing out player saves */
 		if (wiztool) {
 		/* save wizards only */
-		save_object(USR_SAVE_DIR + "/" + name + ".pwd");
+		save_object(DEFAULT_USER_DIR + "/" + name + ".pwd");
 		}
 		message("\nPassword changed.\n");
 	    } else {

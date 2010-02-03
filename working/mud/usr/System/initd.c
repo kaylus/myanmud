@@ -38,7 +38,7 @@ create (varargs int clone)
   /* For later, when you start setting more managers */
   driver = find_object (DRIVER);
   /*find_object(LOGD)->log("Driver is = "+DRIVER, "initd"); */
-  driver->message ("Initd...\n");
+  driver->message ("Initd....\n");
 
   _load (ERRORD);
   _load (LOGD);
@@ -49,6 +49,7 @@ create (varargs int clone)
   _load (HEARTD);
   _load (CHANNELD);
   _load (ANSID);
+  _load (HELPD);
 
   /* create some savage resources */
   /*rsrcd = find_object(RSRCD);
@@ -57,5 +58,21 @@ create (varargs int clone)
      dir_size("/kernel") + fIle_size(USR + "/System", TRUE)); */
 
 }
-
-/* add a prepare_reboot(), and reboot()? */
+/* called by driver before a reboot */
+void prepare_reboot(){
+  /* log out players */
+    object *users;
+  int i;
+  
+  find_object(LOGD)->log("Mud is rebooting.", "boot");
+  users = users();
+  for(i=sizeof(users);i--;){
+    users[i]->message("Mud is rebooting...you will be disconnected.\n");
+    users[i]->logout(1); 
+  }
+  /* anything else? */
+}
+/* called after a reboot */
+void reboot(){
+  find_object(LOGD)->log("Rebooted", "boot");
+}

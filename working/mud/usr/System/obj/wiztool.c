@@ -374,14 +374,14 @@ static void cmd_goto(object user, string cmd, string str){
 	/* add in check for $num functionality */
 	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
 	        if(thing <- "/usr/System/obj/room"){/* suitable destination */
-		  this_player()->move(thing, "", 1);
+		  user->query_body()->move(thing, "", 1);
 		  message("You move to " + thing->query_short() + ".\n");
 		  return;
 		}
 	}else{
 	  thing = find_player(thing);
 		if(thing && thing->is_player()){
-		  this_player()->move(thing->query_environment(), "", 1);
+		  user->query_body()->move(thing->query_environment(), "", 1);
 		  message("You move to " + thing->query_Name() + "'s room.\n");
 		  thing->message(this_player()->query_Name() + " appears in your room.\n");
 		  /* add message to others */

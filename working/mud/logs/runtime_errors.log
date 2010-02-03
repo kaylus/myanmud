@@ -817,3 +817,107 @@
 
 
 
+- <Feb  2 20:02:41 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  322      ~System/obj/user         receive_message
+
+
+
+- <Feb  2 20:02:51 2010> /usr/System/sys/errord Hymael:
+	Bad argument 1 for kfun call_other
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  322      ~System/obj/user         receive_message
+
+
+
+- <Feb  2 20:50:37 2010> /usr/System/sys/errord Hymael:
+	Cannot create temporary save file "/usr/System/data/_tmp0002"
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53 "hymael"
+  355      ~System/obj/user         receive_message
+        ~System/obj/wiztool#59
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#59
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#59
+        ~System/obj/wiztool#59
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#59
+ 2092      /kernel/lib/wiztool      cmd_reboot
+        ~System/obj/wiztool#59
+  725      /kernel/lib/auto         dump_state
+        /kernel/sys/driver
+  451      -                        prepare_reboot
+        ~System/initd
+   71      -                        prepare_reboot
+        ~System/obj/user#53 "hymael"
+  152      ~System/obj/user         logout
+        ~System/obj/user#53 "hymael"
+ 1530      /kernel/lib/auto         save_object
+
+
+
+- <Feb  2 20:53:31 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Permission denied
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#53
+  355      ~System/obj/user         receive_message
+        ~System/obj/wiztool#59
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#59
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#59
+        ~System/obj/wiztool#59
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#59
+ 2093      /kernel/lib/wiztool      cmd_reboot
+        ~System/obj/wiztool#59
+  737      /kernel/lib/auto         shutdown
+
+
+
+- <Feb  2 21:02:24 2010> /usr/System/sys/errord Hymael:
+	Access denied
+        /kernel/obj/binary#52
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#52
+  197      /kernel/lib/connection   receive_message
+        ~System/obj/user#54 "hymael"
+  355      ~System/obj/user         receive_message
+        ~System/obj/wiztool#59
+   39      ~System/obj/wiztool      input
+        ~System/obj/wiztool#59
+  808      /kernel/lib/auto         call_limited
+        ~System/obj/wiztool#59
+        ~System/obj/wiztool#59
+  108      ~System/obj/wiztool      process
+        ~System/obj/wiztool#59
+ 2092      /kernel/lib/wiztool      cmd_reboot
+        ~System/obj/wiztool#59
+  725      /kernel/lib/auto         dump_state
+        /kernel/sys/driver
+  451      -                        prepare_reboot
+        ~System/initd
+   71      -                        prepare_reboot
+        ~System/obj/user#54 "hymael"
+  152      ~System/obj/user         logout
+        ~System/obj/user#54 "hymael"
+ 1511      /kernel/lib/auto         save_object
+
+
+
