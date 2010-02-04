@@ -1,22 +1,41 @@
 # define TRUE	1
 # define FALSE	0
 
-# define OBJECT "/usr/System/lib/object" /* object */
-# define WEIGHT "/usr/System/lib/weight" /* weight logic */
-# define CONTAINER "/usr/System/lib/container" /* container */
-# define STATS "/usr/System/lib/stats" /* stats */
+# define ASTARIA_CLONE /* set this option for astaria clone code */
+
+# ifndef ASTARIA_CLONE
+
+# define BODY_LIB "/usr/System/lib/body"
+# define BODY "/usr/System/obj/body" /* body */
 # define HEALTH "/usr/System/lib/health" /* health */
 # define COMBAT "/usr/System/lib/combat" /* combat */
 # define WEAPON "/usr/System/lib/weapon" /* weapon */
+# define PLAY_TOOL "/usr/System/lib/play_tool"
+
+# else /* astaria clone combat and shit */
+
+# define BODY_LIB "/usr/System/lib/attic/body"
+# define BODY "/usr/System/obj/body" /* body */
+# define HEALTH "/usr/System/lib/attic/health" /* health */
+# define COMBAT "/usr/System/lib/attic/combat" /* combat */
+# define WEAPON "/usr/System/lib/attic/weapon" /* weapon */
+# define PLAY_TOOL "/usr/System/lib/attic/play_tool"
+
+# endif
+
+# define WEIGHT "/usr/System/lib/weight" /* weight logic */
 # define SKILLS "/usr/System/lib/skills" /* skills */
 # define WEALTH "/usr/System/lib/wealth" /* wealth */
-# define PLAY_TOOL "/usr/System/lib/play_tool"
+
 # define RACE_KIT "/usr/System/lib/race_kit" /* race info */
+# define OBJECT "/usr/System/lib/object" /* object */
+# define CONTAINER "/usr/System/lib/container" /* container */
+# define STATS "/usr/System/lib/stats" /* stats */
 /* player user interface tool,
    not sure if this is proper route, make object
    for easy redirection? */
 
-# define BODY "/usr/System/obj/body" /* body */
+
 # define ROOM "/usr/System/obj/room" /* room */
 # define COIN "/usr/System/obj/coin" /* coin */
 

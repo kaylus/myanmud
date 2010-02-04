@@ -703,7 +703,7 @@ string flip_dir(string dir){
 }
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */
-atomic void move(mixed dest, string direction, varargs int silent, int nolook){
+atomic void move(mixed dest, varargs string direction, int silent, int nolook){
     object old_env;
 
     if(!dest)
@@ -733,7 +733,7 @@ atomic void move(mixed dest, string direction, varargs int silent, int nolook){
 	dest->message(query_Name() + " enters" + from + ".\n", ({ this_object() }) ) ;
     } else {
 	if (old_env)
-	    old_env->room_tell(query_Name() + " vanishes into the shadows.\n");
+	    old_env->message(query_Name() + " vanishes into the shadows.\n");
 
 	dest->message(query_Name() + " appears from the shadows.\n", ({ this_object() }) );
     }

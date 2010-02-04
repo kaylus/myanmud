@@ -8,7 +8,8 @@
 #define LOG_DIR "/logs"
 #define DEFAULT LOG_DIR + "/general" + LOG_EXT
 #define STAMP "- <"+timestamp+"> "+prev_obj+" "+user_name+":\n\t"
-#define DEBUG  /* debug mode */
+#undef DEBUG  /* debug mode */
+#define WIZTOOL_CALL  /* send along wiztool messages to their owner */
 
 void log(string mess, varargs string type){
 	string timestamp, prev_obj, user_name;
@@ -24,7 +25,9 @@ void log(string mess, varargs string type){
 	prev_obj = object_name(previous_object());
 	if(this_user()){
 		user_name = this_user()->query_Name();
+		#ifdef DEBUG
 		sendto = 1;
+		#endif
 	}else if(previous_program()){
 		user_name = previous_program();
 	}else{
@@ -40,10 +43,17 @@ void log(string mess, varargs string type){
 	write_file(type, mess);
         #ifdef DEBUG
 find_object(DRIVER)->message(mess);
-#endif
+
 	if(type == "/logs/compile_errors.log" && this_user()){/* send on to user of note */
 		this_user()->message(mess);
 	}
+	#endif
+#ifdef WIZTOOL_CALL
+if(type && type=="wiztool"){
+   previous_program()->query_user()->message(mess); 
+}
+
+#endif
 }
 
 /* add functions for sorting out logs and retrieving via different info,

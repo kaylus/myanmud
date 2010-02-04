@@ -6,15 +6,25 @@
  * -Hymael                                             *
  *******************************************************/
 #include <config.h>
+#include <type.h>
 #define WIELDS ({ "primary", "secondary" })
 #define ARMORS ({ "suit", "gauntlets", "gloves", "greaves", "ring", "helm",\
 "cloak", "shoulder", "waist", "feet", "shield" })
 
+
+/* direction mappings */
+#define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
+#define A_DIRS ({ "east", "west", "south", "north" })
+
 inherit container CONTAINER;
 inherit WEAPON;
-inherit COMBAT;
-inherit HEALTH;
-inherit "/inherit/stats.c"; /* temp */
+inherit combat COMBAT;
+inherit health HEALTH;
+inherit STATS; /* temp */
+inherit PLAY_TOOL;
+inherit RACE_KIT;
+inherit WEALTH;
+inherit SKILLS;
 
 /**************************************
  * mapping of worn items - to be made *
@@ -28,8 +38,107 @@ private static mapping worn;
 static mapping wielded;
 
 static int ac;               	/* this will be our body's armor class */
+object user;                /* contain user object? */
+object end_room;            /* last room that held this body */
 
-void create(){ /* empty */ }
+void create(int clone){ 
+object heartd;
+if(!clone) return;
+    if(!worn)
+	worn      = ([]);
+
+    if(!wielded)
+	wielded     = ([]);/*allocate(map_sizeof(BP_ARMS));*/
+
+    /***WEIGHT STUFF***/
+    set_bulk(200);
+    set_weight(200);
+    set_capacity(150);
+    set_volume(150);
+
+  ac = 0;
+
+    roll_stats(); /* temp */
+
+    combat::create();
+    init_health();
+    user = previous_object();
+    set_id(({ user->query_name() }));
+
+    /* heart beat */
+    heartd = find_object(HEARTD);
+    if(!heartd)heartd = compile_object(HEARTD);
+
+    subscribe_event(heartd, "heart_beat");
+
+    add_event("death");
+
+
+
+
+}
+
+string query_subjective(){
+    switch(query_gender()){
+	case "male":
+	return "he";
+	case "female":
+	return "she";
+    }
+    return "it";
+}
+
+string query_possessive(){
+   switch(query_gender()){
+     case "male":
+       return "his";
+     case "female":
+       return "her";
+   }
+   return "its";
+}
+
+/* work horse of player messages, replaces catch_tell */
+int message(string str){
+    if(user)
+	return user->message(str);
+
+    return 0;
+}
+
+void stasis(){/* put body into stasis */
+
+    end_room = environment;
+
+    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored */
+    end_room->message("Juggling body.\n");
+    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
+}
+
+int awaken(){
+  LOGD->log("awaken called by " +previous_program(), "users");
+    if(previous_program() != SYSTEM_USER)
+	return 0;
+
+    user = previous_object();
+    if(!end_room){/* room is no more */
+	end_room = ROOMD->query_start_room(); /* set to start room */
+    }
+
+    previous_object()->message("Your body awakens.\n");
+    end_room->message(previous_object()->query_Name()+" enters the room from stasis.\n");
+    this_object()->move(end_room, "", 1, 1);
+    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" awakening\n", "body_log");
+    return 1;
+}
+void evt_heart_beat(object obj){
+    catch(this_object()->do_tick());
+    catch(this_object()->do_round());
+}
+
+int allow_subscribe(object obj, string name){
+    return 1;
+}
 
 int query_ac(){
 	return ac + this_object()->query_stat("dexterity");
@@ -74,6 +183,23 @@ int set_worn(object obj){/* calculate armor total ac */
 	return 0;
 }
 
+
+/* returns controlling user object */
+object query_user(){
+    return user;
+}
+/* these functions should digress fluidly if no user object is decided on */
+string query_Name(){
+    return (user)?user->query_Name():"Nameless";
+}
+
+string query_name(){
+    return (user)?user->query_name():"nameless";
+}
+
+string query_short(){
+  return query_Name();
+}
 /****************
  * and a query  *
  ****************/
@@ -87,6 +213,11 @@ int query_worn(object obj){/* remove ac */
 		return 1;
 	}
 	return 0;
+}
+
+
+int handle_break(object owner, varargs object armor, int damage){
+    return 0; /* so we don't break */
 }
 
 /**********
@@ -111,7 +242,7 @@ int remove_worn(object obj){
  * query listing of worn items *
  *******************************/
 mapping query_worn_listing(){
-	return copy(worn);
+	return worn;
 }
 
 
@@ -204,7 +335,7 @@ int unwield(object obj){
 	}
 	return 0;
 }
-
+#if 0
 /****************************
  * overloads for container  *
  * these now check for worn *
@@ -218,22 +349,49 @@ int release_object (object ob) {
    		remove_worn(ob);
    		catch(fun = call_other(ob, ob->query_unequip_func()));
 		if(!fun){/* messages not handled */
-			this_object()->catch_tell("You unequip "+ob->query_short()+".\n");
-   			this_object()->query_environment()->room_tell(
-				this_object()->query_cap_name()+" unequips "+ob->query_short()+".\n",
+			this_object()->message("You unequip "+ob->query_weapon_name()+".\n");
+   			this_object()->query_environment()->messsage(
+				this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
 				({ this_object() }) );
 		}
    	}else if(res && query_wielded(ob)){
 		unwield(ob);
 		catch(fun = call_other(ob, ob->query_unwield_func()));
 		if(!fun){/* messages not handled */
-			this_object()->catch_tell("You unwield "+ob->query_weapon_name()+".\n");
-			this_object()->query_environment()->room_tell(
-				this_object()->query_cap_name()+" unwields "+ob->query_weapon_name()+".\n",
+			this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
+			this_object()->query_environment()->message(
+				this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
 				({ this_object() }) );
 		}
 	}
    	return res; /* propogate through */
+}
+#endif
+atomic void release_object(object ob, varargs int slide){
+    /* check equipped, if so, unequip it */
+
+    ::release_object(ob, slide);  /* pass the ball */
+
+    if(query_worn(ob) ||
+    (ob->query_type() == "shield" &&
+      query_wielded(ob))){/* don't like doing messages here, but fuck it */
+	remove_worn(ob);
+	if(catch(call_other(ob, ob->query_unequip_func()))){/* messages not handled */
+	    this_object()->message("You unequip "+ob->query_short()+".\n");
+	    this_object()->query_environment()->message(
+	      this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
+	    ({ this_object() }) );
+	}
+    }else if(query_wielded(ob)){
+	unwield(ob);
+	if(catch(call_other(ob, ob->query_unwield_func()))){/* messages not handled */
+	    this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
+	    this_object()->query_environment()->message(
+	      this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
+	    ({ this_object() }) );
+	}
+    }
+
 }
 
 /*************************
@@ -244,7 +402,7 @@ string query_long() {
     int i, total, sz;
     object *inventory, *worn_items, *wielded_items;
 
-    inventory = TO->query_inventory() ;
+    inventory = this_object()->query_inventory() ;
     ret = "";
     total = 0;
     if (wielded){
@@ -268,9 +426,9 @@ string query_long() {
 	}
 	ret += "\n";
     if (!inventory || ((sz=sizeof(inventory))-total)==0) {
-        ret += capitalize(TO->query_subjective())+" is not carrying anything.\n" ;
+        ret += capitalize(this_object()->query_subjective())+" is not carrying anything.\n" ;
     } else {
-        ret += capitalize(TO->query_subjective())+" is carrying:\n" ;
+        ret += capitalize(this_object()->query_subjective())+" is carrying:\n" ;
 	for (i=0;i<sz;i++) {
 	    if(worn_items && member_array(inventory[i], worn_items)>-1)continue;
 	    if(wielded_items && member_array(inventory[i], wielded_items)>-1)continue;
@@ -278,4 +436,144 @@ string query_long() {
         }
     }
     return ret ;
+}
+
+/* This is here as a quasi-hack. Something similar to it will be kept. */
+/* direction is a string indicated the direction of the move, which is
+   printed to the old room. If it's not passed, we assume a teleport,
+   and print a different set of messages entirely. silent is an int
+   which can be used to suppress printing the messages. */
+
+string flip_dir(string dir){
+    if(member_array(dir, A_DIRS) > -1){
+	return DIRS[dir];
+    }
+    return "";
+}
+
+/* input command decipherer */
+int input(string str){
+    string cmd, args, fail_msg;
+    mixed ret_fail;
+    object *inv;
+    fail_msg = "";
+
+    if(sscanf(str, "%s %s", cmd, args) < 2){
+	cmd = str;
+	args = "";
+    }
+
+    /* do some alias stuff */
+    if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
+    string argx;
+	cmd = user->query_alias(cmd);
+	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
+		args = argx + args;
+	}
+    }
+
+    /* return is as follows
+	 *  1 - action done, end command search
+	 *  nil - continue seek
+	 *  string - fail string, continue seek
+     */
+
+    /* body bin, make this a loop */
+
+    /* channeld check */
+    catch{
+		if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+	}
+	
+    if (function_object("cmd_" + cmd, this_object()))
+      catch(ret_fail = call_other(this_object(), "cmd_" + cmd, args));/* change to call_limited? */
+
+    
+      
+    switch(typeof(ret_fail)){
+    case T_STRING:/* fail string, continue seek */
+	fail_msg = ret_fail;
+    case T_NIL:/* continue seek */
+	break;
+    default: /* done */
+	return 1;
+    }
+
+   /* other bins... */
+    /* room/body inventory bin */
+    /* error checking */
+    inv = ({});
+    if(query_environment()){ 
+      inv += ({ query_environment() });
+      if(query_environment()->query_inventory()) 
+	inv += query_environment()->query_inventory();
+    }
+    
+    if(query_inventory())
+      inv += query_inventory();
+    
+    inv -= ({ this_object() });
+        
+    if(sizeof(inv)){
+	int i;
+	i = sizeof(inv);
+	while(--i>=0){
+
+	    if(function_object("perform_action", inv[i]))
+	      ret_fail = call_other(inv[i], "perform_action", cmd, args);
+
+	    switch(typeof(ret_fail)){
+	    case T_STRING:/* fail string, continue seek */
+		fail_msg = ret_fail;
+	    case T_NIL:/* continue seek */
+		break;
+	    default: /* done */
+		return 1;
+	    }
+	}
+    }
+    
+
+    if(!strlen(fail_msg))
+	return 0;
+
+    message(fail_msg);/* failed to find command */
+    return 1;
+}
+
+/* Hymael - trying to implement atomic, eventually dest will just be objs */
+atomic void move(mixed dest, varargs string direction, int silent, int nolook){
+    object old_env;
+
+    if(!dest)
+	error("No destination.\n");
+
+    old_env = environment;
+    if (typeof(dest) == T_STRING){
+	dest = find_object(dest);
+    }
+    ::move(dest);
+
+    if(!nolook){
+	/* Let the player take a peek at his new environment, add in brief support? */
+	this_object()->message(environment->query_long());
+    }
+
+    if(silent) return;
+
+    if(direction && direction != ""){
+	string from;
+	if(old_env)
+	    old_env->message(query_Name() + " leaves " + direction + ".\n");
+
+	from = flip_dir(direction);
+	if(from != "") from = " from the " + from;
+
+	dest->message(query_Name() + " enters" + from + ".\n", ({ this_object() }) ) ;
+    } else {
+	if (old_env)
+	    old_env->message(query_Name() + " vanishes into the shadows.\n");
+
+	dest->message(query_Name() + " appears from the shadows.\n", ({ this_object() }) );
+    }
 }

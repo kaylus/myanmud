@@ -2,7 +2,6 @@
  *    weapon.c    *
  ******************/
 #include <config.h>
-#include <options.h>
 
 #define TYPES ({ "cut", "pierce", "blunt" })
 /***********************************

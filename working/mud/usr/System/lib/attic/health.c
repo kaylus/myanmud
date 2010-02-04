@@ -48,7 +48,7 @@ int receive_damage(int damage, object dealer, varargs string type){
     cur_hp -= damage;
     /* possibly this will be where death occurs */
     if(cur_hp < 0){
-	this_object()->die();
+	call_out("die", 0);
     }
     return 1;
 }
@@ -88,4 +88,19 @@ string query_xa(){
     default:
 	return "[30m[1malmost dead[0m";
     }
+}
+
+void refresh_health(){
+  cur_hp = max_hp;
+}
+
+void die(){
+	event("death", this_object());
+	/* drop corpse and all that good stuff */
+	this_object()->pacify();
+	this_object()->message("\033[30;1mYou have died.\033[0m\n");
+	this_object()->query_environment()->message(this_object()->query_Name()+" has died.\n", ({this_object()}));
+	refresh_health();
+	LOGD->log(this_object()->query_Name()+" died", "combat");
+
 }

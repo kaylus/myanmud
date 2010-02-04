@@ -219,3 +219,149 @@
 
 
 
+- <Feb  3 18:16:38 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/armor.c
+    5   cannot include "options.h"
+
+
+
+- <Feb  3 18:28:22 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/body.c
+   62   undeclared variable user
+
+
+
+- <Feb  3 18:29:23 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/body.c
+  230   undefined function copy
+
+
+
+- <Feb  3 18:29:50 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/body.c
+  332   incompatible types for = (int, void)
+
+
+
+- <Feb  3 18:31:55 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/body.c
+  414   undeclared variable TO
+
+
+
+- <Feb  3 18:32:13 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  476   undeclared variable T_STRING
+  476   bad case expression
+  478   undeclared variable T_NIL
+  509   bad case expression
+
+
+
+- <Feb  3 18:32:38 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/body.c
+    9   cannot include "types.h"
+
+
+
+- <Feb  3 18:33:18 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/weapon.c
+    5   cannot include "options.h"
+
+
+
+- <Feb  3 19:11:07 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/body.c
+  158   undefined function ::refresh_health
+
+
+
+- <Feb  3 19:13:29 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  124   undefined function query_Name
+  125   ambiguous call to function do_tick
+  126   undeclared variable combat
+  126   syntax error
+
+
+
+- <Feb  3 19:15:57 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  566   inherited multiple instances of:
+  566     do_tick (/usr/System/lib/attic/health, /usr/System/lib/attic/combat)
+
+
+
+- <Feb  3 19:16:37 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  127   undeclared variable health
+  127   syntax error
+  128   undeclared variable combat
+  128   syntax error
+
+
+
+- <Feb  3 19:17:34 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  127   undeclared variable health
+  127   syntax error
+  128   undeclared variable combat
+  128   syntax error
+
+
+
+- <Feb  3 19:18:03 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/body.c
+  127   undeclared variable health
+  127   syntax error
+  128   undeclared variable combat
+  128   syntax error
+
+
+
+- <Feb  3 19:33:23 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/combat.c
+  308   undefined function clean_attackers_not_in_room
+
+
+
+- <Feb  3 19:40:59 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/combat.c
+  316   syntax error
+
+
+
+- <Feb  3 21:05:16 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/attic/body.c
+  478   syntax error
+
+
+
+- <Feb  3 21:07:00 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/attic/body.c
+  479   syntax error
+
+
+
+- <Feb  3 21:08:16 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	Compile error in /usr/System/lib/attic/body.c
+  480   syntax error
+
+
+
+- <Feb  3 22:16:14 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/lib/attic/combat.c
+  177   syntax error
+  185   syntax error
+  193   syntax error
+  201   syntax error
+  209   syntax error
+
+
+
+- <Feb  3 22:35:47 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/lib/attic/combat.c
+  629   syntax error
+
+
+

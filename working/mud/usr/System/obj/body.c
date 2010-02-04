@@ -1,4 +1,4 @@
 /* body object */
 
-inherit "/usr/System/lib/body";
+inherit BODY_LIB;
 

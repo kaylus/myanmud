@@ -2,7 +2,6 @@
  *       armor.c         *
  *************************/
 #include <config.h>
-#include <options.h>
 
 inherit OBJECT;
 

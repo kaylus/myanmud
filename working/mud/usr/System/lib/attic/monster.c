@@ -11,6 +11,7 @@
 
 inherit father OBJECT;
 inherit body   BODY;
+inherit PLAY_TOOL; /* hope this works for commands */
 
 private static int    bit_att;       /* our monster's attributes */
 private static string greeting;      /* to be displayed upon player entrance */
@@ -47,6 +48,10 @@ void set_gender(string val){ gender = val; }
 string query_gender(){ return gender; }
 
 string query_cap_name(){ return capitalize(short_desc); }
+
+string query_Name(){ return capitalize(short_desc); }
+
+string query_name(){ return short_desc); }
 
 string query_subjective() {
     switch (gender) {
@@ -94,7 +99,7 @@ void die(){
 	int sz;
 
     corpse = clone_object(CORPSE);
-    corpse->set_name(query_cap_name());
+    corpse->set_name(query_Name());
     corpse->move(this_object()->query_environment());
     /* move inventory to the corpse */
     stuff = this_object()->query_inventory() ;
@@ -103,7 +108,7 @@ void die(){
 		    stuff[sz]->move(corpse);
 		}
     }
-    this_object()->query_environment()->room_tell(query_cap_name()+" dies.\n");
+    this_object()->query_environment()->message(query_Name()+" dies.\n");
     event("death");
     destruct();
 }
@@ -126,9 +131,6 @@ void die(){
 /*	return ret;
 }*/
 
-string query_name(){
-	return short_desc;
-}
 
 void set_greeting(string str){ greeting=str; }
 
@@ -229,7 +231,7 @@ void greet(object player){
  * through this we can parse up some *
  * nasty behaviors                   *
  *************************************/
-void catch_tell(string str){
+void message(string str){
 	string tmp1, tmp2, tmp3;
 	object player;
 	/* player entered our room
@@ -343,17 +345,17 @@ atomic varargs int move (mixed dest, string direction, int silent) {
 	if(silent) return 1;
 
 	if (direction && direction != "") {
-		if (old_env) old_env->room_tell(query_cap_name() +
+		if (old_env) old_env->message(query_Name() +
 			   " leaves "+direction+".\n") ;
 		from = "";
 		from = flip_dir(direction);
 		if(from != "")from = " from the "+from;
-		dest->room_tell(query_cap_name()+" enters"+from+".\n",
+		dest->message(query_Name()+" enters"+from+".\n",
 			({ this_object() }) ) ;
 	} else {
-		if (old_env) old_env->room_tell(query_cap_name()+
+		if (old_env) old_env->message(query_cap_name()+
 			  " vanishes into the shadows.\n") ;
-		dest->room_tell(query_cap_name()+" appears from the shadows.\n",
+		dest->message(query_Name()+" appears from the shadows.\n",
 			({ this_object() }) ) ;
 	}
     return 1;
@@ -367,7 +369,7 @@ string query_long() {
     int i, total, sz;
     object *inventory, *worn_items, *wielded_items;
 
-    ret = TO->query_cap_name() + " ( " + query_xa() + " )\n";
+    ret = TO->query_Name() + " ( " + query_xa() + " )\n";
 
     if ((describe = father::query_long())) ret += "\n" + describe;
     ret += body::query_long();

@@ -29,6 +29,9 @@ static void message(string str)
     user->message(str);
 }
 
+object query_user(){
+  return user;
+}
 /*
  * NAME:	input()
  * DESCRIPTION:	deal with input from user
@@ -36,6 +39,7 @@ static void message(string str)
 void input(string str)
 {
     if (previous_object() == user) {
+      
 	call_limited("process", str);
     }
 }
@@ -46,7 +50,7 @@ void input(string str)
  */
 static void process(string str)
 {
-    string arg;
+    string arg, err;
 
 	/* add in redirect to any object, sort of like editor? */
     if (query_editor(this_object())) {
@@ -105,7 +109,9 @@ static void process(string str)
     case "spectrum":
     case "summon":
     case "goto":
-	call_other(this_object(), "cmd_" + str, user, str, arg);
+    case "newcommand":
+	err = catch(call_other(this_object(), "cmd_" + str, user, str, arg));
+	if(err)LOGD->log(str + " caused error in "+user->query_name()+": "+err, "wiztool");
 	break;
 
     default:
@@ -418,4 +424,15 @@ message("Not a suitable destination.\n");/* may have to make query_short more el
 /*
  * wall: realm echo
  */
+
+/*
+ * NAME:	cmd_summon()
+ * DESCRIPTION:	summon player to you
+ */
+static void cmd_newcommand(object user, string cmd, string str)
+{
+   
+
+    message("This is a dummy command.\n");
+}
 
