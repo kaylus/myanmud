@@ -566,7 +566,7 @@ string query_long() {
     object *inventory, *worn_items, *wielded_items;
 
     inventory = this_object()->query_inventory();
-    ret = query_short()+" "+capitalize(query_race()) + " " + query_gender()+"\n";
+    ret = query_short()+" is a "+capitalize(query_race()) + " " + query_gender()+"\n";
     total = 0;
     if (wielded){
 	wielded_items = map_values(wielded);

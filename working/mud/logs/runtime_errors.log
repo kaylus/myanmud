@@ -1691,3 +1691,21 @@
 
 
 
+- <Feb  3 09:43:57 2010> /usr/System/sys/errord /usr/System/sys/errord:
+	No lvalue for %s
+        /kernel/obj/binary#57
+   89      /kernel/obj/binary       receive_message
+        /kernel/obj/binary#57
+  194      /kernel/lib/connection   receive_message
+        /kernel/sys/userd
+  123      -                        binary_user
+        /kernel/sys/userd
+  449      /kernel/lib/auto         clone_object
+        /kernel/obj/user#58
+        /kernel/sys/driver
+  260      -                        clone
+        ~System/sys/objectd
+  771      -                        clone
+
+
+

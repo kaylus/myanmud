@@ -768,18 +768,19 @@ void clone(string owner, object obj)
     string caught;
     
     object issue;
-
+if(!sscanf(object_name(obj), "/kernel/%s", caught)){
     LOGD->log("clone: " + object_name(obj), "objectd");
 
     index = status(obj)[O_INDEX];
-    LOGD->log("index = "+index + " size = "+obj_issues->query_size(), "objectd");
+    /*LOGD->log("index = "+index + " size = "+obj_issues->query_size(), "objectd");*/
     issue = obj_issues->index(index);
-    LOGD->log("function_object('index', obj_issues) = "+function_object("index", obj_issues), "objectd");
+    /*LOGD->log("function_object('index', obj_issues) = "+function_object("index", obj_issues), "objectd");*/
     caught = catch(issue->add_clone(obj));
     if(caught)LOGD->log("issue->add_clone(obj) failed, obj="+object_name(obj)+" Caught: "+caught, "objectd");
 /* butched in catch to let it run */
-    if(catch(issue->destroyed()) && aggro_recompile > 1)
+    if(issue->destroyed() && aggro_recompile > 1)
       LOGD->log("Clone of destroyed object...  Odd!", "objectd");
+  }
   }
 }
 
