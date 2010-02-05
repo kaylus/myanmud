@@ -49,8 +49,12 @@ find_object(DRIVER)->message(mess);
 	}
 	#endif
 #ifdef WIZTOOL_CALL
-if(type && type=="wiztool"){
-   previous_program()->query_user()->message(mess); 
+if(type && type=="/logs/wiztool.log"){
+   previous_object()->query_user()->message(mess); 
+}
+
+if(type && (type=="/logs/runtime_errors.log" || type=="/logs/compile_errors.log") && this_user() && this_user()->query_wiztool()){/* check for wiz */
+  this_user()->message(mess);
 }
 
 #endif

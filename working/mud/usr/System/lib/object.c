@@ -21,6 +21,10 @@ private static mapping temp_var;   /* this will contain temporary variables */
 mapping vars;            	       /* very against this but somethings it is necessary to
 									  have a dynamic set of variables that hang around */
 
+
+int is_object(){
+ return 1; 
+}
 /***PROPS***/
 void set_temp(string var, mixed val){
     if(!temp_var)

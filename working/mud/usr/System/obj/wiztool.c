@@ -9,9 +9,9 @@ inherit LIB_WIZTOOL;
 private object user;		/* associated user object */
 
 /*
- * NAME:	create()
- * DESCRIPTION:	initialize object
- */
+* NAME:	create()
+* DESCRIPTION:	initialize object
+*/
 static void create(int clone)
 {
     if (clone) {
@@ -21,9 +21,9 @@ static void create(int clone)
 }
 
 /*
- * NAME:	message()
- * DESCRIPTION:	pass on a message to the user
- */
+* NAME:	message()
+* DESCRIPTION:	pass on a message to the user
+*/
 static void message(string str)
 {
     user->message(str);
@@ -33,9 +33,9 @@ object query_user(){
   return user;
 }
 /*
- * NAME:	input()
- * DESCRIPTION:	deal with input from user
- */
+* NAME:	input()
+* DESCRIPTION:	deal with input from user
+*/
 void input(string str)
 {
     if (previous_object() == user) {
@@ -45,9 +45,9 @@ void input(string str)
 }
 
 /*
- * NAME:	process()
- * DESCRIPTION:	process user input
- */
+* NAME:	process()
+* DESCRIPTION:	process user input
+*/
 static void process(string str)
 {
     string arg, err;
@@ -109,8 +109,8 @@ static void process(string str)
     case "spectrum":
     case "summon":
     case "goto":
-    case "newcommand":
-	err = catch(call_other(this_object(), "cmd_" + str, user, str, arg));
+    case "call":
+	call_other(this_object(), "cmd_" + str, user, str, arg);
 	if(err)LOGD->log(str + " caused error in "+user->query_name()+": "+err, "wiztool");
 	break;
 
@@ -121,9 +121,9 @@ static void process(string str)
 }
 
 /*
- * NAME:	cmd_summon()
- * DESCRIPTION:	summon player to you
- */
+* NAME:	cmd_summon()
+* DESCRIPTION:	summon player to you
+*/
 static void cmd_summon(object user, string cmd, string str)
 {
     object player, *users; /* hackish for now */
@@ -167,9 +167,9 @@ static void cmd_spectrum(object user, string cmd, string str)
 }
 
 /*
- *  * NAME:	cmd_clone()
- *   * DESCRIPTION:	clone an object, move it to cloners dir
- *    */
+*  * NAME:	cmd_clone()
+*   * DESCRIPTION:	clone an object, move it to cloners dir
+*    */
 static void cmd_clone(object user, string cmd, string str)
 {
     mixed obj;
@@ -201,16 +201,17 @@ static void cmd_clone(object user, string cmd, string str)
 	    message(str + ".\n");
 	} else if (obj) {
 	    store(obj);
-  	    catch(obj->move(user->query_body()));
+	    if(obj->is_object())
+	      catch(obj->move(user->query_body()));
 	    message("You clone "+obj->query_short()+".\n");
 	}
     }
 }
 
 /*
- * NAME:	cmd_ls() override of inherited
- * DESCRIPTION:	list files
- */
+* NAME:	cmd_ls() override of inherited
+* DESCRIPTION:	list files
+*/
 static void cmd_ls(object user, string cmd, string str)
 {
     mixed *files, *objects;
@@ -315,15 +316,15 @@ static void cmd_ls(object user, string cmd, string str)
 		break;
 	    }
 	    dirlist += (str + "                                                    ")
-		       [0 .. (max + adjust)];
+		      [0 .. (max + adjust)];
 	}
     }
     message(dirlist);
 }
 
 /*
- * dest: destructs an object in wizard's inventory or environ
- */
+* dest: destructs an object in wizard's inventory or environ
+*/
 static void cmd_dest(object user, string cmd, string str){
 	mixed thing;
 	int i;
@@ -358,16 +359,16 @@ static void cmd_dest(object user, string cmd, string str){
 }
 
 /*
- * more: pager for a file, make wiztool input_to_obj?
- */
+* more: pager for a file, make wiztool input_to_obj?
+*/
 
 /*
- * home: returns you to your workroom
- */
+* home: returns you to your workroom
+*/
 
 /*
- * goto: trans you to the named room, or player
- */
+* goto: trans you to the named room, or player
+*/
 
 static void cmd_goto(object user, string cmd, string str){
 	mixed thing;
@@ -379,7 +380,7 @@ static void cmd_goto(object user, string cmd, string str){
 	}
 	/* add in check for $num functionality */
 	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
-	        if(thing <- "/usr/System/obj/room"){/* suitable destination */
+		if(thing <- "/usr/System/obj/room"){/* suitable destination */
 		  user->query_body()->move(thing, "", 1);
 		  message("You move to " + thing->query_short() + ".\n");
 		  return;
@@ -402,37 +403,252 @@ message("Not a suitable destination.\n");/* may have to make query_short more el
 }
 
 /*
- * invis: turns you invis, requires the coding of a query_vision
- */
+* invis: turns you invis, requires the coding of a query_vision
+*/
 
 /*
- * tail: prints the last bit of a file
- */
+* tail: prints the last bit of a file
+*/
 
 /*
- * gauge: calculates the given ticks/time of the given command
- */
+* gauge: calculates the given ticks/time of the given command
+*/
 
 /*
- * force: forces a body to do a command
- */
+* force: forces a body to do a command
+*/
 
 /*
- * nuke: destroys a given player/wiz
- */
+* nuke: destroys a given player/wiz
+*/
 
 /*
- * wall: realm echo
- */
+* wall: realm echo
+*/
 
 /*
- * NAME:	cmd_summon()
- * DESCRIPTION:	summon player to you
- */
+* NAME:	cmd_summon()
+* DESCRIPTION:	summon player to you
+*/
 static void cmd_newcommand(object user, string cmd, string str)
 {
-   
+  
 
     message("This is a dummy command.\n");
 }
 
+/*
+* cmd_call
+* wiz can call an object or himself and execute a functionality
+*/
+
+static void cmd_call(object user, string cmd, string str){
+  string id, function, args;
+  mixed ret, obj, obj2;
+  
+	if(!str || !strlen(str)){
+		message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
+		return;
+	}
+
+
+	if(sscanf(str, "$%s;%s;$%s", id, function, args) == 3){
+	  message("in $%s;%s;$%s\n");
+	  obj = parse_obj(id);
+	  
+	  switch (typeof(obj)) {
+    case T_INT:
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+    case T_NIL:
+	return;
+
+    case T_STRING:
+	str = obj;
+	obj = find_object(str);
+	break;
+
+    case T_OBJECT:
+	str = object_name(obj);
+	break;
+    }
+    obj2 = parse_obj(args);
+    switch (typeof(obj2)) {
+    case T_INT:
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+    case T_NIL:
+	return;
+
+    case T_STRING:
+	args = obj2;
+	obj2 = find_object(args);
+	break;
+
+    case T_OBJECT:
+	args = object_name(obj2);
+	break;
+    }
+    if(!function_object(function, (object)obj)){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(obj, function, obj2));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+    
+	}else if(sscanf(str, "$%s;%s;%s", id, function, args) == 3){
+	  message("in $%s;%s;%s\n");
+		  obj = parse_obj(id);
+	  
+	  switch (typeof(obj)) {
+    case T_INT:
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+    case T_NIL:
+	return;
+
+    case T_STRING:
+	str = obj;
+	obj = find_object(str);
+	break;
+
+    case T_OBJECT:
+	str = object_name(obj);
+	break;
+    }
+	if(!function_object(function, obj)){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(obj, function, args));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+	  
+	}else if(sscanf(str, "$%s;%s", id, function) == 2){
+	  message("in $%s;%s\n");
+		  obj = parse_obj(id);
+	  
+	  switch (typeof(obj)) {
+    case T_INT:
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+    case T_NIL:
+	return;
+
+    case T_STRING:
+      message("string\n");
+	id = obj;
+	obj = find_object(id);
+	break;
+
+    case T_OBJECT:
+      message("object\n");
+	id = object_name(obj);
+	break;
+    }
+	if(!function_object(function, find_object(id))){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(find_object(id), function));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+	}else if(sscanf(str, "%s;%s;$%s", id, function, args) == 3){
+	  message("in %s;%s;$%s\n");
+			  obj2 = parse_obj(args);
+	  
+	  switch (typeof(obj2)) {
+    case T_INT:
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+    case T_NIL:
+	return;
+
+    case T_STRING:
+	str = obj2;
+	obj2 = find_object(str);
+	break;
+
+    case T_OBJECT:
+	str = object_name(obj);
+	break;
+    }
+    if(id == "me")obj=user->query_body();  
+    
+    if(id == "here")obj=user->query_body()->query_environment();
+	  
+	  if(obj || (obj=find_player(id))) {
+	if(!function_object(function, obj)){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(obj, function, obj2));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+	  }
+	
+	}else if(sscanf(str, "%s;%s;%s", id, function, args) == 3){
+	  message("in %s;%s;%s\n");
+	  if(id == "me")obj=user->query_body();  
+	  
+	  if(id == "here")obj=user->query_body()->query_environment();
+	  
+	  if(obj || (obj=find_player(id))) {
+		if(!function_object(function, obj)){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(obj, function, args));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+	  }
+	}else if(sscanf(str, "%s;%s", id, function) == 2){
+	  message("in %s;%s\n");
+	  if(id == "me")obj=user->query_body();  
+	  
+	  if(id == "here")obj=user->query_body()->query_environment();
+	  
+	  if(obj || (obj=find_player(id))) {
+		if(!function_object(function, obj)){
+		    message("Bad call.\n");
+		    return;
+		}
+		str = catch(ret = call_other(obj, function));
+		if(str){
+		message("Error: "+str);
+		return;
+		}
+		if(ret)
+		  store(ret);
+		
+		return;
+	  }
+	}
+	message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
+}
