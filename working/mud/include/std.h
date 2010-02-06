@@ -38,7 +38,7 @@
    not sure if this is proper route, make object
    for easy redirection? */
 
-
+# define LIB_ROOM "/usr/common/lib/room" /* lib room */
 # define ROOM "/usr/common/obj/room" /* room */
 # define COIN "/usr/common/obj/coin" /* coin */
 

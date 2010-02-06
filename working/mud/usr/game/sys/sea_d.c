@@ -2,7 +2,7 @@
  * Sea handler *
  ***************/
 
-#include <sea_grid.h>
+#include <game/sea_grid.h>
 
 #define SG_ROOM 0
 #define SG_FUNC 1
@@ -19,39 +19,39 @@ void create(varargs int clone){
     }
     /* fully allocated */
     /* may add some brief to each room, something seen when observing from the nest */
-    _grid[SG_PORT[H_X]][SG_PORT[H_Y]] = ({ clone_object("/usr/System/obj/portage"), "sg_port" }); /* this is the function to handle portage */
+    _grid[SG_PORT[H_X]][SG_PORT[H_Y]] = ({ clone_object(PORTAGE), "sg_port" }); /* this is the function to handle portage */
     _grid[7][7] = ({ clone_object("/usr/System/obj/portage"), "sg_port" });
     /* need to make portage inheritable so a room knows how to handle docking ships */
     /* need to make the actual ships */
     /* make a ship */
 
 
-    catch(compile_object("/usr/System/obj/ship"));
-    _ship_ = clone_object("/usr/System/obj/ship");
+    catch(compile_object(SHIP));
+    _ship_ = clone_object(SHIP);
 
-    catch(compile_object("/usr/System/obj/ship_room"));
+    catch(compile_object(SHIP_ROOM));
 
-    roomy = clone_object("/usr/System/obj/ship_room");
+    roomy = clone_object(SHIP_ROOM);
     roomy->set_short("Main deck");
     roomy->set_long("The main deck.\n");
     _ship_->set_maindeck(roomy);
 
-    roomy = clone_object("/usr/System/obj/ship_room");
+    roomy = clone_object(SHIP_ROOM);
     roomy->set_short("Helm");
     roomy->set_long("The helm.\n");
     _ship_->set_helm(roomy);
 
-    roomy = clone_object("/usr/System/obj/ship_room");
+    roomy = clone_object(SHIP_ROOM);
     roomy->set_short("Fore deck");
     roomy->set_long("The fore deck.\n");
     _ship_->set_foredeck(roomy);
 
-    roomy = clone_object("/usr/System/obj/ship_room");
+    roomy = clone_object(SHIP_ROOM);
     roomy->set_short("Quarter deck");
     roomy->set_long("The quarter deck.\n");
     _ship_->set_quarterdeck(roomy);
 
-    roomy = clone_object("/usr/System/obj/ship_room");
+    roomy = clone_object(SHIP_ROOM);
     roomy->set_short("The crowsnest");
     roomy->set_long("The crowsnest.\n");
     _ship_->set_crowsnest(roomy);

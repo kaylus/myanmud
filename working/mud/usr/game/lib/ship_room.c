@@ -2,7 +2,7 @@
  * ship rooms *
  **************/
 
-inherit "/usr/common/lib/room";
+inherit LIB_ROOM;
 #include <type.h>
 
 object _ship;  /**< ship associated with this room */
@@ -147,7 +147,7 @@ string query_long(varargs int brief){
 	value = _ship->query_name()+"'s "+short_desc+"\n\n"+long_desc;
 
     /* Add in any exits there may be. */
-    value += "[1m\n\t";
+    value += "%^BOLD%^\n\t";
     if(!exits || !(sz = map_sizeof(exits))){
 	value += "There are no obvious exits.\n" ;
     }else{
@@ -166,7 +166,7 @@ string query_long(varargs int brief){
 	}
 	value += ".\n";
     }
-    value += "\n[0m";
+    value += "\n%^RESET%^";
     /* List the contents of the room. */
     inventory = query_inventory();
     if(inventory && (sz = sizeof(inventory))){

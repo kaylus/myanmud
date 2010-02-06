@@ -86,7 +86,7 @@ string query_long(varargs int brief){
     	value = short_desc+"\n\n"+long_desc;
 
 	/* Add in any exits there may be. */
-	value += "[1m\n\t";
+	value += "%^BOLD%^\n\t";
     if(!exits || !(sz = map_sizeof(exits))){
         value += "There are no obvious exits.\n" ;
     }else{
@@ -105,7 +105,7 @@ string query_long(varargs int brief){
 		}
 	    value += ".\n";
     }
-    value += "\n[0m";
+    value += "\n%^RESET%^";
 	/* List the contents of the room. */
     inventory = query_inventory();
     if(inventory && (sz = sizeof(inventory))){

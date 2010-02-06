@@ -3,7 +3,7 @@
  ***********/
 #include <sea_grid.h>
 
-inherit "/usr/System/lib/room";
+inherit LIB_ROOM;
 
 void set_plank(object ship){
     /*object h;
