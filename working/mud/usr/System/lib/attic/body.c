@@ -42,8 +42,8 @@ object user;                /* contain user object? */
 object end_room;            /* last room that held this body */
 
 void create(int clone){ 
-object heartd;
-if(!clone) return;
+    object heartd;
+    if(!clone) return;
     if(!worn)
 	worn      = ([]);
 
@@ -56,7 +56,7 @@ if(!clone) return;
     set_capacity(150);
     set_volume(150);
 
-  ac = 0;
+    ac = 0;
 
     roll_stats(); /* temp */
 
@@ -80,22 +80,22 @@ if(!clone) return;
 
 string query_subjective(){
     switch(query_gender()){
-	case "male":
+    case "male":
 	return "he";
-	case "female":
+    case "female":
 	return "she";
     }
     return "it";
 }
 
 string query_possessive(){
-   switch(query_gender()){
-     case "male":
-       return "his";
-     case "female":
-       return "her";
-   }
-   return "its";
+    switch(query_gender()){
+    case "male":
+	return "his";
+    case "female":
+	return "her";
+    }
+    return "its";
 }
 
 /* work horse of player messages, replaces catch_tell */
@@ -116,7 +116,7 @@ void stasis(){/* put body into stasis */
 }
 
 int awaken(){
-  LOGD->log("awaken called by " +previous_program(), "users");
+    LOGD->log("awaken called by " +previous_program(), "users");
     if(previous_program() != SYSTEM_USER)
 	return 0;
 
@@ -141,7 +141,7 @@ int allow_subscribe(object obj, string name){
 }
 
 int query_ac(){
-	return ac + this_object()->query_stat("dexterity");
+    return ac + this_object()->query_stat("dexterity");
 }/* add in attribute checks */
 
 void set_id(string *newid){/* assures we always have id weapon */
@@ -154,13 +154,13 @@ void incr_ac(int val){ ac += val; }
 void decr_ac(int val){ ac -= val; }
 
 object query_primary(){
-	if(!wielded) wielded=([]);
-	return wielded[WIELDS[0]];
+    if(!wielded) wielded=([]);
+    return wielded[WIELDS[0]];
 }
 
 object query_secondary(){
-	if(!wielded) wielded=([]);
-	return wielded[WIELDS[1]];
+    if(!wielded) wielded=([]);
+    return wielded[WIELDS[1]];
 }
 
 /******************************************
@@ -168,19 +168,19 @@ object query_secondary(){
  * values : 0 fail, 1 success             *
  ******************************************/
 int set_worn(object obj){/* calculate armor total ac */
-	string type;
-	if(!wielded) wielded=([]);
-	if(!worn)    worn   =([]);
-	type = obj->query_type();
-	if(type && !worn[type]){
-		if(type == "shield" && wielded[WIELDS[1]]){
-			return 0; /* can't equip shield over weapon */
-		}
-		worn[type]=obj;
-		incr_ac(obj->query_ac());
-		return 1;
+    string type;
+    if(!wielded) wielded=([]);
+    if(!worn)    worn   =([]);
+    type = obj->query_type();
+    if(type && !worn[type]){
+	if(type == "shield" && wielded[WIELDS[1]]){
+	    return 0; /* can't equip shield over weapon */
 	}
-	return 0;
+	worn[type]=obj;
+	incr_ac(obj->query_ac());
+	return 1;
+    }
+    return 0;
 }
 
 
@@ -198,21 +198,21 @@ string query_name(){
 }
 
 string query_short(){
-  return query_Name();
+    return query_Name();
 }
 /****************
  * and a query  *
  ****************/
 int query_worn(object obj){/* remove ac */
-	object *values;
-	if(!wielded) wielded = ([ ]);
-	if(!worn)    worn   = ([ ]);
+    object *values;
+    if(!wielded) wielded = ([ ]);
+    if(!worn)    worn   = ([ ]);
 
-	values = map_values(worn);
-	if(values && member_array(obj, values)>-1){
-		return 1;
-	}
-	return 0;
+    values = map_values(worn);
+    if(values && member_array(obj, values)>-1){
+	return 1;
+    }
+    return 0;
 }
 
 
@@ -224,25 +224,25 @@ int handle_break(object owner, varargs object armor, int damage){
  * remove *
  **********/
 int remove_worn(object obj){
-	object *values;
-	string *indices;
-	int i;
-	if(query_worn(obj)){
-		values = map_values(worn);
-		indices = map_indices(worn);
-		i = member_array(obj, values);
-		worn[indices[i]] = nil;
-		decr_ac(obj->query_ac());
-		return 1;
-	}
-	return 0;
+    object *values;
+    string *indices;
+    int i;
+    if(query_worn(obj)){
+	values = map_values(worn);
+	indices = map_indices(worn);
+	i = member_array(obj, values);
+	worn[indices[i]] = nil;
+	decr_ac(obj->query_ac());
+	return 1;
+    }
+    return 0;
 }
 
 /*******************************
  * query listing of worn items *
  *******************************/
 mapping query_worn_listing(){
-	return worn;
+    return worn;
 }
 
 
@@ -254,86 +254,86 @@ mapping query_worn_listing(){
  * -2- fail by shield    *
  *************************/
 int wield( object obj ){
-	if(!wielded) wielded=([]);
-	if(!worn)    worn   =([]);
-	if(!obj->is_weapon()) return 0;
+    if(!wielded) wielded=([]);
+    if(!worn)    worn   =([]);
+    if(!obj->is_weapon()) return 0;
 
-	if(obj->query_two_handed()){
-		if(!wielded[WIELDS[0]] && !wielded[WIELDS[1]] &&
-			!worn["shield"]){/* wield this beastly two hander */
-			wielded[WIELDS[0]] = obj;
-			wielded[WIELDS[1]] = 1; /* placeholder, note when unwielding 2hander */
-			return 1;
-		}else{
-			return -1;
-		}
-	}else if(!obj->query_is_offhand()){
-		if(!wielded[WIELDS[0]]){
-			wielded[WIELDS[0]] = obj;
-			return 1;
-		}else if(wielded[WIELDS[0]]->query_is_offhand() && !worn["shield"] &&
-			!wielded[WIELDS[1]]){/* push to second and wield */
-			wielded[WIELDS[1]] = wielded[WIELDS[0]];
-			wielded[WIELDS[0]] = obj;
-			return 1;
-		}else{
-			return 0;
-		}
+    if(obj->query_two_handed()){
+	if(!wielded[WIELDS[0]] && !wielded[WIELDS[1]] &&
+	  !worn["shield"]){/* wield this beastly two hander */
+	    wielded[WIELDS[0]] = obj;
+	    wielded[WIELDS[1]] = 1; /* placeholder, note when unwielding 2hander */
+	    return 1;
 	}else{
-		if(!wielded[WIELDS[0]]){
-			wielded[WIELDS[0]] = obj;
-			return 1;
-		}else if(!wielded[WIELDS[1]]){
-			if(!worn["shield"]){
-				wielded[WIELDS[1]] = obj;
-				return 1;
-			}else{
-				return -2;
-			}
-		}
+	    return -1;
 	}
-	return 0;
+    }else if(!obj->query_is_offhand()){
+	if(!wielded[WIELDS[0]]){
+	    wielded[WIELDS[0]] = obj;
+	    return 1;
+	}else if(wielded[WIELDS[0]]->query_is_offhand() && !worn["shield"] &&
+	  !wielded[WIELDS[1]]){/* push to second and wield */
+	    wielded[WIELDS[1]] = wielded[WIELDS[0]];
+	    wielded[WIELDS[0]] = obj;
+	    return 1;
+	}else{
+	    return 0;
+	}
+    }else{
+	if(!wielded[WIELDS[0]]){
+	    wielded[WIELDS[0]] = obj;
+	    return 1;
+	}else if(!wielded[WIELDS[1]]){
+	    if(!worn["shield"]){
+		wielded[WIELDS[1]] = obj;
+		return 1;
+	    }else{
+		return -2;
+	    }
+	}
+    }
+    return 0;
 }
 
 /****************
  * and a query  *
  ****************/
 int query_wielded(object obj){
-	object *values;
-	if(!wielded) wielded=([]);
-	if(!worn)    worn   =([]);
+    object *values;
+    if(!wielded) wielded=([]);
+    if(!worn)    worn   =([]);
 
-	values = map_values(wielded);
-	if(values && member_array(obj, values)>-1){
-		return 1;
-	}
-	return 0;
+    values = map_values(wielded);
+    if(values && member_array(obj, values)>-1){
+	return 1;
+    }
+    return 0;
 }
 
 /**********
  * remove *
  **********/
 int unwield(object obj){
-	object *values;
-	string *indices;
-	int i;
-	if(!wielded) wielded=([]);
-	if(!worn)    worn   =([]);
+    object *values;
+    string *indices;
+    int i;
+    if(!wielded) wielded=([]);
+    if(!worn)    worn   =([]);
 
-	if(query_wielded(obj)){
-		values = map_values(wielded);
-		indices = map_indices(wielded);
-		i = member_array(obj, values);
-		wielded[indices[i]]=nil;
-		if(obj->query_two_handed()){
-			wielded[WIELDS[1]]=nil;
-		}else if(wielded[WIELDS[1]] && !wielded[WIELDS[0]]){/* move secondary to primary */
-			wielded[WIELDS[0]] = wielded[WIELDS[1]];
-			wielded[WIELDS[1]] = nil;
-		}
-		return 1;
+    if(query_wielded(obj)){
+	values = map_values(wielded);
+	indices = map_indices(wielded);
+	i = member_array(obj, values);
+	wielded[indices[i]]=nil;
+	if(obj->query_two_handed()){
+	    wielded[WIELDS[1]]=nil;
+	}else if(wielded[WIELDS[1]] && !wielded[WIELDS[0]]){/* move secondary to primary */
+	    wielded[WIELDS[0]] = wielded[WIELDS[1]];
+	    wielded[WIELDS[1]] = nil;
 	}
-	return 0;
+	return 1;
+    }
+    return 0;
 }
 #if 0
 /****************************
@@ -342,29 +342,29 @@ int unwield(object obj){
  * and wielded items        *
  ****************************/
 int release_object (object ob) {
-   	/* check equipped, if so, unequip it */
-   	int res, func, fun;
-   	res = ::release_object(ob);/* pass the ball */
-   	if(res && query_worn(ob)){/* don't like doing messages here, but fuck it */
-   		remove_worn(ob);
-   		catch(fun = call_other(ob, ob->query_unequip_func()));
-		if(!fun){/* messages not handled */
-			this_object()->message("You unequip "+ob->query_weapon_name()+".\n");
-   			this_object()->query_environment()->messsage(
-				this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
-				({ this_object() }) );
-		}
-   	}else if(res && query_wielded(ob)){
-		unwield(ob);
-		catch(fun = call_other(ob, ob->query_unwield_func()));
-		if(!fun){/* messages not handled */
-			this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
-			this_object()->query_environment()->message(
-				this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
-				({ this_object() }) );
-		}
+    /* check equipped, if so, unequip it */
+    int res, func, fun;
+    res = ::release_object(ob);/* pass the ball */
+    if(res && query_worn(ob)){/* don't like doing messages here, but fuck it */
+	remove_worn(ob);
+	catch(fun = call_other(ob, ob->query_unequip_func()));
+	if(!fun){/* messages not handled */
+	    this_object()->message("You unequip "+ob->query_weapon_name()+".\n");
+	    this_object()->query_environment()->messsage(
+	      this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
+	    ({ this_object() }) );
 	}
-   	return res; /* propogate through */
+    }else if(res && query_wielded(ob)){
+	unwield(ob);
+	catch(fun = call_other(ob, ob->query_unwield_func()));
+	if(!fun){/* messages not handled */
+	    this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
+	    this_object()->query_environment()->message(
+	      this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
+	    ({ this_object() }) );
+	}
+    }
+    return res; /* propogate through */
 }
 #endif
 atomic void release_object(object ob, varargs int slide){
@@ -406,34 +406,34 @@ string query_long() {
     ret = "";
     total = 0;
     if (wielded){
-		wielded_items = map_values(wielded);
-		windices = map_indices(wielded);
-		for(i=0,sz=sizeof(windices);i<sz;i++){
-			if(!wielded[windices[i]] || wielded[windices[i]]==1)
-				continue;
-			ret += "\n"+pad(capitalize(windices[i])+": ",15)+
-				wielded[windices[i]]->query_short();
-			total++;
-		}
+	wielded_items = map_values(wielded);
+	windices = map_indices(wielded);
+	for(i=0,sz=sizeof(windices);i<sz;i++){
+	    if(!wielded[windices[i]] || wielded[windices[i]]==1)
+		continue;
+	    ret += "\n"+pad(capitalize(windices[i])+": ",15)+
+	    wielded[windices[i]]->query_short();
+	    total++;
 	}
+    }
     if (worn){
-		worn_items = map_values(worn);
-		indices = map_indices(worn);
-		for(i=0,sz=sizeof(indices);i<sz;i++){
-			ret += "\n"+pad(capitalize(indices[i])+": ",15)+worn[indices[i]]->query_short();
-		}
-		total += sz;
+	worn_items = map_values(worn);
+	indices = map_indices(worn);
+	for(i=0,sz=sizeof(indices);i<sz;i++){
+	    ret += "\n"+pad(capitalize(indices[i])+": ",15)+worn[indices[i]]->query_short();
 	}
-	ret += "\n";
+	total += sz;
+    }
+    ret += "\n";
     if (!inventory || ((sz=sizeof(inventory))-total)==0) {
-        ret += capitalize(this_object()->query_subjective())+" is not carrying anything.\n" ;
+	ret += capitalize(this_object()->query_subjective())+" is not carrying anything.\n" ;
     } else {
-        ret += capitalize(this_object()->query_subjective())+" is carrying:\n" ;
+	ret += capitalize(this_object()->query_subjective())+" is carrying:\n" ;
 	for (i=0;i<sz;i++) {
 	    if(worn_items && member_array(inventory[i], worn_items)>-1)continue;
 	    if(wielded_items && member_array(inventory[i], wielded_items)>-1)continue;
 	    ret += "  "+inventory[i]->query_short()+"\n" ;
-        }
+	}
     }
     return ret ;
 }
@@ -465,10 +465,10 @@ int input(string str){
 
     /* do some alias stuff */
     if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
-    string argx;
+	string argx;
 	cmd = user->query_alias(cmd);
 	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
-		args = argx + args;
+	    args = argx + args;
 	}
     }
 
@@ -482,14 +482,14 @@ int input(string str){
 
     /* channeld check */
     catch{
-		if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
-	}
-	
-    if (function_object("cmd_" + cmd, this_object()))
-      catch(ret_fail = call_other(this_object(), "cmd_" + cmd, args));/* change to call_limited? */
+	if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+    }
 
-    
-      
+    if (function_object("cmd_" + cmd, this_object()))
+	catch(ret_fail = call_other(this_object(), "cmd_" + cmd, args));/* change to call_limited? */
+
+
+
     switch(typeof(ret_fail)){
     case T_STRING:/* fail string, continue seek */
 	fail_msg = ret_fail;
@@ -499,28 +499,28 @@ int input(string str){
 	return 1;
     }
 
-   /* other bins... */
+    /* other bins... */
     /* room/body inventory bin */
     /* error checking */
     inv = ({});
     if(query_environment()){ 
-      inv += ({ query_environment() });
-      if(query_environment()->query_inventory()) 
-	inv += query_environment()->query_inventory();
+	inv += ({ query_environment() });
+	if(query_environment()->query_inventory()) 
+	    inv += query_environment()->query_inventory();
     }
-    
+
     if(query_inventory())
-      inv += query_inventory();
-    
+	inv += query_inventory();
+
     inv -= ({ this_object() });
-        
+
     if(sizeof(inv)){
 	int i;
 	i = sizeof(inv);
 	while(--i>=0){
 
 	    if(function_object("perform_action", inv[i]))
-	      ret_fail = call_other(inv[i], "perform_action", cmd, args);
+		ret_fail = call_other(inv[i], "perform_action", cmd, args);
 
 	    switch(typeof(ret_fail)){
 	    case T_STRING:/* fail string, continue seek */
@@ -532,7 +532,7 @@ int input(string str){
 	    }
 	}
     }
-    
+
 
     if(!strlen(fail_msg))
 	return 0;
@@ -571,7 +571,7 @@ atomic void move(mixed dest, varargs string direction, int silent, int nolook){
 
 	dest->message(query_Name() + " enters" + from + ".\n", ({ this_object() }) ) ;
     } else {
-	if (old_env)
+	if (old_env && old_env != dest)
 	    old_env->message(query_Name() + " vanishes into the shadows.\n");
 
 	dest->message(query_Name() + " appears from the shadows.\n", ({ this_object() }) );

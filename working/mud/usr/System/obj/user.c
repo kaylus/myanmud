@@ -62,8 +62,8 @@ string query_name(){ return name; }
 object query_wiztool(){ return wiztool; } /* hacked in for use to check if someone is a wiz */
 
 void issue_wiztool(){ /* security? */
-  if(!wiztool)
-    wiztool = clone_object(SYSTEM_WIZTOOL, name);
+    if(!wiztool)
+	wiztool = clone_object(SYSTEM_WIZTOOL, name);
 }
 
 /*
@@ -86,35 +86,35 @@ private void tell_audience(string str)
 }
 /* create body */
 object create_body(){
-	return clone_object(BODY);
+    return clone_object(BODY);
 }
 
 void set_body(object obj){
-	if(!obj->is_body())error("Object is not a body.\n");
+    if(!obj->is_body())error("Object is not a body.\n");
 
-	body = obj;
+    body = obj;
 }
 
 /* save function */
 void _save(){
-  string caught;
-  if(!name || strlen(name) < 1){ error("Trying to save unnamed."); }
-  
-  LOGD->log("Saving " + name, "users");
-  if(body)body_name = object_name(body);
-  caught = catch(save_object(USR_SAVE_DIR + "/" + name + ".pwd"));
-  if(caught)LOGD->log("Error in player save " + caught +"\n", "users");
+    string caught;
+    if(!name || strlen(name) < 1){ error("Trying to save unnamed."); }
+
+    LOGD->log("Saving " + name, "users");
+    if(body)body_name = object_name(body);
+    caught = catch(save_object(USR_SAVE_DIR + "/" + name + ".pwd"));
+    if(caught)LOGD->log("Error in player save " + caught +"\n", "users");
 }
 /* restore me */
 void _restore(){
-  string caught;
-  if(!name || strlen(name) < 1){ error("Trying to restore unnamed."); }
-  
-  LOGD->log("Restoring " + name, "users");
-  caught = catch(restore_object(USR_SAVE_DIR + "/" + name + ".pwd"));
-  if(body_name)body = find_object(body_name);
-  
-  if(caught)LOGD->log("Error in player restore " + caught +"\n", "users");
+    string caught;
+    if(!name || strlen(name) < 1){ error("Trying to restore unnamed."); }
+
+    LOGD->log("Restoring " + name, "users");
+    caught = catch(restore_object(USR_SAVE_DIR + "/" + name + ".pwd"));
+    if(body_name)body = find_object(body_name);
+
+    if(caught)LOGD->log("Error in player restore " + caught +"\n", "users");
 }
 /*
  * NAME:	login()
@@ -148,7 +148,7 @@ int login(string str)
 	    tell_audience(Name + " logs in.\n");
 	    /*LOGD->log(Name + " - no password code", "users");
 	    /*if (name != "admin" && sizeof(query_users() & ({ name })) == 0) {
-	        LOGD->log(Name + " - in strange admin code", "users");
+		LOGD->log(Name + " - in strange admin code", "users");
 		message("> ");
 		state[previous_object()] = STATE_NORMAL;
 		return MODE_ECHO;
@@ -170,8 +170,8 @@ int login(string str)
 void logout(int quit)
 {
     if (previous_program() == LIB_CONN && --nconn == 0 || previous_program() == "~System/initd") {
-	
-        _save();
+
+	_save();
 	body->stasis();/* store body */
 
 	if (query_conn()) {
@@ -196,38 +196,38 @@ void logout(int quit)
  *              input_to object. Input will return 0 if it wants to be removed
  */
 void input_to(object obj){
-	/* check if we already have an inputting object */
-	if(input_to_obj || (wiztool && query_editor(wiztool))){
-		error("Already inputing to an object.\n");
-		return;
-	}
-	/* check for an input in given object */
-	if(!function_object("input_to", obj)){
-		error("Ineligible input object.\n");
-		return;
-	}
-	input_to_obj = obj;
-	state[query_conn()] = STATE_INPUTOBJ;/* turn input toward obj section */
-	/* check for an init_input function, then call it */
-	if(function_object("init_input", obj)){
-		obj->init_input();
-	}
+    /* check if we already have an inputting object */
+    if(input_to_obj || (wiztool && query_editor(wiztool))){
+	error("Already inputing to an object.\n");
+	return;
+    }
+    /* check for an input in given object */
+    if(!function_object("input_to", obj)){
+	error("Ineligible input object.\n");
+	return;
+    }
+    input_to_obj = obj;
+    state[query_conn()] = STATE_INPUTOBJ;/* turn input toward obj section */
+    /* check for an init_input function, then call it */
+    if(function_object("init_input", obj)){
+	obj->init_input();
+    }
 }
 
 object _input_to(string str){/* internal call that handles input stuff to objects, returns input_to_obj, nil if we want to remove */
-  object temp_obj;
-  if(!input_to_obj)return nil;
-  
-  temp_obj = input_to_obj;
-  input_to_obj = input_to_obj->input_to(str);
-  
-  if(!input_to_obj){/* inputs done */
-    if(function_object("input_done", temp_obj)){/* tie up function, optional */
-      return (input_to_obj = temp_obj->input_done());/* function should return nil if done, or a new object */
-    }
-   }
+    object temp_obj;
+    if(!input_to_obj)return nil;
 
-return input_to_obj;
+    temp_obj = input_to_obj;
+    input_to_obj = input_to_obj->input_to(str);
+
+    if(!input_to_obj){/* inputs done */
+	if(function_object("input_done", temp_obj)){/* tie up function, optional */
+	    return (input_to_obj = temp_obj->input_done());/* function should return nil if done, or a new object */
+	}
+    }
+
+    return input_to_obj;
 }
 
 /*
@@ -245,13 +245,13 @@ int receive_message(string str)
 	switch (state[previous_object()]) {
 	case STATE_INPUTOBJ:
 	    if(input_to_obj){
-	      input_to_obj = _input_to(str);
-	      if(!input_to_obj){
-		state[previous_object()] = STATE_NORMAL;
-	      }
-	      return MODE_ECHO;
+		input_to_obj = _input_to(str);
+		if(!input_to_obj){
+		    state[previous_object()] = STATE_NORMAL;
+		}
+		return MODE_ECHO;
 	    }else{
-	      state[previous_object()] = STATE_NORMAL;
+		state[previous_object()] = STATE_NORMAL;
 	    }/* flow into state_normal */
 	case STATE_NORMAL:
 	    cmd = str;
@@ -261,7 +261,7 @@ int receive_message(string str)
 
 	    if (!wiztool || !query_editor(wiztool) || cmd != str) {
 		/* check input_to, add in work around ! */
-		
+
 		/* check standard commands */
 		if (strlen(cmd) != 0) {
 		    switch (cmd[0]) {
@@ -388,23 +388,23 @@ int receive_message(string str)
 	    connection(previous_object());
 	    message("\n");
 	    tell_audience(Name + " logs in.\n");
-	    
+
 	    if (!wiztool &&
 	    (name == "admin" || sizeof(query_users() & ({ name })) != 0)) {
 		issue_wiztool();
 	    }
-	    	/* check for stored body, remove from storage? */
-		LOGD->log("Going into awaken with " + ( (body == nil) ? " no body" : object_name(body)), "users");
+	    /* check for stored body, remove from storage? */
+	    LOGD->log("Going into awaken with " + ( (body == nil) ? " no body" : object_name(body)), "users");
 	    if(!body || !body->awaken()){
 		set_body(create_body());
-	        input_to(body);	  
+		input_to(body);	  
 		return MODE_ECHO;
-            } else {
+	    } else {
 		state[previous_object()] = STATE_NORMAL;
 		body->move(ROOMD->query_start_room(), "");
-            }
+	    }
 	    break;
-	
+
 	case STATE_OLDPASSWD:
 	    if (hash_string("crypt", str, password) != password) {
 		message("\nBad password.\n");
@@ -425,19 +425,19 @@ int receive_message(string str)
 		password = hash_string("crypt", str);
 		/* Hymael testing out player saves */
 		if (wiztool) {
-		/* save wizards only */
-		_save();
+		    /* save wizards only */
+		    _save();
 		}
 		message("\nPassword changed.\n");
 	    } else {
 		message("\nMismatch; password not changed.\n");
 	    }
 	    newpasswd = nil;
-	      if(!body || !body->awaken()){
+	    if(!body || !body->awaken()){
 		set_body(create_body());
-	        input_to(body);	  
+		input_to(body);	  
 		return MODE_ECHO;
-            } 
+	    } 
 	    break;
 	}
 
@@ -453,6 +453,6 @@ int receive_message(string str)
 }
 /* intercept and color, based on settings? */
 int message(string msg){
-  return ::message(find_object(ANSID)->parse_pinkfish(msg));
+    return ::message(find_object(ANSID)->parse_pinkfish(msg));
 }
 

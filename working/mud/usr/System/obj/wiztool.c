@@ -30,7 +30,7 @@ static void message(string str)
 }
 
 object query_user(){
-  return user;
+    return user;
 }
 /*
 * NAME:	input()
@@ -39,7 +39,7 @@ object query_user(){
 void input(string str)
 {
     if (previous_object() == user) {
-      
+
 	call_limited("process", str);
     }
 }
@@ -52,7 +52,7 @@ static void process(string str)
 {
     string arg, err;
 
-	/* add in redirect to any object, sort of like editor? */
+    /* add in redirect to any object, sort of like editor? */
     if (query_editor(this_object())) {
 	if (strlen(str) != 0 && str[0] == '!') {
 	    str = str[1 ..];
@@ -201,9 +201,11 @@ static void cmd_clone(object user, string cmd, string str)
 	    message(str + ".\n");
 	} else if (obj) {
 	    store(obj);
-	    if(obj->is_object())
-	      catch(obj->move(user->query_body()));
-	    message("You clone "+obj->query_short()+".\n");
+	    if(obj->is_object()){
+			cmd = catch(obj->move(user->query_body()));
+			if(cmd)
+				message("Error: Object couldn't be moved - "+cmd+".\n");
+		}
 	}
     }
 }
@@ -302,21 +304,21 @@ static void cmd_ls(object user, string cmd, string str)
 	    }
 
 	    if (sizes[j] < 0) {
-		str = ESC + "[34;1m" + str + "/" + ESC + "[0m";
-		adjust = 11;
+		str = "%^BOLD%^%^BLUE%^" + str + "/%^RESET%^";
+		adjust = 25;
 	    } else if (objects[j]) {
-		str = ESC + "[32;1m" + str + "*" + ESC + "[0m";
-		adjust = 11;
+		str = "%^BOLD%^%^GREEN%^" + str + "*%^RESET%^";
+		adjust = 26;
 	    } else {
 		adjust = 0;
-		}
+	    }
 	    j += rows;
 	    if (j >= sz) {
 		dirlist += str + "\n";
 		break;
 	    }
 	    dirlist += (str + "                                                    ")
-		      [0 .. (max + adjust)];
+	    [0 .. (max + adjust)];
 	}
     }
     message(dirlist);
@@ -326,36 +328,36 @@ static void cmd_ls(object user, string cmd, string str)
 * dest: destructs an object in wizard's inventory or environ
 */
 static void cmd_dest(object user, string cmd, string str){
-	mixed thing;
-	int i;
+    mixed thing;
+    int i;
 
-	if(!str || !strlen(str)){
-		message("Usage: dest <object>\n");
-		return;
-	}
-	/* add in check for $num functionality */
-	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
-		message("You destruct : "+thing->query_short()+".\n");/* may have to make query_short more elaborate */
-		destruct_object(thing);
-		return;
-	}
+    if(!str || !strlen(str)){
+	message("Usage: dest <object>\n");
+	return;
+    }
+    /* add in check for $num functionality */
+    if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
+	message("You destruct : "+thing->query_short()+".\n");/* may have to make query_short more elaborate */
+	destruct_object(thing);
+	return;
+    }
 
-	/* check inventory */
-	if(thing = user->query_body()->present(str)){
-		message("You destruct : "+thing->query_short()+".\n");
-		user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
-		destruct_object(thing);
-		return;
-	}
+    /* check inventory */
+    if(thing = user->query_body()->present(str)){
+	message("You destruct : "+thing->query_short()+".\n");
+	user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
+	destruct_object(thing);
+	return;
+    }
 
-	/* check environment */
-	if(thing = user->query_body()->query_environment()->present(str)){
-		message("You destruct : "+thing->query_short()+".\n");
-		user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
-		destruct_object(thing);
-		return;
-	}
-	message("No "+str +" to dest.\n");
+    /* check environment */
+    if(thing = user->query_body()->query_environment()->present(str)){
+	message("You destruct : "+thing->query_short()+".\n");
+	user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
+	destruct_object(thing);
+	return;
+    }
+    message("No "+str +" to dest.\n");
 }
 
 /*
@@ -371,35 +373,35 @@ static void cmd_dest(object user, string cmd, string str){
 */
 
 static void cmd_goto(object user, string cmd, string str){
-	mixed thing;
-	int i;
+    mixed thing;
+    int i;
 
-	if(!str || !strlen(str)){
-		message("Usage: goto <object/room>\n");
-		return;
+    if(!str || !strlen(str)){
+	message("Usage: goto <object/room>\n");
+	return;
+    }
+    /* add in check for $num functionality */
+    if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
+	if(thing <- "/usr/System/obj/room"){/* suitable destination */
+	    user->query_body()->move(thing, "", 1);
+	    message("You move to " + thing->query_short() + ".\n");
+	    return;
 	}
-	/* add in check for $num functionality */
-	if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
-		if(thing <- "/usr/System/obj/room"){/* suitable destination */
-		  user->query_body()->move(thing, "", 1);
-		  message("You move to " + thing->query_short() + ".\n");
-		  return;
-		}
-	}else{
-	  thing = find_player(thing);
-		if(thing && thing->is_player()){
-		  user->query_body()->move(thing->query_environment(), "", 1);
-		  message("You move to " + thing->query_Name() + "'s room.\n");
-		  thing->message(this_player()->query_Name() + " appears in your room.\n");
-		  /* add message to others */
-		  return;
-		}
-		/* add in instance of file */
-		
+    }else{
+	thing = find_player(thing);
+	if(thing && thing->is_player()){
+	    user->query_body()->move(thing->query_environment(), "", 1);
+	    message("You move to " + thing->query_Name() + "'s room.\n");
+	    thing->message(this_player()->query_Name() + " appears in your room.\n");
+	    /* add message to others */
+	    return;
 	}
-message("Not a suitable destination.\n");/* may have to make query_short more elaborate */
-		return;
-	message("No "+str +" to dest.\n");
+	/* add in instance of file */
+
+    }
+    message("Not a suitable destination.\n");/* may have to make query_short more elaborate */
+    return;
+    message("No "+str +" to dest.\n");
 }
 
 /*
@@ -432,9 +434,39 @@ message("Not a suitable destination.\n");/* may have to make query_short more el
 */
 static void cmd_newcommand(object user, string cmd, string str)
 {
-  
+
 
     message("This is a dummy command.\n");
+}
+
+/* return array with ({ mixed value, TYPE }) ? */ 
+mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
+    string parsed;
+    mixed ret;
+    int i;
+    float x;
+
+    str = strip(str);
+    str = strip(str, '"');
+    if(str == "me")return ({ user->query_body(), T_OBJECT });
+
+    if(str == "here")return ({ user->query_body()->query_environment(), T_OBJECT });
+
+    if(sscanf(str, "$%d", i))return ({ fetch(i), T_OBJECT });
+
+    /* check for data */
+    if(!catch(x=(float)str))return ({ x, T_FLOAT });
+
+    if(!catch(i=(int)str))return ({ i, T_INT });
+
+    if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
+	ret = ({ find_object(str), T_OBJECT });
+    }
+    /* default to string */
+    if(!ret || ret[0] == nil)
+	return ({ str, T_STRING });
+
+    return ret;
 }
 
 /*
@@ -443,212 +475,88 @@ static void cmd_newcommand(object user, string cmd, string str)
 */
 
 static void cmd_call(object user, string cmd, string str){
-  string id, function, args;
-  mixed ret, obj, obj2;
-  
-	if(!str || !strlen(str)){
-		message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
-		return;
-	}
+    string id, function, args, *calls;
+    mixed ret, obj, obj2;
 
-
-	if(sscanf(str, "$%s;%s;$%s", id, function, args) == 3){
-	  message("in $%s;%s;$%s\n");
-	  obj = parse_obj(id);
-	  
-	  switch (typeof(obj)) {
-    case T_INT:
-	message("Usage: " + cmd + " <obj> | $<ident>\n");
-    case T_NIL:
-	return;
-
-    case T_STRING:
-	str = obj;
-	obj = find_object(str);
-	break;
-
-    case T_OBJECT:
-	str = object_name(obj);
-	break;
-    }
-    obj2 = parse_obj(args);
-    switch (typeof(obj2)) {
-    case T_INT:
-	message("Usage: " + cmd + " <obj> | $<ident>\n");
-    case T_NIL:
-	return;
-
-    case T_STRING:
-	args = obj2;
-	obj2 = find_object(args);
-	break;
-
-    case T_OBJECT:
-	args = object_name(obj2);
-	break;
-    }
-    if(!function_object(function, (object)obj)){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(obj, function, obj2));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-    
-	}else if(sscanf(str, "$%s;%s;%s", id, function, args) == 3){
-	  message("in $%s;%s;%s\n");
-		  obj = parse_obj(id);
-	  
-	  switch (typeof(obj)) {
-    case T_INT:
-	message("Usage: " + cmd + " <obj> | $<ident>\n");
-    case T_NIL:
-	return;
-
-    case T_STRING:
-	str = obj;
-	obj = find_object(str);
-	break;
-
-    case T_OBJECT:
-	str = object_name(obj);
-	break;
-    }
-	if(!function_object(function, obj)){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(obj, function, args));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-	  
-	}else if(sscanf(str, "$%s;%s", id, function) == 2){
-	  message("in $%s;%s\n");
-		  obj = parse_obj(id);
-	  
-	  switch (typeof(obj)) {
-    case T_INT:
-	message("Usage: " + cmd + " <obj> | $<ident>\n");
-    case T_NIL:
-	return;
-
-    case T_STRING:
-      message("string\n");
-	id = obj;
-	obj = find_object(id);
-	break;
-
-    case T_OBJECT:
-      message("object\n");
-	id = object_name(obj);
-	break;
-    }
-	if(!function_object(function, find_object(id))){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(find_object(id), function));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-	}else if(sscanf(str, "%s;%s;$%s", id, function, args) == 3){
-	  message("in %s;%s;$%s\n");
-			  obj2 = parse_obj(args);
-	  
-	  switch (typeof(obj2)) {
-    case T_INT:
-	message("Usage: " + cmd + " <obj> | $<ident>\n");
-    case T_NIL:
-	return;
-
-    case T_STRING:
-	str = obj2;
-	obj2 = find_object(str);
-	break;
-
-    case T_OBJECT:
-	str = object_name(obj);
-	break;
-    }
-    if(id == "me")obj=user->query_body();  
-    
-    if(id == "here")obj=user->query_body()->query_environment();
-	  
-	  if(obj || (obj=find_player(id))) {
-	if(!function_object(function, obj)){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(obj, function, obj2));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-	  }
-	
-	}else if(sscanf(str, "%s;%s;%s", id, function, args) == 3){
-	  message("in %s;%s;%s\n");
-	  if(id == "me")obj=user->query_body();  
-	  
-	  if(id == "here")obj=user->query_body()->query_environment();
-	  
-	  if(obj || (obj=find_player(id))) {
-		if(!function_object(function, obj)){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(obj, function, args));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-	  }
-	}else if(sscanf(str, "%s;%s", id, function) == 2){
-	  message("in %s;%s\n");
-	  if(id == "me")obj=user->query_body();  
-	  
-	  if(id == "here")obj=user->query_body()->query_environment();
-	  
-	  if(obj || (obj=find_player(id))) {
-		if(!function_object(function, obj)){
-		    message("Bad call.\n");
-		    return;
-		}
-		str = catch(ret = call_other(obj, function));
-		if(str){
-		message("Error: "+str);
-		return;
-		}
-		if(ret)
-		  store(ret);
-		
-		return;
-	  }
-	}
+    if(!str || !strlen(str) || !sizeof(calls = explode(str, ";"))){
 	message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
+	return;
+    }
+    /* TODO: strip leading and ending spaces */
+    /* calls populated by ; exploded array */
+    switch(sizeof(calls)){
+    case 1:/* just have one object to deal with, just store it in history */
+	store(parse_call(calls[0])[0]);/* need more elaborate? */
+	return;
+    case 2:/* we have form call obj;function */
+	/* load up call[0] */
+	obj = parse_call(calls[0]);
+	if(obj[1] != T_OBJECT){
+	    message("Invalid object.\n");
+	    return;
+	}
+
+	if(catch(function = (string)strip(strip(calls[1]), '"'))){
+	    message("Function not string.\n");
+	    return;
+	}	
+	if(!function_object(function, (object)obj[0])){
+	    message("No function: \""+function+"\" in object.\n");
+	    return;
+	}
+	str = catch(ret = call_other((object)obj[0], function));
+	if(str){
+	    message("Error: "+str);
+	    return;
+	}
+	if(ret)
+	    store(ret);
+
+	return;
+
+    case 3:/* we have form obj;function;arg */
+	/* load up call[0] */
+	obj = parse_call(calls[0]);
+	if(obj[1] != T_OBJECT){
+	    message("Invalid object.\n");
+	    return;
+	}
+
+	if(catch(function = (string)strip(strip(calls[1]), '"'))){
+	    message("Function not string.\n");
+	    return;
+	}	
+
+	if(!function_object(function, (object)obj[0])){
+	    message("No function: \""+function+"\"in object.\n");
+	    return;
+	}
+	obj2 = parse_call(calls[2]);
+	switch(obj2[1]){
+	case T_OBJECT:
+	    str = catch(ret = call_other((object)obj[0], function, (object)obj2[0]));
+	    break;
+	case T_INT:
+	    str = catch(ret = call_other((object)obj[0], function, (int)obj2[0]));
+	    break;
+	case T_FLOAT:
+	    str = catch(ret = call_other((object)obj[0], function, (float)obj2[0]));
+	    break;
+	case T_STRING:
+	    str = catch(ret = call_other((object)obj[0], function, (string)obj2[0]));
+	    break;
+	default:
+	    str = catch(ret = call_other((object)obj[0], function, obj2[0]));
+
+	}
+	if(str){
+	    message("Error: "+str);
+	    return;
+	}
+	if(ret)
+	    store(ret);
+
+	return;
+    }
+    message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
 }

@@ -365,3 +365,188 @@
 
 
 
+- <Feb  5 02:27:13 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   unterminated string
+   11   illegal character: '\'
+   11   syntax error
+   12   unterminated string
+
+
+
+- <Feb  5 02:27:26 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   unterminated string
+   11   syntax error
+   12   unterminated string
+
+
+
+- <Feb  5 02:27:35 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   unterminated string
+   11   syntax error
+   12   unterminated string
+
+
+
+- <Feb  5 02:29:16 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/hymael/_code
+   11   unterminated string
+   11   syntax error
+
+
+
+- <Feb  5 14:52:22 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undefined function typof
+
+
+
+- <Feb  5 20:28:03 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   syntax error
+
+
+
+- <Feb  5 21:02:46 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+  450   syntax error
+
+
+
+- <Feb  5 21:03:29 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+  473   syntax error
+
+
+
+- <Feb  5 21:18:46 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+  457   syntax error
+
+
+
+- <Feb  5 21:20:39 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   syntax error
+
+
+
+- <Feb  5 21:20:49 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   syntax error
+
+
+
+- <Feb  5 21:21:27 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   syntax error
+
+
+
+- <Feb  5 21:47:23 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/obj/wiztool.c
+  462   syntax error
+  475   syntax error
+  477   redeclaration of local variable ret
+  477   declaration after statement
+  479   undeclared variable calls
+  481   function must return value
+  488   function must return value
+  494   function must return value
+  497   undeclared variable function
+  499   function must return value
+  504   function must return value
+  509   function must return value
+  514   function must return value
+  521   function must return value
+  526   function must return value
+  531   function must return value
+  548   syntax error
+
+
+
+- <Feb  5 21:47:59 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+  548   syntax error
+
+
+
+- <Feb  5 21:49:37 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /usr/System/obj/wiztool.c
+  548   illegal character constant
+  548   syntax error
+  549   illegal character constant
+
+
+
+- <Feb  5 22:30:38 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /include/auto_supplement.h
+  154   incompatible types for equality (int, string)
+  159   incompatible types for equality (int, string)
+
+
+
+- <Feb  5 22:31:54 2010> /usr/System/sys/errord Hymael:
+	Compile errors in /include/auto_supplement.h
+  149   incompatible types for = (string, int)
+  154   incompatible types for equality (int, string)
+  159   incompatible types for equality (int, string)
+
+
+
+- <Feb  5 22:34:11 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   invalid string range
+
+
+
+- <Feb  5 22:42:40 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+    6   inherit must precede all declarations
+
+
+
+- <Feb  5 22:45:54 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+    6   inherit must precede all declarations
+
+
+
+- <Feb  5 22:46:57 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+    6   inherit must precede all declarations
+
+
+
+- <Feb  5 22:47:39 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+    6   inherit must precede all declarations
+
+
+
+- <Feb  5 22:49:32 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+    6   inherit must precede all declarations
+
+
+
+- <Feb  5 22:51:13 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undefined function strip
+
+
+
+- <Feb  5 22:57:54 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/System/obj/wiztool.c
+  448   syntax error
+
+
+
+- <Feb  5 23:20:30 2010> /usr/System/sys/errord Hymael:
+	Compile error in /usr/hymael/_code
+   10   undeclared variable ACCESSD
+
+
+

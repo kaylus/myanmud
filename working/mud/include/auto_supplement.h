@@ -141,3 +141,25 @@ replace_string (string str, string pattern, string replace)
   return ret;
 }
 
+/* this strips leading and ending characters from a string, defaults to spaces */
+static string strip(string str, varargs int stripit){
+	int i, sz, slice_start, slice_end;
+	
+	if(!stripit)
+		stripit = ' ';
+	
+	slice_start=0;
+	sz = strlen(str);
+	slice_end=sz-1;
+	for(sz = strlen(str), i=0;i < sz;i++){/* leading stripit */
+		if(str[i] == stripit)slice_start++;
+		else break;
+	}	
+	
+	for(i=sz;--i >= 0;){/* ending stripit */
+			if(str[i] == stripit)slice_end--;
+			else break;
+	}	
+	return str[slice_start..slice_end];
+}
+
