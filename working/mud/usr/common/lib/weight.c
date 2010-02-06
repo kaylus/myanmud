@@ -4,7 +4,7 @@
  * weights and bulks and capacities  *
  * -Hymael                           *
  *************************************/
-#include <weight.h>
+#include <game/weight.h>
 
 int capacity;  /* how much an object can hold in weight */
 int   volume;  /* how much an object can hold in bulk   */

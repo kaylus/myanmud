@@ -6,7 +6,7 @@
  * -Hymael                                             *
  *******************************************************/
 #include <config.h>
-#include <body.h>
+#include <game/body.h>
 #include <type.h>
 
 inherit container CONTAINER;
@@ -17,6 +17,7 @@ inherit WEAPON; /* for attacking with fists */
 inherit SKILLS; /* skills */
 inherit PLAY_TOOL; /* player command interface */
 inherit WEALTH;
+inherit RACE_KIT;  /* player's race/gender */
 
 /* direction mappings */
 #define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
@@ -41,6 +42,7 @@ object end_room;            /* last room that held this body */
 static int     _state;      /* retains state of body */
 
 static void create(varargs int clone){ /* allocates for speed */
+    object heartd;
 
     if(!armors)
 	armors      = ([]);/*allocate(sizeof(BP_ALL));*/
@@ -60,11 +62,42 @@ static void create(varargs int clone){ /* allocates for speed */
     hit_spread = BODY_PARTS;
     arms       = BP_ARMS;
     _state     = S_FREE; /* we're free of all states */
+
+    roll_stats(); /* temp */
+
     combat::create();
     init_health();
     user = previous_object();
     set_id(({ user->query_name() }));
+
+    /* heart beat */
+    heartd = find_object(HEARTD);
+    if(!heartd)heartd = compile_object(HEARTD);
+
+    subscribe_event(heartd, "heart_beat");
+
+    add_event("death");
 }
+
+string query_subjective(){
+    switch(query_gender()){
+	case "male":
+	return "he";
+	case "female":
+	return "she";
+    }
+    return "it";
+}
+
+void evt_heart_beat(object obj){
+    /*LOGD->log("Heart beat working...", "heartd");*/
+    catch(do_tick());
+}
+
+int allow_subscribe(object obj, string name){
+    return 1;
+}
+
 /* work horse of player messages, replaces catch_tell */
 int message(string str){
     if(user)
@@ -74,30 +107,28 @@ int message(string str){
 }
 
 void stasis(){/* put body into stasis */
-    object room;
 
     end_room = environment;
-    room = clone_object(ROOM); /* storage unit for now */
-    this_object()->move(room, "", 1);/* stored */
+
+    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored */
     end_room->message("Juggling body.\n");
-    write_file("/logs/body_log", "Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n");
+    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
 }
 
 int awaken(){
+  LOGD->log("awaken called by " +previous_program(), "users");
     if(previous_program() != SYSTEM_USER)
 	return 0;
 
     user = previous_object();
     if(!end_room){/* room is no more */
-	end_room = clone_object(ROOM); /* temp room */
-	end_room->set_short("Temp Room");
-	end_room->set_long("Temporary residence.");
+	end_room = ROOMD->query_start_room(); /* set to start room */
     }
 
     previous_object()->message("Your body awakens.\n");
     end_room->message(previous_object()->query_Name()+" enters the room from stasis.\n");
-    this_object()->move(end_room, "", 1);
-    write_file("/logs/body_log", "Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" awakening\n");
+    this_object()->move(end_room, "", 1, 1);
+    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" awakening\n", "body_log");
     return 1;
 }
 
@@ -220,20 +251,25 @@ int query_state(){ return _state; }
 /*************************
  * weaponry and shields  *
  * nil return is success *
+ * -changed to atomic    *
  *************************/
-string wield(object obj){
+atomic void wield(object obj){
     int sz, i;
 
+    if(this_object()->query_wielded(obj)){
+	error("You're already wielding that.\n");
+    }
+
     if(!obj->is_weapon() && obj->query_type() != "shield"){
-	return "You cannot wield that.\n";
+	error("You cannot wield that.\n");
     }
 
     if(obj->is_broke()){
-	return "That weapon is broken.\n";
+	error("That weapon is broken.\n");
     }
 
     if(!(sz = sizeof(arms))){
-	return "You haven't any arms, see a doctor.\n";
+	error("You haven't any arms, see a doctor.\n");
     }
 
     if(obj->query_two_handed()){
@@ -243,17 +279,17 @@ string wield(object obj){
 		wielded[arms[i]]   = obj;
 		wielded[arms[i+1]] = 1; /* place holder */
 		/*vector_weapons();*/
-		return nil;
+		return;
 	    }
 	}
-	return "You haven't the arms to wield that.\n";
+	error("You haven't the arms to wield that.\n");
     }
 
     if(!obj->query_is_offhand() && obj->query_type() != "shield"){
 	if(!wielded[arms[0]]){
 	    wielded[arms[0]] = obj;
 	    /*vector_weapons();*/
-	    return nil;
+	    return;
 	}
 
 	if(wielded[arms[0]]->query_is_offhand() ||
@@ -263,30 +299,30 @@ string wield(object obj){
 		    wielded[arms[sz]] = wielded[arms[0]];
 		    wielded[arms[0]] = obj;
 		    /*vector_weapons();*/
-		    return nil;
+		    return;
 		}
 	    }
 	}
 
-	return "You haven't the hands to wield that.\n";
+	error("You haven't the hands to wield that.\n");
     }
 
     for(i=0; i<sz; i++){
 	if(!wielded[arms[i]]){
 	    wielded[arms[i]] = obj;
 	    /*vector_weapons();*/
-	    return nil;
+	    return;
 	}
     }
 
-    return "You haven't the hands to wield that.\n";
+    error("You haven't the hands to wield that.\n");
 }
 
 
 /**********
  * remove *
  **********/
-string unwield(object obj){
+atomic void unwield(object obj){
     object *values;
     string *indices;
     int i, sz, x;
@@ -307,13 +343,13 @@ string unwield(object obj){
 		if(wielded[arms[i]] && wielded[arms[i]] != 1){
 		    wielded[arms[0]] = wielded[arms[i]];
 		    wielded[arms[i]] = nil;
-		    return nil;
+		    return;
 		}
 	    }
 	}
-	return nil;
+	return;
     }
-    return "You're not wielding that.\n";
+    error("You're not wielding that.\n");
 }
 
 /****************
@@ -347,51 +383,56 @@ object *query_weapons(){
 /********************************************
  * outside we call this to push onto armors *
  * values : nil is success, otherwise fmess *
+ * -changed to atomic                       *
  ********************************************/
-string equip_armor(object obj){
+atomic void equip(object obj){
     string type, slot;
 
     type = obj->query_type();
+    if(!obj->is_armor() && type != "shield")
+	error("That is not a piece of armor.\n");
+
     slot = obj->query_slot();
     if(!type || !slot){
-	return "Faulty armor specs, inform a wiz.\n";
+	error("Faulty armor specs, inform a wiz.\n");
     }
     if(obj->is_broke()){
-	return "That armor is broken and needs the care of a craftsman.\n";
+	error("That armor is broken and needs the care of a craftsman.\n");
     }
     if(type == "shield"){/* deal with shield */
-	return wield(obj);
+	wield(obj);
+	return;
     }
     /*if(!query_heft(slot)){
 	    return "You seem to be missing your "+slot+".\n";
     }*/
     if(armors[slot] && armors[slot]->query_type() == type){
-	return "You're already wearing something of that nature.\n";
+	error("You're already wearing something of that nature.\n");
     }
     /* we should be good to equip, should I put messages in here? */
     armors[slot] = obj;
     incr_ac(slot, obj->query_ac());
-    return nil;
 }
 
 /***********************
  * remove, nil success *
  ***********************/
-string unequip_armor(object obj){
+atomic void unequip(object obj){
     object *values;
     string *indices;
     int i;
     if(obj->query_type() == "shield"){
-	return unwield(obj);
+	unwield(obj);
+	return;
     }
     values = map_values(armors);
     if((i = member_array(obj, values)) > -1){
 	indices = map_indices(armors);
 	armors[indices[i]] = nil;
 	decr_ac(indices[i], obj->query_ac());
-	return nil;
+	return;
     }
-    return "You aren't wearing the "+obj->query_short()+".\n";
+    error("You aren't wearing the "+obj->query_short()+".\n");
 }
 
 /****************
@@ -422,10 +463,10 @@ object *disable_limb(string limb){
     if((i = member_array(limb, arms)) > -1){
 	if(wielded[limb]){
 	    if(wielded[limb] == 1){/* deal with two-hander */
-		unwield(wielded[arms[i-1]]);
+		catch(unwield(wielded[arms[i-1]]));
 	    }else{
 		items += ({ wielded[limb] });
-		unwield(wielded[limb]);
+		catch(unwield(wielded[limb]));
 	    }
 	}
 	arms -= ({ limb });
@@ -433,7 +474,7 @@ object *disable_limb(string limb){
 
     if(armors[limb]){
 	items += ({ armors[limb] });
-	unequip_armor(armors[limb]);
+	catch(unequip(armors[limb]));
 	return items;
     }
     return items;
@@ -487,15 +528,14 @@ int handle_break(object owner, varargs object armor, int damage){
  ****************************/
 atomic void release_object(object ob, varargs int slide){
     /* check equipped, if so, unequip it */
-    int func, fun;
+
     ::release_object(ob, slide);  /* pass the ball */
 
     if(query_equipped(ob) ||
     (ob->query_type() == "shield" &&
       query_wielded(ob))){/* don't like doing messages here, but fuck it */
-	unequip_armor(ob);
-	catch(fun = call_other(ob, ob->query_unequip_func()));
-	if(!fun){/* messages not handled */
+	unequip(ob);
+	if(catch(call_other(ob, ob->query_unequip_func()))){/* messages not handled */
 	    this_object()->message("You unequip "+ob->query_short()+".\n");
 	    this_object()->query_environment()->message(
 	      this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
@@ -503,8 +543,7 @@ atomic void release_object(object ob, varargs int slide){
 	}
     }else if(query_wielded(ob)){
 	unwield(ob);
-	catch(fun = call_other(ob, ob->query_unwield_func()));
-	if(!fun){/* messages not handled */
+	if(catch(call_other(ob, ob->query_unwield_func()))){/* messages not handled */
 	    this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
 	    this_object()->query_environment()->message(
 	      this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
@@ -527,7 +566,7 @@ string query_long() {
     object *inventory, *worn_items, *wielded_items;
 
     inventory = this_object()->query_inventory();
-    ret = "";
+    ret = query_short()+" is a "+capitalize(query_race()) + " " + query_gender()+"\n";
     total = 0;
     if (wielded){
 	wielded_items = map_values(wielded);
@@ -551,9 +590,9 @@ string query_long() {
     }
     ret += "\n";
     if (!inventory || ((sz=sizeof(inventory))-total)==0) {
-	ret += /*capitalize(this_object()->query_subjective())+*/" is not carrying anything.\n";
+	ret += capitalize(query_subjective())+" is not carrying anything.\n";
     } else {
-	ret += /*capitalize(this_object()->query_subjective())+*/" is carrying:\n";
+	ret += capitalize(query_subjective())+" is carrying:\n";
 	for (i=0; i<sz; i++){
 	    if(worn_items && member_array(inventory[i], worn_items) > -1)continue;
 	    if(wielded_items && member_array(inventory[i], wielded_items)>-1)continue;
@@ -561,12 +600,13 @@ string query_long() {
 	}
     }
 
-    return ret;
+    return ret + query_xa();
 }
 /* input command decipherer */
 int input(string str){
     string cmd, args, fail_msg;
     mixed ret_fail;
+    object *inv;
     fail_msg = "";
 
     if(sscanf(str, "%s %s", cmd, args) < 2){
@@ -574,13 +614,28 @@ int input(string str){
 	args = "";
     }
 
+    /* do some alias stuff */
+    if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
+    string argx;
+	cmd = user->query_alias(cmd);
+	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
+		args = argx + args;
+	}
+    }
+
     /* return is as follows
-	    1 - action done, end command search
-	    nil - continue seek
-	    string - fail string, continue seek
- */
+	 *  1 - action done, end command search
+	 *  nil - continue seek
+	 *  string - fail string, continue seek
+     */
 
     /* body bin, make this a loop */
+
+    /* channeld check */
+    catch{
+		if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+	}
+
     ret_fail = call_other(this_object(), "cmd_" + cmd, args);/* change to call_limited? */
 
     switch(typeof(ret_fail)){
@@ -592,7 +647,41 @@ int input(string str){
 	return 1;
     }
 
-    /* other bins... */
+   /* other bins... */
+    /* room/body inventory bin */
+    /* error checking */
+    inv = ({});
+    if(query_environment()){ 
+      inv += ({ query_environment() });
+      if(query_environment()->query_inventory()) 
+	inv += query_environment()->query_inventory();
+    }
+    
+    if(query_inventory())
+      inv += query_inventory();
+    
+    inv -= ({ this_object() });
+        
+    if(sizeof(inv)){
+	int i;
+	i = sizeof(inv);
+	while(--i>=0){
+
+
+
+	    ret_fail = call_other(inv[i], "perform_action", cmd, args);
+
+	    switch(typeof(ret_fail)){
+	    case T_STRING:/* fail string, continue seek */
+		fail_msg = ret_fail;
+	    case T_NIL:/* continue seek */
+		break;
+	    default: /* done */
+		return 1;
+	    }
+	}
+    }
+
     if(!strlen(fail_msg))
 	return 0;
 
@@ -614,7 +703,7 @@ string flip_dir(string dir){
 }
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */
-atomic void move(mixed dest, string direction, varargs int silent){
+atomic void move(mixed dest, varargs string direction, int silent, int nolook){
     object old_env;
 
     if(!dest)
@@ -625,8 +714,11 @@ atomic void move(mixed dest, string direction, varargs int silent){
 	dest = find_object(dest);
     }
     ::move(dest);
-    /* Let the player take a peek at his new environment */
-    this_object()->message(environment->query_long());
+
+    if(!nolook){
+	/* Let the player take a peek at his new environment, add in brief support? */
+	this_object()->message(environment->query_long());
+    }
 
     if(silent) return;
 
@@ -641,7 +733,7 @@ atomic void move(mixed dest, string direction, varargs int silent){
 	dest->message(query_Name() + " enters" + from + ".\n", ({ this_object() }) ) ;
     } else {
 	if (old_env)
-	    old_env->room_tell(query_Name() + " vanishes into the shadows.\n");
+	    old_env->message(query_Name() + " vanishes into the shadows.\n");
 
 	dest->message(query_Name() + " appears from the shadows.\n", ({ this_object() }) );
     }

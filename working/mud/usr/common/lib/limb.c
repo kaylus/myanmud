@@ -5,9 +5,9 @@
 inherit CONTAINER;
 inherit WEAPON;
 
-private int state;
-private string name;
-private int handle;
+int state;
+string name;
+int handle;
 
 void create(varargs int clone) {
     set_short ("a limb") ;
@@ -15,16 +15,15 @@ void create(varargs int clone) {
     set_id ( ({ "limb", "a limb" }) ) ;
     handle = call_out("decay", DECAY_TIME);
     state = 0; /* 0 fresh, 1 decayed, 2 rank, gone */
-    name = "";
 }
 
 int is_limb(){ return 1; }
 
-void set_limb(string name, string part){
-    name = capitalize(name);
+void set_limb(string vname, string part){
+    name = capitalize(vname);
     set_short(name+"'s "+part);
     set_long(name+"'s "+part+", they'd appreciate if you returned it.\n");
-    id += ({ lower_case(name)+"'s "+part, part });
+    id += ({ lowercase(name)+"'s "+part, part });
 }
 
 void decay(){
@@ -45,7 +44,7 @@ void decay(){
 		stuff[sz]->move(this_object()->query_environment());
 	    }
 	}
-	destruct();
+	destruct_object(this_object());
 	return;
     }
     handle = call_out("decay", DECAY_TIME);

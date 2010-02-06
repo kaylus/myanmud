@@ -29,10 +29,8 @@
        - Compile list automatically by time, or just specify time?
 */
 
-
 inherit objreg API_OBJREG;
 inherit rsrc API_RSRC;
-
 
 /* With aggro_recompile when a parent is found that we don't have an
    issue for, we'll recompile it.  That'll keep all the issue IDs the
@@ -85,12 +83,7 @@ private void   release_system(void);
 
 
 /* These objects are used for tracking issues of objects */
-#define LIB_LWO      "/usr/System/data/lib_issue"
-#define CLONABLE_LWO "/usr/System/data/clonable_issue"
-#define HEAVY_ARRAY "/usr/System/obj/heavy_array"
-#define ISSUE_LWO   "/usr/System/lib/issue_lwo"
-#define TELNETD  "/usr/System/sys/telnetd"
-#define BINARYD  "/usr/System/sys/binaryd"
+
 
 static void create(varargs int clone)
 {
@@ -106,7 +99,7 @@ LOGD->log("Entering create of objectd", "objectd");
   /* Make a new heavy array to hold the object issues */
   if(!find_object(HEAVY_ARRAY))
     compile_object(HEAVY_ARRAY);
-
+LOGD->log("Made heavy array", "objectd");
   obj_issues = clone_object(HEAVY_ARRAY);
   dest_issues = ([ ]);
   setup_done = 0;
@@ -116,13 +109,17 @@ LOGD->log("Entering create of objectd", "objectd");
   all_libs = ([ ]);
   comp_dep = ({ });
   upgrade_clonables = ({ });
-
+LOGD->log("before main finds", "objectd");
   if(!find_object(ISSUE_LWO))
     compile_object(ISSUE_LWO);
+	LOGD->log("after issue_lwo compile", "objectd");
   if(!find_object(CLONABLE_LWO))
     compile_object(CLONABLE_LWO);
+	LOGD->log("after issue_clonable_lwo compile", "objectd");
   if(!find_object(LIB_LWO))
     compile_object(LIB_LWO);
+	
+	LOGD->log("just before driver call", "objectd");
   find_object(DRIVER)->set_object_manager(this_object());        /* become object manager */
   LOGD->log("Exiting create of objectd", "objectd");
 }
@@ -1236,7 +1233,7 @@ string report_on_object(string spec) {
 private void suspend_system() {
   if(SYSTEM()) {
     RSRCD->suspend_callouts();
-    TELNETD->suspend_input(0);  /* 0 means "not shutdown" */
+    TEL_MANAGER->suspend_input(0);  /* 0 means "not shutdown" */
   } else
     error("Only privileged code can call suspend_system!");
 }
@@ -1247,7 +1244,7 @@ private void suspend_system() {
 private void release_system() {
   if(SYSTEM()) {
     RSRCD->release_callouts();
-    TELNETD->release_input();
+    TEL_MANAGER->release_input();
   } else
     error("Only privileged code can call release_system!");
 }

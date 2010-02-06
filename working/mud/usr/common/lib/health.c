@@ -3,7 +3,7 @@
  * NOTE: receive_damage may default to handle splash      *
  *  -Hymael                                               *
  **********************************************************/
-#include <body.h>
+#include <game/body.h>
 
 #define SPACE5 "     "
 #define RESET  "\033[0m"
@@ -66,6 +66,16 @@ void init_health(){
     refresh_health();
 }
 
+void die(){
+	event("death", this_object());
+	this_object()->cease_weapons();
+	this_object()->message("\033[30;1mYou have died.\033[0m\n");
+	this_object()->query_environment()->message(this_object()->query_Name()+" has died.\n", ({this_object()}));
+	refresh_health();
+	this_object()->pacify();
+
+}
+
 /************************
  * returns health state *
  ************************/
@@ -101,7 +111,7 @@ int damage_part(string part, object dealer, int damage, varargs string type){
 	    object limb, *stuff, room;
 	    string vname, dname, vposs;
 	    vname = this_object()->query_Name();
-	    vposs = this_object()->query_possessive();
+	    vposs = " ";/*this_object()->query_possessive();*/
 	    dname = dealer->query_Name();
 	    room  = this_object()->query_environment();
 
@@ -171,25 +181,27 @@ void malignant(){/* tick by tick deal with malignancies */
 	    continue;
 	}
 
-	if(malignancies[i][M_MESS]){
+	if(malignancies[i][M_MESS]){/* add observers? */
 	    this_object()->message(BLEED_M);
 	}
 	if(damage_part(malignancies[i][M_PART], nil, malignancies[i][M_DAM], malignancies[i][M_TYPE]) == 2) break; /* death hack */
     }
 }
+#if 0
 /* debug */
-/*string print_maligs(){
+string print_maligs(){
 	int i;
 	string ret;
 	i = sizeof(malignancies);
 	ret = "...";
-	/*while(i-- >= 0){*/
-/*ret += "part: "+(string)malignancies[0][M_PART];/*+" time: "+malignancies[i][M_TIME]+
+	while(i-- >= 0){
+ret += "part: "+(string)malignancies[0][M_PART];+" time: "+malignancies[i][M_TIME]+
       " damage: "+malignancies[i][M_DAM]+" mess: "+malignancies[i][M_MESS]+
       " gpart: "+malignancies[i][M_GPART]+"\n");
-}*/
-/*return ret;
-}*/
+}
+return ret;
+}
+#endif
 void stabilize_part(string part){/* this is to remove any malignancies associated to a part being stabilized */
     int i;
     if(!malignancies) return;
@@ -237,7 +249,7 @@ int receive_healing(int healing, varargs string part){
  * this heals us up, may also add other per heart beat things *
  * this will eventually become race specific and such         *
  **************************************************************/
-void do_tick(){
+void do_tick(){/* needs plugging into a heartbeat */
     receive_healing(1);
     if(malignancies) malignant();
     /* do other things, like empty stomachs */

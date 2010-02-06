@@ -23,7 +23,7 @@
  * NOTE: the engage commands and others like it actually do the lock *
  *       aspect not this code                                        *
  *********************************************************************/
-#include <body.h>
+#include <game/body.h>
 
 private object *locked_with;	/* objects whom this object is locked into melee with */
 private object *angered;	/* objects whom this object has angered, namely with range */
@@ -61,20 +61,20 @@ private mapping weapon_handles;	/* these are the call_out handles for weapons */
 void vector_weapons ();
 /***PROTOS***/
 
+void pacify(){
+	locked_with = ({});
+	angered = ({});
+}
+
 void
 create ()
 {				/* NOTE: this must be called */
-  locked_with = (
-		  {
-		  });
-  angered = (
-	      {
-	      });
+  pacify();
   block_attack = 0;
   weapon_handles = ([]);
-} int
+}
 
-query_is_attackable ()
+int query_is_attackable ()
 {
   return 1;
 }
@@ -411,8 +411,8 @@ stop_attacking (object obj)
 }
 
 void
-evt_death (mixed dead)
+evt_death (object obj, object dead)
 {
-  stop_attacking (dead[0]);
-  catch (unsubscribe_event (dead[0], "death"));
+  stop_attacking (dead);
+  catch (unsubscribe_event (dead, "death"));
 }

@@ -40,7 +40,7 @@ void decay(){
 		stuff[sz]->move(this_object()->query_environment());
 	    }
 	}
-	destruct();
+	destruct_object(this_object());
 	return;
     }
     call_out("decay", DECAY_TIME);

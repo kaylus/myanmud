@@ -15,6 +15,12 @@
 
 inherit OBJECT;
 
+
+#define TP this_player()
+#define TPN this_player()->query_Name()
+#define write(x) TP->message(x)
+#define say(x) TP->query_environment()->message((x), ({TP}))
+
 private static object *inventory;
 
 /***PROTOS***/
@@ -22,11 +28,10 @@ object present(string id);
 
 static void create(int clone){
     /* Hymael - adding in bag functionality */
-#if 0
+
     add_command("get",  "get_from");
     add_command("put",  "put_in");/* look in container must be utilized */
     add_command("look", "look_in");
-#endif
 
 }
 
@@ -40,6 +45,9 @@ int is_container(){ return 1; }
 atomic void receive_object(object ob, varargs int slide){
     if(!inventory)
 	inventory = ({});
+
+	if(ob->prevent_get())
+		error("This object cannot be in inventory.");
 
     inventory += ({ ob });
     if(!slide)
@@ -55,8 +63,8 @@ atomic void release_object(object ob, varargs int slide){
 	::release_object(ob);
 }
 
-#if 0
-int look_in(string str){
+
+mixed look_in(string str){
     string bag;
     int i;
 
@@ -65,7 +73,7 @@ int look_in(string str){
 
     /* let's look inside */
     catch(i = sizeof(inventory));
-    say(TPN+" looks inside "+article(bag)+" "+bag+".\n");
+    say(TPN+" looks inside "+/*article(bag)+*/" "+bag+".\n");
     if(!i){
 	write("Nothing inside of that.\n");
 	return 1;
@@ -77,7 +85,6 @@ int look_in(string str){
     write(str);
     return 1;
 }
-#endif
 
 /* sneaky but what the fuck */
 atomic void _get(object item, object getter){
@@ -89,8 +96,8 @@ atomic void _get(object item, object getter){
     release_object(item);
     item->slide(getter);
 }
-#if 0
-int get_from(string str){/* handle form get X from Y */
+
+mixed get_from(string str){/* handle form get X from Y */
     string item, bag, type;
     object ob;
     int number;
@@ -103,11 +110,11 @@ int get_from(string str){/* handle form get X from Y */
 	string err;
 	ob = present(type);
 	if(!ob || !ob->is_coins())
-	    return fail_msg("You don't see that money.\n");
+	    return "You don't see that money.\n";
 
 	err = catch(ob->coin_move(TP, number, (environment == TP)));
 	if(err){
-	    return fail_msg(err);
+	    return err;
 	}
 	write("You get "+number+" "+type+" from "+bag+".\n");
 	say(TPN+" gets some money from "+bag+".\n");
@@ -119,18 +126,18 @@ int get_from(string str){/* handle form get X from Y */
 	int i;
 	catch(i = sizeof(inventory));
 	if(!i)
-	    return fail_msg("Nothing in "+bag+".\n");
+	    return "Nothing in "+bag+".\n";
 
 	while(i--){/* proceed to empty */
 	    item = catch(_get(inventory[i], TP));
 	}
 	write("You remove everything from the "+bag+".\n");
-	say(TPN+" gets everything from "+article(bag)+" "+bag+".\n");
+	say(TPN+" gets everything from "+/*article(bag)+*/" "+bag+".\n");
 	return 1;
     }
     ob = present(item);
     if(!ob)
-	return fail_msg("No "+item+" in "+bag+".\n");
+	return "No "+item+" in "+bag+".\n";
 
     /* ob exists in this bag */
     if((str = catch(_get(ob, TP)))){/* no move */
@@ -138,7 +145,7 @@ int get_from(string str){/* handle form get X from Y */
     } else { /* moved */
 	str = ob->query_short();
 	write("You take the "+str+" from "+bag+".\n");
-	say(TPN+" gets a "+str+" from "+article(bag)+" "+bag+".\n");
+	say(TPN+" gets a "+str+" from "+/*article(bag)+*/" "+bag+".\n");
     }
     return 1;
 }
@@ -146,31 +153,31 @@ int get_from(string str){/* handle form get X from Y */
 /* sneaky but what the fuck */
 atomic void _put(object item, object putter){
     if(environment != putter){/* normal movement */
-	item->move(TO);
+	item->move(this_object());
 	return;
     }
     receive_object(item);
     putter->release_object(item, 1);
-    item->slide(TO);
+    item->slide(this_object());
 }
 
 
 
-int put_in(string str){/* handle form put X in(to) Y */
+mixed put_in(string str){/* handle form put X in(to) Y */
     string item, bag, type;
     object ob;
     int number;
 
     if(!str || sscanf(str, "%s in %s", item, bag)!=2 || !id(bag))/* not this bag */
-	return fail_msg("Usage: put <item> in <bag>\n");
+	return "Usage: put <item> in <bag>\n";
 
     /***MONEY***/
     if(sscanf(item, "%d %s coin", number, type) == 2 || sscanf(item, "%d %s", number, type) == 2){
 	string err;
 
-	err = catch(TP->wealth_move(TO, type, number, (environment == TP)));
+	err = catch(TP->wealth_move(this_object(), type, number, (environment == TP)));
 	if(err){
-	    return fail_msg(err);
+	    return err;
 	}
 	write("You put "+number+" "+type+" into "+bag+".\n");
 	say(TPN+" puts some money into "+bag+".\n");
@@ -180,10 +187,10 @@ int put_in(string str){/* handle form put X in(to) Y */
 
     ob = TP->present(item);
     if(!ob)
-	return fail_msg("You don't possess "+article(item)+" "+item+".\n");
+	return "You don't possess "+/*article(item)+*/" "+item+".\n";
 
-    if(ob == TO)
-	return fail_msg("You cannot put an object inside itself.\n");
+    if(ob == this_object())
+	return "You cannot put an object inside itself.\n";
 
     /* ob exists in this bag */
     if((str = catch(_put(ob, TP)))){/* move fail */
@@ -191,11 +198,11 @@ int put_in(string str){/* handle form put X in(to) Y */
     } else { /* moved */
 	str = ob->query_short();
 	write("You put "+str+" into "+bag+".\n");
-	say(TPN+" puts a "+str+" into "+article(bag)+" "+bag+".\n");
+	say(TPN+" puts a "+str+" into "+/*article(bag)+*/" "+bag+".\n");
     }
     return 1;
 }
-#endif
+
 /* query_inventory() returns the inventory of this object. Right now
    I'm passing the array which is the Wrong Thing. I need to alter
    this to return a copy. */
@@ -225,14 +232,14 @@ object present(string id){
 
     if(!inventory || (sz = sizeof(inventory)) == 0)
 	return nil;
-#if 0
+
     if(id == "me"){
 	if(member_array(TP, inventory) > -1){
 	    return TP;
 	}
 	return nil;
     }
-#endif
+
     if(id && sscanf(id, "%s %d", hardid, num) == 2){/* we have sword 2 form */
 	if(num > 0){
 	    while(sz--){

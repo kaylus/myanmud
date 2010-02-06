@@ -6,14 +6,14 @@
  *******************************/
 
 /** libs */
-#define LIB_ANVIL "/usr/System/lib/Tradeskills/anvil";
-#define LIB_COMP "/usr/System/lib/Tradeskills/component";
+#define LIB_ANVIL "/usr/game/lib/Tradeskills/anvil";
+#define LIB_COMPONENT "/usr/game/lib/Tradeskills/component";
 
 /** skill tag name */
 #define W_SMITH "weaponsmithing"
 
 /** a log file for things related to weapon smithing */
-#define W_SMITH_LOG(x) log_file("/log/weaponsmith", "WS LOG: "+x+"\nAt: "+ctime(time())+"\n")
+#define W_SMITH_LOG(x) LOGD->log(x, "weaponsmithing");
 
 /** prime attribute */
 #define W_SMITH_PA  "strength"

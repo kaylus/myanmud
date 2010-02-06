@@ -17,6 +17,12 @@ void roll_stats(){/* this will randomly populate stats */
     }
 }
 
+void create(varargs int clone){
+	stats = ([]);
+	stats_boost = ([]);
+	roll_stats();
+}
+
 void set_stat(string stat, int val){
     if(!stats) stats = ([]);
     if(member_array(stat, ATTRIBUTES) < 0)return;
@@ -41,7 +47,7 @@ mapping query_stats(){/* full mapping */
 
     i = sizeof(ATTRIBUTES);
     while(i--){
-	ret[ATTRIBUTES[i]] = stats[ATTRIBUTES[i]] + stats_boost[ATTRIBUTES[i]];
+	ret[ATTRIBUTES[i]] = query_stat(ATTRIBUTES[i]);
     }
     return ret;
 }

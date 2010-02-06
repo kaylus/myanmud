@@ -10,7 +10,7 @@
 
 #include <type.h>
 
-inherit "/usr/common/lib/weight";
+inherit WEIGHT;
 
 static string short_desc;          /* description of the object in inventories */
 static string long_desc;           /* description of the object when looked at */
@@ -21,6 +21,10 @@ private static mapping temp_var;   /* this will contain temporary variables */
 mapping vars;            	       /* very against this but somethings it is necessary to
 									  have a dynamic set of variables that hang around */
 
+
+int is_object(){
+ return 1; 
+}
 /***PROPS***/
 void set_temp(string var, mixed val){
     if(!temp_var)
@@ -147,9 +151,9 @@ void add_command(string word, string function){
     commands[word] = function;
 }
 
-int perform_action(string verb, varargs string arg){
+mixed perform_action(string verb, varargs string arg){
     if(!commands || !commands[verb])
-	return 0;
+	return nil;
 
     if(arg)
 	return call_other(this_object(), commands[verb], arg);
@@ -159,12 +163,10 @@ int perform_action(string verb, varargs string arg){
 
 /* destruct: remove from inventories */
 atomic void destruct(){
-    object environ;
 
-    environ = this_object()->query_environment();
-    if(environ)
-	environ->release_object(this_object());
+    if(environment)
+	environment->release_object(this_object());
 
-   /* destruct_object(this_object());*/
+    /*destruct_object(this_object());*/
 }
 

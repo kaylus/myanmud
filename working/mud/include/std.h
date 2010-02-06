@@ -5,46 +5,49 @@
 
 # ifndef ASTARIA_CLONE
 
-# define BODY_LIB "/usr/System/lib/body"
-# define BODY "/usr/System/obj/body" /* body */
-# define HEALTH "/usr/System/lib/health" /* health */
-# define COMBAT "/usr/System/lib/combat" /* combat */
-# define WEAPON "/usr/System/lib/weapon" /* weapon */
-# define PLAY_TOOL "/usr/System/lib/play_tool"
+# define BODY_LIB "/usr/common/lib/body"
+# define BODY "/usr/common/obj/body" /* body */
+# define HEALTH "/usr/common/lib/health" /* health */
+# define COMBAT "/usr/common/lib/combat" /* combat */
+# define WEAPON "/usr/common/lib/weapon" /* weapon */
+# define PLAY_TOOL "/usr/common/lib/play_tool"
+# define ARMOR "/usr/common/lib/armor"
 
 # else /* astaria clone combat and shit */
 
-# define BODY_LIB "/usr/System/lib/attic/body"
-# define BODY "/usr/System/obj/body" /* body */
-# define HEALTH "/usr/System/lib/attic/health" /* health */
-# define COMBAT "/usr/System/lib/attic/combat" /* combat */
-# define WEAPON "/usr/System/lib/attic/weapon" /* weapon */
-# define PLAY_TOOL "/usr/System/lib/attic/play_tool"
+# define BODY_LIB "/usr/common/lib/attic/body"
+# define BODY "/usr/common/obj/body" /* body */
+# define HEALTH "/usr/common/lib/attic/health" /* health */
+# define COMBAT "/usr/common/lib/attic/combat" /* combat */
+# define WEAPON "/usr/common/lib/attic/weapon" /* weapon */
+# define PLAY_TOOL "/usr/common/lib/attic/play_tool"
+# define ARMOR "/usr/common/lib/attic/armor"
 
 # endif
 
-# define WEIGHT "/usr/System/lib/weight" /* weight logic */
-# define SKILLS "/usr/System/lib/skills" /* skills */
-# define WEALTH "/usr/System/lib/wealth" /* wealth */
+# define WEIGHT "/usr/common/lib/weight" /* weight logic */
+# define SKILLS "/usr/common/lib/skills" /* skills */
+# define WEALTH "/usr/common/lib/wealth" /* wealth */
+# define ALIAS  "/usr/common/lib/alias"  /* aliases */
 
-# define RACE_KIT "/usr/System/lib/race_kit" /* race info */
-# define OBJECT "/usr/System/lib/object" /* object */
-# define CONTAINER "/usr/System/lib/container" /* container */
-# define STATS "/usr/System/lib/stats" /* stats */
+# define RACE_KIT "/usr/common/lib/race_kit" /* race info */
+# define OBJECT "/usr/common/lib/object" /* object */
+# define CONTAINER "/usr/common/lib/container" /* container */
+# define STATS "/usr/common/lib/stats" /* stats */
 /* player user interface tool,
    not sure if this is proper route, make object
    for easy redirection? */
 
 
-# define ROOM "/usr/System/obj/room" /* room */
-# define COIN "/usr/System/obj/coin" /* coin */
+# define ROOM "/usr/common/obj/room" /* room */
+# define COIN "/usr/common/obj/coin" /* coin */
 
 # define ESC "\033" /* escape character */
 
 # define OBJ_ACCOUNT /* this uses the account as objects
-                        system */
+                        system, deprecated */
 
-# define HEARTD "/usr/common/sys/heartd"
+# define HEARTD "/usr/System/sys/heartd"
 # define LOGD "/usr/System/sys/logd" /* logger */
 # define HELPD "/usr/System/sys/helpd" /* helper daemon */
 # define ROOMD "/usr/System/sys/roomd" /* room daemon */
@@ -55,3 +58,8 @@
 # define ERRORD "/usr/System/sys/errord"
 # define OBJECTD "/usr/System/sys/objectd"
 # define ANSID "/usr/System/sys/ansi_parser"  
+
+#define LIB_LWO      "/usr/common/data/lib_issue"
+#define CLONABLE_LWO "/usr/common/data/clonable_issue"
+#define HEAVY_ARRAY "/usr/common/obj/heavy_array"
+#define ISSUE_LWO   "/usr/common/lib/issue_lwo"

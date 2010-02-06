@@ -12,7 +12,7 @@
 #define TWO_HAND 2 /* bit for two hand */
 /* attributes NOTE: add ins for ranged and reach */
 
-inherit "/usr/common/lib/object";
+inherit OBJECT;
 
 static string type;         			/* of TYPES */
 static int bit_att;                     /* a bitfield of attributes */
