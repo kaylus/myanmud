@@ -1,0 +1,12 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+stats ([6|"charisma":13,"constitution":12,"dexterity":8,"intelligence":6,"strength":9,"wisdom":4,])
+health ([6|"head":({3|0,60,0,}),"left arm":({3|180,120,16,}),"left leg":({3|0,180,0,}),"right arm":({3|0,120,0,}),"right leg":({3|0,180,0,}),"torso":({3|89,540,0,}),])
+malignancies ({2|0,({6|"torso",-1,10,"internal","bleeds profusely","left arm",}),})
+essential ({2|"torso","head",})
+name "martian"
+cap_name "Martian"
+quit_location "/users/hymael/workroom"
+tuned_channels ({0|})
+backlog ([1|"say":({10|"Hymael said, \"Do you masticate?\"[0m\n","Sileas said, \"Let me look that one up\"[0m\n","Sileas said, \"No not really\"[0m\n","Hymael said, \"Do you masturbate\"[0m\n","Sileas said, \"Why do you ask?\"[0m\n","Hymael said, \"Just curious\"[0m\n","Sileas said, \"No\"[0m\n","Hymael said, \"Really?\"[0m\n","Sileas said, \"You have to trust me :p\"[0m\n","Hymael said, \"Ok, gonna test this shit\"[0m\n",}),])
+colorsets ([0|])

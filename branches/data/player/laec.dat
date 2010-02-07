@@ -1,0 +1,8 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+name "laec"
+cap_name "Laec"
+quit_location "/world/labyrinth"
+tuned_channels ({0|})
+backlog ([1|"say":({7|"Hymael said, \"Slut\"[0m\n","Hymael said, \"Let's kill it\"[0m\n","Hymael said, \"Yay\"[0m\n","Hymael said, \"Haha\"[0m\n","Hymael said, \"What a mess\"[0m\n","Hymael said, \"Well, I'm out\"[0m\n","Hymael said, \"And this place is coming down :P\"[0m\n",}),])
+colorsets ([0|])

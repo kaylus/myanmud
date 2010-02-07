@@ -1,0 +1,16 @@
+gender "female"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+capacity 150
+volume 150
+bulk 200
+weight 200
+stats ([6|"charisma":9,"constitution":10,"dexterity":6,"intelligence":9,"strength":11,"wisdom":7,])
+health ([6|"head":({3|0,50,0,}),"left arm":({3|0,100,0,}),"left leg":({3|0,150,0,}),"right arm":({3|0,100,0,}),"right leg":({3|0,150,0,}),"torso":({3|0,450,0,}),])
+malignancies ({0|})
+essential ({2|"torso","head",})
+name "riala"
+cap_name "Riala"
+quit_location "/users/hymael/workroom"
+tuned_channels ({0|})
+backlog ([1|"say":({10|"Hymael said, \"Well, bye\"[0m\n","Hymael said, \"You're leaving :(\"[0m\n","Hymael said, \"No, bye :)\"[0m\n","Hymael said, \"Get your beauty sleep\"[0m\n","Hymael said, \"You should think of yourself more often\"[0m\n","Hymael said, \"That's a good trait\"[0m\n","Hymael said, \"You'll be alright\"[0m\n","Hymael said, \"Night\"[0m\n","Hymael said, \"Ya, that's not my code\"[0m\n","Hymael said, \"That's why it sucks ass\"[0m\n",}),])
+colorsets ([0|])

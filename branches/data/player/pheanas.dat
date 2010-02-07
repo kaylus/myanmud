@@ -1,0 +1,8 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+name "pheanas"
+cap_name "Pheanas"
+wizard 1
+quit_location "/world/start"
+tuned_channels ({0|})
+backlog ([1|"say":({10|"Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, strike igor 2\n","Hymael said: Igor, get corpse\n",}),])

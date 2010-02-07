@@ -1,0 +1,55 @@
+diff -r dgdtest/dgd/src/comm.c dgd/src/comm.c
+352c352
+< 	    } else if ((*p & 0x7f) < ' ' && *p != HT && *p != BEL && *p != BS) {
+---
+> 	    } else if ((*p & 0x7f) < ' ' && *p != HT && *p != BEL && *p != BS && *p != ESC) {
+diff -r dgdtest/dgd/src/ed/buffer.c dgd/src/ed/buffer.c
+54c54
+< void eb_add(eb, ln, getline, context)
+---
+> void eb_add(eb, ln, get_line, context)
+57c57
+< char *(*getline) P((char*)), *context;
+---
+> char *(*get_line) P((char*)), *context;
+61c61
+<     b = bk_new(eb->lb, getline, context);
+---
+>     b = bk_new(eb->lb, get_line, context);
+diff -r dgdtest/dgd/src/ed/fileio.c dgd/src/ed/fileio.c
+23c23
+<  * NAME:	getline()
+---
+>  * NAME:	get_line()
+27c27
+< static char *getline(ptr)
+---
+> static char *get_line(ptr)
+129c129
+<     eb_add(eb, l, getline, (char *) &x);
+---
+>     eb_add(eb, l, get_line, (char *) &x);
+diff -r dgdtest/dgd/src/ed/line.c dgd/src/ed/line.c
+374c374
+<  * DESCRIPTION:	read a block of lines from function getline. continue until
+---
+>  * DESCRIPTION:	read a block of lines from function get_line. continue until
+377c377
+< block bk_new(lb, getline, context)
+---
+> block bk_new(lb, get_line, context)
+379c379
+< char *(*getline) P((char*)), *context;
+---
+> char *(*get_line) P((char*)), *context;
+386c386
+<     text = (*getline)(context);
+---
+>     text = (*get_line)(context);
+399c399
+<     while ((text=(*getline)(context)) != (char *) NULL) {
+---
+>     while ((text=(*get_line)(context)) != (char *) NULL) {
+diff -r dgdtest/dgd/src/host.h dgd/src/host.h
+362a363
+> # define ESC    '\033'

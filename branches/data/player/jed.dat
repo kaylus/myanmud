@@ -1,0 +1,11 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+health ([6|"head":({3|0,35,0,}),"left arm":({3|0,70,0,}),"left leg":({3|51,105,2,}),"right arm":({3|0,70,0,}),"right leg":({3|0,105,0,}),"torso":({3|20,315,0,}),])
+malignancies ({109|"torso",-1,10,"internal","bleeds profusely","left arm","torso",-1,10,"internal","bleeds profusely","right arm","torso",-1,10,"internal","bleeds profusely","left leg","torso",-1,10,"internal","bleeds profusely","left arm","torso",-1,10,"internal","bleeds profusely","left leg","torso",-1,10,"internal","bleeds profusely","left arm","torso",-1,10,"internal","bleeds profusely","right arm","torso",-1,10,"internal","bleeds profusely","left arm","torso",-1,10,"internal","bleeds profusely","left leg","head",-1,4,"cold","throbs","left arm","head",-1,4,"cold","throbs","left arm","head",-1,4,"cold","throbs","head","head",-1,4,"cold","throbs","head","head",-1,4,"cold","throbs","left arm","head",-1,4,"cold","throbs","head","head",-1,4,"cold","throbs","left arm","head",-1,4,"cold","throbs","head",0,0,({6|"torso",-1,10,"internal","bleeds profusely","left leg",}),0,0,0,({6|"torso",-1,10,"internal","bleeds profusely","left leg",}),})
+essential ({2|"torso","head",})
+name "jed"
+cap_name "Jed"
+quit_location "/users/hymael/workroom"
+tuned_channels ({0|})
+backlog ([1|"say":({10|"Hymael said, \"Wtf\"[0m\n","Hymael said, \"Make another character really quick :P\"[0m\n","Sileas said, \"Why?:p\"[0m\n","Hymael said, \"Cause I wanna see if a new character has these problems :P\"[0m\n","Hymael said, \"That new new?\"[0m\n","Sharlene said, \"Fine fine\"[0m\n","Hymael said, \"Type score\"[0m\n","Hymael said, \"See any stats?\"[0m\n","Tester said, \"Health:0/0\"[0m\n","Hymael said, \"You bleeding?\"[0m\n",}),])
+colorsets ([0|])

@@ -1,0 +1,43 @@
+In line 79 of /inherit/ship.c occurred:
+returned value doesn't match string (object)
+
+In line 176 of /inherit/ship.c occurred:
+bad indexed type (int)
+In line 177 of /inherit/ship.c occurred:
+bad indexed type (int)
+In line 170 of /inherit/ship.c occurred:
+incompatible types for equality (int *, mixed *)
+In line 15 of /include/sea_grid.h occurred:
+syntax error
+In line 15 of /include/sea_grid.h occurred:
+syntax error
+In line 171 of /inherit/ship.c occurred:
+undeclared variable str
+In line 68 of /system/sea_d.c occurred:
+undeclared variable H_X
+In line 72 of /system/sea_d.c occurred:
+undeclared variable H_Y
+In line 82 of /inherit/ship.c occurred:
+incompatible types for = (object *, object)
+In line 151 of /system/auto/overrides.c occurred:
+varargs must be in parameter list
+In line 151 of /system/auto/overrides.c occurred:
+varargs must be in parameter list
+In line 160 of /system/auto/overrides.c occurred:
+varargs must be in parameter list
+In line 162 of /system/auto/overrides.c occurred:
+returned value doesn't match string (int)
+In line 162 of /system/auto/overrides.c occurred:
+returned value doesn't match string (int)
+In line 71 of /system/auto.c occurred:
+varargs must be in parameter list
+In line 528 of /system/auto.c occurred:
+returned value doesn't match string (int)
+In line 28 of /inherit/container.c occurred:
+undefined function add_command
+In line 29 of /inherit/container.c occurred:
+undefined function add_command
+In line 30 of /inherit/container.c occurred:
+undefined function add_command
+In line 24 of /cmds/admin/eval.c occurred:
+too many arguments for function compile_object

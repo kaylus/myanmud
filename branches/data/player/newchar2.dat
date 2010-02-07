@@ -1,0 +1,12 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+stats ([6|"charisma":10,"constitution":10,"dexterity":9,"intelligence":12,"strength":6,"wisdom":12,])
+health ([6|"head":({3|0,50,0,}),"left arm":({3|0,100,0,}),"left leg":({3|0,150,0,}),"right arm":({3|0,100,0,}),"right leg":({3|0,150,0,}),"torso":({3|0,450,0,}),])
+malignancies ({0|})
+essential ({2|"torso","head",})
+name "newchar2"
+cap_name "Newchar2"
+quit_location "/world/labyrinth"
+tuned_channels ({0|})
+backlog ([1|"say":({10|"Yourmomma said, \"Hmm\"[0m\n","Yourmomma said, \"I'll have to check about some more\"[0m\n","Hymael said, \"I saw something a little bit ago\"[0m\n","Hymael said, \"Gaim\"[0m\n","Hymael said, \"Http://sourceforge.net/projects/gaim/\"[0m\n","Yourmomma said, \"Coo\"[0m\n","Yourmomma said, \"Ok I'll see what I can find\"[0m\n","Hymael said, \"That might be what you want\"[0m\n","Yourmomma said, \"Catch you later.\"[0m\n","Hymael said, \"Wake up!\"[0m\n",}),])
+colorsets ([0|])

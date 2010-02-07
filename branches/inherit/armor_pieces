@@ -1,0 +1,22 @@
+Primary hand:
+-Secondary hand:
+Head:
+Chest:
+Arms:
+Hands:
+Legs:
+Feet:
+
+This will be a mapping.
+mapping armor
+
+each indice must be displayable to the eye
+so we can cycle through items using a for
+
+weapons have the special case, along with shield,
+of being restrictively equipped
+
+value at each indice will be an object
+
+at boot, all objects in mapping will be loaded to player
+may have to chop off clone number

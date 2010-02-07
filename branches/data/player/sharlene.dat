@@ -1,0 +1,9 @@
+gender "female"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+stats ([0|])
+name "sharlene"
+cap_name "Sharlene"
+quit_location "/users/hymael/workroom"
+tuned_channels ({0|})
+backlog ([2|"say":({10|"Sileas said, \"Anything else?\"[0m\n","Hymael said, \"That new new?\"[0m\n","Hymael said, \"Hi sexy\"[0m\n","Hymael said, \"What's that\"[0m\n","Hymael said, \"Cool\"[0m\n","Hymael said, \"Interesting\"[0m\n","Hymael said, \"Hmm, maybe you got a virus\"[0m\n","Hymael said, \"Really?\"[0m\n","Hymael said, \"How?\"[0m\n","Hymael said, \"Heh\"[0m\n",}),"tell":({2|"Hymael told you, \"Heh\"[0m\n","Hymael told you, \"What?\"[0m\n",}),])
+colorsets ([0|])

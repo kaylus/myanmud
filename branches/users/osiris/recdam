@@ -1,0 +1,110 @@
+// This function handles the damage calls from battle. It only accepts
+// positive damage calls. receive_healing() should be used for healing.
+// Kilian fubar'd this when he did his multiple damage types project.
+// Type is now a mapping of the form ([ (string)"type" : (int)percentage ])
+int receive_damage(int damage, mapping type, object source) {
+    int newhp, resist, dam, x;
+    string thistype, *types;
+
+    if(!source) source=PO;
+    if(!source) source=TO;
+    set("last_attacker", source);
+
+    if(damage <= 0 || link_data("dead") || query("hit_points") < 0 || query("linkdead"))
+        return 0;
+    if(!type || !mapp(type))
+        type = ([ "null" : 100 ]);
+
+    types = keys(type);
+    dam = 0;
+    foreach(thistype in types) {
+        x = ((damage * type[thistype]) / 100);
+        // Ashen put this in for resistances and weaknesses, it will increase/decrease
+        // the amount of damage, based on resistances or weaknesses
+        resist=query_resist(thistype);
+        if((resist) && (x > 0)){
+            if(resist>100) resist=100;
+            if(resist<-100) resist=-100;
+            x -= ((x * resist) / 100);
+        }
+        kdebug(identify(TO)+" received "+x+" "+thistype+" damage from "+identify(source));
+        dam += x;
+    }
+    newhp = query("hit_points") - dam;
+    if(newhp < 0) newhp = -1;
+    set("hit_points", newhp);
+     if(source != TO && present(source, ETO)) kill_ob(source);
+    return 1;
+}
+
+// This function handles the healing calls from spells. It only accepts
+// positive healing calls.  receive_damage() should be used for damage.
+int receive_healing(int healing) {
+    int heal;
+
+    if(healing <= 0 || link_data("dead") || query("hit_points") < 0)
+        return 0;
+[More - 21%]
+    heal = query("hit_points") + healing ;
+    if(heal > query("max_hp"))
+        heal = query("max_hp");
+    set("hit_points", heal);
+    return 1;
+}
+
+int receive_sp(int amt){
+    int sp, max_sp;
+
+    if(amt <= 0 || link_data("dead") || query("hit_points") < 0) return 0;
+
+    sp = query("spell_points");
+    max_sp = query("max_sp");
+    sp += amt;
+    if(sp > max_sp) sp = max_sp;
+    set("spell_points", sp);
+    return 1;
+}
+
+int lose_sp(int amt){
+    int sp;
+
+[More - 26%]
+    if(amt <= 0 || link_data("dead") || query("hit_points") < 0) return 0;
+
+    sp = query("spell_points");
+    sp -= amt;
+    if(sp < 0) sp = 0;
+    set("spell_points", sp);
+    return 1;
+}
+
+int receive_ep(int amt){
+    int ep, max_ep;
+
+    if(amt <= 0 || link_data("dead") || query("hit_points") < 0) return 0;
+
+    ep = query("endurance");
+    max_ep = query("max_ep");
+    ep += amt;
+    if(ep > max_ep) ep = max_ep;
+    set("endurance",ep);
+    return 1;
+}
+
+int lose_ep(int amt){
+[More - 31%]
+    int ep;
+
+    if(amt <= 0 || link_data("dead") || query("hit_points") < 0) return 0;
+
+    ep=query("endurance");
+    ep -= amt;
+    set("endurance", ep);
+    return 1;
+}
+
+void stop_resting(){
+    set("ep_rate", query("ep_rate")/2);
+    delete("resting");
+    write("You stop resting.\n");
+}

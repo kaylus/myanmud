@@ -1,0 +1,21 @@
+gender "male"
+aliases ([9|"e":"go east","exa":"look at $*","fg":"finger $*","i":"inventory","k":"kill $*","l":"look $*","n":"go north","s":"go south","w":"go west",])
+capacity 150
+volume 150
+bulk 200
+weight 200
+stats ([6|"charisma":12,"constitution":7,"dexterity":15,"intelligence":11,"strength":10,"wisdom":9,])
+health ([6|"head":({3|0,35,0,}),"left arm":({3|0,70,0,}),"left leg":({3|0,105,0,}),"right arm":({3|0,70,0,}),"right leg":({3|0,105,0,}),"torso":({3|0,315,0,}),])
+malignancies ({0|})
+essential ({2|"torso","head",})
+skills ([1|"shaping":5,])
+wealth ([0|])
+name "hymael"
+cap_name "Hymael"
+wizard 1
+cwd "log/"
+cwf "/cmds/admin/test.c"
+quit_location "/users/hymael/workroom"
+tuned_channels ({2|"myan","wiz",})
+backlog ([2|"say":({10|"[32mSileas said, \"Ok i like that idea\"[0m\n","[32mSileas said, \"That'd require alot of players\"[0m\n","[32mSileas said, \"And real hardcore rping\"[0m\n","[32mSileas said, \"True\"[0m\n","[32mSileas said, \"You can be another aristotle \"[0m\n","[32mSileas said, \"Yeah\"[0m\n","[32mSileas said, \"But you can make big bucks if you want :p\"[0m\n","[32mSileas said, \"I am sleepy :p\"[0m\n","[32mSileas said, \"Nite\"[0m\n","[32mThana said, \"Dude\"[0m\n",}),"tell":({2|"[1m[31mAlthana told you, \"I died twice?\"[0m\n","[1m[31mJapheth told you, \"Gimp\"[0m\n",}),])
+colorsets ([4|"myan":"[35m","say":"[32m","tell":"[1m[31m","wiz":"[1m[30m",])

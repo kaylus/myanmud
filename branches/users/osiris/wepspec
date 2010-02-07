@@ -1,0 +1,30 @@
+int do_special(){
+        int chance, i;
+        string hisname;
+        object him;
+
+him = this_player()->query_current_attacker();
+if(!present(him,environment(this_player()))) return 1;
+hisname = capitalize(him->query("name"));
+
+chance = random(40);
+switch(chance){
+
+case 0..14 : {
+write(RED+"One of the souls escapes your blade and angrily thrashes its ethereal claws at "+
+[More - 74%]
+hisname + " fiercely!\n"+NOR);
+say(RED+"A soul escapes from "+TPQCN+"'s blade, and angrily thrashes its "+
+        "ethereal claws at "+hisname + " fiercely!\n"+NOR);
+him->receive_damage(random(8)+8);
+        return 1;
+        break;
+}
+
+case 15..40 : {
+        return 1;
+        break;
+}
+}
+
+}

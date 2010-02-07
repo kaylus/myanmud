@@ -1,0 +1,22 @@
+/* wiz.c
+   A command to provide a wizard channel.
+   For details, take a look at the channel daemon, /system/channel_d.c
+   Mobydick, 6-9-98
+*/
+
+#include <config.h>
+
+int do_command (string str) {
+
+    object sender ;
+
+    sender = this_player()->query_user() ;
+    if (!sender) return	fail_msg ("non-interactives can't send.\n");
+
+    if (CHANNEL_D->user_listening_to_channel(sender, "wiz")!=1) {
+	write ("You're not tuned into that channel.\n") ;
+	return 1 ;
+    }
+    CHANNEL_D->send_channel_message(sender, "wiz", str) ;
+    return 1 ;
+}

@@ -1,0 +1,17 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+capacity 150
+volume 150
+bulk 200
+weight 200
+stats ([6|"charisma":13,"constitution":12,"dexterity":7,"intelligence":12,"strength":8,"wisdom":13,])
+health ([6|"head":({3|0,60,0,}),"left arm":({3|121,120,16,}),"left leg":({3|95,180,2,}),"right arm":({3|22,120,0,}),"right leg":({3|43,180,1,}),"torso":({3|399,540,4,}),])
+malignancies ({1|({6|"torso",-1,10,"internal","bleeds profusely","left arm",}),})
+essential ({2|"torso","head",})
+name "japheth"
+cap_name "Japheth"
+wizard 1
+quit_location "/world/ocean"
+tuned_channels ({1|"myan",})
+backlog ([1|"say":({10|"Hymael said, \"My urine axe\"[0m\n","Hymael said, \"Bah\"[0m\n","Hymael said, \"I just friggin made that\"[0m\n","Hymael said, \"Bah, I need to tone that shit down\"[0m\n","Thana said, \"You need to make this place prettier\"[0m\n","Hymael said, \"It isn't pretty?\"[0m\n","Hymael said, \"Codpiece goes a long way\"[0m\n","Thana said, \"No, we're in a room, swimming with Chay.\"[0m\n","Hymael said, \"This is a stock room from the original, shittastic mud\"[0m\n","Hymael said, \"Bah\"[0m\n",}),])
+colorsets ([0|])

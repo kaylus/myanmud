@@ -1,0 +1,15 @@
+gender "male"
+aliases ([7|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","w":"go west",])
+capacity 150
+volume 150
+bulk 200
+weight 200
+stats ([6|"charisma":10,"constitution":9,"dexterity":13,"intelligence":16,"strength":11,"wisdom":10,])
+health ([6|"head":({3|0,45,0,}),"left arm":({3|0,90,0,}),"left leg":({3|0,135,0,}),"right arm":({3|0,90,0,}),"right leg":({3|0,135,0,}),"torso":({3|0,405,0,}),])
+malignancies ({0|})
+essential ({2|"torso","head",})
+name "teste"
+cap_name "Teste"
+quit_location "/users/hymael/workroom"
+tuned_channels ({0|})
+backlog ([0|])

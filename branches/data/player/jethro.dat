@@ -1,0 +1,6 @@
+aliases ([8|"e":"go east","exa":"look at $*","i":"inventory","l":"look $*","n":"go north","s":"go south","take":"get $*","w":"go west",])
+name "jethro"
+cap_name "Jethro"
+quit_location "/users/sileas/workroom"
+tuned_channels ({1|"myan",})
+backlog ([0|])

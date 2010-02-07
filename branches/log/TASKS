@@ -1,0 +1,61 @@
+Hymael at Mon Mar 17 12:54:19 2003 in /world/start
+Do a lot of shit.
+Hymael at Mon Mar 17 13:09:13 2003 in /world/start
+Support get from container.
+Hymael at Mon Mar 17 13:09:44 2003 in /world/start
+Help utility in every command.
+Hymael at Mon Mar 17 13:14:22 2003 in /world/start
+Make movement less of a fucking turd.
+Hymael at Mon Mar 17 14:22:17 2003 in /world/start
+Extend aliases
+Hymael at Mon Mar 17 14:36:04 2003 in /world/start
+Add help() in every command.
+Hymael at Mon Mar 17 15:21:04 2003 in /world/start
+Add percentaging to the more command.
+Hymael at Mon Mar 17 16:24:52 2003 in /world/start
+Make look work much better.
+Hymael at Mon Mar 17 16:38:33 2003 in /world/start
+Add wizard directory in the command structure
+Hymael at Fri Mar 21 12:30:49 2003 in /world/start
+Fix space bug on look
+Hymael at Fri Mar 21 13:03:50 2003 in /world/start
+Beautify look
+Hymael at Fri Mar 21 21:17:22 2003 in /users/sileas/workroom
+Update doesn't actively update rooms.
+Hymael at Tue Apr  8 18:08:30 2003 in /users/hymael/workroom
+Weight system.
+
+It should properly register with containers.
+It should be inherited by object.
+Containers when constructed should be given a capacity.
+Hymael at Tue Apr  8 18:08:51 2003 in /users/hymael/workroom
+Look in bag.
+Hymael at Tue Apr  8 18:09:53 2003 in /users/hymael/workroom
+Light system.
+
+It should mask query_long().
+Hymael at Tue Apr  8 18:10:28 2003 in /users/hymael/workroom
+Add a temp set of variable mappings to the object inheritable.
+Hymael at Tue Apr  8 18:11:48 2003 in /users/hymael/workroom
+Armor specials.
+
+Hymael at Tue Apr  8 19:01:14 2003 in /users/hymael/workroom
+Invisibility system.
+Hymael at Tue Apr  8 19:01:58 2003 in /users/hymael/gh
+Wimpy system.
+Hymael at Tue Apr  8 21:40:15 2003 in /users/hymael/workroom
+Utilize atomicity.
+..in.
+movement
+weights
+possibly other things
+Hymael at Sat Apr 19 03:39:00 2003 in /users/hymael/workroom
+Fix multiple dying.
+
+Hymael at Tue Dec  2 16:37:23 2003 in /world/ship_main
+
+Hymael at Thu Jan  8 18:34:12 2004 in /world/ocean
+
+q
+Hymael at Fri Jan  9 16:45:39 2004 in /world/ship_main
+Put heartbeats in body
