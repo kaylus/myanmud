@@ -179,6 +179,7 @@ string query_long(varargs int brief){
 		continue;
 
 	    /* Don't include our own body in the list. */
+		LOGD->log("this_player in ship_room = "+object_name(this_player()), "braind");
 	    if(inventory[i] == this_player())
 		continue;
 

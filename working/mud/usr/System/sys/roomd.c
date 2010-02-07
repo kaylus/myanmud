@@ -9,6 +9,9 @@
 object *rooms; /* handles on rooms */
 object start_room; /* start room */
 object meat_locker; /* meat locker */
+object labyrinth; /* where people go when they die */
+
+void connect_rooms(object room1, object room2, string via1, varargs string via2, int oneway);
 
 /* To flip a direction. */
 
@@ -45,6 +48,14 @@ void create(varargs int clone){
 	meat_locker = clone_object(ROOM);
 	meat_locker->set_short("This is the meat locker");
 	meat_locker->set_long("This is where inactive bodies go to play.\n");
+	
+	labyrinth = clone_object(ROOM);
+	labyrinth->set_short("%^GREEN%^Labyrinth%^RESET%^");
+	labyrinth->set_long (wrap(
+"All around you, your movements echo throughout the vast expanses of the labyrinth. \
+Decaying vines pock the area, concealing exits and perceived exits.  You have a difficult \
+journey ahead of you.\n", 72));
+	connect_rooms(labyrinth, start_room, "live", "", 1);
 }
 
 object query_start_room(){/* return the default room */
@@ -55,11 +66,15 @@ object query_meat_locker(){/* return meat locker */
 	return meat_locker;
 }
 
+object query_labyrinth(){/* return labyrinth */
+	return labyrinth;
+}
+
 object *query_rooms(){/* return rooms */
 	return rooms;
 }
 
-void connect_rooms(object room1, object room2, string via, varargs string via2){/* connect room1 with room2 with exit name via */
+void connect_rooms(object room1, object room2, string via, varargs string via2, int oneway){/* connect room1 with room2 with exit name via */
 	if(!room1->is_room() || !room2->is_room())
 		error("Object not a room");
 
@@ -68,6 +83,7 @@ void connect_rooms(object room1, object room2, string via, varargs string via2){
 	}
 
 	room1->add_exit(via, room2);
-	room2->add_exit(via2, room1);
+	if(!oneway)
+		room2->add_exit(via2, room1);
 	/* exit registrar ?? */
 }

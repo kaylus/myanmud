@@ -5,6 +5,8 @@
 #include <kernel/access.h>
 #include <std.h>
 
+#include <game/sea_grid.h>
+
 inherit access API_ACCESS;
 inherit rsrc API_RSRC;
 
@@ -51,7 +53,8 @@ create (varargs int clone)
     _load (CHANNELD);
     _load (ANSID);
     _load (HELPD);
-    _load (DEFAULT_USER);
+    _load (SEA_D);
+	_load (BRAIND);
 
     /* create some savage resources */
     /*rsrcd = find_object(RSRCD);

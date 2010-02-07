@@ -6,7 +6,7 @@
  *****************************/
 inherit OBJECT;
 
-#include <money.h>
+#include <game/money.h>
 #include <type.h>
 
 private int    _num_coins;  /* number of coins this stack represents */

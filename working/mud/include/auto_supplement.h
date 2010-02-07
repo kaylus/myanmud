@@ -96,16 +96,20 @@
        return nil;
 
      while(i--){
-       if(users[i]->query_name() == str){
-           return users[i]->query_body();
+       if(users[i]->query_user()->query_name() == str){
+           return users[i]->query_user()->query_body();
        }
        }
        return nil;
  }
  
  /* this_player() hacked in */
- static object this_player(){
+ /*static object this_player(){
    return ((this_user()->query_body()) ? this_user()->query_body():this_user());
+ }*/
+ 
+ static object this_player(){
+	return find_object(BRAIND)->this_player();
  }
  
 /* replace_string - Hymael */

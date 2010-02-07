@@ -47,6 +47,7 @@
 # define OBJ_ACCOUNT /* this uses the account as objects
                         system, deprecated */
 
+# define BRAIND "/usr/System/sys/braind" /* to track some things intelligently */
 # define HEARTD "/usr/System/sys/heartd"
 # define LOGD "/usr/System/sys/logd" /* logger */
 # define HELPD "/usr/System/sys/helpd" /* helper daemon */

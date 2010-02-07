@@ -12,7 +12,8 @@
 #define BP_LLEG "left leg"
 #define BP_RLEG "right leg"
 
-#define LIMB "/usr/System/obj/limb" /* limb object */
+#define LIMB "/usr/common/obj/limb" /* limb object */
+#define CORPSE "/usr/common/obj/corpse" /* corpse object */
 
 /* arrayed, effective for random splash damage */
 #define BP_ALL ({ BP_HEAD, BP_LARM, BP_RARM, BP_TORS, BP_LLEG, BP_RLEG })

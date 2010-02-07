@@ -4,23 +4,23 @@
 
 #include <game/sea_grid.h>
 
-#define SG_ROOM 0
-#define SG_FUNC 1
-
 mixed _grid; /**< this will be our ocean */
+object *ships; /* handles on created ships */
 
 void create(varargs int clone){
     int i;
     object _ship_, roomy;
 
     _grid = allocate(X_DIM);
+	ships = ({});
     for(i=X_DIM; i--;){
         _grid[i] = allocate(Y_DIM);
     }
     /* fully allocated */
     /* may add some brief to each room, something seen when observing from the nest */
+	if(!find_object(PORTAGE))compile_object(PORTAGE);
     _grid[SG_PORT[H_X]][SG_PORT[H_Y]] = ({ clone_object(PORTAGE), "sg_port" }); /* this is the function to handle portage */
-    _grid[7][7] = ({ clone_object("/usr/System/obj/portage"), "sg_port" });
+    /*_grid[7][7] = ({ clone_object("/usr/System/obj/portage"), "sg_port" });
     /* need to make portage inheritable so a room knows how to handle docking ships */
     /* need to make the actual ships */
     /* make a ship */
@@ -58,7 +58,7 @@ void create(varargs int clone){
 
     _ship_->set_ship_name("Beagle");
     _ship_->create_ship();
-    _ship_->set_plank(_grid[SG_PORT[H_X]][SG_PORT[H_Y]][0]);
+    _ship_->set_plank(_grid[SG_PORT[H_X]][SG_PORT[H_Y]][SG_ROOM]);
 }
 
 /* below is where we add attachments to this system */
@@ -88,8 +88,10 @@ void ship_enter(object ship, int *coords){
         sg_default(ship);
     }
 }
-
+/* TODO ship_leave function */
 atomic void ship_move(object ship, int *heading, int *coords){
+	mixed grid_idx;
+	
     coords[H_X] += heading[H_X];
     if(coords[H_X] < 0 || coords[H_X] >= X_DIM)
         error("Your current heading would run you aground.\n");
@@ -98,9 +100,12 @@ atomic void ship_move(object ship, int *heading, int *coords){
     if(coords[H_Y] < 0 || coords[H_Y] >= Y_DIM)
         error("Your current heading would run you aground.\n");
 
-    if(_grid[coords[H_X]][coords[H_Y]]){/* something to call */
-        call_other(this_object(), _grid[coords[H_X]][coords[H_Y]][SG_FUNC], _grid[coords[H_X]][coords[H_Y]][SG_ROOM],
-          ship);
+    if((grid_idx = _grid[coords[H_X]][coords[H_Y]])){/* something to call */
+		if(sizeof(grid_idx) > 2){/* have an object to call */
+			call_other(grid_idx[SG_OBJ], grid_idx[SG_FUNC], grid_idx[SG_ROOM], ship);
+		}else{		
+        call_other(this_object(), grid_idx[SG_FUNC], grid_idx[SG_ROOM], ship);
+		}
     }else{
         sg_default(ship);
     }
@@ -109,6 +114,18 @@ atomic void ship_move(object ship, int *heading, int *coords){
 
 object query_coords(int *coords){
     return _grid[coords[H_X]][coords[H_Y]][SG_ROOM];
+}
+
+int set_coords(int *coords){
+
+}
+
+void register_ship(object obj){
+	ships += ({ obj });
+}
+
+object *query_ships(){
+	return ships;
 }
 
 

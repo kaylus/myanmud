@@ -40,6 +40,8 @@ void create(varargs int clone){
     ({ -1,  0 }),
     ({ -1,  1 })
     });
+	
+	find_object(SEA_D)->register_ship(this_object());
 }
 
 void create_ship(){

@@ -51,6 +51,11 @@ static void create(int clone)
 
 int is_user(){ return 1; }
 
+static void set_this_player(object player) {
+LOGD->log("TP set to "+object_name(player), "braind");
+    find_object(BRAIND)->set_this_player(player);
+}
+
 /* get subject's body */
 object query_body(){ return body; }
 
@@ -170,7 +175,7 @@ int login(string str)
 void logout(int quit)
 {
     if (previous_program() == LIB_CONN && --nconn == 0 || previous_program() == "~System/initd") {
-
+	set_this_player(this_object());
 	_save();
 	body->stasis();/* store body */
 
@@ -241,6 +246,7 @@ int receive_message(string str)
 	string cmd;
 	object user, *users;
 	int i, sz;
+	set_this_player(((body) ? (body) : (this_object())));
 	/* is this where we should redirect to game object input? */
 	switch (state[previous_object()]) {
 	case STATE_INPUTOBJ:

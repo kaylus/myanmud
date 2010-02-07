@@ -462,6 +462,10 @@ mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
     if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
 	ret = ({ find_object(str), T_OBJECT });
     }
+	
+	if(find_player(str))
+		return ({ find_player(str), T_OBJECT });
+	
     /* default to string */
     if(!ret || ret[0] == nil)
 	return ({ str, T_STRING });
