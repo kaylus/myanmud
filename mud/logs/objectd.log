@@ -1,0 +1,1134 @@
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Entering create of objectd
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Made heavy array
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	before main finds
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	after issue_lwo compile
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	after issue_clonable_lwo compile
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	just before driver call
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Exiting create of objectd
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/telnetd
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/telnetd, issue #32
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/user from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/user from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/access from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/alias from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/alias
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/alias (33)
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/user from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/user from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/access from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/alias from /usr/System/obj/user
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/obj/user, issue #34
+
+- <Feb  6 22:10:22 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/wiztool
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/wiztool from /usr/System/obj/wiztool
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/obj/wiztool, issue #35
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/body from /usr/common/obj/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/container
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/container
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/object
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/weight from /usr/common/lib/object
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/weight
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/weight (36)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/object
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/weight from /usr/common/lib/object
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/object (37)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/container
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/container
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/container (38)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/weapon
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/attic/weapon
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/weapon (39)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/combat
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/combat (40)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/health
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/health (41)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/stats
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/stats (42)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/play_tool
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/play_tool (43)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/race_kit
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/race_kit (44)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/wealth
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/wealth (45)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/skills from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/skills
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/skills (46)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/skills from /usr/common/lib/attic/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/body (47)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/body from /usr/common/obj/body
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/common/obj/body, issue #48
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/binaryd
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/binaryd, issue #49
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/roomd
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/roomd, issue #50
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/common/obj/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/room (51)
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/common/obj/room
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/common/obj/room, issue #52
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#53
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#54
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#55
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/heartd
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/heartd, issue #56
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/channeld
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/channeld, issue #57
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/ansi_parser
+
+- <Feb  6 22:10:23 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/ansi_parser, issue #58
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/helpd
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/helpd, issue #59
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/sys/sea_d
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/sys/sea_d, issue #60
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/portage from /usr/game/obj/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/game/lib/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/portage (61)
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/portage from /usr/game/obj/portage
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/portage, issue #62
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/portage#63
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship from /usr/game/obj/ship
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/ship
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/ship (64)
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship from /usr/game/obj/ship
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/ship, issue #65
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship#66
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship_room from /usr/game/obj/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/game/lib/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/ship_room (67)
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship_room from /usr/game/obj/ship_room
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/ship_room, issue #68
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#69
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#70
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#71
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#72
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#73
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/braind
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/tls from /usr/System/sys/braind
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /kernel/lib/api/tls
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /kernel/lib/api/tls (74)
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/braind
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/tls from /usr/System/sys/braind
+
+- <Feb  6 22:10:24 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/braind, issue #75
+
+- <Feb  6 22:10:52 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/System/obj/user#81
+
+- <Feb  6 22:10:53 2010> /usr/System/sys/objectd Hymael:
+	clone: /usr/System/obj/wiztool#82
+
+- <Feb  6 22:10:53 2010> /usr/System/sys/objectd Hymael:
+	clone: /usr/common/obj/body#83
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Entering create of objectd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Made heavy array
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	before main finds
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	after issue_lwo compile
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	after issue_clonable_lwo compile
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	just before driver call
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	Exiting create of objectd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/telnetd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/telnetd, issue #32
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/user from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/user from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/access from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/alias from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/alias
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/alias (33)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/user from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/user from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/access from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/alias from /usr/System/obj/user
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/obj/user, issue #34
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/obj/wiztool
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/wiztool from /usr/System/obj/wiztool
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/obj/wiztool, issue #35
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/body from /usr/common/obj/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/container
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/container
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/object
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/weight from /usr/common/lib/object
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/weight
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/weight (36)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/object
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/weight from /usr/common/lib/object
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/object (37)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/container
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/container
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/container (38)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/weapon
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/object from /usr/common/lib/attic/weapon
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/weapon (39)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/combat
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/combat (40)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/health
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/health (41)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/stats
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/stats (42)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/play_tool
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/play_tool (43)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/race_kit
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/race_kit (44)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/wealth
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/wealth (45)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/skills from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/skills
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/skills (46)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/weapon from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/combat from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/health from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/stats from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/play_tool from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/race_kit from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/wealth from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/skills from /usr/common/lib/attic/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/attic/body (47)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/attic/body from /usr/common/obj/body
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/common/obj/body, issue #48
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/binaryd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/binaryd, issue #49
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/roomd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/roomd, issue #50
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/common/obj/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/lib/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/container from /usr/common/lib/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/common/lib/room (51)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/common/obj/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/common/obj/room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/common/obj/room, issue #52
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#53
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#54
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/common/obj/room#55
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/heartd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/heartd, issue #56
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/channeld
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/channeld, issue #57
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/ansi_parser
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/ansi_parser, issue #58
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/helpd
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/helpd, issue #59
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/sys/sea_d
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/sys/sea_d, issue #60
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/portage from /usr/game/obj/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/game/lib/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/portage (61)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/portage from /usr/game/obj/portage
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/portage, issue #62
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/portage#63
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship from /usr/game/obj/ship
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/ship
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/ship (64)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship from /usr/game/obj/ship
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/ship, issue #65
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship#66
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship_room from /usr/game/obj/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/lib/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/common/lib/room from /usr/game/lib/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /usr/game/lib/ship_room (67)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/game/obj/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /usr/game/lib/ship_room from /usr/game/obj/ship_room
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/game/obj/ship_room, issue #68
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#69
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#70
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#71
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#72
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/game/obj/ship_room#73
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/braind
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/tls from /usr/System/sys/braind
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /kernel/lib/api/tls
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile_lib: /kernel/lib/api/tls (74)
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compiling: /usr/System/sys/braind
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	forbid_inherit: /kernel/lib/api/tls from /usr/System/sys/braind
+
+- <Feb  6 22:12:36 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	compile: /usr/System/sys/braind, issue #75
+
+- <Feb  6 22:12:54 2010> /usr/System/sys/objectd /usr/System/sys/objectd:
+	clone: /usr/System/obj/user#81
+
+- <Feb  6 22:12:55 2010> /usr/System/sys/objectd Hymael:
+	clone: /usr/System/obj/wiztool#82
+
+- <Feb  6 22:12:55 2010> /usr/System/sys/objectd Hymael:
+	clone: /usr/common/obj/body#83
+
