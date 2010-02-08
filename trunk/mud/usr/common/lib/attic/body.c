@@ -108,7 +108,7 @@ void stasis(){/* put body into stasis */
 
     end_room = environment;
 
-    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored */
+    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored, should also lock up call_outs on the body at this time */
     end_room->message("Juggling body.\n");
     LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
 }
@@ -530,7 +530,19 @@ int input(string str){
 	    }
 	}
     }
-
+	
+	if(environment && environment->query_exit(str)){
+		cmd = "go";
+		ret_fail = this_object()->cmd_go(str);
+		switch(typeof(ret_fail)){
+	    case T_STRING:/* fail string, continue seek */
+		fail_msg = ret_fail;
+	    case T_NIL:/* continue seek */
+		break;
+	    default: /* done */
+		return 1;
+	    }
+	}
 
     if(!strlen(fail_msg))
 	return 0;
