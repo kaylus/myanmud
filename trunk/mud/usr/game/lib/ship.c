@@ -28,6 +28,7 @@ int *_coords;            /**< present location of this ship */
 int *_heading;           /**< ship's present heading, starts with nowhere */
 int _anchored;           /**< anchored or not */
 mixed _slider;
+int speed;               /* how fast our sailing ticks */
 
 /** set up ship */
 void create(varargs int clone){
@@ -41,10 +42,18 @@ void create(varargs int clone){
     ({ -1,  1 })
     });
 	
-	find_object(SEA_D)->register_ship(this_object());
+	if(clone)
+		find_object(SEA_D)->register_ship(this_object());
+		
+	speed = HB_TIME;
 }
 
-void create_ship(){
+void vector_sail(){/* pulse, and revector */  
+	event("sail"); /* propogate event */
+	call_out("vector_sail", speed); /* vector */
+}
+
+void create_ship(){/* need to audit and clean this up */
     int i;
     object heartd;
 
@@ -54,6 +63,10 @@ void create_ship(){
     _ship[FORE] = _foredeck;
     _ship[QUAR] = _quarterdeck;
     _ship[CROW] = _crowsnest;
+	
+	_ship[MAIN]->set_deck(1);
+	_ship[HELM]->set_helm(1);
+	
 
     _coords = SG_PORT;
 
@@ -74,11 +87,12 @@ void create_ship(){
     _anchored = 1;
     docked = nil;
     find_object(SEA_D)->ship_enter(this_object(), _coords);
-    /* ticker */
-    heartd = find_object(HEARTD);
-    if(!heartd)heartd = compile_object(HEARTD);
-
-    subscribe_event(heartd, "heart_beat");
+    
+	/* ticker */
+    	
+	add_event("sail");
+    subscribe_event(this_object(), "sail");
+	vector_sail();
 }
 
 void entre(int *coords){
@@ -107,6 +121,10 @@ void set_crowsnest(object file){
     _crowsnest = file;
 }
 
+int query_speed(){ return speed; }
+
+void set_speed(int i){ speed = i; }/* should we fiddle with existing callout and prorate it as a percentage? */
+
 /****************************************
 				   [nest] [plank]
 			     ||  /
@@ -129,7 +147,7 @@ mixed ahoy(string str, varargs object exempt){
     str = capitalize(str);
     if(exempt){
 	mess = str;
-    }else if(previous_program() != SHIP_ROOM){
+    }else if(previous_program() != LIB_SHIP_ROOM){
 	mess = str;
 	exempt = nil;
     }else{
@@ -287,9 +305,13 @@ int raise_anchor(){
     /*set_heart_beat(HB_TIME);*/
     return 1;
 }
+/* may add in checks for other ships trying to catch this event */
+int allow_subscribe(object obj, string name){
+return 1;
+}
 
 /** moving may be required to have a suitable number of sails at key points to man sails */
-void evt_heart_beat(object obj){/* underway, drift, sail, sink... etc. */
+void evt_sail(object obj){/* underway, drift, sail, sink... etc. */
     string err;
     if(_anchored){/* not going anywhere, may call a function to do something */
 	ahoy("The vessel rocks about on the waves while at anchor.\n");/* randomize */

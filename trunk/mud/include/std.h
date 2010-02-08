@@ -60,7 +60,8 @@
 # define OBJECTD "/usr/System/sys/objectd"
 # define ANSID "/usr/System/sys/ansi_parser"  
 
-#define LIB_LWO      "/usr/common/data/lib_issue"
-#define CLONABLE_LWO "/usr/common/data/clonable_issue"
-#define HEAVY_ARRAY "/usr/common/obj/heavy_array"
-#define ISSUE_LWO   "/usr/common/lib/issue_lwo"
+# define LIB_LWO      "/usr/common/data/lib_issue"
+# define CLONABLE_LWO "/usr/common/data/clonable_issue"
+# define HEAVY_ARRAY "/usr/common/obj/heavy_array"
+# define ISSUE_LWO   "/usr/common/lib/issue_lwo"
+
