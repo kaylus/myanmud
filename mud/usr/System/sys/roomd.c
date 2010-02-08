@@ -78,7 +78,7 @@ void connect_rooms(object room1, object room2, string via, varargs string via2, 
 	if(!room1->is_room() || !room2->is_room())
 		error("Object not a room");
 
-	if(!via2){/* add in a flipped direction */
+	if(!via2 || !strlen(via2)){/* add in a flipped direction */
 		via2 = flip_dir(via);
 	}
 
@@ -86,4 +86,13 @@ void connect_rooms(object room1, object room2, string via, varargs string via2, 
 	if(!oneway)
 		room2->add_exit(via2, room1);
 	/* exit registrar ?? */
+}
+
+object dig_room(string via, varargs string via2, int oneway){
+	object room; /* to hold our new room */
+	
+	room = clone_object(ROOM);
+	
+	connect_rooms(this_player()->query_environment(), room, via, via2, oneway);
+	return room;
 }

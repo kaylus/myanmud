@@ -979,7 +979,9 @@ mixed include_file(string compiled, string from, string path)
       LOGD->log("Including non-header file '" + path + "'", "objectd");
 
     comp_dep += ({ path });
-  }
+	}
+	
+  
   return path;
 }
 

@@ -10,6 +10,7 @@ int is_helm;  /**< whether this room is a helm */
 int is_deck;  /**< whether this room is the main deck */
 
 void create(varargs int clone){
+	::create();
     add_command("ahoy", "ahoy"); /* global channel */
     add_command("steer", "steer");/* change_heading */
     add_command("check", "check");/* check heading */
@@ -134,19 +135,19 @@ void raise_plank(){
     remove_exit("port");
 }
 
-string query_long(varargs int brief){
+/*string query_long(varargs int brief){
     string value;
     object *inventory;
     int sz;
 
     /* Start with whatever desc the room coder supplied. Give the short
-   or the long desc, according to the brief argument. */
+   or the long desc, according to the brief argument. 
     if(brief)
 	value = _ship->query_name()+"'s "+short_desc+"\n";
     else
 	value = _ship->query_name()+"'s "+short_desc+"\n\n"+long_desc;
 
-    /* Add in any exits there may be. */
+    /* Add in any exits there may be. 
     value += "%^BOLD%^\n\t";
     if(!exits || !(sz = map_sizeof(exits))){
 	value += "There are no obvious exits.\n" ;
@@ -167,18 +168,18 @@ string query_long(varargs int brief){
 	value += ".\n";
     }
     value += "\n%^RESET%^";
-    /* List the contents of the room. */
+    /* List the contents of the room. 
     inventory = query_inventory();
     if(inventory && (sz = sizeof(inventory))){
 	string name;
 	int i;
 
 	for(i=0; i<sz; i++){
-	    /* Make sure there isn't an empty item in the inventory somehow. */
+	    /* Make sure there isn't an empty item in the inventory somehow. 
 	    if(!inventory[i])
 		continue;
 
-	    /* Don't include our own body in the list. */
+	    /* Don't include our own body in the list. 
 		LOGD->log("this_player in ship_room = "+object_name(this_player()), "braind");
 	    if(inventory[i] == this_player())
 		continue;
@@ -190,4 +191,4 @@ string query_long(varargs int brief){
 	}
     }
     return value;
-}
+}*/

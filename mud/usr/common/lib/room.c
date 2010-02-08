@@ -26,6 +26,7 @@ private int _bits;       /**< bit field */
 void create(varargs int clone){
 	set_short("Nondescript Room");
 	set_long("Bland, tasteless, lifeless, etc.");
+	ROOMD->add_room(this_object());
 }
 
 int is_room(){ return 1; }
