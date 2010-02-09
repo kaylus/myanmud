@@ -14,7 +14,7 @@ inherit alias ALIAS; /* alias toolbox */
 # define STATE_OLDPASSWD	2
 # define STATE_NEWPASSWD1	3
 # define STATE_NEWPASSWD2	4
-# define STATE_INPUTOBJ         5
+# define STATE_INPUTOBJ     5
 
 # define USR_SAVE_DIR  "/usr/System/data"
 
@@ -52,7 +52,6 @@ static void create(int clone)
 int is_user(){ return 1; }
 
 static void set_this_player(object player) {
-LOGD->log("TP set to "+object_name(player), "braind");
     find_object(BRAIND)->set_this_player(player);
 }
 
