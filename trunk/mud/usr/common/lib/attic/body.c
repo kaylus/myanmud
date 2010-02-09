@@ -23,10 +23,11 @@ inherit WEAPON;
 inherit combat COMBAT;
 inherit health HEALTH;
 inherit STATS; /* temp */
-inherit PLAY_TOOL;
+/*inherit PLAY_TOOL;*/
 inherit RACE_KIT;
 inherit WEALTH;
 inherit SKILLS;
+inherit BODY_INPUT;
 
 /**************************************
  * mapping of worn items - to be made *
@@ -449,6 +450,7 @@ string flip_dir(string dir){
     return "";
 }
 
+#if 0
 /* input command decipherer */
 int input(string str){
     string cmd, args, fail_msg;
@@ -531,7 +533,7 @@ int input(string str){
 	}
     }
 	
-	if(environment && environment->query_exit(str)){
+	if(query_environment() && query_environment()->query_exit(str)){
 		cmd = "go";
 		ret_fail = this_object()->cmd_go(str);
 		switch(typeof(ret_fail)){
@@ -550,6 +552,7 @@ int input(string str){
     message(fail_msg);/* failed to find command */
     return 1;
 }
+#endif
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */
 atomic void move(mixed dest, varargs string direction, int silent, int nolook){

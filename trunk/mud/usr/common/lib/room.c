@@ -66,7 +66,7 @@ mapping query_exits(){
 }
 
 object query_exit(string direction){
-    return (exits[direction]) ? exits[direction] : nil;
+    return (!exits || !exits[direction]) ? nil : exits[direction];
 }
 
 /** You may not pick up your surroundings. Basic theorem in topology. */
@@ -74,11 +74,12 @@ int prevent_get(){
     return 1;
 }
 
-string query_long(varargs int brief){
+string query_long(varargs int brief, object actor){/* optional actor */
     string value;
     object *inventory;
     int sz;
 
+	if(!actor)actor = previous_object();
 	/* Start with whatever desc the room coder supplied. Give the short
        or the long desc, according to the brief argument. */
     if(brief)
@@ -119,7 +120,7 @@ string query_long(varargs int brief){
 	    		continue;
 
        		/* Don't include our own body in the list. */
-	    	if(inventory[i] == previous_object())
+	    	if(inventory[i] == actor)
 	    		continue;
 
 	    	name = inventory[i]->query_short();

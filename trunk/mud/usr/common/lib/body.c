@@ -15,7 +15,7 @@ inherit HEALTH; /* not perfect */
 inherit combat COMBAT; /* combat */
 inherit WEAPON; /* for attacking with fists */
 inherit SKILLS; /* skills */
-inherit PLAY_TOOL; /* player command interface */
+/*inherit PLAY_TOOL; /* player command interface */
 inherit WEALTH;
 inherit RACE_KIT;  /* player's race/gender */
 

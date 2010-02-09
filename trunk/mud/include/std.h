@@ -65,3 +65,7 @@
 # define HEAVY_ARRAY "/usr/common/obj/heavy_array"
 # define ISSUE_LWO   "/usr/common/lib/issue_lwo"
 
+# define BODY_COMMAND "/usr/common/lib/body_command" /* body commands inherit this */
+# define BODY_BIN "/usr/common/obj/cmds/"
+# define BODY_INPUT "/usr/common/lib/input"
+
