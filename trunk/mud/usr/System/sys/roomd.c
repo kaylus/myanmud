@@ -55,6 +55,9 @@ void create(varargs int clone){
 "All around you, your movements echo throughout the vast expanses of the labyrinth. \
 Decaying vines pock the area, concealing exits and perceived exits.  You have a difficult \
 journey ahead of you.\n", 72));
+	labyrinth->set_entrance(wrap("Your lungs draw breath, albeit in an air that differs \
+from your mortal existence.  You are now in the labyrinth.  If you intend to assume your \
+previous life, you must somehow find your way out of this place...\n", 72));
 	connect_rooms(labyrinth, start_room, "live", "", 1);
 }
 

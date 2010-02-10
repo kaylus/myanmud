@@ -10,10 +10,17 @@
 string gender, race; /* contain race and gender */
 int stage; /* what stage of input we're at */
 
+void set_gender(string str){
+	gender = str;
+}
+
 string query_gender(){
 	return (gender) ? gender : (gender = GENDERS[2]);
 }
 
+void set_race(string str){
+	race = str;
+}
 string query_race(){
 	return (race) ? race : "raceless";
 }

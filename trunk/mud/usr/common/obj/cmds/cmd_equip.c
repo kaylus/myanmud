@@ -17,7 +17,7 @@ mixed cmd_equip(string cmd, string str, object actor){
     thing = actor->present(str);
     if (thing){
 
-	if((str = catch(actor->equip(thing)))){
+	if((str = catch(actor->set_worn(thing)))){
 	    return str;
 	}
 

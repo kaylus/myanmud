@@ -166,20 +166,21 @@ object query_secondary(){
  * outside we call this to push onto worn *
  * values : 0 fail, 1 success             *
  ******************************************/
-int set_worn(object obj){/* calculate armor total ac */
+atomic void set_worn(object obj){/* calculate armor total ac */
     string type;
     if(!wielded) wielded=([]);
     if(!worn)    worn   =([]);
     type = obj->query_type();
     if(type && !worn[type]){
 	if(type == "shield" && wielded[WIELDS[1]]){
-	    return 0; /* can't equip shield over weapon */
+	    error("You haven't the hands to equip that.\n"); /* can't equip shield over weapon */
 	}
+	if(worn[type])error("You have something else worn in that slot.\n");
 	worn[type]=obj;
 	incr_ac(obj->query_ac());
-	return 1;
+	return;
     }
-    return 0;
+    error("You can't equip that.\n");
 }
 
 
@@ -222,7 +223,7 @@ int handle_break(object owner, varargs object armor, int damage){
 /**********
  * remove *
  **********/
-int remove_worn(object obj){
+atomic void remove_worn(object obj){
     object *values;
     string *indices;
     int i;
@@ -232,9 +233,9 @@ int remove_worn(object obj){
 	i = member_array(obj, values);
 	worn[indices[i]] = nil;
 	decr_ac(obj->query_ac());
-	return 1;
+	return;
     }
-    return 0;
+    error("You can't do that.\n");
 }
 
 /*******************************
@@ -252,46 +253,46 @@ mapping query_worn_listing(){
  * -1- fail by twohander *
  * -2- fail by shield    *
  *************************/
-int wield( object obj ){
+atomic void wield( object obj ){
     if(!wielded) wielded=([]);
     if(!worn)    worn   =([]);
-    if(!obj->is_weapon()) return 0;
+    if(!obj->is_weapon()) error("No slot for that weapon.\n");
 
     if(obj->query_two_handed()){
 	if(!wielded[WIELDS[0]] && !wielded[WIELDS[1]] &&
 	  !worn["shield"]){/* wield this beastly two hander */
 	    wielded[WIELDS[0]] = obj;
 	    wielded[WIELDS[1]] = 1; /* placeholder, note when unwielding 2hander */
-	    return 1;
+	    return;
 	}else{
-	    return -1;
+	    error("That weapon requires two hands to wield.\n");
 	}
     }else if(!obj->query_is_offhand()){
 	if(!wielded[WIELDS[0]]){
 	    wielded[WIELDS[0]] = obj;
-	    return 1;
+	    return;
 	}else if(wielded[WIELDS[0]]->query_is_offhand() && !worn["shield"] &&
 	  !wielded[WIELDS[1]]){/* push to second and wield */
 	    wielded[WIELDS[1]] = wielded[WIELDS[0]];
 	    wielded[WIELDS[0]] = obj;
-	    return 1;
+	    return;
 	}else{
-	    return 0;
+	    error("You haven't the hands to wield that.\n");
 	}
     }else{
 	if(!wielded[WIELDS[0]]){
 	    wielded[WIELDS[0]] = obj;
-	    return 1;
+	    return;
 	}else if(!wielded[WIELDS[1]]){
 	    if(!worn["shield"]){
 		wielded[WIELDS[1]] = obj;
-		return 1;
+		return;
 	    }else{
-		return -2;
+		error("You already have a shield equipped.\n");
 	    }
 	}
     }
-    return 0;
+	error("Cannot wield that at this time.\n");
 }
 
 /****************
@@ -312,7 +313,7 @@ int query_wielded(object obj){
 /**********
  * remove *
  **********/
-int unwield(object obj){
+atomic void unwield(object obj){
     object *values;
     string *indices;
     int i;
@@ -330,9 +331,9 @@ int unwield(object obj){
 	    wielded[WIELDS[0]] = wielded[WIELDS[1]];
 	    wielded[WIELDS[1]] = nil;
 	}
-	return 1;
+	return;
     }
-    return 0;
+    error("You haven't that equipped.\n");
 }
 #if 0
 /****************************
@@ -350,7 +351,7 @@ int release_object (object ob) {
 	if(!fun){/* messages not handled */
 	    this_object()->message("You unequip "+ob->query_weapon_name()+".\n");
 	    this_object()->query_environment()->messsage(
-	      this_object()->query_Name()+" unequips "+ob->query_short()+".\n",
+	      this_object()->query_Name()+" unequips "+ob->query_weapon_name()+".\n",
 	    ({ this_object() }) );
 	}
     }else if(res && query_wielded(ob)){

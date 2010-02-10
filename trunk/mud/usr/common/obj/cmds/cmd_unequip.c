@@ -17,7 +17,7 @@ mixed cmd_unequip(string cmd, string str, object actor){
     thing = actor->present(str);
     if (thing){
 
-	if((str = catch(actor->unequip(thing)))){
+	if((str = catch(actor->remove_worn(thing)))){
 	    return str;
 	}
 
