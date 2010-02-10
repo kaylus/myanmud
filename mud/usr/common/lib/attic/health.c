@@ -103,11 +103,12 @@ static void _die(){
 	if(!find_object(CORPSE))compile_object(CORPSE);
 	
 	corpse = clone_object(CORPSE); 
-	
+	catch{
 	inv = this_object()->query_inventory();
 	
 	for(i=sizeof(inv) ; --i >= 0; ){	
 			inv->move(corpse); /* move items onto corpse */
+	}
 	}
 	
 	corpse->move(this_object()->query_environment());

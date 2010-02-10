@@ -18,16 +18,16 @@ void create(){/* inits */
 /* a request for tuning of a channel, do previous_object check?
  * 0 = cannot tune, -1 = tuned out, 1 = tuned in
  */
-int tune(string channel){
+int tune(string channel, object actor){
 	int i;
 
-	if(!channel || (i = member_array(channel, map_indices(channels))) == -1 || !previous_object()->is_body()){
+	if(!channel || (i = member_array(channel, map_indices(channels))) == -1 || !actor->is_body()){
 		LOGD->log("Channel improper.\n", "channel");
 		return 0;
 	}
 
 	/* check if previous_object() can tune channel */
-	if(channel == "wiz" && !previous_object()->query_user()->query_wiztool()){/* be sure it's a wiz */
+	if(channel == "wiz" && !actor->query_user()->query_wiztool()){/* be sure it's a wiz */
 		return 0;
 	}
 
@@ -35,23 +35,23 @@ int tune(string channel){
 
 
 	/* flip tune */
-	if(member_array(previous_object(), channels[channel]) > -1){
-		channels[channel] -= ({ previous_object() });
+	if(member_array(actor, channels[channel]) > -1){
+		channels[channel] -= ({ actor });
 		return -1;/* tuned out */
 	}
 
-	channels[channel] += ({ previous_object() });
+	channels[channel] += ({ actor });
 	return 1;
 }
 
 /* show users tuned to a channel returns a printable string */
-string show(string channel){
+string show(string channel, object actor){
 	int i;
 	object player, *indies;
 	string ret;
 
 	/* check if previous_object() can tune channel */
-	if(channel == "wiz" && !previous_object()->query_user()->query_wiztool()){/* be sure it's a wiz, do something here to make this functional */
+	if(channel == "wiz" && !actor->query_user()->query_wiztool()){/* be sure it's a wiz, do something here to make this functional */
 		return "You can't check this line.\n";
 	}
 
@@ -76,14 +76,14 @@ string show(string channel){
 /* valid tunes */
 
 /* broadcast_channel */
-void broadcast(string channel, string message, varargs object except){
+void broadcast(string channel, string message, object actor, varargs object except){
 	int emote, i;
 	object *listeners;
 
 	if(!channels[channel] || !message || !strlen(message))
 		return;
 
-	if(member_array(previous_object(), channels[channel]) == -1){/* not tuned in */
+	if(member_array(actor, channels[channel]) == -1){/* not tuned in */
 		return;
 	}
 
@@ -93,8 +93,8 @@ void broadcast(string channel, string message, varargs object except){
 		message = message[1..];
 	}
 
-	message = (emote) ? "[" + channel + "] " + previous_object()->query_Name() + " " + message + "\n" :
-				                        previous_object()->query_Name() + " [" + channel + "] " + message + "\n";
+	message = (emote) ? "[" + channel + "] " + actor->query_Name() + " " + message + "\n" :
+				                        actor->query_Name() + " [" + channel + "] " + message + "\n";
 
 	listeners = channels[channel] - ({ except });
 	for(i = sizeof(listeners); i--; ){
@@ -112,11 +112,11 @@ mapping get_channels(){
 	return channels;
 }
 
-int cmd_channel(string chan, string mess){ /* this is called when a command is issued, to see if it matches a tuned in channel */
+int cmd_channel(string chan, string mess, object actor){ /* this is called when a command is issued, to see if it matches a tuned in channel */
 	if(!chan || !strlen(chan)) return 0;
 
-	if(channels[chan] && sizeof(channels[chan] & ({ previous_object() }))){/* valid channel */
-		broadcast(chan, mess);
+	if(channels[chan] && sizeof(channels[chan] & ({ actor }))){/* valid channel */
+		broadcast(chan, mess, actor);
 		/* do the you return different? */
 		return 1;
 	}

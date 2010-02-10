@@ -6,7 +6,7 @@
  
 # define NUM_MONTHS 12 /* number of months in our world */
 
-# define DATE_PRINT ({ "weekday", "month", "day", "hour", "minute", "second", "year" }) /* use this to step through mapping */
+# define DATE_PRINT ({ "weekday", " ", "month", " ", "day", " ", "hour", ":", "minute", ":", "second", " ", "year" }) /* use this to step through mapping */
 
 # define MONTHS ([ "Jan" : "Ettinmoor", "Feb" : "Bittertort", "Mar" : "Sylvanmarch", "Apr" : "Caberdoor", "May" : "Seermoon", "Jun" : "Wolfrise", "Jul" : "Balestreak", "Aug" : "Highmarch", "Sep" : "Fadegrip", "Oct" : "Ghastmarch", "Nov" : "Nighmarch", "Dec" : "Avendoor" ])
 # define BEGINNING_OF_TIME 0 /* this is the 0 second for our mud */
@@ -23,6 +23,6 @@ mapping get_date(){/* function to get month */
 	}
 	/* do our adjustments */
 	date["month"] = MONTHS[date["month"]];
-	date["year"] = (int)date["year"] + YEAR_OFFSET;
+	date["year"] = date["year"] + YEAR_OFFSET;
 	return date;
 }

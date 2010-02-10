@@ -77,6 +77,8 @@ static void create(varargs int clone){ /* allocates for speed */
     subscribe_event(heartd, "heart_beat");
 
     add_event("death");
+	
+	find_object(ACCOUNTD)->add_body(this_object());
 }
 
 string query_subjective(){

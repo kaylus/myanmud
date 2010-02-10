@@ -5,6 +5,7 @@
 # include <type.h>
 /* input command decipherer */
 int input(string str){
+/* TODO: check call credentials*/
     string cmd, args, fail_msg;
     mixed ret_fail;
     object *inv, user;
@@ -35,7 +36,7 @@ int input(string str){
 
     /* channeld check */
     catch{
-	if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
+	if(find_object(CHANNELD)->cmd_channel(cmd, args, this_object()) == 1) return 1;
     }
 
     if (file_info(BODY_BIN+"cmd_" + cmd+".c") != nil || (cmd=="help" && file_info(BODY_BIN+"cmd_"+args+".c") != nil)){/* found a bin command, or help on args */

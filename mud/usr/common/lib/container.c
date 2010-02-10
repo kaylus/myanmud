@@ -26,7 +26,7 @@ private static object *inventory;
 /***PROTOS***/
 object present(string id);
 
-static void create(int clone){
+static void create(varargs int clone){
     /* Hymael - adding in bag functionality */
 
     add_command("get",  "get_from");

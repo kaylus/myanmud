@@ -53,6 +53,8 @@
 # define HELPD "/usr/System/sys/helpd" /* helper daemon */
 # define ROOMD "/usr/System/sys/roomd" /* room daemon */
 # define CHANNELD "/usr/System/sys/channeld" /* channel daemon */
+# define ACCOUNTD "/usr/System/sys/accountd" /* handles account chores */
+# define WEATHERD "/usr/common/sys/weatherd" /* weather daemon */
 
 # define TEL_MANAGER "/usr/System/sys/telnetd"	/* telnet manager */
 # define BIN_MANAGER "/usr/System/sys/binaryd"	/* binary manager */

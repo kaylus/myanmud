@@ -111,9 +111,11 @@ format_compile_error(string file, int timestamp, mapping lines)
     } else {
 	str = "Compile errors in " + file + "\n" + str;
     }
+	#if 0
 	if(sscanf(file, "%*s/_code")){/* show resulting code to a wiz */
 		LOGD->log("Code was: "+read_file(file), "evals");
 	}
+	#endif
     return str;
 }
 

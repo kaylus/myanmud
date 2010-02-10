@@ -6,7 +6,7 @@
 
 inherit OBJECT;
 
-#define RESET "[0m"
+#define RESET "%^RESET%^"
 
 string _tradeskill;  /** the tradeskill this component is used with */
 int    _bonus;       /** the relative benefit to using this component */

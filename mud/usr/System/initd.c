@@ -36,7 +36,8 @@ create (varargs int clone)
     /* System requires root access */
     /* The kernel defines this as well, this is here for example */
     /*set_access ("common", "/usr/System/", READ_ACCESS);	/* changed for security*/
-    access::set_global_access("common", READ_ACCESS);						  
+    access::set_global_access("common", READ_ACCESS);	
+    access::set_global_access("game", READ_ACCESS);
     /* may have to add in other things to common, will they have to write? */
 
     /* For later, when you start setting more managers */
@@ -58,6 +59,8 @@ create (varargs int clone)
     _load (HELPD);
     _load (SEA_D);
 	_load (BRAIND);
+	_load (ACCOUNTD);
+	_load (WEATHERD);
 
     /* create some savage resources */
     /*rsrcd = find_object(RSRCD);
