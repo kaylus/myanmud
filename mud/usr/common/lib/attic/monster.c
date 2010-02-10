@@ -10,16 +10,13 @@
 #define FOLLOWS     4   /* critter follows if fighting */
 
 inherit father OBJECT;
-inherit body   BODY;
-inherit PLAY_TOOL; /* hope this works for commands */
+inherit body   BODY_LIB;
 
 private static int    bit_att;       /* our monster's attributes */
 private static string greeting;      /* to be displayed upon player entrance */
-private static string gender;
 
-void create(){/* master init */
-	set_heart_beat(2);/* may hinge speed on something set in monster */
-	add_event("death");
+void create(int clone){/* master init */
+	body::create(clone);
 }
 
 int is_monster(){ return 1; }
@@ -43,16 +40,12 @@ void set_id(string *newid){/* assures we always have id monster */
     ::set_id (newid + ({ "monster" }) );
 }
 
-void set_gender(string val){ gender = val; }
-
-string query_gender(){ return gender; }
-
 string query_cap_name(){ return capitalize(short_desc); }
 
 string query_Name(){ return capitalize(short_desc); }
 
-string query_name(){ return short_desc); }
-
+string query_name(){ return short_desc; }
+/*
 string query_subjective() {
     switch (gender) {
         case "male" : return "he" ;
@@ -75,21 +68,17 @@ string query_possessive() {
         case "female" : return "her" ;
         default: return "its" ;
     }
-}
+}*/
 
 /*********
  * thump *
  *********/
-void heart_beat(){
-	/* attacks */
-	this_object()->do_tick();
-	if(query_in_combat() && round_resolution()){/* kung fu action */
-		execute_attack();
-	}else{
-		unblock_attack(1);
-	}
+void evt_heart_beat(object obj){
+	/* monster events? */
+::evt_heart_beat(obj);
 }
 
+#if 0
 /****************************************
  * croak - create corpse, move to here, *
  * populate, destruct                   *
@@ -97,7 +86,9 @@ void heart_beat(){
 void die(){
 	object corpse, *stuff;
 	int sz;
-
+	
+	if(!find_object(CORPSE)compile_object(CORPSE);
+	
     corpse = clone_object(CORPSE);
     corpse->set_name(query_Name());
     corpse->move(this_object()->query_environment());
@@ -112,7 +103,7 @@ void die(){
     event("death");
     destruct();
 }
-
+#endif
 /*****************************
  * mask it up to handle shit *
  *****************************/
@@ -138,74 +129,15 @@ void set_greeting(string str){ greeting=str; }
  * monster's can issue commands as well, *
  * note return value 1 is success        *
  *****************************************/
-int command (string str) {
+int input (string str) {/*TODO: may need to set this player */
     string verb, arg;
     int i, sz, result ;
     object *obs ;
     object me;
 
-	if(!query_commands_enabled())return 0;
-
-/* Separate the first word from later words. */
-    if (sscanf(str,"%s %s",verb,arg)!=2) verb=str ;
-
-/* First, see if we can match this up to a player command. */
-    if (file_exists("/cmds/player/"+verb+".c")==1) {
-        if (arg) {
-            result = call_other("/cmds/player/"+verb,"do_command",arg) ;
-        } else {
-	    result = call_other("/cmds/player/"+verb,"do_command") ;
-        }
-    }
-    if (result) return 1;
-
-/* We have failed to match to any of the player commands. Next,
-   we see if the room defined an action for us. */
-
-    if (environment) {
-	result = environment->perform_action(verb,arg) ;
-    }
-    if (result) return 1;
-
-/* Any object in our inventory? */
-
-    obs = query_inventory() ;
-    if (obs && (sz=sizeof(obs))>0) {
-	for (i=0;i<sz;i++) {
-	    result = obs[i]->perform_action(verb,arg) ;
-	    if (result) return 1;
-	}
-    }
-
-/* In the inventory of our environment? */
-    if (environment) {
-	obs = environment->query_inventory() ;
-	if (obs) {
-	    for (i=0,sz=sizeof(obs);i<sz;i++) {
-		result = obs[i]->perform_action(verb,arg) ;
-	   	if (result) return 1;
-	    }
-	}
-    }
-
-/* No object defines this command. Try the soul daemon. */
-
-    result = SOUL_D->do_soul(str) ;
-
-/* If that didn't work, we're hosed. */
-    if (result) return 1;
-
-    return 0; /* failed to find like command */
-}
-
-int do_command(string str){
-	int res;
-	/* set this_player, later make sure this is necessary */
-    USERS_D->set_this_player(this_object());
-    res = command(str);
-    /* set this_player */
-    USERS_D->set_this_player(previous_object());
-    return res;
+	/*if(!query_commands_enabled()) return 0;*/
+	
+	return ::input(str);
 }
 
 /************************************
@@ -213,7 +145,7 @@ int do_command(string str){
  ************************************/
 void greet(object player){
 	if(query_aggressive()){/* commence annihilation */
-		do_command("kill "+player->query_name());
+		input("kill "+player->query_name());
 	}
 	if(greeting){
 		catch(call_other(this_object(), greeting, player));
@@ -242,7 +174,7 @@ void message(string str){
 		call_out("do_command",0.7,tmp2);
 	}
 	if(sscanf(str, "%s enters", tmp1)==1){
-		player=USERS_D->find_user(lowercase(tmp1));
+		player=find_player(lowercase(tmp1));
 		player=player->query_player();
 		if(player){
 			greet(player);/* our monster's greeting mechanism */
@@ -255,10 +187,10 @@ void message(string str){
 	/*} else if(sscanf(str, "%s drops %s %s.", tmp1, tmp3, tmp2)==3){
 		call_out("do_command",0.5,("get "+tmp2));*/
 	} else if(sscanf(str, "%s leaves %s.", tmp1, tmp2)==2){
-		player=USERS_D->find_user(lowercase(tmp1));
+		player=find_player(lowercase(tmp1));
 		catch(player = player->query_player());
 		if(player && query_follow(player)){/* follow */
-			call_out("do_command",0.3,("go "+tmp2));
+			call_out("input",0.3,("go "+tmp2));
 		}
 			/*if(tmp1=="Hymael"){
 
@@ -325,9 +257,9 @@ varargs int move (mixed dest, string direction, int silent) {
     }
     return res;
 }
-#endif
+
 /* Hymael - trying to implement atomic */
-atomic varargs int move (mixed dest, string direction, int silent) {
+atomic int move (mixed dest, varargs string direction, int silent) {
 
     object old_env ;
     int res ;
@@ -360,7 +292,7 @@ atomic varargs int move (mixed dest, string direction, int silent) {
 	}
     return 1;
 }
-
+#endif
 /*************************
  * check the sexay boday *
  *************************/
@@ -369,7 +301,7 @@ string query_long() {
     int i, total, sz;
     object *inventory, *worn_items, *wielded_items;
 
-    ret = TO->query_Name() + " ( " + query_xa() + " )\n";
+    ret = this_object()->query_Name() + " ( " + query_xa() + " )\n";
 
     if ((describe = father::query_long())) ret += "\n" + describe;
     ret += body::query_long();
@@ -390,4 +322,5 @@ int attack(object target){
  * assaulting dead  *
  * people           *
  ********************/
-void evt_death(mixed dead){ stop_attacking(dead[0]); }
+/*void evt_death(mixed dead){ stop_attacking(dead[0]); }*/
+

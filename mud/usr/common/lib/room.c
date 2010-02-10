@@ -19,6 +19,7 @@ inherit CONTAINER;
         mapping exits;   /**< rooms exits */
 private int _range;      /**< range encounters are in this room */
 private int _bits;       /**< bit field */
+private string entrance; /* an entrance message to be echoed after someone enters */
 
 /*int catch_tell(string str);*/
 
@@ -28,6 +29,8 @@ void create(varargs int clone){
 	set_long("Bland, tasteless, lifeless, etc.");
 	ROOMD->add_room(this_object());
 }
+
+void set_entrance(string str){ entrance = str; }
 
 int is_room(){ return 1; }
 
@@ -154,6 +157,18 @@ void message(varargs string str, object *excluded){
 
         inventory[i]->message(str);
     }
+}
+
+void echo_entrance(object player){
+	if(player->query_environment() != this_object())return;
+	if(entrance)player->message(entrance);
+}
+
+atomic void receive_object(object ob, varargs int slide){
+	if(ob->is_body() && entrance){
+		call_out("echo_entrance", 3, ob); 
+	}
+	::receive_object(ob, slide);
 }
 
 
