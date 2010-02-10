@@ -12,7 +12,7 @@ mixed cmd_tune (string cmd, string str, object actor){
     if (!strlen (str))
 	return "Usage: tune <channel>\n";
 
-    switch(CHANNELD->tune(str)){
+    switch(CHANNELD->tune(str, actor)){
     case -1:
 	actor->message("You tune out of channel " + str + "\n");
 	break;

@@ -455,9 +455,8 @@ mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
     if(sscanf(str, "$%d", i))return ({ fetch(i), T_OBJECT });
 
     /* check for data */
-    if(!catch(x=(float)str))return ({ x, T_FLOAT });
-
     if(!catch(i=(int)str))return ({ i, T_INT });
+    if(!catch(x=(float)str))return ({ x, T_FLOAT });
 
     if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
 	ret = ({ find_object(str), T_OBJECT });

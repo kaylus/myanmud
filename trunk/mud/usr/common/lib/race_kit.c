@@ -39,7 +39,7 @@ object input_to(string str){/* this function receives the initial quest for buil
 		this_object()->message("Your race set to "+str+"\n");
 		race = str;
 		this_object()->roll_stats(); /* roll stats up with race */
-		this_object()->cmd_score();
+		this_object()->input("score");/* TODO: redesign calls? */
 		this_object()->message("\n" + STAGES[stage]);
 		
 		/* pass on to something else? */
@@ -51,7 +51,7 @@ object input_to(string str){/* this function receives the initial quest for buil
 			return nil;
 		}
 		this_object()->roll_stats(); /* roll stats up with race */
-		this_object()->cmd_score();
+		this_object()->input("score");
 		this_object()->message("\n" + STAGES[stage]);
 		return this_object();
 		

@@ -65,7 +65,7 @@ string query_name(){ return name; }
 
 object query_wiztool(){ return wiztool; } /* hacked in for use to check if someone is a wiz */
 
-void issue_wiztool(){ /* security? */
+void issue_wiztool(){ /* TODO: security? */
     if(!wiztool)
 	wiztool = clone_object(SYSTEM_WIZTOOL, name);
 }

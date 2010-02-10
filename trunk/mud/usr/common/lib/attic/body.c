@@ -76,7 +76,7 @@ void create(int clone){
 
     add_event("death");
 }
-
+/* TODO: add query_objective */
 string query_subjective(){
     switch(query_gender()){
     case "male":

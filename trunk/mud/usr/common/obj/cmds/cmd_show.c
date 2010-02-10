@@ -13,6 +13,6 @@ mixed cmd_show (string cmd, string str, object actor){
     if (!str || !strlen(str))
 	return "Usage: show <channel>\n";
 
-    actor->message(CHANNELD->show(str));
+    actor->message(CHANNELD->show(str, actor));
     return 1;
 }
