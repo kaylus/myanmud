@@ -6,9 +6,9 @@
  *******************************/
 
 /** libs */
-#define LIB_ANVIL "/usr/game/lib/Tradeskills/anvil"
-#define LIB_COMPONENT "/usr/game/lib/Tradeskills/component"
-#define COMPONENT "/usr/game/obj/component"
+#define LIB_ANVIL "/usr/Game/lib/Tradeskills/anvil"
+#define LIB_COMPONENT "/usr/Game/lib/Tradeskills/component"
+#define COMPONENT "/usr/Game/obj/component"
 
 /** skill tag name */
 #define W_SMITH "weaponsmithing"

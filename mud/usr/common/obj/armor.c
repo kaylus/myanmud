@@ -1,3 +1,3 @@
 /* armor object */
-inherit "/usr/common/lib/armor";
+inherit "/usr/Common/lib/armor";
 

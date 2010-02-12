@@ -1,14 +1,14 @@
 /*************
  * Sea grid  *
  *************/
-#define SEA_D "/usr/game/sys/sea_d"
+#define SEA_D "/usr/Game/sys/sea_d"
 
-#define LIB_SHIP_ROOM "/usr/game/lib/ship_room"
-#define SHIP_ROOM "/usr/game/obj/ship_room"
-#define LIB_PORTAGE "/usr/game/lib/portage"
-#define PORTAGE   "/usr/game/obj/portage"
-#define SHIP  "/usr/game/obj/ship"
-#define LIB_SHIP "/usr/game/lib/ship"
+#define LIB_SHIP_ROOM "/usr/Game/lib/ship_room"
+#define SHIP_ROOM "/usr/Game/obj/ship_room"
+#define LIB_PORTAGE "/usr/Game/lib/portage"
+#define PORTAGE   "/usr/Game/obj/portage"
+#define SHIP  "/usr/Game/obj/ship"
+#define LIB_SHIP "/usr/Game/lib/ship"
  
 #define X_DIM 10 /**< x dimension */
 #define Y_DIM 10 /**< y dimension */

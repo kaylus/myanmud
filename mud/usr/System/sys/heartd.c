@@ -1,6 +1,6 @@
 /****************************
  *  heart beat daemon       *
- *  /usr/common/heartd.c    *
+ *  /usr/Common/heartd.c    *
  *  issues event wide pulse *
  ***************************/
 

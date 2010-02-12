@@ -29,15 +29,15 @@ create (varargs int clone)
     access::create ();
     rsrc::create ();
 
-    /* adding common */
-    add_owner ("common");
-	add_owner ("game");
+    /* adding Common */
+    add_owner ("Common");
+	add_owner ("Game");
 
     /* System requires root access */
     /* The kernel defines this as well, this is here for example */
     /*set_access ("common", "/usr/System/", READ_ACCESS);	/* changed for security*/
-    access::set_global_access("common", READ_ACCESS);	
-    access::set_global_access("game", READ_ACCESS);
+    access::set_global_access("Common", READ_ACCESS);	
+    access::set_global_access("Game", READ_ACCESS);
     /* may have to add in other things to common, will they have to write? */
 
     /* For later, when you start setting more managers */

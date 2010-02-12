@@ -1,2 +1,2 @@
-inherit "/usr/game/lib/Tradeskills/anvil";
+inherit "/usr/Game/lib/Tradeskills/anvil";
 

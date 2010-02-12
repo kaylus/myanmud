@@ -1,3 +1,3 @@
 /* corpse object */
-inherit "/usr/common/lib/corpse";
+inherit "/usr/Common/lib/corpse";
 

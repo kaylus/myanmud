@@ -1,3 +1,3 @@
 /* limb object */
-inherit "/usr/common/lib/limb";
+inherit "/usr/Common/lib/limb";
 
