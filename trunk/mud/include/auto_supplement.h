@@ -166,4 +166,20 @@ static string strip(string str, varargs int stripit){
 	}	
 	return str[slice_start..slice_end];
 }
-
+/*
+ *http://lostsouls.org/grimoire_diminishing_returns
+ *public domain code for diminishing returns
+ */
+float diminishing_returns(float val, float scale) {
+    float mult, trinum;
+	
+	if(val < 0.0)
+        return -diminishing_returns(-val, scale);
+    mult = val / scale;
+    trinum = (sqrt(8.0 * mult + 1.0) - 1.0) / 2.0;
+    return trinum * scale;
+}
+# define VOWELS ({ 'a', 'e', 'i', 'o', 'u', 'y' })
+string article(string str){
+	return (sizeof(VOWELS & ({str[0]}))) ? "an" : "a";
+}

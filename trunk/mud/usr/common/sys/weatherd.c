@@ -13,7 +13,7 @@ string format_time(mapping time){/* return formatted string, TODO: add spaces to
 	format = DATE_PRINT;
 	ret = "";
 	for(i=0, sz=sizeof(format); i<sz; i++){
-		if(time[format[i]]){
+		if(time[format[i]] || time[format[i]] == 0){
 			ret += (string)time[format[i]];
 		}else{
 			ret += format[i];/* character */
@@ -21,3 +21,4 @@ string format_time(mapping time){/* return formatted string, TODO: add spaces to
 	}
 	return ret;
 }
+

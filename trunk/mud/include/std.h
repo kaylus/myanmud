@@ -55,6 +55,7 @@
 # define CHANNELD "/usr/System/sys/channeld" /* channel daemon */
 # define ACCOUNTD "/usr/System/sys/accountd" /* handles account chores */
 # define WEATHERD "/usr/common/sys/weatherd" /* weather daemon */
+# define THINGD "/usr/System/sys/thingd" /* thing server */
 
 # define TEL_MANAGER "/usr/System/sys/telnetd"	/* telnet manager */
 # define BIN_MANAGER "/usr/System/sys/binaryd"	/* binary manager */

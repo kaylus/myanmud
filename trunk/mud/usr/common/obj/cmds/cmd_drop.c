@@ -29,11 +29,11 @@ mixed cmd_drop(string cmd, string str, object actor){
     /***END COINS***/
     thing = actor->present(str) ;
     if(!thing)
-	return "You don't possess "+/*article(str)*/"a"+" "+str+".\n";
+	return "You don't possess "+article(str)+" "+str+".\n";
 
     res = catch(thing->move(actor->query_environment()));
     if(res){
-	actor->message("You can't bring yourself to drop it."+res+"\n") ;
+	actor->message("You can't bring yourself to drop it. "+res+"\n") ;
 	return 1;
     }
     str = thing->query_short();
