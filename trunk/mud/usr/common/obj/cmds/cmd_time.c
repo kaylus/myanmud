@@ -12,7 +12,7 @@ mixed help(string cmd, object actor){
 /* channeld */
 mixed cmd_time (string cmd, string str, object actor){
 	mapping time;
-	time = "/usr/common/sys/weatherd"->get_date();
-    actor->message("/usr/common/sys/weatherd"->format_time(time)+"\n");
+	time = "/usr/Common/sys/weatherd"->get_date();
+    actor->message("/usr/Common/sys/weatherd"->format_time(time)+"\n");
     return 1;
 }

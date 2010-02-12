@@ -1,7 +1,7 @@
 /* brass */
 
 
-inherit "/usr/game/lib/Tradeskills/component";
+inherit "/usr/Game/lib/Tradeskills/component";
 
 create(int clone){
     set_tradeskill("weaponsmithing");

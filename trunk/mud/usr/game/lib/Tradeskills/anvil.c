@@ -5,7 +5,7 @@
  generally bring it in line with new mudlib
  *************************************/
 #include <game/Tradeskills/weaponsmithing.h>
-# define OBJ "/usr/common/obj/object" /* rudimentary object */
+# define OBJ "/usr/Common/obj/object" /* rudimentary object */
 /** things are put into this and "combined" */
 inherit container CONTAINER;
 
@@ -309,7 +309,7 @@ mixed fabricate(string str){
 	/* debug */
 	write("DEBUG - bonus: "+values[_BON]+" difficulty: "+values[_DIF]+"\n");
 	/* debug */
-	weapon = THINGD->get_clone("/usr/common/obj/weapon");
+	weapon = THINGD->get_clone("/usr/Common/obj/weapon");
 	weapon->set_id( ({ str, alloy+" "+str }) );
 	weapon->set_short(color+alloy+" "+str+"[0m");
 	weapon->set_quality(values[_BON]+TP->query_skill("weaponsmithing"));

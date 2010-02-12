@@ -1,4 +1,4 @@
-inherit "/usr/common/lib/attic/monster";
+inherit "/usr/Common/lib/attic/monster";
 
 void create(int clone) {
 ::create(clone);

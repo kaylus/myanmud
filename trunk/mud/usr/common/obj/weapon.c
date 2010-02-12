@@ -1,1 +1,1 @@
-inherit "/usr/common/lib/weapon";
+inherit "/usr/Common/lib/weapon";

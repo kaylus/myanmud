@@ -5,7 +5,7 @@
  * security is a must
  */
  
-# define THINGS ({ "/usr/common/obj/object", "/usr/common/obj/weapon", "/usr/game/obj/component" })
+# define THINGS ({ "/usr/Common/obj/object", "/usr/Common/obj/weapon", "/usr/Game/obj/component" })
  
 private object *things; /* handles on things */
 private string *allowable_things; /* things we allow to be created */ 

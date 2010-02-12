@@ -1,1 +1,1 @@
-inherit intl "/usr/common/lib/intl_phrase";
+inherit intl "/usr/Common/lib/intl_phrase";

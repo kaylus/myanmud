@@ -2,7 +2,7 @@
  * Weather Daemon Includes
  */
 
-# define WEATHERD "/usr/common/sys/weatherd" /* our daemon */
+# define WEATHERD "/usr/Common/sys/weatherd" /* our daemon */
  
 # define NUM_MONTHS 12 /* number of months in our world */
 

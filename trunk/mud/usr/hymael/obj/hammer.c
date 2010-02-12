@@ -1,6 +1,6 @@
 /* an anvil */
 
-inherit "/usr/game/lib/Tradeskills/component";
+inherit "/usr/Game/lib/Tradeskills/component";
 
 void create(int clone) {
     set_tradeskill("weaponsmithing");
