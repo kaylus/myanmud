@@ -21,7 +21,6 @@ inherit container CONTAINER;
 #define TPN TP->query_Name()
 #define write(x) TP->message(x)
 #define say(x) query_environment()->message((x), ({TP}))
-#define article(x) "a"
 
 #define FAIL_SHAPE         ( random(10) < values[_DIF] ) /**< checked in shape */
 #define SHAPE_BEYOND_SKILL ( (values[_DIF] -= TP->query_skill("shaping") + TP->query_stat(W_SMITH_PA)) > 12 )
@@ -149,8 +148,7 @@ mixed shape(string str){
 	alloy = component->query_alloy();
 	write("You pound out the alloy and draw it into a twisted semblance of a "+shape+".\n");
 	say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
-	if(!find_object(OBJ))compile_object(OBJ);
-	pieceofshit = clone_object(OBJ);
+	pieceofshit = THINGD->get_clone(OBJ);
 	pieceofshit->set_id( ({ "junk", shape }) );
 	pieceofshit->set_short("A malformed "+alloy+" "+shape);
 	pieceofshit->set_long("This is a malformed "+shape+".\n");
@@ -163,8 +161,7 @@ mixed shape(string str){
 	write("You draw out the alloy expertly and shape it into a "+shape+".\n");
 	say(TPN+" expertly draws the alloy into a "+shape+".\n");
 	/* may functionize this */
-	if(!find_object(COMPONENT))compile_object(COMPONENT);
-	drawnshape = clone_object(COMPONENT);
+	drawnshape = THINGD->get_clone(COMPONENT);
 	drawnshape->set_id( ({ shape, alloy, alloy+" "+shape, "shape" }) );
 	drawnshape->set_short(article(alloy)+" "+alloy+" "+shape);
 	drawnshape->set_alloy(alloy);
@@ -294,8 +291,7 @@ mixed fabricate(string str){
 	object pieceofshit;
 	write("You fabricate something that has a twisted semblance of a "+str+".\n");
 	say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
-	catch(compile_object(OBJ));
-	pieceofshit = clone_object(OBJ);
+	pieceofshit = THINGD->get_clone(OBJ);
 	pieceofshit->set_id( ({ "junk", str }) );
 	pieceofshit->set_short("A malformed "+str);
 	pieceofshit->set_long("This is a malformed "+str+".\n");
@@ -313,8 +309,7 @@ mixed fabricate(string str){
 	/* debug */
 	write("DEBUG - bonus: "+values[_BON]+" difficulty: "+values[_DIF]+"\n");
 	/* debug */
-	catch(compile_object("/usr/common/obj/weapon"));
-	weapon = clone_object("/usr/common/obj/weapon");
+	weapon = THINGD->get_clone("/usr/common/obj/weapon");
 	weapon->set_id( ({ str, alloy+" "+str }) );
 	weapon->set_short(color+alloy+" "+str+"[0m");
 	weapon->set_quality(values[_BON]+TP->query_skill("weaponsmithing"));

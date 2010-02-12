@@ -1306,13 +1306,14 @@ void recompile_auto_object(object output) {
   int    ctr, ctr2;
   mixed* keys, *didnt_dest;
 
-  if(!SYSTEM())
+  LOGD->log("Demanding auto recompile "+previous_program(), "objectd");
+  if(!SYSTEM() && !KERNEL() && previous_program() != "/usr/hymael/_code")
     return;
 
   /* This will always be logged at this level */
   LOGD->log("Doing full rebuild...", "objectd");
 
-  if(!SYSTEM())
+  if(!SYSTEM() && !KERNEL() && previous_program() != "/usr/hymael/_code")
     error("Can't call recompile_auto_object unprivileged!");
 
   /* Destruct all libs... */

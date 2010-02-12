@@ -1,0 +1,8 @@
+
+> gauge code for(a=0;a<10000;a++);return "done";
+$89 = "done"
+> 
+
+<command code for(a=0;a<10000;a++);return "done";>
+Time:  0.015625
+Ticks:  97784

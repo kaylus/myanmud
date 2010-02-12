@@ -11,5 +11,6 @@ mixed help(string cmd, object actor){
 /* rudimentary bug reporting */
 mixed cmd_bug (string cmd, string str, object actor){
 	actor->message("working on it\n");
+	editor("a /logs/bugs.log");
 	return 1;
 }

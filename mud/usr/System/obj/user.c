@@ -241,7 +241,7 @@ object _input_to(string str){/* internal call that handles input stuff to object
  */
 int receive_message(string str)
 {
-    if (previous_program() == LIB_CONN) {
+    if (previous_program() == LIB_CONN || previous_object() == wiztool) {
 	string cmd;
 	object user, *users;
 	int i, sz;
@@ -273,7 +273,7 @@ int receive_message(string str)
 		    case '\'':
 			if (strlen(cmd) > 1) {
 			    cmd[0] = ' ';
-			    str = cmd;
+			    str = strip(cmd);
 			}
 			cmd = "say";
 			break;
@@ -281,7 +281,7 @@ int receive_message(string str)
 		    case ':':
 			if (strlen(cmd) > 1) {
 			    cmd[0] = ' ';
-			    str = cmd;
+			    str = strip(cmd);
 			}
 			cmd = "emote";
 			break;
@@ -458,6 +458,8 @@ int receive_message(string str)
 }
 /* intercept and color, based on settings? */
 int message(string msg){
-    return ::message(find_object(ANSID)->parse_pinkfish(msg));
+	msg = find_object(ANSID)->parse_pinkfish(msg);
+	
+    return ::message(msg);
 }
 

@@ -73,7 +73,7 @@ mixed look_in(string str){
 
     /* let's look inside */
     catch(i = sizeof(inventory));
-    say(TPN+" looks inside "+/*article(bag)+*/" "+bag+".\n");
+    say(TPN+" looks inside "+article(bag)+" "+bag+".\n");
     if(!i){
 	write("Nothing inside of that.\n");
 	return 1;
@@ -116,8 +116,8 @@ mixed get_from(string str){/* handle form get X from Y */
 	if(err){
 	    return err;
 	}
-	write("You get "+number+" "+type+" from "+bag+".\n");
-	say(TPN+" gets some money from "+bag+".\n");
+	write("You get "+number+" "+type+" from "+article(bag)+" "+bag+".\n");
+	say(TPN+" gets some money from "+article(bag)+" "+bag+".\n");
 	return 1;
     }
     /***END MONEY***/
@@ -126,26 +126,26 @@ mixed get_from(string str){/* handle form get X from Y */
 	int i;
 	catch(i = sizeof(inventory));
 	if(!i)
-	    return "Nothing in "+bag+".\n";
+	    return "Nothing in "+article(bag)+" "+bag+".\n";
 
 	while(i--){/* proceed to empty */
 	    item = catch(_get(inventory[i], TP));
 	}
 	write("You remove everything from the "+bag+".\n");
-	say(TPN+" gets everything from "+/*article(bag)+*/" "+bag+".\n");
+	say(TPN+" gets everything from the "+bag+".\n");
 	return 1;
     }
     ob = present(item);
     if(!ob)
-	return "No "+item+" in "+bag+".\n";
+	return "No "+item+" in "+article(bag)+" "+bag+".\n";
 
     /* ob exists in this bag */
     if((str = catch(_get(ob, TP)))){/* no move */
 	write(str);
     } else { /* moved */
 	str = ob->query_short();
-	write("You take the "+str+" from "+bag+".\n");
-	say(TPN+" gets a "+str+" from "+/*article(bag)+*/" "+bag+".\n");
+	write("You take the "+str+" from "+article(bag)+" "+bag+".\n");
+	say(TPN+" gets a "+str+" from "+article(bag)+" "+bag+".\n");
     }
     return 1;
 }
@@ -179,15 +179,15 @@ mixed put_in(string str){/* handle form put X in(to) Y */
 	if(err){
 	    return err;
 	}
-	write("You put "+number+" "+type+" into "+bag+".\n");
-	say(TPN+" puts some money into "+bag+".\n");
+	write("You put "+number+" "+type+" into "+article(bag)+" "+bag+".\n");
+	say(TPN+" puts some money into "+article(bag)+" "+bag+".\n");
 	return 1;
     }
     /***END MONEY***/
 
     ob = TP->present(item);
     if(!ob)
-	return "You don't possess "+/*article(item)+*/" "+item+".\n";
+	return "You don't possess "+article(item)+" "+item+".\n";
 
     if(ob == this_object())
 	return "You cannot put an object inside itself.\n";
@@ -197,8 +197,8 @@ mixed put_in(string str){/* handle form put X in(to) Y */
 	write(str);
     } else { /* moved */
 	str = ob->query_short();
-	write("You put "+str+" into "+bag+".\n");
-	say(TPN+" puts a "+str+" into "+/*article(bag)+*/" "+bag+".\n");
+	write("You put "+str+" into "+article(bag)+ " "+bag+".\n");
+	say(TPN+" puts a "+str+" into "+article(bag)+" "+bag+".\n");
     }
     return 1;
 }

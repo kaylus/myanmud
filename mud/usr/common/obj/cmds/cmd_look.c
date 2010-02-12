@@ -59,7 +59,7 @@ mixed cmd_look(string cmd, string str, object actor){
 	    actor->message(thing->query_long());
 	    return 1;
 	}
-	actor->message("I don't see "+/*article(arg)*/"a"+" "+arg+" here.\n");
+	actor->message("I don't see "+article(arg)+" "+arg+" here.\n");
 	return 1;
     }
     /* Give up. */
