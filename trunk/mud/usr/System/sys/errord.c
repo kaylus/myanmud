@@ -50,13 +50,13 @@ lalign(mixed s, int width)
     s = (string)s;
     width -= strlen(s);
     if (width <= 0) {
-        return s;
+	return s;
     }
     str = "                                                                ";
     len = 64;
     while (width > len) {
-        len <<= 1;
-        str += str;
+	len <<= 1;
+	str += str;
     }
     return s + str[..width - 1];
 }
@@ -73,13 +73,13 @@ ralign(mixed s, int width)
     s = (string)s;
     width -= strlen(s);
     if (width <= 0) {
-        return s;
+	return s;
     }
     str = "                                                                ";
     len = 64;
     while (width > len) {
-        len <<= 1;
-        str += str;
+	len <<= 1;
+	str += str;
     }
     return str[..width - 1] + s;
 }
@@ -100,10 +100,10 @@ format_compile_error(string file, int timestamp, mapping lines)
     linenrs = map_indices(lines);
     errors  = map_values(lines);
     for (i = 0, total = 0; i < sz; i++) {
-        string linenr;
+	string linenr;
 
-        linenr = ralign(linenrs[i], 5) + "   ";
-        str += linenr + implode(errors[i], "\n" + linenr) + "\n";
+	linenr = ralign(linenrs[i], 5) + "   ";
+	str += linenr + implode(errors[i], "\n" + linenr) + "\n";
 	total += sizeof(errors[i]);
     }
     if (total == 1) {
@@ -111,11 +111,11 @@ format_compile_error(string file, int timestamp, mapping lines)
     } else {
 	str = "Compile errors in " + file + "\n" + str;
     }
-	#if 0
-	if(sscanf(file, "%*s/_code")){/* show resulting code to a wiz */
-		LOGD->log("Code was: "+read_file(file), "evals");
-	}
-	#endif
+    #if 0
+    if(sscanf(file, "%*s/_code")){/* show resulting code to a wiz */
+	LOGD->log("Code was: "+read_file(file), "evals");
+    }
+    #endif
     return str;
 }
 
@@ -140,8 +140,8 @@ flush_compile_errors()
 
 	file = files[i];
 	text = format_compile_error(file,
-				    data[i][0],
-				    data[i][1]) + "\n";
+	  data[i][0],
+	  data[i][1]) + "\n";
 	find_object(DRIVER)->message(text);
 	LOGD->log(text, "compile_errors");
     }
@@ -158,17 +158,18 @@ compile_error(string file, int line, string err)
 
     data = compile_errors[file];
     if (data) {
-        string *list;
+	string *list;
 
-        list = data[1][line];
-        if (list) {
-            data[1][line] = list + ({ err });
-        } else {
-            data[1][line] = ({ err });
-        }
+	list = data[1][line];
+	if (list) {
+	    data[1][line] = list + ({ err });
+	} else {
+	    data[1][line] = ({ err });
+	}
     } else {
-        compile_errors[file] = ({ time(), ([ line: ({ err }) ]) });
+	compile_errors[file] = ({ time(), ([ line: ({ err }) ]) });
     }
+    flush_compile_errors();/* added */
 }
 
 /*
@@ -193,51 +194,51 @@ format_trace(mixed **trace, int marker)
     lines = allocate(sz * 2);
     for (i = j = maxlen = 0; i < sz; i++) {
 	int    linenr;
-        string objname, progname, function, line, last_obj, last_prog;
-        mixed  *elt;
+	string objname, progname, function, line, last_obj, last_prog;
+	mixed  *elt;
 
-        elt = trace[i];
-        objname  = elt[TRACE_OBJNAME];
-        progname = elt[TRACE_PROGNAME];
-        function = elt[TRACE_FUNCTION];
-        linenr   = elt[TRACE_LINE];
+	elt = trace[i];
+	objname  = elt[TRACE_OBJNAME];
+	progname = elt[TRACE_PROGNAME];
+	function = elt[TRACE_FUNCTION];
+	linenr   = elt[TRACE_LINE];
 
-        if (objname != last_obj) {
-            string name;
-            object ob;
+	if (objname != last_obj) {
+	    string name;
+	    object ob;
 
-            line = "        " + format_path(objname);
-            if ((ob = find_object(objname)) && (name = ob->query_name())) {
-                line += " \"" + name + "\"";
-            }
-            lines[j++] = ({ line, nil });
-            last_obj = last_prog = objname;
-        }
-        if (progname == AUTO && strlen(function) > 3) {
-            switch (function[..2]) {
-            case "bad":
-            case "_F_":
-            case "_Q_":
+	    line = "        " + format_path(objname);
+	    if ((ob = find_object(objname)) && (name = ob->query_name())) {
+		line += " \"" + name + "\"";
+	    }
+	    lines[j++] = ({ line, nil });
+	    last_obj = last_prog = objname;
+	}
+	if (progname == AUTO && strlen(function) > 3) {
+	    switch (function[..2]) {
+	    case "bad":
+	    case "_F_":
+	    case "_Q_":
 		continue;
-            }
-        }
-        line = (linenr ? ralign(linenr, 5) : "     ") +
-               (i == marker ? " > " : "   ") +
-	       "   " +
-               (progname == last_prog ? "-" : format_path(progname));
-        last_prog = progname;
-        if (strlen(line) > maxlen) {
-            maxlen = strlen(line);
-        }
-        lines[j++] = ({ line, function });
+	    }
+	}
+	line = (linenr ? ralign(linenr, 5) : "     ") +
+	(i == marker ? " > " : "   ") +
+	"   " +
+	(progname == last_prog ? "-" : format_path(progname));
+	last_prog = progname;
+	if (strlen(line) > maxlen) {
+	    maxlen = strlen(line);
+	}
+	lines[j++] = ({ line, function });
     }
     result = "";
     for (i = 0; i < j; i++) {
-        if (lines[i][1]) {
-            result += lalign(lines[i][0], maxlen) + "   " + lines[i][1] + "\n";
-        } else {
-            result += lines[i][0] + "\n";
-        }
+	if (lines[i][1]) {
+	    result += lalign(lines[i][0], maxlen) + "   " + lines[i][1] + "\n";
+	} else {
+	    result += lines[i][0] + "\n";
+	}
     }
     return result;
 }
@@ -254,12 +255,12 @@ runtime_error(string str, int caught, mixed **trace)
 				 format_trace(trace[..sizeof(trace) - 2],
 					      caught - 1) +
 				 "\n");*/
-	if(!caught){
-		LOGD->log(str + (caught ? " [caught]\n" : "\n") +
-				 format_trace(trace[..sizeof(trace) - 2],
-					      caught - 1) +
-				 "\n", "runtime_errors");
-	}
+    if(!caught){
+	LOGD->log(str + (caught ? " [caught]\n" : "\n") +
+	  format_trace(trace[..sizeof(trace) - 2],
+	  caught - 1) +
+	  "\n", "runtime_errors");
+    }
 }
 
 /*
@@ -274,13 +275,13 @@ atomic_error(string str, int atom, mixed **trace)
 				 format_trace(trace[atom..sizeof(trace) - 2],
 					      - 1) +
 				 "\n");*/
-	/* hack in atomic response code */
-	/*if(str[0] != '$' && this_user())*/
-		this_player()->message(str);
+    /* hack in atomic response code */
+    /*if(str[0] != '$' && this_user())*/
+    this_player()->message(str);
 
-	/*LOGD->log(str+ " [atomic]\n" +
-				 format_trace(trace[atom..sizeof(trace) - 2],
-					      - 1) +
-				 "\n", "atomic_errors");*/
+    /*LOGD->log(str+ " [atomic]\n" +
+			     format_trace(trace[atom..sizeof(trace) - 2],
+					  - 1) +
+			     "\n", "atomic_errors");*/
 }
 

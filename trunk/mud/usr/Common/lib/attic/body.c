@@ -7,6 +7,7 @@
  *******************************************************/
 #include <config.h>
 #include <type.h>
+#include <kernel/kernel.h>
 #include <game/body.h>
 
 #define WIELDS ({ "primary", "secondary" })
@@ -28,6 +29,7 @@ inherit RACE_KIT;
 inherit WEALTH;
 inherit SKILLS;
 inherit BODY_INPUT;
+inherit alias ALIAS; /* alias toolbox, move lib into System? */
 
 /**************************************
  * mapping of worn items - to be made *
@@ -42,7 +44,9 @@ static mapping wielded;
 
 static int ac;               	/* this will be our body's armor class */
 object user;                /* contain user object? */
+							/* do we need a list of users who've used this body? Live in accountd? */
 object end_room;            /* last room that held this body */
+int stasis;
 
 void create(int clone){ 
     object heartd;
@@ -51,7 +55,7 @@ void create(int clone){
 	worn      = ([]);
 
     if(!wielded)
-	wielded     = ([]);/*allocate(map_sizeof(BP_ARMS));*/
+	wielded     = ([]);
 
     /***WEIGHT STUFF***/
     set_bulk(200);
@@ -64,9 +68,10 @@ void create(int clone){
     roll_stats(); /* temp */
 
     combat::create();
+	alias::create();
     init_health();
-    user = previous_object();
-    set_id(({ user->query_name() }));
+    /*user = previous_object();*/
+    /*set_id(({ user->query_name() }));*/
 
     /* heart beat */
     heartd = find_object(HEARTD);
@@ -75,6 +80,8 @@ void create(int clone){
     subscribe_event(heartd, "heart_beat");
 
     add_event("death");
+	ACCOUNTD->add_body(this_object());
+	stasis = 0;
 }
 /* TODO: add query_objective */
 string query_subjective(){
@@ -106,30 +113,35 @@ int message(string str){
 }
 
 void stasis(){/* put body into stasis */
-
+	/*if(!SYSTEM() && !KERNEL())
+		error("Illegal call to stasis body.\n");*/
+		
     end_room = environment;
 
-    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored, should also lock up call_outs on the body at this time */
-    end_room->message("Juggling body.\n");
-    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" going into stasis\n", "body_log");
+    this_object()->move(ROOMD->query_meat_locker(), "", 1, 1);/* stored, should also lock up call_outs 
+	                                                             on the body at this time */
+    end_room->message(user->query_Name()+" enters stasis.\n");
+	stasis = 1;
 }
 
-int awaken(){
-    LOGD->log("awaken called by " +previous_program(), "users");
-    if(previous_program() != SYSTEM_USER)
-	return 0;
+void awaken(object obj){/* this function needs to wake up call_outs and everything too */
+    /*if(!SYSTEM() && !KERNEL())
+		error("Illegal call to awaken body.\n");*/
 
-    user = previous_object();
+    if(user != obj){/* check if this is what we want to do? Should we tell ACCOUNTD? */
+		LOGD->log("Switching "+object_name(this_object())+"'s user to "+obj->query_Name(), "users");
+		user = obj;
+	}
     if(!end_room){/* room is no more */
 	end_room = ROOMD->query_start_room(); /* set to start room */
     }
 
-    previous_object()->message("Your body awakens.\n");
-    end_room->message(previous_object()->query_Name()+" enters the room from stasis.\n");
+    user->message("Your body awakens.\n");/* stupid message? Just show room? */
+    end_room->message(user->query_Name()+" enters the room from stasis.\n");
     this_object()->move(end_room, "", 1, 1);
-    LOGD->log("Name = "+this_object()->query_Name()+" body = "+object_name(this_object())+" awakening\n", "body_log");
-    return 1;
+	stasis = 0;
 }
+
 void evt_heart_beat(object obj){
     catch(this_object()->do_tick());
     catch(this_object()->do_round());
@@ -183,6 +195,11 @@ atomic void set_worn(object obj){/* calculate armor total ac */
     error("You can't equip that.\n");
 }
 
+void set_user(object obj){
+	/*TODO security */
+	user = obj;
+    set_id(({ user->query_name() }));
+}
 
 /* returns controlling user object */
 object query_user(){

@@ -18,9 +18,9 @@ int input(string str){
 
     /* do some alias stuff */
 	user = this_object()->query_user();/* TODO: make this more accessible to non usered bodies */
-    if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
+    if(this_object()->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
 	string argx;
-	cmd = user->query_alias(cmd);
+	cmd = this_object()->query_alias(cmd);
 	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
 	    args = argx + args;
 	}

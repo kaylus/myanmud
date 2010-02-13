@@ -2,19 +2,19 @@
 #include <config.h>
 
 static void create (varargs int clone){
-  	if (!find_object (SYSTEM_USER))
-    	compile_object (SYSTEM_USER);
-  	USERD->set_binary_manager (0, this_object ());
+    if (!find_object (SYSTEM_USER))
+	compile_object (SYSTEM_USER);
+    USERD->set_binary_manager (0, this_object ());
 }
 
 object select (string str){
-  	return clone_object (SYSTEM_USER);
+    return clone_object (SYSTEM_USER);
 }
 
 int query_timeout (object connection){
-  	return DEFAULT_TIMEOUT;
+    return DEFAULT_TIMEOUT;
 }
 
 string query_banner (object connection){
-  	return "\033[18mS.O.S.S.\nWhat's your name? \033[0m";
+    return "\033[18mS.O.S.S.\nWhat's your name? \033[0m";
 }

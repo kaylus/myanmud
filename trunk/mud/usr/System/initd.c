@@ -11,18 +11,13 @@
 inherit access API_ACCESS;
 inherit rsrc API_RSRC;
 
-private static void
-_load (string daemon)
-{				/* cleaning up repeated calls */
+private static void _load (string daemon){/* cleaning up repeated calls */
     find_object(DRIVER)->message ("Initd loading: " + daemon + "\n");
     if (!find_object (daemon))
 	compile_object (daemon);
-
 }
 
-static int
-create (varargs int clone)
-{
+static int create (varargs int clone){
     object driver;
     object rsrcd;
 
@@ -35,14 +30,12 @@ create (varargs int clone)
 
     /* System requires root access */
     /* The kernel defines this as well, this is here for example */
-    /*set_access ("common", "/usr/System/", READ_ACCESS);	/* changed for security*/
     access::set_global_access("Common", READ_ACCESS);	
     access::set_global_access("Game", READ_ACCESS);
     /* may have to add in other things to common, will they have to write? */
 
     /* For later, when you start setting more managers */
     driver = find_object (DRIVER);
-    /*find_object(LOGD)->log("Driver is = "+DRIVER, "initd"); */
     driver->message ("Initd....\n");
 	
 	driver->message("Kernel version: "+KERNEL_LIB_VERSION+"\n");
@@ -50,6 +43,8 @@ create (varargs int clone)
     _load (ERRORD);
     _load (LOGD);
     _load (OBJECTD);
+	OBJECTD->do_initial_obj_setup();
+	
     _load (TEL_MANAGER);
     _load (BIN_MANAGER);
     _load (ROOMD);
@@ -61,13 +56,6 @@ create (varargs int clone)
 	_load (BRAIND);
 	_load (ACCOUNTD);
 	_load (WEATHERD);
-
-    /* create some savage resources */
-    /*rsrcd = find_object(RSRCD);
-       rsrcd->add_owner("System");
-       rsrcd->rsrc_incr("System", "filequota", nil,
-       dir_size("/kernel") + fIle_size(USR + "/System", TRUE)); */
-
 }
 /* called by driver before a reboot */
 void prepare_reboot(){

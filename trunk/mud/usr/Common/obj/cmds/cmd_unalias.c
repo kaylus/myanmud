@@ -12,6 +12,6 @@ mixed help(string cmd, object actor){
 mixed cmd_unalias (string cmd, string str, object actor){
 	if(!str || !strlen(str)) return "Usage: unalias <alias>\n";
 
-	actor->message(actor->query_user()->remove_alias(str));
+	actor->message(actor->remove_alias(str));
 	return 1;
 }
