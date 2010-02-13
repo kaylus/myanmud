@@ -100,7 +100,17 @@ object *query_bodies(){
 
 /* return finger data on individual TODO: security measures */
 string finger(string str){
-    return "Work in progress.\n";
+	string ret;
+	
+	if(!accounts[str])return "User does not exist.\n";
+	
+	ret = capitalize(str)+"\n";
+	if(str == "admin" || sizeof(query_users() & ({ str })))ret += "Wizard\n";
+	if(accounts[str]["last_on"])ret += "Last on: "+accounts[str]["last_on"]+"\n";
+	if(accounts[str]["body"]){
+		ret += accounts[str]["body"]->query_gender()+" "+accounts[str]["body"]->query_race();
+	}
+    return ret+"\n";
 }
 
 int password_exists(string user){
@@ -112,9 +122,10 @@ int password_exists(string user){
 private void add_ip_fail(object user){
     string ip, ip_name, name;
     
-    ip = query_ip_number(user->query_conn());
-    ip_name = query_ip_name(user->query_conn());
-    name = user->query_name();
+	name = user->query_name();
+    ip = user->get_ip_number();
+    ip_name = user->get_ip_name();
+    
     /* load up data */
     if(!accounts[name]["failed_ip"])accounts[name]["failed_ip"] = ([]);
     if(!accounts[name]["failed_ip_name"])accounts[name]["failed_ip_name"] = ([]);
@@ -131,11 +142,12 @@ private void add_ip_fail(object user){
 
 
 private void add_ip_succeed(object user){
-    string ip, ip_name, name;
+    string ip, ip_name, name, err;
     
-    ip = query_ip_number(user->query_conn());
-    ip_name = query_ip_name(user->query_conn());
 	name = user->query_name();
+    ip = user->get_ip_number();
+    ip_name = user->get_ip_name();
+	
     /* load up data */
     if(!accounts[name]["succeed_ip"])accounts[name]["succeed_ip"] = ([]);
     if(!accounts[name]["succeed_ip_name"])accounts[name]["succeed_ip_name"] = ([]);
@@ -158,7 +170,7 @@ void set_password(string pass){
     if(!accounts[name]){/* new account */
 		accounts[name] = ([]);
 		accounts[name]["created"] = time();
-		catch(add_ip_succeed(previous_object()));
+		add_ip_succeed(previous_object());
 	}
     
     accounts[name]["password"] = hash_string("crypt", pass);
@@ -172,10 +184,10 @@ int password_check(string str){
     if(!user /*|| !SYSTEM()*/)return 0;
     
     if(hash_string("crypt", str, accounts[user]["password"]) != accounts[user]["password"]){
-	catch(add_ip_fail(previous_object()));
+	add_ip_fail(previous_object());
 	return 0;
     }
-    catch(add_ip_succeed(previous_object()));
+    add_ip_succeed(previous_object());
     return 1; /* check succeeded */
 }
 /* should this also make sure the body object doesn't come back in wiz territory? or with wiz objects on it? */
