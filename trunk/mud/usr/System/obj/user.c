@@ -60,6 +60,10 @@ string query_Name(){ return Name; }
 
 string query_name(){ return name; }
 
+string get_ip_name(){ return query_ip_name(query_conn()); }
+
+string get_ip_number(){ return query_ip_number(query_conn()); }
+
 object query_wiztool(){ return wiztool; } /* hacked in for use to check if someone is a wiz */
 
 void issue_wiztool(){ /* TODO: security? Should query_wiztool work broadly? */
@@ -386,11 +390,11 @@ int login(string str)
 		break;
 
 	    case STATE_LOGIN:
+		connection(previous_object());/* moved to before check, is this correct? */
 		if (!ACCOUNTD->password_check(str)) {
 		    previous_object()->message("\nBad password.\n");
 		    return MODE_DISCONNECT;
 		}
-		connection(previous_object());
 		message("\n");
 		LOGD->log(Name + " logs in.\n", "usage");
 
