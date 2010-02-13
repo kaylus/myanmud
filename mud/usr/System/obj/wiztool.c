@@ -16,7 +16,7 @@ static void create(int clone)
 {
     if (clone) {
 	::create(200);
-	user = this_user();
+	user = previous_object();/* TODO make sure this is good */
     }
 }
 
@@ -105,18 +105,18 @@ static void process(string str)
     case "statedump":
     case "shutdown":
     case "reboot":
-	
-	case "od_report":
-	case "full_rebuild":
+
+    case "od_report":
+    case "full_rebuild":
 
     case "spectrum":
     case "summon":
     case "goto":
     case "call":
-	case "tail":
-	case "head":
-	case "gauge":
-	case "scan":
+    case "tail":
+    case "head":
+    case "gauge":
+    case "scan":
 	call_other(this_object(), "cmd_" + str, user, str, arg);
 	if(err)LOGD->log(str + " caused error in "+user->query_name()+": "+err, "wiztool");
 	break;
@@ -209,10 +209,10 @@ static void cmd_clone(object user, string cmd, string str)
 	} else if (obj) {
 	    store(obj);
 	    if(obj->is_object()){
-			cmd = catch(obj->move(user->query_body()));
-			if(cmd)
-				message("Error: Object couldn't be moved - "+cmd+".\n");
-		}
+		cmd = catch(obj->move(user->query_body()));
+		if(cmd)
+		    message("Error: Object couldn't be moved - "+cmd+".\n");
+	    }
 	}
     }
 }
@@ -457,20 +457,20 @@ static mixed get_value(string str)
     if (!parsed) {
 	return nil;
     }
-	
-	parsed = "return "+parsed;
+
+    parsed = "return "+parsed;
     str = "# include <float.h>\n# include <limits.h>\n" +
-	  "# include <status.h>\n# include <trace.h>\n" +
-	  "# include <type.h>\n" + str + "\n" +
-	  "mixed exec(object user) {\n" +
-	  "    mixed a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;\n\n" +
-	  "    " + parsed + "\n}\n";
+    "# include <status.h>\n# include <trace.h>\n" +
+    "# include <type.h>\n" + str + "\n" +
+    "mixed exec(object user) {\n" +
+    "    mixed a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z;\n\n" +
+    "    " + parsed + "\n}\n";
     str = catch(obj = compile_object(name, str),
-		result = obj->exec(user));
+      result = obj->exec(user));
     if (str) {
 	message("Error: " + str + ".\n");
     }
-	return result;
+    return result;
 }
 
 
@@ -488,15 +488,15 @@ mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
     if(str == "here")return ({ user->query_body()->query_environment(), T_OBJECT });
 
     if(sscanf(str, "$%d", i))return ({ fetch(i), T_OBJECT });
-	
-	if(find_player(str))return ({ find_player(str), T_OBJECT });
-	
-	if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
-		return ({ find_object(str), T_OBJECT });
+
+    if(find_player(str))return ({ find_player(str), T_OBJECT });
+
+    if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
+	return ({ find_object(str), T_OBJECT });
     }
 
     ret = get_value(str); 
-	return ({ ret, typeof(ret) });
+    return ({ ret, typeof(ret) });
 }
 
 /*
@@ -576,11 +576,11 @@ static void cmd_call(object user, string cmd, string str){
 	    str = catch(ret = call_other((object)obj[0], function, (string)obj2[0]));
 	    break;
 	case T_ARRAY:
-		str = catch(ret = call_other((object)obj[0], function, obj2[0]));
-		break;
+	    str = catch(ret = call_other((object)obj[0], function, obj2[0]));
+	    break;
 	case T_MAPPING:
-		str = catch(ret = call_other((object)obj[0], function, (mapping)obj2[0]));
-		break;
+	    str = catch(ret = call_other((object)obj[0], function, (mapping)obj2[0]));
+	    break;
 	default:
 	    str = catch(ret = call_other((object)obj[0], function, obj2[0]));
 
@@ -603,51 +603,51 @@ static void cmd_call(object user, string cmd, string str){
  * tail: prints the last bit of a file
  */
 static void cmd_tail(object user, string cmd, string str){
-	string *lines;
-	int i, sz;
-	
-	lines = explode(read_file(str), "\n");
-	sz = sizeof(lines);
-	if(sz <= TAIL_MAX){
-		message(implode(lines, "\n"));
-	}
-	i = sz-TAIL_MAX-1;
-	message(implode(lines[i..], "\n") + "\n");
+    string *lines;
+    int i, sz;
+
+    lines = explode(read_file(str), "\n");
+    sz = sizeof(lines);
+    if(sz <= TAIL_MAX){
+	message(implode(lines, "\n"));
+    }
+    i = sz-TAIL_MAX-1;
+    message(implode(lines[i..], "\n") + "\n");
 }
 
 /*
  * head: prints the first bit of a file
  */
 static void cmd_head(object user, string cmd, string str){
-	string *lines;
-	int i, sz;
-	
-	lines = explode(read_file(str), "\n");
-	sz = sizeof(lines);
-	if(sz <= TAIL_MAX){
-		message(implode(lines, "\n"));
-	}
-	i = TAIL_MAX-1;
-	message(implode(lines[..i], "\n") + "\n");
+    string *lines;
+    int i, sz;
+
+    lines = explode(read_file(str), "\n");
+    sz = sizeof(lines);
+    if(sz <= TAIL_MAX){
+	message(implode(lines, "\n"));
+    }
+    i = TAIL_MAX-1;
+    message(implode(lines[..i], "\n") + "\n");
 }
 /*
 * gauge: calculates the given ticks/time of the given command
 */
 static void cmd_gauge(object user, string cmd, string str){
-        int ticks, temp;
-        float time, temp2;
+    int ticks, temp;
+    float time, temp2;
 
 
-        time = (float)millitime()[0] + millitime()[1];      /* time at start */
-        ticks = status()[ST_TICKS]; /* ticks at beginning */
+    time = (float)millitime()[0] + millitime()[1];      /* time at start */
+    ticks = status()[ST_TICKS]; /* ticks at beginning */
 
-        user->receive_message(str);
+    user->receive_message(str);
 
-        temp = status()[ST_TICKS]; /* for accurate resolution */
-        temp2 = (float)millitime()[0] + millitime()[1];
-        ticks -= temp;
-        time = temp2 - time;
-        message("\n\n<command "+str+">\nTime:  "+time+"\nTicks:  "+ticks+"\n");
+    temp = status()[ST_TICKS]; /* for accurate resolution */
+    temp2 = (float)millitime()[0] + millitime()[1];
+    ticks -= temp;
+    time = temp2 - time;
+    message("\n\n<command "+str+">\nTime:  "+time+"\nTicks:  "+ticks+"\n");
 }
 /*
  * scan objects
@@ -657,125 +657,125 @@ static void cmd_scan(object user, string cmd, string str, varargs int recurse){
     object env;
     object *contents;
     int i, sz, deep;
-	
-	if(str && strlen(str) >= 2 && str[..1] == "-d"){
-		deep = 1; /* trigger deep scan */
-	}
 
-	if(!recurse){
-		env = user->query_body()->query_environment();
-		recurse = 0;
-	} else {
-		env = user;
-	}
-	
+    if(str && strlen(str) >= 2 && str[..1] == "-d"){
+	deep = 1; /* trigger deep scan */
+    }
+
+    if(!recurse){
+	env = user->query_body()->query_environment();
+	recurse = 0;
+    } else {
+	env = user;
+    }
+
     if (!env) {
-        return;
+	return;
     }
     contents = env->query_inventory() ;
     /* There has to be contents since the player is there. */
-	message(env->query_short()+"\n");/* add tabs? */
+    message(env->query_short()+"\n");/* add tabs? */
     for (i=0,sz=sizeof(contents);i<sz;i++) {
-        store(contents[i]);
-		if(deep && contents[i]->query_inventory() && sizeof(contents[i]->query_inventory()))
-			cmd_scan(contents[i], cmd, str, ++recurse);
-			
+	store(contents[i]);
+	if(deep && contents[i]->query_inventory() && sizeof(contents[i]->query_inventory()))
+	    cmd_scan(contents[i], cmd, str, ++recurse);
+
     }
 }
 
 static void cmd_od_report(object user, string cmd, string str)
 {
-  int    i, hmax;
-  mixed  obj;
-  string report;
+    int    i, hmax;
+    mixed  obj;
+    string report;
 
-  if(!find_object(OBJECTD))
-    compile_object(OBJECTD);
+    if(!find_object(OBJECTD))
+	compile_object(OBJECTD);
 
-  hmax = sizeof(query_history());
+    hmax = sizeof(query_history());
 
-  i = -1;
-  if(!str || (sscanf(str, "$%d%s", i, str) == 2 &&
-	      (i < 0 || i >= hmax || str != ""))) {
-    message("Usage: " + cmd + " <obj> | $<ident>\n");
-    return;
-  }
-
-  if (i >= 0) {
-    obj = object_name(fetch(i));
-    if(typeof(obj) != T_OBJECT && typeof(obj) != T_STRING) {
-      message("Not an object.\n");
-      return;
+    i = -1;
+    if(!str || (sscanf(str, "$%d%s", i, str) == 2 &&
+    (i < 0 || i >= hmax || str != ""))) {
+	message("Usage: " + cmd + " <obj> | $<ident>\n");
+	return;
     }
-  } else if (sscanf(str, "$%s", str)) {
-    obj = ident(str);
-    if (!obj) {
-      message("Unknown: $ident.\n");
-      return;
+
+    if (i >= 0) {
+	obj = object_name(fetch(i));
+	if(typeof(obj) != T_OBJECT && typeof(obj) != T_STRING) {
+	    message("Not an object.\n");
+	    return;
+	}
+    } else if (sscanf(str, "$%s", str)) {
+	obj = ident(str);
+	if (!obj) {
+	    message("Unknown: $ident.\n");
+	    return;
+	}
+    } else if (sscanf(str, "#%*d")) {
+	obj = str;
+    } else if (sscanf(str, "%*d")) {
+	obj = str;
+    } else {
+	obj = DRIVER->normalize_path(str, query_directory(), query_owner());
     }
-  } else if (sscanf(str, "#%*d")) {
-    obj = str;
-  } else if (sscanf(str, "%*d")) {
-    obj = str;
-  } else {
-    obj = DRIVER->normalize_path(str, query_directory(), query_owner());
-  }
 
-  str = catch(report = OBJECTD->report_on_object(obj));
-  if(str) {
-    str += "\n";
-  } else if (!report) {
-    str = "Nil report from Object Manager!\n";
-  } else {
-    str = report;
-  }
+    str = catch(report = OBJECTD->report_on_object(obj));
+    if(str) {
+	str += "\n";
+    } else if (!report) {
+	str = "Nil report from Object Manager!\n";
+    } else {
+	str = report;
+    }
 
-  message(str);
+    message(str);
 }
 
 
 static void cmd_full_rebuild(object user, string cmd, string str) {
-  if(str && !strlen(str)) {
-    user->message("Usage: " + cmd + "\n");
-    return;
-  }
-
-  if(!access(user->query_name(), "/", FULL_ACCESS)) {
-    user->message("Currently only those with full administrative access "
-		  + "may do a full rebuild.\n");
-    return;
-  }
-
-  user->message("Recompiling auto object...\n");
-
-  catch {
-    OBJECTD->recompile_auto_object(user);
-  } : {/*
-    if(ERRORD->last_compile_errors()) {
-      user->message("===Compile errors:\n" + ERRORD->last_compile_errors());
-      user->message("---\n");
-    }
-	
-    if(ERRORD->last_runtime_error()) {
-      if(sscanf(ERRORD->last_runtime_error(),
-		"%*sFailed to compile%*s") == 2) {
+    if(str && !strlen(str)) {
+	user->message("Usage: " + cmd + "\n");
 	return;
-      }*/
-/*
-      user->message("===Runtime error: '" + ERRORD->last_runtime_error()
-		    + "'.\n");*/
-      user->message("there was an error\n");
-    /*}
-/*
-    if(ERRORD->last_stack_trace()) {
-      user->message("===Stack trace: '" + ERRORD->last_stack_trace()
-		    + "'.\n");
-      user->message("---\n");
-    }*/
+    }
 
-    return;
-  }
+    if(!access(user->query_name(), "/", FULL_ACCESS)) {
+	user->message("Currently only those with full administrative access "
+	  + "may do a full rebuild.\n");
+	return;
+    }
 
-  user->message("Done.\n");
+    user->message("Recompiling auto object...\n");
+
+    catch {
+	OBJECTD->recompile_auto_object(user);
+    } : {/*
+	  if(ERRORD->last_compile_errors()) {
+	    user->message("===Compile errors:\n" + ERRORD->last_compile_errors());
+	    user->message("---\n");
+	  }
+
+	  if(ERRORD->last_runtime_error()) {
+	    if(sscanf(ERRORD->last_runtime_error(),
+		      "%*sFailed to compile%*s") == 2) {
+	      return;
+	    }*/
+	/*
+	      user->message("===Runtime error: '" + ERRORD->last_runtime_error()
+			    + "'.\n");*/
+	user->message("there was an error\n");
+	/*}
+    /*
+	if(ERRORD->last_stack_trace()) {
+	  user->message("===Stack trace: '" + ERRORD->last_stack_trace()
+			+ "'.\n");
+	  user->message("---\n");
+	}*/
+
+	return;
+    }
+
+    user->message("Done.\n");
 }
 

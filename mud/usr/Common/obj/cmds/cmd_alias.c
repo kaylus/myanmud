@@ -13,11 +13,11 @@ mixed cmd_alias (string cmd, string str, object actor){
 	string alias, set, a, b;
 
 	if(!str || !strlen(str)){/* we execute the command to list aliases */
-		actor->message("Current aliases:" + actor->query_user()->query_alias());
+		actor->message("Current aliases:" + actor->query_alias());
 		return 1;
 	}
 
-	alias = actor->query_user()->query_alias(explode(str, " ")[0]);
+	alias = actor->query_alias(explode(str, " ")[0]);
 	if(sscanf(str, "%s %s", a, b) < 2){/* alias query */
 		if(alias == str){/* no alias */
 			return "No such alias.\n";
@@ -31,6 +31,6 @@ mixed cmd_alias (string cmd, string str, object actor){
 	/* if we reach here, we're modifying aliases */
 	if(!set) return "Usage: alias <name> <value>\n";
 
-	actor->message(actor->query_user()->add_alias(str, set));
+	actor->message(actor->add_alias(str, set));
 	return 1;
 }
