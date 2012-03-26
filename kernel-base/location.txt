@@ -1,0 +1,1 @@
+http://kernel-lib.git.sourceforge.net/git/gitweb.cgi?p=kernel-lib/kernel-lib;a=summary
