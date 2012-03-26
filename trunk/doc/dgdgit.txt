@@ -1,0 +1,1 @@
+git clone git://dgd-osr.git.sourceforge.net/gitroot/dgd-osr/dgd-osr
