@@ -4,7 +4,7 @@
 
 telnet_port	= 6047;			/* telnet port number */
 binary_port	= 5000;			/* binary port number */
-directory	= "/home/nick/pirates/mud";/* base directory (MUST be absolute) */
+directory	= "/home/nick/svnmud/myanmud/mud";/* base directory (MUST be absolute) */
 users		= 100;			/* max # of users */
 editors		= 100;			/* max # of editor sessions */
 ed_tmpfile	= "../tmp/ed";		/* proto editor tmpfile */
