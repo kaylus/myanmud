@@ -269,9 +269,9 @@ int login(string str)
 		if (!wiztool || !query_editor(wiztool) || cmd != str) {
 		    /* check input_to, add in work around ! */
 
-		    /* check standard commands */
-		    if (strlen(cmd) != 0) {
+		    /* check standard commands */		    if (strlen(cmd) != 0) {
 			switch (cmd[0]) {
+            
 			case '\'':
 			    if (strlen(cmd) > 1) {
 				cmd[0] = ' ';

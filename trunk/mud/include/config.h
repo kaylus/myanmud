@@ -7,3 +7,5 @@
 
 # define SYSTEM_USER  "/usr/System/obj/user"  /* user object */
 # define SYSTEM_WIZTOOL "/usr/System/obj/wiztool" /* wiztool */
+
+# define AUTO_SUPPLEMENT  /* use auto supplement */

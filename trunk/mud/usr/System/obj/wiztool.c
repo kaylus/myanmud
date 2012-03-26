@@ -117,7 +117,7 @@ static void process(string str)
     case "head":
     case "gauge":
     case "scan":
-	call_other(this_object(), "cmd_" + str, user, str, arg);
+	err = call_other(this_object(), "cmd_" + str, user, str, arg);
 	if(err)LOGD->log(str + " caused error in "+user->query_name()+": "+err, "wiztool");
 	break;
 
