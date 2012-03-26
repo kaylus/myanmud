@@ -1,1 +1,3 @@
 http://kernel-lib.git.sourceforge.net/git/gitweb.cgi?p=kernel-lib/kernel-lib;a=summary
+
+git clone git://kernel-lib.git.sourceforge.net/gitroot/kernel-lib/kernel-lib
