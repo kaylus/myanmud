@@ -7,7 +7,11 @@
 # include <type.h>
 # include <trace.h>
 
+#ifdef AUTO_SUPPLEMENT /* use additional auto object */
+
 # include <auto_supplement.h> /* additional auto object */
+
+#endif
 
 # define TLSVAR2		::call_trace()[1][TRACE_FIRSTARG][1]
 # define LONG_TIME		(365 * 24 * 60 * 60)
