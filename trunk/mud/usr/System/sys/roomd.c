@@ -41,15 +41,15 @@ void create(varargs int clone){
     if(!find_object(ROOM)) compile_object(ROOM);
 
     /* create a start room */
-    start_room = clone_object(ROOM);
+    start_room = add_room(clone_object(ROOM));
     start_room->set_short("Start room");
     start_room->set_long("This is the ubiquitous start room.\n");
 
-    meat_locker = clone_object(ROOM);
+    meat_locker = add_room(clone_object(ROOM));
     meat_locker->set_short("This is the meat locker");
     meat_locker->set_long("This is where inactive bodies go to play.\n");
 
-    labyrinth = clone_object(ROOM);
+    labyrinth = add_room(clone_object(ROOM));
     labyrinth->set_short("%^GREEN%^Labyrinth%^RESET%^");
     labyrinth->set_long (wrap(
       "All around you, your movements echo throughout the vast expanses of the labyrinth. \
@@ -94,7 +94,7 @@ void connect_rooms(object room1, object room2, string via, varargs string via2, 
 object dig_room(string via, varargs string via2, int oneway){
     object room; /* to hold our new room */
 
-    room = clone_object(ROOM);
+    room = add_room(clone_object(ROOM));
 
     connect_rooms(this_player()->query_environment(), room, via, via2, oneway);
     return room;
