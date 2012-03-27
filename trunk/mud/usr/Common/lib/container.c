@@ -267,3 +267,17 @@ int object_present (object ob) {
     return (member_array(ob,inventory) != -1);
 }
 
+atomic void container_clear(){
+    int i, sz;
+    object env;
+    if(inventory && sizeof(inventory))
+    {
+        env = this_object()->query_environment();
+        for(i=0,sz = sizeof(inventory); i<sz; i++) /* move objects to environment */
+        {
+            inventory[i]->move(env);
+        }
+        inventory = nil;
+    }
+}
+

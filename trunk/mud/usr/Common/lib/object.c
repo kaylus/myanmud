@@ -164,9 +164,11 @@ mixed perform_action(string verb, varargs string arg){
 /* destruct: remove from inventories */
 atomic void destruct(){
 
+    if(this_object()->is_container() == TRUE) /* may have to take care of inventory, call up the chain */
+    {
+        this_object()->container_clear(); /* calling container destruct */
+    }
     if(environment)
 	environment->release_object(this_object());
-
-    /*destruct_object(this_object());*/
 }
 
