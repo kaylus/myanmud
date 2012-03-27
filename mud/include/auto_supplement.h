@@ -109,6 +109,7 @@
  }*/
  
  static object this_player(){
+    LOGD->log("querying this player\n", "braind");
 	return find_object(BRAIND)->this_player();
  }
  
