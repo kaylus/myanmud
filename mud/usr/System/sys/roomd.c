@@ -3,8 +3,6 @@
  *  at startup it will load a few rooms and prepare for launch
  *  This should also manage the removal of rooms without a purpose or a pointer to them
  */
-#define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south", "up" : "down", "down" : "up", "northwest" : "southeast", "southeast" : "northwest", "northeast" : "southwest", "southwest" : "northeast" ])
-#define A_DIRS ({ "east", "west", "south", "north", "up", "down", "northwest", "northeast", "southwest", "southeast" })
 
 object *rooms; /* handles on rooms */
 object start_room; /* start room */
@@ -12,15 +10,6 @@ object meat_locker; /* meat locker */
 object labyrinth; /* where people go when they die */
 
 void connect_rooms(object room1, object room2, string via1, varargs string via2, int oneway);
-
-/* To flip a direction. */
-
-string flip_dir(string dir){
-    if(member_array(dir, A_DIRS) > -1){
-	return DIRS[dir];
-    }
-    return dir;
-}
 
 object add_room(object room){/* add a room to the register */
     if(!rooms)

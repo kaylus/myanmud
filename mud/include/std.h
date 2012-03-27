@@ -73,4 +73,10 @@
 # define BODY_COMMAND "/usr/Common/lib/body_command" /* body commands inherit this */
 # define BODY_BIN "/usr/Common/obj/cmds/"
 # define BODY_INPUT "/usr/Common/lib/input"
+# define CMD_PREFIX "cmd_"
+# define OBJ_ACTION "perform_action"
+# define PER_ACTION mixed perform_action(string verb, varargs string arg)
 
+/* direction mappings */
+#define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
+#define A_DIRS ({ "east", "west", "south", "north" })

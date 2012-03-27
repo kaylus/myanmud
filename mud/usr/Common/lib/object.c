@@ -25,6 +25,11 @@ mapping vars;            	       /* very against this but somethings it is neces
 int is_object(){
  return 1; 
 }
+
+mapping query_commands()/* mainly for wizzes */
+{
+    return commands;
+}
 /***PROPS***/
 void set_temp(string var, mixed val){
     if(!temp_var)
@@ -151,7 +156,7 @@ void add_command(string word, string function){
     commands[word] = function;
 }
 
-mixed perform_action(string verb, varargs string arg){
+PER_ACTION{
     if(!commands || !commands[verb])
 	return nil;
 

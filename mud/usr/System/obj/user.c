@@ -247,6 +247,7 @@ int login(string str)
 	    int i, sz;
 
 	    set_this_player(((body) ? (body) : (this_object())));
+        LOGD->log("received "+str, "command");
 	    /* is this where we should redirect to game object input? */
 	    switch (state[previous_object()]) {
 	    case STATE_INPUTOBJ:

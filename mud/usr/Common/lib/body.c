@@ -15,13 +15,9 @@ inherit HEALTH; /* not perfect */
 inherit combat COMBAT; /* combat */
 inherit WEAPON; /* for attacking with fists */
 inherit SKILLS; /* skills */
-/*inherit PLAY_TOOL; /* player command interface */
 inherit WEALTH;
 inherit RACE_KIT;  /* player's race/gender */
-
-/* direction mappings */
-#define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
-#define A_DIRS ({ "east", "west", "south", "north" })
+inherit BODY_INPUT;
 
 /**************************************
  * mapping of worn items - to be made *
@@ -603,105 +599,6 @@ string query_long() {
     }
 
     return ret + query_xa();
-}
-/* input command decipherer */
-int input(string str){
-    string cmd, args, fail_msg;
-    mixed ret_fail;
-    object *inv;
-    fail_msg = "";
-
-    if(sscanf(str, "%s %s", cmd, args) < 2){
-	cmd = str;
-	args = "";
-    }
-
-    /* do some alias stuff */
-    if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
-    string argx;
-	cmd = user->query_alias(cmd);
-	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
-		args = argx + args;
-	}
-    }
-
-    /* return is as follows
-	 *  1 - action done, end command search
-	 *  nil - continue seek
-	 *  string - fail string, continue seek
-     */
-
-    /* body bin, make this a loop */
-
-    /* channeld check */
-    catch{
-		if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
-	}
-
-    ret_fail = call_other(this_object(), "cmd_" + cmd, args);/* change to call_limited? */
-
-    switch(typeof(ret_fail)){
-    case T_STRING:/* fail string, continue seek */
-	fail_msg = ret_fail;
-    case T_NIL:/* continue seek */
-	break;
-    default: /* done */
-	return 1;
-    }
-
-   /* other bins... */
-    /* room/body inventory bin */
-    /* error checking */
-    inv = ({});
-    if(query_environment()){ 
-      inv += ({ query_environment() });
-      if(query_environment()->query_inventory()) 
-	inv += query_environment()->query_inventory();
-    }
-    
-    if(query_inventory())
-      inv += query_inventory();
-    
-    inv -= ({ this_object() });
-        
-    if(sizeof(inv)){
-	int i;
-	i = sizeof(inv);
-	while(--i>=0){
-
-
-
-	    ret_fail = call_other(inv[i], "perform_action", cmd, args);
-
-	    switch(typeof(ret_fail)){
-	    case T_STRING:/* fail string, continue seek */
-		fail_msg = ret_fail;
-	    case T_NIL:/* continue seek */
-		break;
-	    default: /* done */
-		return 1;
-	    }
-	}
-    }
-
-    if(!strlen(fail_msg))
-	return 0;
-
-    message(fail_msg);/* failed to find command */
-    return 1;
-}
-
-/* This is here as a quasi-hack. Something similar to it will be kept. */
-/* direction is a string indicated the direction of the move, which is
-   printed to the old room. If it's not passed, we assume a teleport,
-   and print a different set of messages entirely. silent is an int
-   which can be used to suppress printing the messages. */
-
-string flip_dir(string dir){
-    if(member_array(dir, A_DIRS) > -1){
-	return DIRS[dir];
-    }
-    return "";
 }
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */

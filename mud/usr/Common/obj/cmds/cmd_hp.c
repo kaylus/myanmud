@@ -4,7 +4,11 @@
 inherit BODY_COMMAND;
 
 mixed cmd_hp(string cmd, string args, object actor){
+#ifdef ASTARIA_CLONE
     actor->message("hp "+actor->query_health()+" / "+actor->query_max_health()+"\n");
+#else
+    actor->message(actor->query_diagram());
+#endif
     return 1;
 }
 
