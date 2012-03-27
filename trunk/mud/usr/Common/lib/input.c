@@ -6,6 +6,7 @@
 /* input command decipherer */
 int input(string str){
 /* TODO: check call credentials*/
+    
     string cmd, args, fail_msg;
     mixed ret_fail;
     object *inv, user;
@@ -15,7 +16,8 @@ int input(string str){
 	cmd = str;
 	args = "";
     }
-
+    
+    LOGD->log("In body input with cmd: " + cmd + " args: "+args, "body_commands");
     /* do some alias stuff */
 	user = this_object()->query_user();/* TODO: make this more accessible to non usered bodies */
     if(this_object()->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
@@ -39,13 +41,13 @@ int input(string str){
 	if(find_object(CHANNELD)->cmd_channel(cmd, args, this_object()) == 1) return 1;
     }
 
-    if (file_info(BODY_BIN+"cmd_" + cmd+".c") != nil || (cmd=="help" && file_info(BODY_BIN+"cmd_"+args+".c") != nil)){/* found a bin command, or help on args */
+    if (file_info(BODY_BIN+CMD_PREFIX + cmd+".c") != nil || (cmd=="help" && file_info(BODY_BIN+CMD_PREFIX+args+".c") != nil)){/* found a bin command, or help on args */
 	if (cmd=="help"){
 		cmd = args;
 		args = "-h";
 	}
-	if(!find_object(BODY_BIN+"cmd_"+cmd))compile_object(BODY_BIN+"cmd_"+cmd);/* load if it isn't loaded */
-	catch(ret_fail = find_object(BODY_BIN+"cmd_"+cmd)->do_cmd(cmd, args, this_object()));/* change to call_limited? */
+	if(!find_object(BODY_BIN+CMD_PREFIX+cmd))compile_object(BODY_BIN+CMD_PREFIX+cmd);/* load if it isn't loaded */
+	catch(ret_fail = find_object(BODY_BIN+CMD_PREFIX+cmd)->do_cmd(cmd, args, this_object()));/* change to call_limited? */
 	}
 	
     switch(typeof(ret_fail)){
@@ -77,8 +79,8 @@ int input(string str){
 	i = sizeof(inv);
 	while(--i>=0){
 
-	    if(function_object("perform_action", inv[i]))
-		ret_fail = call_other(inv[i], "perform_action", cmd, args);
+	    if(function_object(OBJ_ACTION, inv[i]))
+		ret_fail = call_other(inv[i], OBJ_ACTION, cmd, args);
 
 	    switch(typeof(ret_fail)){
 	    case T_STRING:/* fail string, continue seek */
@@ -91,10 +93,10 @@ int input(string str){
 	}
     }
 	
-	if(this_object()->query_environment() && this_object()->query_environment()->query_exit(str) && file_info(BODY_BIN+"cmd_go.c") != nil){
+	if(this_object()->query_environment() && this_object()->query_environment()->query_exit(str) && file_info(BODY_BIN+CMD_PREFIX+"go.c") != nil){
 		cmd = "go";
-		if(!find_object(BODY_BIN+"cmd_"+cmd))compile_object(BODY_BIN+"cmd_"+cmd);/* load if it isn't loaded */
-		ret_fail = find_object(BODY_BIN+"cmd_"+cmd)->do_cmd(cmd, str, this_object());
+		if(!find_object(BODY_BIN+CMD_PREFIX+cmd))compile_object(BODY_BIN+CMD_PREFIX+cmd);/* load if it isn't loaded */
+		ret_fail = find_object(BODY_BIN+CMD_PREFIX+cmd)->do_cmd(cmd, str, this_object());
 		switch(typeof(ret_fail)){
 	    case T_STRING:/* fail string, continue seek */
 		fail_msg = ret_fail;

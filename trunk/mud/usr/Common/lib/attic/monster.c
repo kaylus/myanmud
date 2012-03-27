@@ -207,21 +207,6 @@ void message(string str){
 
 }
 
-string flip_dir(string dir){
-	string ret;
-	mapping dirs;
-	dirs = ([
-				"east":"west",
-				"south":"north",
-				"west":"east",
-				"north":"south"
-			]);
-	ret="";
-	if(member_array(dir, map_indices(dirs))!=-1){
-		ret=dirs[dir];
-	}
-	return ret;
-}
 #if 0
 varargs int move (mixed dest, string direction, int silent) {
 

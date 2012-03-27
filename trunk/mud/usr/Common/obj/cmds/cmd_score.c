@@ -22,7 +22,11 @@ mixed cmd_score(string cmd, string str, object actor){
     while(i--){
 	str += ESC+"[36;1m"+pad(capitalize(attributes[i])+": ", 15)+ESC+"[0m"+stats[attributes[i]]+"\n";
     }
+    #ifdef ASTARIA_CLONE
 	str += "hp "+actor->query_health()+" / "+actor->query_max_health()+"\n";
+    #else
+    str += actor->query_diagram();
+    #endif
     actor->message(str);
     return 1;
 }

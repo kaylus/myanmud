@@ -14,17 +14,11 @@
 #define ARMORS ({ "suit", "gauntlets", "gloves", "greaves", "ring", "helm",\
 "cloak", "shoulder", "waist", "feet", "shield" })
 
-
-/* direction mappings */
-#define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
-#define A_DIRS ({ "east", "west", "south", "north" })
-
 inherit container CONTAINER;
 inherit WEAPON;
 inherit combat COMBAT;
 inherit health HEALTH;
 inherit STATS; /* temp */
-/*inherit PLAY_TOOL;*/
 inherit RACE_KIT;
 inherit WEALTH;
 inherit SKILLS;
@@ -352,38 +346,13 @@ atomic void unwield(object obj){
     }
     error("You haven't that equipped.\n");
 }
-#if 0
+
 /****************************
  * overloads for container  *
  * these now check for worn *
  * and wielded items        *
  ****************************/
-int release_object (object ob) {
-    /* check equipped, if so, unequip it */
-    int res, func, fun;
-    res = ::release_object(ob);/* pass the ball */
-    if(res && query_worn(ob)){/* don't like doing messages here, but fuck it */
-	remove_worn(ob);
-	catch(fun = call_other(ob, ob->query_unequip_func()));
-	if(!fun){/* messages not handled */
-	    this_object()->message("You unequip "+ob->query_weapon_name()+".\n");
-	    this_object()->query_environment()->messsage(
-	      this_object()->query_Name()+" unequips "+ob->query_weapon_name()+".\n",
-	    ({ this_object() }) );
-	}
-    }else if(res && query_wielded(ob)){
-	unwield(ob);
-	catch(fun = call_other(ob, ob->query_unwield_func()));
-	if(!fun){/* messages not handled */
-	    this_object()->message("You unwield "+ob->query_weapon_name()+".\n");
-	    this_object()->query_environment()->message(
-	      this_object()->query_Name()+" unwields "+ob->query_weapon_name()+".\n",
-	    ({ this_object() }) );
-	}
-    }
-    return res; /* propogate through */
-}
-#endif
+
 atomic void release_object(object ob, varargs int slide){
     /* check equipped, if so, unequip it */
 
@@ -454,123 +423,6 @@ string query_long() {
     }
     return ret ;
 }
-
-/* This is here as a quasi-hack. Something similar to it will be kept. */
-/* direction is a string indicated the direction of the move, which is
-   printed to the old room. If it's not passed, we assume a teleport,
-   and print a different set of messages entirely. silent is an int
-   which can be used to suppress printing the messages. */
-
-string flip_dir(string dir){
-    if(member_array(dir, A_DIRS) > -1){
-	return DIRS[dir];
-    }
-    return "";
-}
-
-#if 0
-/* input command decipherer */
-int input(string str){
-    string cmd, args, fail_msg;
-    mixed ret_fail;
-    object *inv;
-    fail_msg = "";
-
-    if(sscanf(str, "%s %s", cmd, args) < 2){
-	cmd = str;
-	args = "";
-    }
-
-    /* do some alias stuff */
-    if(user->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
-	string argx;
-	cmd = user->query_alias(cmd);
-	if(sscanf(cmd, "%s %s", cmd, argx) > 0){/* have args */
-	    args = argx + args;
-	}
-    }
-
-    /* return is as follows
-	 *  1 - action done, end command search
-	 *  nil - continue seek
-	 *  string - fail string, continue seek
-     */
-
-    /* body bin, make this a loop */
-
-    /* channeld check */
-    catch{
-	if(find_object(CHANNELD)->cmd_channel(cmd, args) == 1) return 1;
-    }
-
-    if (function_object("cmd_" + cmd, this_object()))
-	catch(ret_fail = call_other(this_object(), "cmd_" + cmd, args));/* change to call_limited? */
-
-
-
-    switch(typeof(ret_fail)){
-    case T_STRING:/* fail string, continue seek */
-	fail_msg = ret_fail;
-    case T_NIL:/* continue seek */
-	break;
-    default: /* done */
-	return 1;
-    }
-
-    /* other bins... */
-    /* room/body inventory bin */
-    /* error checking */
-    inv = ({});
-    if(query_environment()){ 
-	inv += ({ query_environment() });
-	if(query_environment()->query_inventory()) 
-	    inv += query_environment()->query_inventory();
-    }
-
-    if(query_inventory())
-	inv += query_inventory();
-
-    inv -= ({ this_object() });
-
-    if(sizeof(inv)){
-	int i;
-	i = sizeof(inv);
-	while(--i>=0){
-
-	    if(function_object("perform_action", inv[i]))
-		ret_fail = call_other(inv[i], "perform_action", cmd, args);
-
-	    switch(typeof(ret_fail)){
-	    case T_STRING:/* fail string, continue seek */
-		fail_msg = ret_fail;
-	    case T_NIL:/* continue seek */
-		break;
-	    default: /* done */
-		return 1;
-	    }
-	}
-    }
-	
-	if(query_environment() && query_environment()->query_exit(str)){
-		cmd = "go";
-		ret_fail = this_object()->cmd_go(str);
-		switch(typeof(ret_fail)){
-	    case T_STRING:/* fail string, continue seek */
-		fail_msg = ret_fail;
-	    case T_NIL:/* continue seek */
-		break;
-	    default: /* done */
-		return 1;
-	    }
-	}
-
-    if(!strlen(fail_msg))
-	return 0;
-
-    message(fail_msg);/* failed to find command */
-    return 1;
-}
-#endif
 
 /* Hymael - trying to implement atomic, eventually dest will just be objs */
 atomic void move(mixed dest, varargs string direction, int silent, int nolook){

@@ -16,6 +16,7 @@ mixed cmd_xa (string cmd, string str, object actor){
 	if(!target)return "Not currently in combat!\n";
 
 	actor->message(target->query_Name() + ":\n" + target->query_xa() + "\n");
+
 	return 1;
     }
 

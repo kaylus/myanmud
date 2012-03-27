@@ -33,6 +33,19 @@
      }
      return str;
  }
+ 
+/* This is here as a quasi-hack. Something similar to it will be kept. */
+/* direction is a string indicated the direction of the move, which is
+   printed to the old room. If it's not passed, we assume a teleport,
+   and print a different set of messages entirely. silent is an int
+   which can be used to suppress printing the messages. */
+
+static string flip_dir(string dir){
+    if(member_array(dir, A_DIRS) > -1){
+	return DIRS[dir];
+    }
+    return "";
+}
 
  /* This function capitalizes the first letter of a string. Handy.
  *     Taken from Dworkin's auto object. */
@@ -109,7 +122,6 @@
  }*/
  
  static object this_player(){
-    LOGD->log("querying this player\n", "braind");
 	return find_object(BRAIND)->this_player();
  }
  

@@ -82,6 +82,7 @@ static void process(string str)
     case "clone":
     case "destruct":
     case "dest":
+    case "actions":
 
     case "cd":
     case "pwd":
@@ -117,7 +118,7 @@ static void process(string str)
     case "head":
     case "gauge":
     case "scan":
-	err = call_other(this_object(), "cmd_" + str, user, str, arg);
+	err = call_other(this_object(), CMD_PREFIX + str, user, str, arg);
 	if(err)LOGD->log(str + " caused error in "+user->query_name()+": "+err, "wiztool");
 	break;
 
@@ -211,7 +212,11 @@ static void cmd_clone(object user, string cmd, string str)
 	    if(obj->is_object()){
 		cmd = catch(obj->move(user->query_body()));
 		if(cmd)
-		    message("Error: Object couldn't be moved - "+cmd+".\n");
+            str = catch(obj->move(user->query_body()->query_environment()));
+            if(str)
+            {
+                message("Error: Object couldn't be moved - "+cmd+".\n");
+            }
 	    }
 	}
     }
@@ -365,6 +370,93 @@ static void cmd_dest(object user, string cmd, string str){
 	return;
     }
     message("No "+str +" to dest.\n");
+}
+
+/*
+* actions: finds actions performable by an object
+*/
+static void cmd_actions(object user, string cmd, string str){
+    mixed thing;
+    mapping coms;
+    string *vals;
+    int i, sz;
+
+    if(!str || !strlen(str)){
+	message("Usage: actions <object>\n");
+	return;
+    }
+    
+    if(str == "here" && (thing = user->query_body()->query_environment())){
+	 coms = thing->query_commands();
+    if(!coms)
+    {
+        message("No commands here.\n");
+        return;
+    }
+    vals = map_values(coms);
+    message(thing->query_short() + " has commands:\n");
+    for(i=0, sz=sizeof(vals);i < sz; i++)
+    {
+        if(vals[i] && coms[vals[i]])
+            message("Com: "+vals[i]+" -> "+coms[vals[i]]+"\n");
+    }
+	return;
+    }
+    /* add in check for $num functionality */
+    if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
+    coms = thing->query_commands();
+    if(!coms)
+    {
+        message(thing->query_short() + " has no commands.\n");
+        return;
+    }
+    vals = map_values(coms);
+    message(thing->query_short() + " has commands:\n");
+    for(i=0, sz=sizeof(vals);i < sz; i++)
+    {
+       if(vals[i] && coms[vals[i]])
+            message("Com: "+vals[i]+" -> "+coms[vals[i]]+"\n");
+    }
+	return;
+    }
+
+    /* check inventory */
+    if(thing = user->query_body()->present(str)){
+    coms = thing->query_commands();
+    if(!coms)
+    {
+        message(thing->query_short() + " has no commands.\n");
+        return;
+    }
+    vals = map_values(coms);
+    message(thing->query_short() + " has commands:\n");
+    for(i=0, sz=sizeof(vals);i < sz; i++)
+    {
+        if(vals[i] && coms[vals[i]])
+            message("Com: "+vals[i]+" -> "+coms[vals[i]]+"\n");
+    }
+	return;
+    }
+
+    /* check environment */
+    if(thing = user->query_body()->query_environment()->present(str)){
+	 coms = thing->query_commands();
+    if(!coms)
+    {
+        message(thing->query_short() + " has no commands.\n");
+        return;
+    }
+    vals = map_values(coms);
+    message(thing->query_short() + " has commands:\n");
+    for(i=0, sz=sizeof(vals);i < sz; i++)
+    {
+        if(vals[i] && coms[vals[i]])
+            message("Com: "+vals[i]+" -> "+coms[vals[i]]+"\n");
+    }
+	return;
+    }
+    
+    message("No "+str +" to lookup actions on.\n");
 }
 
 /*

@@ -10,7 +10,7 @@ mixed do_cmd(string cmd, string args, object actor){
 		return this_object()->get_help(cmd, args, actor);
 	}
 	LOGD->log("In command "+cmd+" with "+args, "command");
-	return call_other(this_object(), "cmd_"+cmd, cmd, args, actor);
+	return call_other(this_object(), CMD_PREFIX+cmd, cmd, args, actor);
 }
 
 mixed get_help(string cmd, string str, object actor){

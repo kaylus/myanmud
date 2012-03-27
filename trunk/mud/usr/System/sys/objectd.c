@@ -572,7 +572,7 @@ private object add_clonable(string owner, object obj, string* inherited) {
 	old_version->set_parents(inh_obj);
 	register_inherit_data(old_version);
 
-	LOGD->log("Upgrading object on recompile", "objectd");
+	/*LOGD->log("Upgrading object on recompile", "objectd");*/
 
 	call_upgraded(find_object(object_name(obj)));
     } else {
@@ -605,9 +605,9 @@ private object add_clonable(string owner, object obj, string* inherited) {
     if(dest_issues[idx]) {
 	LOGD->log("Clearing destructed issue# which should be clean!",
 	  "objectd");
-    }
+  
     dest_issues[idx] = nil;
-
+    }
     return new_issue;
 }
 
@@ -733,8 +733,8 @@ static void do_upgrade(object obj) {
 void compile(string owner, object obj, string *source, string inherited...)
 {
     if(previous_program() == DRIVER) {
-	LOGD->log("compile: " + object_name(obj)
-	  + ", issue #" + status(obj)[O_INDEX], "objectd");
+	/*LOGD->log("compile: " + object_name(obj)
+	  + ", issue #" + status(obj)[O_INDEX], "objectd");*/
 
 	add_clonable(owner, obj, inherited);
     }
@@ -745,8 +745,8 @@ void compile_lib(string owner, string path, string *source,
 string inherited...)
 {
     if(previous_program() == DRIVER) {
-	LOGD->log("compile_lib: " + path + " ("
-	  + status(path)[O_INDEX] + ")", "objectd");
+	/*LOGD->log("compile_lib: " + path + " ("
+	  + status(path)[O_INDEX] + ")", "objectd");*/
 
 	add_lib(owner, path, inherited);
     }
@@ -762,7 +762,7 @@ void clone(string owner, object obj)
 
 	object issue;
 	if(!sscanf(object_name(obj), "/kernel/%s", caught)){
-	    LOGD->log("clone: " + object_name(obj), "objectd");
+	    /*LOGD->log("clone: " + object_name(obj), "objectd");*/
 
 	    index = status(obj)[O_INDEX];
 	    /*LOGD->log("index = "+index + " size = "+obj_issues->query_size(), "objectd");*/
@@ -785,8 +785,8 @@ void destruct(string owner, object obj)
 	object issue;
 	string objname;
 
-	LOGD->log("destruct: " + object_name(obj)
-	  + ", issue #" + status(obj)[O_INDEX], "objectd");
+	/*LOGD->log("destruct: " + object_name(obj)
+	  + ", issue #" + status(obj)[O_INDEX], "objectd");*/
 
 	obj->destruct();/* get rid of it from world */		       
 	index = status(obj)[O_INDEX];
@@ -875,7 +875,7 @@ void remove_program(string owner, string path, int timestamp, int index)
 	object issue, cur;
 	mixed* status;
 
-	LOGD->log("remove: " + path + ", issue #" + index, "objectd");
+	/*LOGD->log("remove: " + path + ", issue #" + index, "objectd");*/
 
 	/* Get current version */
 	cur = find_object(path);
@@ -966,8 +966,8 @@ mixed include_file(string compiled, string from, string path)
     if(previous_program() == DRIVER && aggro_recompile > 0) {
 	string trimmed_from;
 
-	LOGD->log("include " + path + " from " + from,
-	  "objectd");
+	/*LOGD->log("include " + path + " from " + from,
+	  "objectd");*/
 
 	if(path != "AUTO" && path != "/include/AUTO" && path != nil
 	  && path != ""
@@ -1022,8 +1022,8 @@ int forbid_call(string path)
 int forbid_inherit(string from, string path, int priv)
 {
     if(previous_program() == DRIVER) {
-	LOGD->log("forbid_inherit: " + path + " from " + from,
-	  "objectd");
+	/*LOGD->log("forbid_inherit: " + path + " from " + from,
+	  "objectd");*/
 
 	/* If we *did* actually forbid something, that would be logged with
 	   something other than LOG_ULTRA_VERBOSE... */
