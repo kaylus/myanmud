@@ -4,7 +4,7 @@
 
 inherit tls API_TLS;
 
-object this_player;
+/*object this_player;*/
 
 static void create() {
     tls::create();
@@ -13,13 +13,14 @@ static void create() {
 
 /* TODO: check to make these calls are from a reliable source */
 void set_this_player(object player) {
-    LOGD->log("Set player to "+object_name(player), "braind");
-    /*set_tlvar(0, player);*/
-    this_player = player;
+    /*LOGD->log("Set tls player to "+object_name(player), "braind");*/
+    set_tlvar(0, player);
+    /*this_player = player;*/
 }
 
 /* return the current player */
 object this_player() {
-    /*return get_tlvar(0);*/
-    return this_player ? this_player : this_user();
+    /*LOGD->log("queried this player for tls", "braind");*/
+    return get_tlvar(0);
+    /*return this_player ? this_player : this_user();*/
 }
