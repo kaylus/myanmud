@@ -11,6 +11,7 @@ inherit OBJECT;
 
 private int    _num_coins;  /* number of coins this stack represents */
 private string _cointype;   /* type of coins this stack represents */
+private string creator;
 
 int is_coins(){ return 1; }
 
@@ -19,6 +20,10 @@ void create(varargs int clone){/* defaults */
 	_cointype = COIN_NAMES[0];
 	set_id( ({ "coins", "coin", _cointype, _cointype+" coin", _cointype+" coins" }) );
 	set_weight(_num_coins);
+    creator = previous_program();
+    #ifdef TRACKCOINS
+    find_object(WORLDBANKD)->create_coin(this_object(), creator); /* add to registry */
+    #endif
 }
 
 void set_cointype(string val){

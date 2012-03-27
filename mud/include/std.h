@@ -44,6 +44,7 @@
 
 # define ESC "\033" /* escape character */
 
+# undef TRACKCOINS  /* whether or not to track coins */
 # define OBJ_ACCOUNT /* this uses the account as objects
                         system, deprecated */
 
@@ -56,6 +57,7 @@
 # define ACCOUNTD "/usr/System/sys/accountd" /* handles account chores */
 # define WEATHERD "/usr/Common/sys/weatherd" /* weather daemon */
 # define THINGD "/usr/System/sys/thingd" /* thing server */
+# define WORLDBANKD "/usr/Common/sys/worldbankd" /* finance tracker */
 
 # define TEL_MANAGER "/usr/System/sys/telnetd"	/* telnet manager */
 # define BIN_MANAGER "/usr/System/sys/binaryd"	/* binary manager */

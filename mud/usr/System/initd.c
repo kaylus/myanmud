@@ -56,6 +56,7 @@ static int create (varargs int clone){
 	_load (BRAIND);
 	_load (ACCOUNTD);
 	_load (WEATHERD);
+    _load (WORLDBANKD);
 }
 /* called by driver before a reboot */
 void prepare_reboot(){
