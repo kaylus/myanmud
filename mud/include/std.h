@@ -41,8 +41,7 @@
 # define LIB_ROOM "/usr/Common/lib/room" /* lib room */
 # define ROOM "/usr/Common/obj/room" /* room */
 # define COIN "/usr/Common/obj/coin" /* coin */
-
-# define ESC "\033" /* escape character */
+# define THING "/usr/Common/obj/object" /* ubiquitous nothing object */
 
 # undef TRACKCOINS  /* whether or not to track coins */
 # define OBJ_ACCOUNT /* this uses the account as objects
@@ -80,3 +79,5 @@
 /* direction mappings */
 #define DIRS ([ "east" : "west", "south" : "north", "west" : "east", "north" : "south" ])
 #define A_DIRS ({ "east", "west", "south", "north" })
+
+# define VOWELS ({ 'a', 'e', 'i', 'o', 'u', 'y' })

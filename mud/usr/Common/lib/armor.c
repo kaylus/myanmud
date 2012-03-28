@@ -41,7 +41,7 @@ void set_quality(int val){ quality = val; }
 
 /* override short for [broken] tag */
 string query_short(){
-    return ::query_short() + ((_broke) ? " \033[41m[broken]\033[0m" : "");
+    return ::query_short() + ((_broke) ? " %^B_RED%^[broken]%^RESET%^" : "");
 }
 
 int query_quality()      { return quality; }

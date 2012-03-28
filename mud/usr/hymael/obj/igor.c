@@ -22,12 +22,12 @@ int tornado(object attacker, object victim){
         switch(random(100)){
         case 0..20:
                 dam = random(65)+1;
-                attacker->mesage("[31m[1mYou fly into a tornado.[0m\n");
-                victim->message("[31m[1m"+attacker->query_cap_name()+" flies into a vicious tornado, "+
-                                "tearing into your stomach with crazed, animalistic abandon![0m\n");
-                attacker->query_environment()->message("[31m[1m"+attacker->query_cap_name()+" flies "+
+                attacker->mesage("%^BOLD%^%^RED%^You fly into a tornado.%^RESET%^\n");
+                victim->message("%^BOLD%^%^RED%^"+attacker->query_cap_name()+" flies into a vicious tornado, "+
+                                "tearing into your stomach with crazed, animalistic abandon!%^RESET%^\n");
+                attacker->query_environment()->message("%^BOLD%^%^RED%^"+attacker->query_cap_name()+" flies "+
                                 "into a vicious tornado of motion, ripping apart "+victim->query_cap_name()
-                                +"![0m\n",
+                                +"!%^RESET%^\n",
                                 ({ attacker, victim }));
                 victim->receive_damage(dam, attacker, this_object()->query_type());
                 return 1;

@@ -41,7 +41,7 @@
 /* a scale of these conditions */
 #define H_SCALE ({ H_CRIT, H_SEVERE, H_MOD, H_LIGHT, H_SUPERB })
 /* and colorization TODO: convert over to pinkfish */
-#define H_COLOR ([ H_LOST : "[30m", H_CRIT : "[31;1m", H_SEVERE : "[31m", H_MOD : "[33;1m", H_LIGHT : "[36m", H_SUPERB : "[32;1m" ])
+#define H_COLOR ([ H_LOST : "%^BLACK%^", H_CRIT : "%^RED%^%^BOLD%^", H_SEVERE : "%^RED%^", H_MOD : "%^BOLD%^%^YELLOW%^", H_LIGHT : "%^CYAN%^", H_SUPERB : "%^BOLD%^%^GREEN%^" ])
 #define H_PRINT ([ H_SUPERB : "superb", H_LIGHT : "light", H_MOD : "moderate", H_SEVERE : "severe", H_CRIT : "critical", H_LOST : "lost" ])
 
 /* defines when critical hits apply */

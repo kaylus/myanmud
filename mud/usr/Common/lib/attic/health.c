@@ -77,17 +77,17 @@ string query_xa(){
     switch(cur_hp * 100 / max_hp){/* percentage of */
 	/* is ... */
     case 95..100:
-	return "[32m[1mperfect condition[0m";
+	return "%^BOLD%^%^GREEN%^perfect condition%^RESET%^";
     case 65..94:
-	return "[33m[1mstunned[0m";
+	return "%^BOLD%^%^YELLOW%^stunned%^RESET%^";
     case 45..64:
-	return "[33mbattered[0m";
+	return "%^YELLOW%^battered%^RESET%^";
     case 25..44:
-	return "[31m[1mbloody and bleeding[0m";
+	return "%^BOLD%^%^RED%^bloody and bleeding%^RESET%^";
     case 10..24:
-	return "[31mabout to fall[0m";
+	return "%^RED%^about to fall%^RESET%^";
     default:
-	return "[30m[1malmost dead[0m";
+	return "%^BOLD%^%^BLACK%^almost dead%^RESET%^";
     }
 }
 
@@ -121,7 +121,7 @@ void die(){
 	_die();
 	
 	this_object()->pacify();
-	this_object()->message("\033[30;1mYou have died.\033[0m\n");
+	this_object()->message("%^BOLD%^%^BLACK%^You have died.%^RESET%^\n");
 	this_object()->query_environment()->message(this_object()->query_Name()+" has died.\n", ({this_object()}));
 	
 	this_object()->move(ROOMD->query_labyrinth(), "", 1, 1);

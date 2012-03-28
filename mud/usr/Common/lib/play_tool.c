@@ -75,8 +75,7 @@ mixed cmd_look(string str){
     return nil;
 }
 
-mixed
-cmd_test (string str)
+mixed cmd_test (string str)
 {
     if (!strlen (str))
 	return "Must put something after test.\n";
@@ -87,8 +86,7 @@ cmd_test (string str)
 }
 
 /** go in a direction */
-mixed
-cmd_go (string str)
+mixed cmd_go (string str)
 {
     object environ, dest;
     string err;

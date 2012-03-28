@@ -192,7 +192,7 @@ float diminishing_returns(float val, float scale) {
     trinum = (sqrt(8.0 * mult + 1.0) - 1.0) / 2.0;
     return trinum * scale;
 }
-# define VOWELS ({ 'a', 'e', 'i', 'o', 'u', 'y' })
+
 string article(string str){
 	return (sizeof(VOWELS & ({str[0]}))) ? "an" : "a";
 }

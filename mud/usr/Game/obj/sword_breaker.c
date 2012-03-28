@@ -1,7 +1,7 @@
 inherit WEAPON;
 
 void create(varargs int clone){
-    set_short (ESC+"[31mCitali, the Swordbreaker"+ESC+"[0m") ;
+    set_short ("%^RED%^Citali, the Swordbreaker%^RESET%^") ;
     set_long (wrap("Citali is a medium-sized dagger designed to be in the offhand. \
 It is a twisted thing, with twines lacing its entire length.  It looks as though it was \
 tortured at the forge.  Its many hooks and crevices snag weapons and break them like dry \
@@ -27,8 +27,8 @@ int sword_break(object owner, object attacker, object weapon){
 	oname = owner->query_Name();
 	aname = attacker->query_Name();
 	wname = weapon->query_weapon_name();
-	owner->message(ESC+"[31mCitali catches "+aname+"'s "+ESC+"[0m"+wname+ESC+"[31m in its tines."+ESC+"[0m\n");
-	attacker->message(ESC+"[31m"+oname+"'s strange weapon catches your "+ESC+"[0m"+wname+ESC+"[31m in its tines."+ESC+"[0m\n");
+	owner->message("%^RED%^Citali catches "+aname+"'s %^RESET%^"+wname+"%^RED%^ in its tines.%^RESET%^\n");
+	attacker->message("%^RED%^"+oname+"'s strange weapon catches your %^RESET%^"+wname+"%^RED%^ in its tines.%^RESET%^\n");
 	attacker->query_environment()->message(oname+"'s strange weapon intercepts "+
 	  aname+"'s attack.\n",
 	({ owner, attacker })

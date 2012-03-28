@@ -113,3 +113,8 @@ int input(string str){
     this_object()->message(fail_msg);/* failed to find command */
     return 1;
 }
+
+void transmit(mixed *list, object originator)/* receive messages from messaged */
+{
+    this_object()->message(find_object("/usr/System/sys/messaged")->parse_message(list, originator, this_object()));
+}

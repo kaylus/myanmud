@@ -6,8 +6,8 @@
 
 */
 
-#define ANSI(p) ( ESC + "[" + (p) + "m" )
-/*#define ESC(p) sprintf("%c"+(p), 27)*/
+# define ANSI(p) ( ESC + "[" + (p) + "m" )
+# define ESC "\033" /* escape character */
 
 string *unsafe_ansi;
 
@@ -35,7 +35,7 @@ string parse_pinkfish(varargs string msg, int flag)
     string *words;
     int size;
 
-    data = ([ "RESET":ANSI("0;37;40"), "BOLD":ANSI(1), "FLASH":ANSI(5),
+    data = ([ "RESET":ANSI("0;37;40"), "BOLD":ANSI(1), "FLASH":ANSI(5),/* TODO: add beep */
       "BLACK":ANSI(30), "RED":ANSI(31), "GREEN":ANSI(32),
       "YELLOW": ANSI(33), "BLUE": ANSI(34), "CYAN":ANSI(36),
       "MAGENTA":ANSI(35), "WHITE": ANSI(37),

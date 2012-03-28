@@ -6,7 +6,7 @@
 #include <game/body.h>
 
 #define SPACE5 "     "
-#define RESET  "\033[0m"
+#define RESET  "%^RESET%^"
 /* array defines for health */
 #define _DAMAGE 0
 #define _MAX_HP 1
@@ -20,7 +20,7 @@
 #define M_GPART 5 /* the part that gave this malig */
 
 /* color shit */
-#define BLEED_COL "\033[31;1m"
+#define BLEED_COL "%^BOLD%^%^RED%^"
 
 /* limb mess, truely a mess */
 #define MY_LIMB   BLEED_COL + dname + " has severed your " + part + ".\n" + RESET
@@ -69,7 +69,7 @@ void init_health(){
 void die(){
 	event("death", this_object());
 	this_object()->cease_weapons();
-	this_object()->message("\033[30;1mYou have died.\033[0m\n");
+	this_object()->message("%^BOLD%^%^BLACK%^You have died.%^RESET%^\n");
 	this_object()->query_environment()->message(this_object()->query_Name()+" has died.\n", ({this_object()}));
 	refresh_health();
 	this_object()->pacify();
