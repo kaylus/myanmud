@@ -135,60 +135,6 @@ void raise_plank(){
     remove_exit("port");
 }
 
-/*string query_long(varargs int brief){
-    string value;
-    object *inventory;
-    int sz;
-
-    /* Start with whatever desc the room coder supplied. Give the short
-   or the long desc, according to the brief argument. 
-    if(brief)
-	value = _ship->query_name()+"'s "+short_desc+"\n";
-    else
-	value = _ship->query_name()+"'s "+short_desc+"\n\n"+long_desc;
-
-    /* Add in any exits there may be. 
-    value += "%^BOLD%^\n\t";
-    if(!exits || !(sz = map_sizeof(exits))){
-	value += "There are no obvious exits.\n" ;
-    }else{
-	string *indies;
-	indies = map_indices(exits);
-
-	switch(sz){
-	case 1:
-	    value += "The only obvious exit is "+indies[0];
-	    break;
-	case 2:
-	    value += "Obvious exits are "+indies[0]+" and "+indies[1];
-	    break;
-	default:
-	    value += "Obvious exits are "+implode(indies[0..sz-2], ", ")+", and "+indies[sz-1];
-	}
-	value += ".\n";
-    }
-    value += "\n%^RESET%^";
-    /* List the contents of the room. 
-    inventory = query_inventory();
-    if(inventory && (sz = sizeof(inventory))){
-	string name;
-	int i;
-
-	for(i=0; i<sz; i++){
-	    /* Make sure there isn't an empty item in the inventory somehow. 
-	    if(!inventory[i])
-		continue;
-
-	    /* Don't include our own body in the list. 
-		LOGD->log("this_player in ship_room = "+object_name(this_player()), "braind");
-	    if(inventory[i] == this_player())
-		continue;
-
-	    name = inventory[i]->query_short();
-	    if(name){
-		value += "   "+capitalize(name)+"\n";
-	    }
-	}
-    }
-    return value;
-}*/
+string query_long(varargs int brief, object actor){ 
+    return _ship->query_name()+"'s "+::query_long(brief, actor);;
+}

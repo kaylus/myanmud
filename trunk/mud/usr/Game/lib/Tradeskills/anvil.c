@@ -5,7 +5,7 @@
  generally bring it in line with new mudlib
  *************************************/
 #include <game/Tradeskills/weaponsmithing.h>
-# define OBJ "/usr/Common/obj/object" /* rudimentary object */
+# define OBJ THING /* rudimentary object */
 /** things are put into this and "combined" */
 inherit container CONTAINER;
 
@@ -227,7 +227,7 @@ mixed repair(string str){
 }
 
 string query_short(){
-    return ::query_short()+((_heat > time()) ? " [41;1m[heated][0m" : "");
+    return ::query_short()+((_heat > time()) ? " %^B_RED%^%^BOLD%^[heated]%^RESET%^" : "");
 }
 
 mapping check_ingredients(string *ingreds){
@@ -311,7 +311,7 @@ mixed fabricate(string str){
 	/* debug */
 	weapon = THINGD->get_clone("/usr/Common/obj/weapon");
 	weapon->set_id( ({ str, alloy+" "+str }) );
-	weapon->set_short(color+alloy+" "+str+"[0m");
+	weapon->set_short(color+alloy+" "+str+"%^RESET%^");
 	weapon->set_quality(values[_BON]+TP->query_skill("weaponsmithing"));
 
 	speed = CALC_SPEED;

@@ -1,7 +1,7 @@
 inherit ARMOR;
 
 void create(varargs int clone){
-    set_short(ESC+"[34mindigo breastplate"+ESC+"[0m");
+    set_short("%^BLUE%^indigo breastplate%^RESET%^");
     set_long(wrap("This is an indigo breastplate.\n", 72));
     set_id( ({ "breastplate", "indigo breastplate" }));
     set_type("breastplate");

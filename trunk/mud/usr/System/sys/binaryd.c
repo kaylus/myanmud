@@ -16,5 +16,5 @@ int query_timeout (object connection){
 }
 
 string query_banner (object connection){
-    return "\033[18mS.O.S.S.\nWhat's your name? \033[0m";
+    return "%^BOLD%^S.O.S.S.\nWhat's your name? %^RESET%^";
 }

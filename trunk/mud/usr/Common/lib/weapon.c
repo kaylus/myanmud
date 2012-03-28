@@ -58,7 +58,7 @@ string query_weapon_name(){
 
 /* override short for [broken] tag */
 string query_short(){
-    return ::query_short() + ((_broke) ? " \033[41m[broken]\033[0m" : "");
+    return ::query_short() + ((_broke) ? " %^B_RED%^[broken]%^RESET%^" : "");
 }
 
 void set_two_handed(){ bit_att |= TWO_HAND; }
