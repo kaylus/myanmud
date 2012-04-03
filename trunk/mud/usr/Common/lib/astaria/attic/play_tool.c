@@ -5,34 +5,28 @@
 #define PREFIX "cmd_"		/**< added to the functions */
 #define USER this_object()->query_user()	/**< temp */
 #define BEEP ""
-/* all commands will return a fail string or nil, signifying success */
 
-/* return is as follows
-	1 - action done, end command search
-	nil - continue seek
-	string - fail string, continue seek
+/** 
+ * @retval 1 - action done, end command search, nil - continue seek, string - fail string, continue seek
  */
-
-
 
 /** look function */
 mixed cmd_look(string str){
     string arg;    
 
-
     #if 0
-    /* Can we see? */
+    /** @todo Can we see? */
     if(!TP->query_vision()){
-	write("It is dark and you can't see a thing.\n");
-	return 1;
+        write("It is dark and you can't see a thing.\n");
+        return 1;
     }
     #endif
 
     if(str && sscanf(str, "in %s", arg))/* let this pass up to container */
-	return "look [in] <container>\n";
+        return "look [in] <container>\n";
 
     if(!str)
-	str = "";
+        str = "";
     
     if(str == "me" || str == "at me"){
         str = this_object()->query_name(); 
@@ -68,15 +62,14 @@ mixed cmd_look(string str){
 	    this_object()->message(thing->query_long());
 	    return 1;
 	}
-	this_object()->message("I don't see "+/*article(arg)*/"a"+" "+arg+" here.\n");
+	this_object()->message("I don't see " + article(arg) + " here.\n");
 	return 1;
     }
     /* Give up. */
     return nil;
 }
 
-mixed cmd_test (string str)
-{
+mixed cmd_test (string str){
     if (!strlen (str))
 	return "Must put something after test.\n";
 
@@ -86,31 +79,28 @@ mixed cmd_test (string str)
 }
 
 /** go in a direction */
-mixed cmd_go (string str)
-{
+mixed cmd_go (string str){
     object environ, dest;
     string err;
 
     environ = this_object ()->query_environment ();
 
     if (!environ)
-	return "You must have an environment to leave from!\n";
+        return "You must have an environment to leave from!\n";
 
     dest = environ->query_exit (str);
     if (!dest)
-	return "You cannot go in that direction.\n";
+        return "You cannot go in that direction.\n";
 
     err = catch (this_object ()->move (dest, str));
 
     if (err)
-	return err;
+        return err;
 
     return 1;
 }
 
-mixed
-cmd_beep (string str)
-{
+mixed cmd_beep (string str){
     object person;
 
     if (!str || !strlen (str))
@@ -325,7 +315,7 @@ mixed cmd_unequip(string str){
 }
 
 mixed cmd_hp(string str){
-    this_object()->message("Status:"+this_object()->query_diagram());
+    this_object()->message("hp "+this_object()->query_health()+" / "+this_object()->query_max_health()+"\n");
     return 1;
 }
 
@@ -339,13 +329,13 @@ mixed cmd_score(varargs string str){
     i = sizeof(attributes);
 
     str = this_object()->query_Name() + "\n";
-    str += this_object()->query_diagram();
 
     while(i--){
 	str += ESC+"[36;1m"+pad(capitalize(attributes[i])+": ", 15)+ESC+"[0m"+stats[attributes[i]]+"\n";
     }
 
     this_object()->message(str);
+    cmd_hp("");
     return 1;
 }
 
@@ -535,13 +525,13 @@ mixed cmd_xa (string str){
 	target = this_object()->query_target();
 	if(!target)return "Not currently in combat!\n";
 
-	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
+	this_object()->message(target->query_Name() + ":\n" + target->query_xa() + "\n");
 	return 1;
     }
 
     target = this_object()->query_environment()->present(str);
     if (target && target->query_has_health()) {
-	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
+	this_object()->message(target->query_Name() + ":\n" + target->query_xa() + "\n");
 	return 1;
     }
     return "No such thing to xa.\n";

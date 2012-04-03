@@ -75,8 +75,7 @@ mixed cmd_look(string str){
     return nil;
 }
 
-mixed
-cmd_test (string str)
+mixed cmd_test (string str)
 {
     if (!strlen (str))
 	return "Must put something after test.\n";
@@ -87,8 +86,7 @@ cmd_test (string str)
 }
 
 /** go in a direction */
-mixed
-cmd_go (string str)
+mixed cmd_go (string str)
 {
     object environ, dest;
     string err;
@@ -327,7 +325,7 @@ mixed cmd_unequip(string str){
 }
 
 mixed cmd_hp(string str){
-    this_object()->message("hp "+this_object()->query_health()+" / "+this_object()->query_max_health()+"\n");
+    this_object()->message("Status:"+this_object()->query_diagram());
     return 1;
 }
 
@@ -341,13 +339,13 @@ mixed cmd_score(varargs string str){
     i = sizeof(attributes);
 
     str = this_object()->query_Name() + "\n";
+    str += this_object()->query_diagram();
 
     while(i--){
 	str += ESC+"[36;1m"+pad(capitalize(attributes[i])+": ", 15)+ESC+"[0m"+stats[attributes[i]]+"\n";
     }
 
     this_object()->message(str);
-    cmd_hp("");
     return 1;
 }
 
@@ -537,13 +535,13 @@ mixed cmd_xa (string str){
 	target = this_object()->query_target();
 	if(!target)return "Not currently in combat!\n";
 
-	this_object()->message(target->query_Name() + ":\n" + target->query_xa() + "\n");
+	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
 	return 1;
     }
 
     target = this_object()->query_environment()->present(str);
     if (target && target->query_has_health()) {
-	this_object()->message(target->query_Name() + ":\n" + target->query_xa() + "\n");
+	this_object()->message(target->query_Name() + ":\n" + target->query_diagram() + "\n");
 	return 1;
     }
     return "No such thing to xa.\n";

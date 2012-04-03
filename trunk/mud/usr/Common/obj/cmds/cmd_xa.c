@@ -1,5 +1,5 @@
-/*
- * the xa command
+/**
+ * @brief the xa command, gives health rating on target
  */
 
 inherit BODY_COMMAND;
@@ -8,7 +8,6 @@ mixed help(string cmd, object actor){
 	return "Used to determine someone's health.\n";
 }
 
-/* xa - command to show, in brief, another person's injuries */
 mixed cmd_xa (string cmd, string str, object actor){
     object target;
     if (!str || !strlen(str)){/* target an attacker */

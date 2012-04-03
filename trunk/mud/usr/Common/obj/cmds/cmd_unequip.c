@@ -1,5 +1,5 @@
-/*
- * the unequip command
+/**
+ * @brief the unequip command, unequips the given armor piece
  */
 
 inherit BODY_COMMAND;

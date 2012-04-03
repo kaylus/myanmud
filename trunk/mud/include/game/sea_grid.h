@@ -1,6 +1,6 @@
-/*************
- * Sea grid  *
- *************/
+/**
+ * Sea grid 
+ */
 #define SEA_D "/usr/Game/sys/sea_d"
 
 #define LIB_SHIP_ROOM "/usr/Game/lib/ship_room"
@@ -22,8 +22,8 @@
 
 #define DIRS_SIZE 8
 
-#define CARDINALS ({ "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"})
+#define CARDINALS ({ "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"}) /**< @todo maybe use from std.h? */
 
-#define SG_ROOM 0  /* indexes into the grid array */
-#define SG_FUNC 1  /* function to be called */
-#define SG_OBJ  2  /* object which contains the entering code, defaults to sea daemon */
+#define SG_ROOM 0  /**< indexes into the grid array */
+#define SG_FUNC 1  /**< function to be called */
+#define SG_OBJ  2  /**< object which contains the entering code, defaults to sea daemon */

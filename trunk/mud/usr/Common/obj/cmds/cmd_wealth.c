@@ -1,5 +1,5 @@
-/*
- * the wealth command
+/**
+ * @brief the wealth command
  */
 
 inherit BODY_COMMAND;

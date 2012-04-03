@@ -1,6 +1,6 @@
-/***********
- * portage *
- ***********/
+/**
+ * portage 
+ */
 #include <game/sea_grid.h>
 
 inherit LIB_ROOM;

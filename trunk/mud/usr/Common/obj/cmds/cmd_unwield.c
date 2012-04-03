@@ -1,5 +1,5 @@
-/*
- * the unwield command
+/**
+ * @brief the unwield command, unwields a weapon
  */
 
 inherit BODY_COMMAND;

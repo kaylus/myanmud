@@ -1,10 +1,10 @@
-/*
+/**
  * the alias inheritable for a user
  */
 
 #include <game/alias.h>
 
-mapping aliases; /* mapping for aliases */
+mapping aliases; /**< mapping for aliases */
 
 void create(varargs int clone){
 	aliases = DEF_ALIASES;
@@ -43,16 +43,16 @@ string query_alias(varargs string alias){
 	if(!aliases){aliases = DEF_ALIASES;}
 
 	if(!alias){ /* assume comprehensive check */
-			int sz, i;
-			string *indices, ret;
-			indices = map_indices(aliases);
-			ret = "";
-			if((sz=sizeof(indices)) > 0){
-					for(i=0; i<sz; i++){
-							ret += "\nAlias "+indices[i]+": "+aliases[indices[i]];
-					}
-					return ret + "\n";
-			}
+        int sz, i;
+        string *indices, ret;
+        indices = map_indices(aliases);
+        ret = "";
+        if((sz=sizeof(indices)) > 0){
+            for(i=0; i<sz; i++){
+                    ret += "\nAlias "+indices[i]+": "+aliases[indices[i]];
+            }
+            return ret + "\n";
+        }
 	}
 
 	if(!aliases[alias]){return alias;}/* no existing alias */

@@ -1,26 +1,33 @@
-/* this daemon does some of the random necessary things to keep the mud operating */
+/** this daemon does some of the random necessary things to keep the mud operating 
+ *  @brief keeps this_player in TLS
+ *  @todo Cleanup
+ */
 #include <config.h>
 #include <kernel/tls.h>
 
 inherit tls API_TLS;
 
-/*object this_player;*/
-
 static void create() {
     tls::create();
-    set_tls_size(1); /* one thread local variable, index 0 */
+    set_tls_size(1); /** one thread local variable, index 0 
+                      * @todo Add defines for these offsets into TLS
+                      */
 }
 
-/* TODO: check to make these calls are from a reliable source */
+/** 
+ *  @brief set_this_player is called to set this_player for current thread
+ *  @param player Object containing the player to be set
+ *  @todo check to make these calls are from a reliable source, security
+ */
 void set_this_player(object player) {
-    /*LOGD->log("Set tls player to "+object_name(player), "braind");*/
-    set_tlvar(0, player);
-    /*this_player = player;*/
+    set_tlvar(0, player); /**< @todo Add defines for offsets? */
 }
 
-/* return the current player */
+/**
+ * @brief this_player is used to get the current player in thread
+ * @retval return the current player 
+ * @todo security on call, and any nil checking?
+ */
 object this_player() {
-    /*LOGD->log("queried this player for tls", "braind");*/
     return get_tlvar(0);
-    /*return this_player ? this_player : this_user();*/
 }

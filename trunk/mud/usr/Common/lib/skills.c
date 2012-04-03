@@ -1,14 +1,14 @@
-/**********************************************************
- *                     skills.c                           *
- *  Eventually this will contain formulae for skill       *
- *  decay, and a more abstract output                     *
- *  -Hymael                                               *
- **********************************************************/
+/**
+ *                     skills.c                           
+ *  Eventually this will contain formulae for skill       
+ *  decay, and a more abstract output                     
+ *  @author Hymael                                               
+ */
 /* need a header for skills, create? */
 #define NOT_SKILLED 0
 
-mapping skills;           	   /* our skills */
-static mapping mod_skills;             /* current skill mods */
+mapping skills;           	   /**< our skills */
+static mapping mod_skills;     /**< current skill mods */
 
 void delta_skill(string skill, varargs int val){
     if(!skills) skills = ([]);
@@ -21,12 +21,11 @@ void delta_skill(string skill, varargs int val){
 
 void remove_mod(string skill, int val, string message){
     mod_skills[skill] += val;
-    if(message){
-	this_object()->message(message);
-    }
+    if(message)
+        this_object()->message(message);
 }
-/* temp mods for skills api:
-   duration is in seconds and off message */
+
+/** temp mods for skills api: duration is in seconds and off message */
 void mod_skill(string skill, int val, int duration, varargs string message){
     if(!mod_skills) mod_skills = ([]);
 
@@ -58,7 +57,7 @@ int query_skill(string skill){
     return ret;
 }
 
-string query_skills(){/* dumb text output of skill list */
+string query_skills(){/**< dumb text output of skill list */
     string str, *indies;
     int i, x;
 

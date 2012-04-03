@@ -1,17 +1,17 @@
-/*************************************
- * the weight system                 *
- * this handles all the logic with   *
- * weights and bulks and capacities  *
- * -Hymael                           *
- *************************************/
+/**
+ * the weight system                 
+ * this handles all the logic with   
+ * weights and bulks and capacities  
+ * @author Hymael                           
+ */
 #include <game/weight.h>
 
-int capacity;  /* how much an object can hold in weight */
-int   volume;  /* how much an object can hold in bulk   */
-int    p_cap;  /* present weight held                   */
-int p_volume;  /* present bulk held                     */
-int     bulk;  /* the relative size of an object        */
-int   weight;  /* an object's weight                    */
+int capacity;  /**< how much an object can hold in weight */
+int   volume;  /**< how much an object can hold in bulk   */
+int    p_cap;  /**< present weight held                   */
+int p_volume;  /**< present bulk held                     */
+int     bulk;  /**< the relative size of an object        */
+int   weight;  /**< an object's weight                    */
 
 void create(varargs int clone){/* demand for defaults */
     capacity = DEF_CAPACITY;

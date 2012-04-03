@@ -1,9 +1,9 @@
-/*******************************
- *     weaponsmithing.h        *
- * This contains recipes and   *
- * the definitions for being a *
- * weaponsmith                 *
- *******************************/
+/**
+ *     weaponsmithing.h       
+ * This contains recipes and  
+ * the definitions for being a
+ * weaponsmith                
+ */
 
 /** libs */
 #define LIB_ANVIL "/usr/Game/lib/Tradeskills/anvil"
@@ -42,14 +42,14 @@
 #define C_ALLOY  "alloy"
 #define C_HAMMER "hammer"
 
-/*****************************************
- * Each part of this process will have   *
- * an overall effect on the outcome of   *
- * the weapon.  Accuracy, quality,       *
- * damage, magical props, anything on    *
- * the weapon that varies will be molded *
- * through this creation process.        *
- *****************************************/
+/**
+ * @brief Each part of this process will have   
+ * an overall effect on the outcome of   
+ * the weapon.  Accuracy, quality,       
+ * damage, magical props, anything on    
+ * the weapon that varies will be molded 
+ * through this creation process.        
+ */
 
 
-/* recipes */
+/** @todo recipes */

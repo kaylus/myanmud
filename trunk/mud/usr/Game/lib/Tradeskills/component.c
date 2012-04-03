@@ -1,20 +1,20 @@
-/*************************************
- * This defines a typical tradeskill *
- * component.                        *
- *************************************/
+/**
+ * This defines a typical tradeskill 
+ * component.                        
+ */
 #include <game/Tradeskills/weaponsmithing.h>
 
 inherit OBJECT;
 
 #define RESET "%^RESET%^"
 
-string _tradeskill;  /** the tradeskill this component is used with */
-int    _bonus;       /** the relative benefit to using this component */
-int    _difficulty;  /** difficulty in using this component */
-int    _reuse;       /** set how many times this item can be reused */
-string _subset;      /** subset */
-string _alloy;       /** alloy if applicable */
-string _color;       /** color this item presents */
+string _tradeskill;  /**< the tradeskill this component is used with */
+int    _bonus;       /**< the relative benefit to using this component */
+int    _difficulty;  /**< difficulty in using this component */
+int    _reuse;       /**< set how many times this item can be reused */
+string _subset;      /**< subset */
+string _alloy;       /**< alloy if applicable */
+string _color;       /**< color this item presents */
 
 void create(varargs int clone){}
 

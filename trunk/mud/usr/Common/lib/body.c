@@ -1,22 +1,21 @@
-/*******************************************************
- *                   body.c                            *
- * This will hold the functionality of equipping items *
- * in specific slots                                   *
- * and other bodily functions                          *
- * -Hymael                                             *
- *******************************************************/
+/**
+ *                   body.c                            
+ * This will hold the functionality of equipping items 
+ * in specific slots and other bodily functions                          
+ * @author Hymael                                             
+ */
 #include <config.h>
 #include <game/body.h>
 #include <type.h>
 
 inherit container CONTAINER;
-inherit STATS; /* temp */
-inherit HEALTH; /* not perfect */
-inherit combat COMBAT; /* combat */
-inherit WEAPON; /* for attacking with fists */
-inherit SKILLS; /* skills */
+inherit STATS;
+inherit HEALTH; 
+inherit combat COMBAT; 
+inherit WEAPON; /**< for attacking with fists */
+inherit SKILLS; 
 inherit WEALTH;
-inherit RACE_KIT;  /* player's race/gender */
+inherit RACE_KIT;  /**< player's race/gender */
 inherit BODY_INPUT;
 
 /**************************************
@@ -28,14 +27,14 @@ static mapping armors;  	/* does not include shield */
 /*************************************
  * wielded[BP_ARMS[0]]=weapon object *
  *************************************/
-static mapping wielded; 	/* includes shield */
-static mapping armor_class; /* individual body parts' ac */
-static mapping hit_spread;  /* contains mapping of hit percentages */
-static string *arms;        /* valid arms */
-object user;                /* contain user object? */
-object end_room;            /* last room that held this body */
+static mapping wielded; 	/**< includes shield */
+static mapping armor_class; /**< individual body parts' ac */
+static mapping hit_spread;  /**< contains mapping of hit percentages */
+static string *arms;        /**< valid arms */
+object user;                /**< contain user object? */
+object end_room;            /**< last room that held this body */
 
-static int     _state;      /* retains state of body */
+static int     _state;      /**< retains state of body */
 
 static void create(varargs int clone){ /* allocates for speed */
     object heartd;
@@ -77,6 +76,7 @@ static void create(varargs int clone){ /* allocates for speed */
 	find_object(ACCOUNTD)->add_body(this_object());
 }
 
+/** @todo move these to race kit? */
 string query_subjective(){
     switch(query_gender()){
 	case "male":
@@ -99,7 +99,7 @@ int allow_subscribe(object obj, string name){
 /* work horse of player messages, replaces catch_tell */
 int message(string str){
     if(user)
-	return user->message(str);
+        return user->message(str);
 
     return 0;
 }
@@ -114,13 +114,13 @@ void stasis(){/* put body into stasis */
 }
 
 int awaken(){
-  LOGD->log("awaken called by " +previous_program(), "users");
+    LOGD->log("awaken called by " +previous_program(), "users");
     if(previous_program() != SYSTEM_USER)
-	return 0;
+        return 0;
 
     user = previous_object();
     if(!end_room){/* room is no more */
-	end_room = ROOMD->query_start_room(); /* set to start room */
+        end_room = ROOMD->query_start_room(); /* set to start room */
     }
 
     previous_object()->message("Your body awakens.\n");
@@ -136,11 +136,11 @@ object query_user(){
 }
 /* these functions should digress fluidly if no user object is decided on */
 string query_Name(){
-    return (user)?user->query_Name():"Nameless";
+    return (user) ? user->query_Name() : "Nameless";
 }
 
 string query_name(){
-    return (user)?user->query_name():"nameless";
+    return (user) ? user->query_name() : "nameless";
 }
 
 void set_arms(string *value){
@@ -169,12 +169,12 @@ void decr_ac(string part, int val){
 int total_valies(int *vals, int sz){
     int total;
     while(sz--){/* would like to make this only calculate once, at change */
-	total += vals[sz];
+        total += vals[sz];
     }
     return total;
 }
 
-string target(){/* target a random body part */
+string target(){/**< target a random body part */
     string *indies;
     int *valies, total, i, cur, rand;
     indies = map_indices(hit_spread);
@@ -182,31 +182,31 @@ string target(){/* target a random body part */
     i = sizeof(valies);
     rand = random(total_valies(valies, i));
     while(i--){
-	cur += valies[i];
-	if(rand < cur){/* we've found our target */
-	    return indies[i];
-	}
+        cur += valies[i];
+        if(rand < cur){/* we've found our target */
+            return indies[i];
+        }
     }
     /* shouldn't reach this point, might default to torso since that'll always be there */
     error("No body target found!");
     return nil;
 }
 
-int ac_of(string body_part){/* this retrieves the ac of a given part */
+int ac_of(string body_part){/**< this retrieves the ac of a given part */
     return (armor_class[body_part])? armor_class[body_part] : 0;
 }
 
-
-int set_state(int val){/* events need to be added to a global header */
+/** @todo stuff is infantcy */
+int set_state(int val){/**< events need to be added to a global header */
     switch(val){
     case S_PRONE:/* set state to prone, subject on ground */
 	if(_state & S_PRONE){/* already prone */
 	    return 0;
 	}
-	_state &= ~S_COVER; /* lose cover */
-	_state &= ~S_MOUNT; /* lose mount */
-	_state &= ~S_FLY;   /* stop flying? */
-	_state |= S_PRONE;  /* go prone */
+	_state &= ~S_COVER; /**< lose cover */
+	_state &= ~S_MOUNT; /**< lose mount */
+	_state &= ~S_FLY;   /**< stop flying? */
+	_state |= S_PRONE;  /**< go prone */
 	/*this_object()->event("prone");/* we issue an event that we've fallen */
 	return 1;
     case S_LOCK:/* set state to locked, in close quarters combat */
@@ -251,6 +251,7 @@ int query_state(){ return _state; }
  * nil return is success *
  * -changed to atomic    *
  *************************/
+/** @todo change over to $ printing error */
 atomic void wield(object obj){
     int sz, i;
 
@@ -370,9 +371,9 @@ object *query_weapons(){
     values = map_values(wielded);
     i = sizeof(values);
     while(i--){
-	if(values[i] == 1 || !values[i]->is_weapon()){
-	    values[i] = nil;
-	}
+        if(values[i] == 1 || !values[i]->is_weapon()){
+            values[i] = nil;
+        }
     }
     values -= ({ nil });
     return values;
@@ -486,25 +487,25 @@ int intercept(object attacker, object weapon){/* designed to be overriden */
     while(--i >= 0){
 	if(wielded[arms[i]] && wielded[arms[i]] != 1){
 	    if((func = wielded[arms[i]]->query_intercept_func())){/* items defines an intercept */
-		return call_other(wielded[arms[i]], func, this_object(), attacker, weapon);
+            return call_other(wielded[arms[i]], func, this_object(), attacker, weapon);
 	    }
 
 	    if(wielded[arms[i]]->query_type() == "shield" /* || wielded[arms[i]]->can_parry()*/){
-		if(random(100) < 10){/* successful intercept */
-		    string sname, aname;
-		    sname = this_object()->query_Name();
-		    aname = attacker->query_Name();
-		    attacker->message("Your weapon clangs against "+sname+"'s shield.\n");
-		    this_object()->message(aname+"'s weapon clangs against your shield.\n");
-		    attacker->query_environment()->message(sname+"'s shield intercepts "+
-		      aname+"'s attack.\n",
-		    ({ this_object(), attacker }) );
-		    if(random(3)){/* a third the chance to break */
-			wielded[arms[i]]->handle_break(attacker, weapon, this_object());
-			weapon->handle_break(attacker, wielded[arms[i]]);
-		    }
-		    return 1;
-		}
+            if(random(100) < 10){/* successful intercept */
+                string sname, aname;
+                sname = this_object()->query_Name();
+                aname = attacker->query_Name();
+                attacker->message("Your weapon clangs against "+sname+"'s shield.\n");
+                this_object()->message(aname+"'s weapon clangs against your shield.\n");
+                    attacker->query_environment()->message(sname+"'s shield intercepts "+
+                      aname+"'s attack.\n",
+                    ({ this_object(), attacker }) );
+                if(random(3)){/* a third the chance to break */
+                    wielded[arms[i]]->handle_break(attacker, weapon, this_object());
+                    weapon->handle_break(attacker, wielded[arms[i]]);
+                }
+                return 1;
+            }
 	    }
 	}
     }

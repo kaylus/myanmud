@@ -8,26 +8,26 @@
  * for what damage they deal       *
  ***********************************/
 
-#define OFF_HAND 1 /* bit for off hand */
-#define TWO_HAND 2 /* bit for two hand */
+#define OFF_HAND 1 /**< bit for off hand */
+#define TWO_HAND 2 /**< bit for two hand */
 /* attributes NOTE: add ins for ranged and reach */
 
 inherit OBJECT;
 
-static string type;         			/* of TYPES */
-static int bit_att;                     /* a bitfield of attributes */
-static int *damage_matrix; 			    /* handles damage output */
-static int accuracy;        			/* inherent accuracy, barring player attributes */
-static string hit_func;     			/* function called each hit to handle special */
-static string intercept_func;           /* function that intercepts blows */
-static string wield_func;   			/* function called when weapon is wielded */
-static string unwield_func; 			/* function called when weapon is unwielded */
-static string *verbs_me, *verbs_other;  /* "You verbs_me[num] X with your query_short()"*/
-static int quality;                     /* the quality of a weapon scaled 1-100 */
-static int _broke;                      /* whether it is broke or not */
-static int _speed;                      /* seconds for a swing */
+static string type;         			/**< of TYPES */
+static int bit_att;                     /**< a bitfield of attributes */
+static int *damage_matrix; 			    /**< handles damage output */
+static int accuracy;        			/**< inherent accuracy, barring player attributes */
+static string hit_func;     			/**< function called each hit to handle special */
+static string intercept_func;           /**< function that intercepts blows */
+static string wield_func;   			/**< function called when weapon is wielded */
+static string unwield_func; 			/**< function called when weapon is unwielded */
+static string *verbs_me, *verbs_other;  /**< "You verbs_me[num] X with your query_short()"*/
+static int quality;                     /**< the quality of a weapon scaled 1-100 */
+static int _broke;                      /**< whether it is broke or not */
+static int _speed;                      /**< seconds for a swing */
 
-static string weapon_name;              /* work around */
+static string weapon_name;              /**< work around */
 
 int is_weapon(){
     /*if(this_object()->is_body()){
@@ -147,7 +147,7 @@ void set_id(string *newid){/* assures we always have id weapon */
     ::set_id (newid + ({ "weapon" }) );
 }
 
-/* this is called on each blow to determine if it breaks */
+/** this is called on each blow to determine if it breaks */
 int handle_break(object owner, varargs object armor, int damage){
     int chance;/* may put values like these in a header */
     chance = 75 + quality - (armor ? armor->query_quality() : 0 + damage);/* comparative quality */

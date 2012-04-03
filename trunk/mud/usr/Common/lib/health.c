@@ -31,10 +31,10 @@
 /* formulae */
 #define BLEED_DAM 10
 
-mapping health;           /* part: ({ damage, max, state of wounds }) */
+mapping health;           /**< part: ({ damage, max, state of wounds }) */
 static mapping parts;
-mixed malignancies;       /* this holds bleeding and such */
-string *essential;        /* essential body parts */
+mixed malignancies;       /**< this holds bleeding and such */
+string *essential;        /**< essential body parts */
 
 
 int query_has_health(){	return 1; }
@@ -51,8 +51,8 @@ void refresh_health(){
     if(toughness < 1) toughness = 1;
     /* this may query other things */
     while(i--){
-	temp = parts[indies[i]] * toughness;
-	health[indies[i]] = ({ 0, temp, H_SUPERB });/* start out 0 damage */
+        temp = parts[indies[i]] * toughness;
+        health[indies[i]] = ({ 0, temp, H_SUPERB });/* start out 0 damage */
     }
 }
 

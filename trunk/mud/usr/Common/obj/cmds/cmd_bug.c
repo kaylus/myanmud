@@ -1,5 +1,6 @@
-/*
+/**
  * the bug command
+ * @todo get working
  */
 
 inherit BODY_COMMAND;

@@ -1,4 +1,4 @@
-/*
+/**
    container.c
    This file is to be inherited by any object that is capable of
    holding other objects. It handles inventory_related business,
@@ -10,7 +10,8 @@
    You may wish to write an inheritable bag.c if you plan on having
    many bags (or chests or other such) in your MUD.
    Begun by Mobydick, 5-25-94
-   Hymael - may push get/put to different inheritable
+   Hymael
+   @todo may push get/put to different inheritable, error printing
 */
 
 inherit OBJECT;
@@ -30,7 +31,7 @@ static void create(varargs int clone){
     /* Hymael - adding in bag functionality */
 
     add_command("get",  "get_from");
-    add_command("put",  "put_in");/* look in container must be utilized */
+    add_command("put",  "put_in");
     add_command("look", "look_in");
 
 }

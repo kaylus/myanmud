@@ -1,11 +1,10 @@
-/*************************************
- * This is an anvil for the weapon-  *
- * smithing tradeskill               *
- TODO make object stubs for inserting in here
- generally bring it in line with new mudlib
- *************************************/
+/**
+ * This is an anvil for the weapon-smithing tradeskill               
+ * @todo make object stubs for inserting in here
+ * generally bring it in line with new mudlib
+ */
 #include <game/Tradeskills/weaponsmithing.h>
-# define OBJ THING /* rudimentary object */
+# define OBJ THING /**< rudimentary object */
 /** things are put into this and "combined" */
 inherit container CONTAINER;
 
@@ -67,7 +66,7 @@ mixed heat(string str){
     if(_heat + REUSE_TIME > time())
 	return "The anvil has been used recently and needs cooling.\n";
 
-    _heat = time() + HEAT_TIME; /* heated for time */
+    _heat = time() + HEAT_TIME; /**< heated for time */
     write("You operate the bellows to the anvil and bring it to a working heat.\n");
     say(TPN+" operates the bellows and brings the anvil to a working heat.\n");
     return 1;
@@ -102,7 +101,7 @@ int *tally_values(object *stuff){
     }
     return ({ difficulty, bonus, wt });
 }
-/* screen receive object for only weaponsmithing componenets */
+/** @todo screen receive object for only weaponsmithing componenets */
 
 /** shape something */
 mixed shape(string str){
@@ -130,8 +129,8 @@ mixed shape(string str){
     if(!component->is_component() || component->query_subset() != C_ALLOY)
 	return "That is not an alloy to be shaped.\n";
 
-    /* check for valid shape */
-    /* find oil */
+    /** check for valid shape */
+    /** find oil */
     if(!(oil = find_oil()))
 	return "You need oil to shape something.\n";
 
@@ -140,49 +139,50 @@ mixed shape(string str){
     if(SHAPE_BEYOND_SKILL)
 	return "Shaping this is beyond your skill.\n";
 
-    values[_BON] += _grade; /* grade of anvil helps */
+    values[_BON] += _grade; /**< grade of anvil helps */
 
-    if(FAIL_SHAPE){/* botch */
-	object pieceofshit;
-	string alloy;
-	alloy = component->query_alloy();
-	write("You pound out the alloy and draw it into a twisted semblance of a "+shape+".\n");
-	say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
-	pieceofshit = THINGD->get_clone(OBJ);
-	pieceofshit->set_id( ({ "junk", shape }) );
-	pieceofshit->set_short("A malformed "+alloy+" "+shape);
-	pieceofshit->set_long("This is a malformed "+shape+".\n");
-	pieceofshit->set_weight(component->query_weight());
-	pieceofshit->move(TP);
+    if(FAIL_SHAPE){/**< botch */
+        object pieceofshit;
+        string alloy;
+        alloy = component->query_alloy();
+        write("You pound out the alloy and draw it into a twisted semblance of a "+shape+".\n");
+        say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
+        pieceofshit = THINGD->get_clone(OBJ);
+        pieceofshit->set_id( ({ "junk", shape }) );
+        pieceofshit->set_short("A malformed "+alloy+" "+shape);
+        pieceofshit->set_long("This is a malformed "+shape+".\n");
+        pieceofshit->set_weight(component->query_weight());
+        pieceofshit->move(TP);
     }else{
-	object drawnshape;
-	string alloy;
-	alloy = component->query_alloy();
-	write("You draw out the alloy expertly and shape it into a "+shape+".\n");
-	say(TPN+" expertly draws the alloy into a "+shape+".\n");
-	/* may functionize this */
-	drawnshape = THINGD->get_clone(COMPONENT);
-	drawnshape->set_id( ({ shape, alloy, alloy+" "+shape, "shape" }) );
-	drawnshape->set_short(article(alloy)+" "+alloy+" "+shape);
-	drawnshape->set_alloy(alloy);
-	drawnshape->set_color(component->query_color());
-	drawnshape->set_subset(shape);
-	drawnshape->set_tradeskill("weaponsmithing");
-	drawnshape->set_difficulty(values[_DIF]);
-	drawnshape->set_bonus(values[_BON]);
-	drawnshape->set_long("This is a crafted "+shape+" made from "+alloy+".\n");
-	drawnshape->set_weight(values[_WT]);
-	drawnshape->move(TP);
+        object drawnshape;
+        string alloy;
+        alloy = component->query_alloy();
+        write("You draw out the alloy expertly and shape it into a "+shape+".\n");
+        say(TPN+" expertly draws the alloy into a "+shape+".\n");
+        /** @todo may functionize this */
+        drawnshape = THINGD->get_clone(COMPONENT);
+        drawnshape->set_id( ({ shape, alloy, alloy+" "+shape, "shape" }) );
+        drawnshape->set_short(article(alloy)+" "+alloy+" "+shape);
+        drawnshape->set_alloy(alloy);
+        drawnshape->set_color(component->query_color());
+        drawnshape->set_subset(shape);
+        drawnshape->set_tradeskill("weaponsmithing");
+        drawnshape->set_difficulty(values[_DIF]);
+        drawnshape->set_bonus(values[_BON]);
+        drawnshape->set_long("This is a crafted "+shape+" made from "+alloy+".\n");
+        drawnshape->set_weight(values[_WT]);
+        drawnshape->move(TP);
     }
-    /* think of skilling up this player */
+    /** think of skilling up this player */
     if(TRIVIAL){
 	write("Making that item has become a trivial task for you.\n");
     }else if(SKILL_UP){
 	write("You've become better at shaping.\n");
 	TP->delta_skill("shaping");
     }
-    /* to shape we need oil and the thing which we want to shape, plus a hammer */
-    /* use up components */
+    /** to shape we need oil and the thing which we want to shape, plus a hammer 
+     * use up components 
+     */
     oil->use_component();
     component->use_component();
     return 1;
@@ -222,7 +222,7 @@ mixed repair(string str){
 	write("You expertly repair the "+str+".\n");
 	say(TPN+" expertly fixes the "+str+".\n");
     }
-    /* skill up? */
+    /** @todo skill up? */
     return 1;
 }
 
@@ -239,13 +239,13 @@ mapping check_ingredients(string *ingreds){
     stuff = this_object()->query_inventory();
     i = sizeof(stuff);
     while(i--){
-	if((cur = member_array((sub = stuff[i]->query_subset()), ingreds)) > -1){
-	    ret[sub] = stuff[i];
-	    ingreds[cur] = nil;
-	    ingreds -= ({ nil });
-	    if(sizeof(ingreds) < 1)
-		return ret;
-	}
+        if((cur = member_array((sub = stuff[i]->query_subset()), ingreds)) > -1){
+            ret[sub] = stuff[i];
+            ingreds[cur] = nil;
+            ingreds -= ({ nil });
+            if(sizeof(ingreds) < 1)
+            return ret;
+        }
     }
     return nil;
 }
@@ -269,13 +269,13 @@ mixed fabricate(string str){
     if(!W_SMITH_REC[str])
 	return "That is not a valid weapon.\n";
 
-    /* check for ingredients */
+    /** check for ingredients */
     stuff = check_ingredients(W_SMITH_REC[str]);
 
     if(!stuff)
 	return "Your missing components to fabricate that.\n";
 
-    /* find oil */
+    /** find oil */
     if(!(oil = find_oil()))
 	return "You need oil to fabricate something.\n";
 
@@ -285,51 +285,51 @@ mixed fabricate(string str){
     if(FAB_BEYOND_SKILL)
 	return "Fabricating this is beyond your skill.\n";
 
-    values[_BON] += _grade; /* grade of anvil helps */
+    values[_BON] += _grade; /**< grade of anvil helps */
 
-    if(FAB_FAIL){/* botch */
-	object pieceofshit;
-	write("You fabricate something that has a twisted semblance of a "+str+".\n");
-	say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
-	pieceofshit = THINGD->get_clone(OBJ);
-	pieceofshit->set_id( ({ "junk", str }) );
-	pieceofshit->set_short("A malformed "+str);
-	pieceofshit->set_long("This is a malformed "+str+".\n");
-	pieceofshit->set_weight(values[_WT]);
-	pieceofshit->move(TP);
-    }else{/* build weapon */
-	object weapon;
-	string alloy, color;
-	int speed;
-	int damage;
-	alloy = stuff[W_SMITH_REC[str][0]]->query_alloy();/* should be blade */
-	color = stuff[W_SMITH_REC[str][0]]->query_color();
-	write("You piece together the objects into a fine "+str+".\n");
-	say(TPN+" expertly pieces together a "+str+".\n");
-	/* debug */
-	write("DEBUG - bonus: "+values[_BON]+" difficulty: "+values[_DIF]+"\n");
-	/* debug */
-	weapon = THINGD->get_clone("/usr/Common/obj/weapon");
-	weapon->set_id( ({ str, alloy+" "+str }) );
-	weapon->set_short(color+alloy+" "+str+"%^RESET%^");
-	weapon->set_quality(values[_BON]+TP->query_skill("weaponsmithing"));
+    if(FAB_FAIL){/**< botch */
+        object pieceofshit;
+        write("You fabricate something that has a twisted semblance of a "+str+".\n");
+        say(TPN+" pounds at the anvil and after a time throws aside the project.\n");
+        pieceofshit = THINGD->get_clone(OBJ);
+        pieceofshit->set_id( ({ "junk", str }) );
+        pieceofshit->set_short("A malformed "+str);
+        pieceofshit->set_long("This is a malformed "+str+".\n");
+        pieceofshit->set_weight(values[_WT]);
+        pieceofshit->move(TP);
+    }else{/** build weapon */
+        object weapon;
+        string alloy, color;
+        int speed;
+        int damage;
+        alloy = stuff[W_SMITH_REC[str][0]]->query_alloy();/* should be blade */
+        color = stuff[W_SMITH_REC[str][0]]->query_color();
+        write("You piece together the objects into a fine "+str+".\n");
+        say(TPN+" expertly pieces together a "+str+".\n");
+        /* debug */
+        write("DEBUG - bonus: "+values[_BON]+" difficulty: "+values[_DIF]+"\n");
+        /* debug */
+        weapon = THINGD->get_clone("/usr/Common/obj/weapon");
+        weapon->set_id( ({ str, alloy+" "+str }) );
+        weapon->set_short(color+alloy+" "+str+"%^RESET%^");
+        weapon->set_quality(values[_BON]+TP->query_skill("weaponsmithing"));
 
-	speed = CALC_SPEED;
-	write("speed: "+speed+"\n");
+        speed = CALC_SPEED;
+        write("speed: "+speed+"\n");
 
-	weapon->set_speed(speed);
-	weapon->set_type("cut");/* to be made after header */
-	weapon->set_accuracy(values[_BON]);
+        weapon->set_speed(speed);
+        weapon->set_type("cut");/* to be made after header */
+        weapon->set_accuracy(values[_BON]);
 
-	damage = ( (values[_BON] > 5) ? CALC_DAMAGE : 1 );
-	write("damage: "+damage+"\n");
+        damage = ( (values[_BON] > 5) ? CALC_DAMAGE : 1 );
+        write("damage: "+damage+"\n");
 
-	weapon->set_damage( ({ random(damage), damage }) );
-	weapon->set_long("This is a crafted "+str+" with a blade of "+alloy+".\n");
-	weapon->set_weight(values[_WT]);
-	weapon->move(TP);
+        weapon->set_damage( ({ random(damage), damage }) );
+        weapon->set_long("This is a crafted "+str+" with a blade of "+alloy+".\n");
+        weapon->set_weight(values[_WT]);
+        weapon->move(TP);
     }
-    /* think of skilling up this player */
+    /** think of skilling up this player */
     if(TRIVIAL){
 	write("Making that item has become a trivial task for you.\n");
     }else if(SKILL_UP){
@@ -337,7 +337,7 @@ mixed fabricate(string str){
 	TP->delta_skill("shaping");
     }
 
-    /* use up components */
+    /** use up components */
     oil->use_component();
     i = sizeof(ostuff);
     while(i--){

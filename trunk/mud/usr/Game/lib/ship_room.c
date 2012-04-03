@@ -1,21 +1,21 @@
-/**************
- * ship rooms *
- **************/
+/**
+ * ship rooms 
+ */
 
 inherit LIB_ROOM;
 #include <type.h>
 
 object _ship;  /**< ship associated with this room */
-int is_helm;  /**< whether this room is a helm */
-int is_deck;  /**< whether this room is the main deck */
+int is_helm;   /**< whether this room is a helm */
+int is_deck;   /**< whether this room is the main deck */
 
 void create(varargs int clone){
 	::create();
-    add_command("ahoy", "ahoy"); /* global channel */
-    add_command("steer", "steer");/* change_heading */
-    add_command("check", "check");/* check heading */
-    add_command("lower", "lower");/* lower anchor or gangplank */
-    add_command("raise", "raise");/* raise anchor or gangplank */
+    add_command("ahoy", "ahoy");  /**< global channel */
+    add_command("steer", "steer");/**< change_heading */
+    add_command("check", "check");/**< check heading */
+    add_command("lower", "lower");/**< lower anchor or gangplank */
+    add_command("raise", "raise");/**< raise anchor or gangplank */
 }
 
 void set_ship(object ship){
