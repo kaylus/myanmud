@@ -1,19 +1,20 @@
-/***************************
- *       monster.c         *
- * Hymael - monster coding *
- ***************************/
+/**
+ *        monster.c
+ *  monster coding
+ * @author Hymael
+ */
 #include <config.h>
 #include <type.h>
 
-#define AGGRESSIVE  1 	/* critter is aggro */
-#define COM_ENABLED 2	/* commands enabled */
-#define FOLLOWS     4   /* critter follows if fighting */
+#define AGGRESSIVE  1 	/**< critter is aggro */
+#define COM_ENABLED 2	/**< commands enabled */
+#define FOLLOWS     4   /**< critter follows if fighting */
 
 inherit father OBJECT;
 inherit body   BODY_LIB;
 
-private static int    bit_att;       /* our monster's attributes */
-private static string greeting;      /* to be displayed upon player entrance */
+private static int    bit_att;       /**< our monster's attributes */
+private static string greeting;      /**< to be displayed upon player entrance */
 
 void create(int clone){/* master init */
 	body::create(clone);

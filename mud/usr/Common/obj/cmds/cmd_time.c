@@ -1,6 +1,6 @@
-/*
+/**
  * the time command
- * TODO: debug 0 minutes and seconds
+ * @todo debug 0 minutes and seconds
  */
 
 inherit BODY_COMMAND;

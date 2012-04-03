@@ -1,12 +1,10 @@
-/*
- *  accountd
- * this handles player bodies and player info that is available through finger
- * TODO: need to store account data in lwo
- * TODO: suspension abilities, even suspension of wizzes, so they don't get wiztool's issued
- * TODO: ip bans, body issuing, pruning unused accounts/bodies
- * requires persistence, we'll enable based on SYS_PERSITENT
- * Q: should we leave user objects around to contain data like backlogs, colorsets?
- * Q: is query_name() trustworthy enough?
+/**
+ *  accountd: this handles player bodies and player info that is available through finger
+ * @todo need to store account data in lwo
+ * @todo suspension abilities, even suspension of wizzes, so they don't get wiztool's issued
+ * @todo ip bans, body issuing, pruning unused accounts/bodies
+ * @todo should we leave user objects around to contain data like backlogs, colorsets?
+ * @todo is query_name() trustworthy enough?
  */
 # include <config.h>
 # include <kernel/kernel.h>
@@ -18,9 +16,9 @@ inherit access  API_ACCESS;
 inherit rsrc	API_RSRC;
 inherit user	API_USER;
 
-object *bodies; /* holds all bodies that check in through the body's create */
-mapping accounts; /* holds user name index mapping into player data, each data set is itself a mapping */
-string *banned_names; /* names banned from play */
+object *bodies;       /**< holds all bodies that check in through the body's create */
+mapping accounts;     /**< holds user name index mapping into player data, each data set is itself a mapping */
+string *banned_names; /**< names banned from play */
 
 void create(){
     bodies = ({ });
@@ -32,12 +30,21 @@ void create(){
 	user::create();
 }
 
-int is_banned(string str){/* can also check for other facets of the name to make sure it complies */
+/**
+ * @brief is_banned check if str is banned
+ * @param str String is name of checked.
+ * @retval 1 for banned, 0 for not banned
+ */
+int is_banned(string str){
     if(sizeof(banned_names & ({ str })))return 1;
     
-    return 0;/* valid name */
+    return 0;
 }
 
+/**
+ * @brief suspend_wiz Suspends a wiz, revokes wiztool
+ * @todo security
+ */
 void suspend_wiz(string name){
     object wiztool;
     if(!accounts[name])error("No person by that name.\n");
@@ -49,6 +56,10 @@ void suspend_wiz(string name){
     }
 }
 
+/**
+ * @brief unsuspend_wiz Unsuspends a wiz, creates wiztool
+ * @todo security
+ */
 void unsuspend_wiz(string name){
     object user;
     if(!accounts[name])error("No person by that name.\n");
@@ -64,18 +75,30 @@ void unsuspend_wiz(string name){
 	user->message("Your wizardly privileges have been reinstated.\n");
     }
 }
-
+/** @todo security on get_users */
 string *get_users(){ return query_users(); }
-/* create body */
+
+/**
+ * @brief create_body
+ * @todo security
+ */
 object create_body(){
     return clone_object(BODY);
 }
 
+/**
+ * @brief add_body adds body to bodies array
+ * @todo security
+ */
 void add_body(object BODY body){
     if(sizeof(bodies & ({ body })))return;/* already in array */
     bodies += ({ body });
 }
 
+/**
+ * @brief set_body sets accounts body.
+ * @todo security
+ */
 void set_body(object obj){
     string name;
     
@@ -85,20 +108,28 @@ void set_body(object obj){
     accounts[name]["body"] = obj;
 }
 
+/**
+ * @brief get_body gets the body of someone from accounts
+ * @todo security
+ */
 object get_body(string name){
     if(accounts[name]["body"])return accounts[name]["body"];
     
     return nil;
 }
 
-/* TODO security measures */
+/** @todo security measures */
 object *query_bodies(){
     /*if(!SYSTEM())return nil;*/
     
     return bodies;
 }
 
-/* return finger data on individual TODO: security measures */
+/**
+ * @brief finger return finger data on individual 
+ * @todo security measures, customize for person seeing
+ * @todo add in hooks elsewhere
+ */
 string finger(string str){
 	string ret;
 	
@@ -113,12 +144,19 @@ string finger(string str){
     return ret+"\n";
 }
 
+/**
+ * @brief password_exits returns 1 if there is a password for name
+ * @todo security
+ */
 int password_exists(string user){
     if(accounts[user] && accounts[user]["password"])return 1;
     
-    return 0; /* haven't passworded this account yet */
+    return 0; /**< haven't passworded this account yet */
 }
 
+/**
+ * @brief adds an ip fail to a name
+ */
 private void add_ip_fail(object user){
     string ip, ip_name, name;
     
@@ -140,7 +178,9 @@ private void add_ip_fail(object user){
     accounts[name]["failed_login_time"][ip] = time();/* log failed time */
 }
 
-
+/**
+ * @brief add_ip_succeed user successfully logged on from this account
+ */
 private void add_ip_succeed(object user){
     string ip, ip_name, name, err;
     
@@ -163,6 +203,10 @@ private void add_ip_succeed(object user){
     accounts[name]["last_login"] = time();
 }
 
+/**
+ * @brief set_password sets password to pass
+ * @todo security
+ */
 void set_password(string pass){
     string name;
     /*if(!SYSTEM() || !KERNEL())error("Illegal password set call.\n");*/
@@ -190,7 +234,7 @@ int password_check(string str){
     add_ip_succeed(previous_object());
     return 1; /* check succeeded */
 }
-/* should this also make sure the body object doesn't come back in wiz territory? or with wiz objects on it? */
+/** @todo should this also make sure the body object doesn't come back in wiz territory? or with wiz objects on it? */
 int wiz_suspended(string str){/* this queries whether a wiz is suspended from receiving a wiztool */
     if(accounts[str]["wiz_suspend"])return 1;
     

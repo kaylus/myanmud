@@ -1,4 +1,4 @@
-/* test input object */
+/** test input object */
 object user; /* user object associated with this object */
 
 int input(string str){

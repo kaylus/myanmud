@@ -5,7 +5,7 @@
 # include <type.h>
 /* input command decipherer */
 int input(string str){
-/* TODO: check call credentials*/
+/** @todo check call credentials*/
     
     string cmd, args, fail_msg;
     mixed ret_fail;
@@ -19,7 +19,7 @@ int input(string str){
     
     LOGD->log("In body input with cmd: " + cmd + " args: "+args, "body_commands");
     /* do some alias stuff */
-	user = this_object()->query_user();/* TODO: make this more accessible to non usered bodies */
+	user = this_object()->query_user();/** @todo make this more accessible to non usered bodies */
     if(this_object()->query_alias(cmd) != cmd && (!user->query_wiztool() || !query_editor(user->query_wiztool()))){/* found alias */
 	string argx;
 	cmd = this_object()->query_alias(cmd);
@@ -28,9 +28,8 @@ int input(string str){
 	}
     }
 
-    /* return is as follows
-	 *  1 - action done, end command search
-	 *  nil - continue seek
+    /** @retval 1 - action done, end command search,
+	 *  nil - continue seek,
 	 *  string - fail string, continue seek
      */
 
@@ -47,7 +46,7 @@ int input(string str){
 		args = "-h";
 	}
 	if(!find_object(BODY_BIN+CMD_PREFIX+cmd))compile_object(BODY_BIN+CMD_PREFIX+cmd);/* load if it isn't loaded */
-	catch(ret_fail = find_object(BODY_BIN+CMD_PREFIX+cmd)->do_cmd(cmd, args, this_object()));/* change to call_limited? */
+	catch(ret_fail = find_object(BODY_BIN+CMD_PREFIX+cmd)->do_cmd(cmd, args, this_object()));/** @todo change to call_limited? */
 	}
 	
     switch(typeof(ret_fail)){

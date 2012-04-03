@@ -1,5 +1,5 @@
-/*
- * the alias command
+/**
+ * @brief the alias command
  */
 
 inherit BODY_COMMAND;

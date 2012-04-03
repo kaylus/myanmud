@@ -21,7 +21,7 @@
 #include <type.h>
 #include <trace.h>
 
-/* TODO:  (features)
+/** @todo  (features)
    - Allow recompiles that destruct and rebuild all necessary stuff
      - By specifying a list of objects to (re)compile
      - By specifying a list of files that changed
@@ -128,7 +128,7 @@ void destructed(int clone) {
 }
 
 
-/*** Private funcs ***/
+/** Private funcs */
 
 /* Used during init.  Recompile all libs we know only by path (not issue
    struct) to get an issue for them. */
@@ -155,7 +155,7 @@ private void recompile_to_track_libs(mapping fixups) {
 /* Used during init.  We've recompiled all the libs, now we need to
    make sure that stuff compiled before had issue objects for the libs
    have the right things in their parent arrays. */
-/* TODO: add fixup to child arrays?  Or make obsolete? */
+/** @todo add fixup to child arrays?  Or make obsolete? */
 private void fix_parent_arrays(mapping fixups) {
     mixed* keys;
     int    ctr;
@@ -493,8 +493,7 @@ private void transfer_clones(object old_issue, object new_issue) {
     }
 }
 
-private void convert_inherited_str_to_mixed(string *inherited, mixed* inh_obj,
-string path) {
+private void convert_inherited_str_to_mixed(string *inherited, mixed* inh_obj, string path) {
     int    tmp_idx, ctr;
     object tmp_issue;
 
@@ -666,7 +665,7 @@ private object add_lib(string owner, string path, string* inherited) {
     return new_issue;
 }
 
-
+/** @todo support this functionality in lib */
 private void call_upgraded(object obj) {
 
     if(!obj) {
@@ -727,7 +726,7 @@ static void do_upgrade(object obj) {
 }
 
 
-/*** Hook funcs called after this object is set_object_manager'd ***/
+/** Hook funcs called after this object is set_object_manager'd */
 
 /* Non-lib object has just been compiled - called just before create() */
 void compile(string owner, object obj, string *source, string inherited...)
@@ -1031,7 +1030,7 @@ int forbid_inherit(string from, string path, int priv)
     return 0;
 }
 
-/*
+/** @todo use touch to facilitate upgrades
  * NAME:  touch()
  * DESCRIPTION:  An object which has been marked by call_touch() is about to have the
  * given function called in it.  A non-zero return value indicates that the

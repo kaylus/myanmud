@@ -11,7 +11,7 @@
 inherit access API_ACCESS;
 inherit rsrc API_RSRC;
 
-private static void _load (string daemon){/* cleaning up repeated calls */
+private static void _load (string daemon){/**< cleaning up repeated calls */
     find_object(DRIVER)->message ("Initd loading: " + daemon + "\n");
     if (!find_object (daemon))
 	compile_object (daemon);
@@ -29,20 +29,23 @@ static int create (varargs int clone){
 	add_owner ("Game");
 
     /* System requires root access */
-    /* The kernel defines this as well, this is here for example */
+    /** Set some global access for our domains */
     access::set_global_access("Common", READ_ACCESS);	
     access::set_global_access("Game", READ_ACCESS);
-    /* may have to add in other things to common, will they have to write? */
+    /** @todo may have to add in other things to common, will they have to write? */
 
-    /* For later, when you start setting more managers */
     driver = find_object (DRIVER);
     driver->message ("Initd....\n");
 	
 	driver->message("Kernel version: "+KERNEL_LIB_VERSION+"\n");
+    
+    /** @todo Versioning for mudlib? */
 
     _load (ERRORD);
     _load (LOGD);
     _load (OBJECTD);
+    
+    /** setup objectd */
 	OBJECTD->do_initial_obj_setup();
 	
     _load (TEL_MANAGER);
@@ -57,22 +60,27 @@ static int create (varargs int clone){
 	_load (ACCOUNTD);
 	_load (WEATHERD);
     _load (WORLDBANKD);
+    _load (THINGD);
 }
-/* called by driver before a reboot */
+/**
+ * @brief called by driver before a reboot, logs out players, messages them
+ * @todo cleanup
+ */
 void prepare_reboot(){
-    /* log out players */
     object *users;
     int i;
 
     find_object(LOGD)->log("Mud is rebooting.", "boot");
     users = users();
-    for(i=sizeof(users);i--;){
-	users[i]->message("Mud is rebooting...you will be disconnected.\n");
-	users[i]->logout(1); 
+    for(i = sizeof(users); i--; ){
+        users[i]->message("Mud is rebooting...you will be disconnected.\n");
+        users[i]->logout(1); /** @todo check argument */
     }
-    /* anything else? */
 }
-/* called after a reboot */
+/**
+ * @brief things that need done at reboot should go here
+ * @todo cleanup
+ */
 void reboot(){
     find_object(LOGD)->log("Rebooted", "boot");
 }

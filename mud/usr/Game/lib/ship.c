@@ -1,6 +1,6 @@
-/**********
- * a ship *
- **********/
+/**
+ * a ship 
+ */
 #include <game/sea_grid.h>
 
 #define MAIN 0
@@ -27,8 +27,8 @@ string _ship_name;       /**< name of ship */
 int *_coords;            /**< present location of this ship */
 int *_heading;           /**< ship's present heading, starts with nowhere */
 int _anchored;           /**< anchored or not */
-mixed _slider;
-int speed;               /* how fast our sailing ticks */
+mixed _slider;           /**< headings */
+int speed;               /**< how fast our sailing ticks */
 
 /** set up ship */
 void create(varargs int clone){
@@ -42,18 +42,24 @@ void create(varargs int clone){
     ({ -1,  1 })
     });
 	
-	if(clone)
-		find_object(SEA_D)->register_ship(this_object());
+	if(clone)find_object(SEA_D)->register_ship(this_object());
 		
 	speed = HB_TIME;
 }
 
-void vector_sail(){/* pulse, and revector */  
+/**
+ * @brief vector_sail this pulses and revectors our sail
+ */
+void vector_sail(){
 	event("sail"); /* propogate event */
 	call_out("vector_sail", speed); /* vector */
 }
 
-void create_ship(){/* need to audit and clean this up */
+/**
+ * @brief create_ship creates a ship
+ * @todo clean up and audit
+ */
+void create_ship(){
     int i;
     object heartd;
 
@@ -95,10 +101,16 @@ void create_ship(){/* need to audit and clean this up */
 	vector_sail();
 }
 
+/**
+ * @brief entre self-awareness
+ */
 void entre(int *coords){
     _coords = coords;
 }
 
+/**
+ * @brief setters and getters
+ */
 void set_maindeck(object file){
     _maindeck = file;
 }
@@ -126,7 +138,7 @@ int query_speed(){ return speed; }
 void set_speed(int i){ speed = i; }/* should we fiddle with existing callout and prorate it as a percentage? */
 
 /****************************************
-				   [nest] [plank]
+			   [nest] [plank]
 			     ||  /
 [helm]-[quarterdeck]-[maindeck]-[foredeck]
 
@@ -134,11 +146,13 @@ void set_speed(int i){ speed = i; }/* should we fiddle with existing callout and
 
  ****************************************/
 
-/** this is the boat global channel */
+/** 
+ * @brief ahoy this is the boat global channel 
+ * @todo refactor?
+ */
 mixed ahoy(string str, varargs object exempt){
     int i;
     string mess;
-
 
     mess = "";
     if(!str)
@@ -168,6 +182,10 @@ void set_ship_name(string name){
 
 string query_name(){ return _ship_name; }
 
+/**
+ * @brief set_plank sets the plank in the given room
+ * @todo clean up
+ */
 void set_plank(object room){
     /*object h;*/
     docked = room;
@@ -177,12 +195,11 @@ void set_plank(object room){
     room->set_plank(this_object());
     _ship[MAIN]->message("The gangplank is quickly lowered.\n");
 }
-/***********************
- * -1 = anchor not set *
- *  0 = not at a port  *
- *  1 = lowered        *
- *  2 = already lowered*
- ***********************/
+
+/**
+ * @brief lower_plank lower the gangplank
+ * @retval -1, anchor not set, 0 not at a port, 1 lowered, 2 already lowered
+ */
 int lower_plank(){
     object room;
     /* check for anchor */
@@ -206,12 +223,10 @@ object query_docked(){
     return docked;
 }
 
-/*************************
- * rid plank from docked,*
- * nil docked            *
- *  0 = already raised   *
- *  1 = success          *
- *************************/
+/**
+ * @brief raise_plank raise gangplank, dock is nilled
+ * @retval 0 already raised, 1 success
+ */
 int raise_plank(){
     if(docked){/* remove plank from room */
 	docked->raise_plank(this_object());
@@ -224,7 +239,11 @@ int raise_plank(){
     return 1;
 }
 
-/** a player can turn the helm port or starboard */
+/**
+ * @brief change_heading a player can turn the helm port or starboard
+ * @param dir "port" or "starboard"
+ * @retval returns a message of failure, or 1 for a heading change
+ */
 mixed change_heading(string dir){
     int vec, i, sz;
     /************** (0, 0) is anchored
@@ -263,7 +282,10 @@ mixed change_heading(string dir){
     return 1;
 }
 
-/** eventually check all these for seamanship */
+/** 
+ * @brief query_dir queries heading
+ * @todo eventually check all these for seamanship skill
+ */
 string query_dir(){
     int i;
     for(i = DIRS_SIZE; i--;){
@@ -281,6 +303,10 @@ int query_anchor(){
     return _anchored;
 }
 
+/**
+ * @brief lower_anchor lower the anchor, set heading to 0, 0
+ * @retval 0 presently anchored, 1 successful anchorage
+ */
 int lower_anchor(){
     if(_anchored)/* we're presently anchored */
 	return 0;
@@ -293,6 +319,11 @@ int lower_anchor(){
     return 1;
 }
 
+/**
+ * @brief raise_anchor raise the anchor, keep heading nilled
+ * @retval -1 plank not raised, 0 already anchored, 1 successful
+ * @todo should we set a heading? Maybe opposite of when we came in
+ */
 int raise_anchor(){
     if(docked)/* raise plank first */
 	return -1;
@@ -310,15 +341,18 @@ int allow_subscribe(object obj, string name){
 return 1;
 }
 
-/** moving may be required to have a suitable number of sails at key points to man sails */
-void evt_sail(object obj){/* underway, drift, sail, sink... etc. */
+/** 
+ * @brief evt_sail event is triggered and ship is moved or drift, sink, etc
+ * @todo moving may be required to have a suitable number of sails at key points to man sails 
+ */
+void evt_sail(object obj){
     string err;
     if(_anchored){/* not going anywhere, may call a function to do something */
-	ahoy("The vessel rocks about on the waves while at anchor.\n");/* randomize */
+	ahoy("The vessel rocks about on the waves while at anchor.\n");/**< @todo randomize */
 	return;
     }
-    /* adjust hb time for seamanship? */
-    if(_heading[H_X] == 0 && _heading[H_Y] == 0){/* unanchored, unheaded: drift randomly? */
+    /** @todo adjust hb time for seamanship? */
+    if(_heading[H_X] == 0 && _heading[H_Y] == 0){/**< @todo unanchored, unheaded: drift randomly? */
 	return;
     }
     /* move along heading... */

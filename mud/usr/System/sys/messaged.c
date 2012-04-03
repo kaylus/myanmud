@@ -255,14 +255,14 @@ string emit(object actor, mixed *emitme){/* does all the heavy lifting of messag
 }
 
 void message(varargs mixed *list, object *exclude, object *define, string filter)/* emit message, filter is a function */
-{ /* TODO: add in check for vision and invis things */
+{ /** @todo: add in check for vision and invis things */
     object originator, *audience;
     int i, sz;
     
     if(list == nil || (sz = sizeof(list)) == 0)return; /* no message */
     
     originator = this_player();
-    audience = originator->query_environment()->query_inventory(); /* TODO: make a function that gets living objects in container */
+    audience = originator->query_environment()->query_inventory(); /** todo: make a function that gets living objects in container */
     
     if(exclude)audience -= ({ exclude });
     

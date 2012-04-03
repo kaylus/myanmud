@@ -1,4 +1,4 @@
-/*
+/**
  * This is inherited into a player body, and it contains information as to the player's
  * race and gender
  */
@@ -7,8 +7,8 @@
 #define STAGES ({"What gender do you wish to be? (male/female)\n",\
                  "What race do you wish to be?\n", \
                  "Keep these stats?\n" })
-string gender, race; /* contain race and gender */
-int stage; /* what stage of input we're at */
+string gender, race; /**< contain race and gender */
+int stage; /**< what stage of input we're at */
 
 void set_gender(string str){
 	gender = str;
@@ -25,6 +25,10 @@ string query_race(){
 	return (race) ? race : "raceless";
 }
 
+/**
+ * @brief input_to function that takes over input
+ * @todo change this over to input_object structure?
+ */
 object input_to(string str){/* this function receives the initial quest for building a body */
 	switch(stage){
 	case 0: /* gender */

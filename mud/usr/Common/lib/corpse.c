@@ -22,7 +22,7 @@ void create(varargs int clone){
 void set_name(string str){
     name = capitalize(str);
     set_short(name+"'s corpse");
-    id += ({ /*lowercase(*/str+"'s corpse" });
+    id += ({ lowercase(str)+"'s corpse" });
 }
 
 void decay(){

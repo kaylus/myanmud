@@ -16,22 +16,21 @@ inherit access API_ACCESS;
 
 # define USR_SAVE_DIR  "/usr/System/data"
 
-static string name;		/* user name */
-static string Name;		/* capitalized user name */
-static mapping state;		/* state for a connection object */
+static string name;		/**< user name */
+static string Name;		/**< capitalized user name */
+static mapping state;   /**< state for a connection object */
 #ifndef SYS_PERSISTENT
-string password;		/* user password */
-string body_name;       /* hackish */
+string password;		/**< user password */
+string body_name;       /**< hackish */
 #endif
-static string newpasswd;	/* new password */
-static object wiztool;		/* command handler */
-static int nconn;		/* # of connections */
-object body;            /* subjects body, some sort of saving mechanism */
-static object input_to_obj;        /* input to object */
+static string newpasswd;	/**< new password */
+static object wiztool;		/**< command handler */
+static int nconn;		    /**< # of connections */
+object body;                /**< subjects body, some sort of saving mechanism */
+static object input_to_obj; /**< input to object */
 
-/*
- * NAME:	create()
- * DESCRIPTION:	initialize user object
+/**
+ * @brief create() initialize user object
  */
 static void create(int clone)
 {
@@ -39,42 +38,60 @@ static void create(int clone)
     if(!find_object(BODY)) compile_object(BODY);
 
     if (clone) {
-	user::create();
-	access::create();
+        user::create();
+        access::create();
 
-	state = ([ ]);
+        state = ([ ]);
     }
 }
 
-int is_user(){ return 1; }
+int is_user(){ return 1; } /**< a query if this object is a user */
 
+/**
+ * @brief set_this_player is where this_player is set in the call sequence 
+ * @todo security checks
+ */
 static void set_this_player(object player) {
     find_object(BRAIND)->set_this_player(player);
 }
 
-/* get subject's body */
+/**
+ * @brief query_body: get subject's body 
+ */
 object query_body(){ return body; }
 
-/* get cap name */
+/** @brief get cap name */
 string query_Name(){ return Name; }
 
 string query_name(){ return name; }
 
+/**
+ * @brief get ip credentials
+ * @todo security, not everyone should be able to get this info
+ */
 string get_ip_name(){ return query_ip_name(query_conn()); }
 
 string get_ip_number(){ return query_ip_number(query_conn()); }
 
-object query_wiztool(){ return wiztool; } /* hacked in for use to check if someone is a wiz */
+/**
+ * @brief query_wiztool get this user's wiztool, useful for checking wiz status
+ * @todo security, check if used
+ */
+object query_wiztool(){ return wiztool; } 
 
-void issue_wiztool(){ /* TODO: security? Should query_wiztool work broadly? */
+/**
+ * @brief issue_wiztool user gets a wiztool
+ * @todo security on wiztool issuing
+ */
+void issue_wiztool(){
     /*if(!wiztool && SYSTEM())*/
     wiztool = clone_object(SYSTEM_WIZTOOL, name);
     LOGD->log("Wiztool issued to "+name, "wizard");
 }
 
-/*
- * NAME:	tell_audience()
- * DESCRIPTION:	send message to listening users
+/**
+ * @brief tell_audience() send message to listening users
+ * @todo deprecated, should be eliminated?
  */
 private void tell_audience(string str)
 {
@@ -91,6 +108,10 @@ private void tell_audience(string str)
     }
 }
 
+/**
+ * @brief set_body set a user's body to the given
+ * @todo security
+ */
 void set_body(object obj){
     /*if(previous_program() != ACCOUNTD && !SYSTEM())error("Illegal call to set_body.\n");*/
 
@@ -123,13 +144,13 @@ void _restore(){
     if(caught)LOGD->log("Error in player restore " + caught +"\n", "users");
 }
 #endif
-/*
- * NAME:	login()
- * DESCRIPTION:	login a new user
- */
-int login(string str)
-{
 
+/**
+ * @brief login() login a new user
+ * @param str String of player's name given
+ * @retval integer mode as described in kernel
+ */
+int login(string str){
     if (previous_program() == LIB_CONN) {
 	if (nconn == 0) {
 	    ::login(str);
@@ -148,10 +169,10 @@ int login(string str)
 	#endif
 
 	#ifdef SYS_PERSISTENT
-	if (ACCOUNTD->password_exists(name)) {
-	    #elif
-	    if(password){
-		#endif
+        if (ACCOUNTD->password_exists(name)) {
+    #elif
+        if(password){
+    #endif
 		/* check password */
 		previous_object()->message("Password:");
 		state[previous_object()] = STATE_LOGIN;
@@ -165,20 +186,20 @@ int login(string str)
 	}
     }
 
-    /*
-     * NAME:	logout()
-     * DESCRIPTION:	logout user
+    /**
+     * @brief logout() logout user
+     * @param quit if defined, player quit volunarily, otherwise got disconnected
      */
     void logout(int quit){
 	if (previous_program() == LIB_CONN && --nconn == 0 || previous_program() == "~System/initd") {
-	    set_this_player(this_object());
+	    set_this_player(this_object()); /**< main thread setting this_player functionality */
 	    #ifndef SYS_PERSISTENT
 	    _save();
 	    #endif
-	    body->stasis();/* store body */
+	    body->stasis();/**< store body in meatlocker */
 
 	    if (query_conn()) {
-		if (quit) {/* TODO redo this messaging */
+		if (quit) {/** @todo redo this messaging, maybe wrapping it into logd */
 		    tell_audience(Name + " logs out.\n");
 		} else {
 		    tell_audience(Name + " disconnected.\n");
@@ -193,11 +214,11 @@ int login(string str)
 	}
     }
 
-    /*
-     * NAME:        input_to()
-     * DESCRIPTION: this is how to redirect an input to an object.  Only one redirect at a time
+    /**
+     * @brief input_to() this is how to redirect an input to an object.  Only one redirect at a time
      *              The object should define a function input(), if it doesn't it is not a valid
      *              input_to object. Input will return 0 if it wants to be removed
+     * @param obj object to be the object inputted to
      */
     void input_to(object obj){
 	/* check if we already have an inputting object */
@@ -205,7 +226,10 @@ int login(string str)
 	    error("Already inputing to an object.\n");
 	    return;
 	}
-	/* check for an input in given object */
+	/** check for an input in given object 
+      * @todo check if this should be input and not input_to 
+      * @warning may contain bug
+      */
 	if(!function_object("input_to", obj)){
 	    error("Ineligible input object.\n");
 	    return;
@@ -218,7 +242,13 @@ int login(string str)
 	}
     }
 
-    object _input_to(string str){/* internal call that handles input stuff to objects, returns input_to_obj, nil if we want to remove */
+    /**
+     * @brief _input_to internal call that handles input stuff to objects
+     * @param str Inputted string
+     * @retval input_to_obj, or nil if it should be removed
+     * @todo Should this be private?
+     */
+    object _input_to(string str){
 	object temp_obj;
 	if(!input_to_obj)return nil;
 
@@ -234,14 +264,14 @@ int login(string str)
 	return input_to_obj;
     }
 
-    /*
-     * NAME:	receive_message()
-     * DESCRIPTION:	process a message from the user
-     * TODO: aliasing system
+    /**
+     * @brief receive_message() process a message from the user
+     * @param str the inputted string
+     * @retval int of mode returned
+     * @todo aliasing system
      */
-    int receive_message(string str)
-    {
-	if (previous_program() == LIB_CONN || previous_object() == wiztool) {/* is this || in error with the state setting? */
+    int receive_message(string str){
+	if (previous_program() == LIB_CONN || previous_object() == wiztool) {/** @todo is this || in error with the state setting? */
 	    string cmd;
 	    object user, *users;
 	    int i, sz;
@@ -268,7 +298,7 @@ int login(string str)
 		}
 
 		if (!wiztool || !query_editor(wiztool) || cmd != str) {
-		    /* check input_to, add in work around ! */
+		    /** @todo check input_to, add in work around ! */
 
 		    /* check standard commands */		    if (strlen(cmd) != 0) {
 			switch (cmd[0]) {
@@ -297,6 +327,8 @@ int login(string str)
 			}
 		    }
 
+            /**
+             * @todo swap out these for cmd bins */
 		    switch (cmd) {
 		    case "say":
 			if (sscanf(str, "%*s %s", str) == 0) {
@@ -382,16 +414,16 @@ int login(string str)
 			    break; /* receive fail message, or nil for success */
 		    }/* check commands in other bins? (room, inventory, etc.)*/
 
-		    if (wiztool) {
+		    if (wiztool) {/**< @todo should this be before anything else? */
 			wiztool->input(str);
-		    } else if (strlen(str) != 0) {/* strip trailing spaces TODO*/
+		    } else if (strlen(str) != 0) {/** @todo strip trailing spaces, maybe change strip command? */
 			message("No command: " + str + "\n");
 		    }
 		}
 		break;
 
 	    case STATE_LOGIN:
-		connection(previous_object());/* moved to before check, is this correct? */
+		connection(previous_object());/** @todo  moved to before check, is this correct? */
 		if (!ACCOUNTD->password_check(str)) {
 		    previous_object()->message("\nBad password.\n");
 		    return MODE_DISCONNECT;
@@ -403,8 +435,8 @@ int login(string str)
 		  #ifdef SYS_PERSISTENT
 		  !ACCOUNTD->wiz_suspended(name) && ACCOUNTD->password_exists(name) &&/* only issue when there's pass */
 		  #endif
-		(name == "admin" || sizeof(query_users() & ({ name })) != 0)) {/* move this check to accountd? */
-		    issue_wiztool();/* move this to a function in accountd? TODO make grant do this automatically with a wrapper */
+		(name == "admin" || sizeof(query_users() & ({ name })) != 0)) {
+		    issue_wiztool();/** @todo move this to a function in accountd? make grant do this automatically with a wrapper */
 		}
 		/* get body from ACCOUNTD or make one */
 		if(!body)body = ACCOUNTD->get_body(name);
@@ -438,7 +470,7 @@ int login(string str)
 		if (newpasswd == str) {
 		    if(ACCOUNTD->password_exists(name))message("\nPassword changed.\n");
 		    ACCOUNTD->set_password(str);
-		} else {/* is this alright when a player logs in for the first time? */
+		} else {/** @warning is this alright when a player logs in for the first time? */
 		    message("\nMismatch; password not changed.\n");
 		}
 		newpasswd = nil;
@@ -448,8 +480,8 @@ int login(string str)
 		  #ifdef SYS_PERSISTENT
 		  !ACCOUNTD->wiz_suspended(name) && ACCOUNTD->password_exists(name) &&/* only issue when there's pass */
 		  #endif
-		(name == "admin" || sizeof(query_users() & ({ name })) != 0)) {/* move this check to accountd? */
-		    issue_wiztool();/* move this to a function in accountd? TODO make grant do this automatically with a wrapper */
+		(name == "admin" || sizeof(query_users() & ({ name })) != 0)) {
+		    issue_wiztool();/**< @todo move this to a function in accountd? TODO make grant do this automatically with a wrapper, why is this in here twice? */
 		}
 		if(!body)body = ACCOUNTD->get_body(name);
 		LOGD->log("accountd returned "+((body)?object_name(body):"none"), "accountd");
@@ -471,10 +503,14 @@ int login(string str)
 	    return MODE_ECHO;
 	}
     }
-    /* intercept and color, based on settings? */
-    int message(string msg){
-	msg = find_object(ANSID)->parse_pinkfish(msg);
+    
+/**
+ * @brief message intercept and color, based on settings? 
+ * @param msg message is parsed through pinkfish
+ */
+int message(string msg){
+    msg = find_object(ANSID)->parse_pinkfish(msg);
 
-	return ::message(msg);
-    }
+    return ::message(msg);
+}
 

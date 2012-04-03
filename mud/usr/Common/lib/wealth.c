@@ -1,16 +1,16 @@
-/**********************************************************
- *                     wealth.c                           *
- *  This is for those people that delight in moneys       *
- *  need bulk?                                            *
- *  -Hymael                                               *
- **********************************************************/
+/**
+ *                     wealth.c                           
+ *  This is for those people that delight in moneys       
+ *  @todo need bulk? error printing with $                                        
+ *  @author Hymael                                               
+ */
 #include <game/money.h>
 
-mapping wealth;    /* le purse */
+mapping wealth;    /**< le purse */
 
 int has_purse(){ return 1; } /* we know this object wants to hold cash in a purse */
 
-string query_wealth(){/* get a printable inventory of wealth */
+string query_wealth(){/**< get a printable inventory of wealth */
     string str;
     int i, sz;
 
@@ -25,7 +25,7 @@ string query_wealth(){/* get a printable inventory of wealth */
 }
 
 /* with atomic we just do in a catch and print any messages */
-/* may make these accept arrays of coins */
+/** @todo may make these accept arrays of coins */
 atomic void credit(string coin_type, int amount, varargs int slide){
     if(!wealth) wealth = ([]);
 
@@ -64,12 +64,12 @@ atomic void debit(string coin_type, int amount, varargs int slide){
 	this_object()->decr_weight(amount);
 }
 
-/***************************
- * this moves from a purse *
- * to destination          *
- * NOTE: with no amount we *
- * assume all              *
- ***************************/
+/**
+ * this moves from a purse 
+ * to destination          
+ * NOTE: with no amount we
+ * assume all              
+ */
 atomic void wealth_move(object dest, string type, varargs int amount, int slide){
     if(!amount){
 	if(!wealth || !wealth[type])

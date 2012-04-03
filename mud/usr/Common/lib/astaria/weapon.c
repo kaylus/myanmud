@@ -1,30 +1,30 @@
-/******************
- *    weapon.c    *
- ******************/
+/**
+ *    weapon.c    
+ */
 #include <config.h>
 
 #define TYPES ({ "cut", "pierce", "blunt" })
-/***********************************
- * eventually we need weapon types *
- * for what damage they deal       *
- ***********************************/
+/**
+ * @todo eventually we need weapon types 
+ * for what damage they deal       
+ */
 
-#define OFF_HAND 1 /* bit for off hand */
-#define TWO_HAND 2 /* bit for two hand */
+#define OFF_HAND 1 /**< bit for off hand */
+#define TWO_HAND 2 /**< bit for two hand */
 /* attributes */
 
 inherit OBJECT;
 
-static string type;         			/* of TYPES */
-static int bit_att;                     /* a bitfield of attributes */
-static int *damage_matrix; 			    /* handles damage output */
-static int accuracy;        			/* inherent accuracy, barring player attributes */
-static string hit_func;     			/* function called each hit to handle special */
-static string wield_func;   			/* function called when weapon is wielded */
-static string unwield_func; 			/* function called when weapon is unwielded */
-static string *verbs_me, *verbs_other;  /* "You verbs_me[num] X with your query_short()"*/
+static string type;         			/**< of TYPES */
+static int bit_att;                     /**< a bitfield of attributes */
+static int *damage_matrix; 			    /**< handles damage output */
+static int accuracy;        			/**< inherent accuracy, barring player attributes */
+static string hit_func;     			/**< function called each hit to handle special */
+static string wield_func;   			/**< function called when weapon is wielded */
+static string unwield_func; 			/**< function called when weapon is unwielded */
+static string *verbs_me, *verbs_other;  /**< "You verbs_me[num] X with your query_short()"*/
 
-static string weapon_name;              /* work around */
+static string weapon_name;              /**< work around */
 
 int is_weapon(){
 	/*if(this_object()->is_body()){

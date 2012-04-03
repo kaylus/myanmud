@@ -1,5 +1,5 @@
-/*
- * the wield command
+/**
+ * @brief the wield command
  */
 
 inherit BODY_COMMAND;

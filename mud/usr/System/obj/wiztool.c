@@ -3,63 +3,66 @@
 # include <kernel/access.h>
 # include <type.h>
 # include <status.h>
-/* add wrapper classes for higher level kernel commands */
+
+# define TAIL_MAX 30
+
+/** add wrapper classes for higher level kernel commands */
 inherit LIB_WIZTOOL;
 
-private object user;		/* associated user object */
+private object user;		/**< associated user object */
 
-/*
-* NAME:	create()
-* DESCRIPTION:	initialize object
-*/
+/**
+ * @brief initialize object
+ */
 static void create(int clone)
 {
     if (clone) {
 	::create(200);
-	user = previous_object();/* TODO make sure this is good */
+	user = previous_object();/**< @todo make sure this is good */
     }
 }
 
-/*
-* NAME:	message()
-* DESCRIPTION:	pass on a message to the user
-*/
+/**
+ * @brief message pass on a message to the user
+ * @param str String of the message
+ */
 static void message(string str)
 {
     user->message(str);
 }
 
+/**
+ * @brief query for user
+ */
 object query_user(){
     return user;
 }
-/*
-* NAME:	input()
-* DESCRIPTION:	deal with input from user
-*/
+
+/**
+ * @brief input	deal with input from user
+ */
 void input(string str)
 {
     if (previous_object() == user) {
-
-	call_limited("process", str);
+        call_limited("process", str);
     }
 }
 
-/*
-* NAME:	process()
-* DESCRIPTION:	process user input
-*/
-static void process(string str)
-{
+/**
+ * @brief process() process user input
+ * @param str String to process
+ */
+static void process(string str){
     string arg, err;
 
-    /* add in redirect to any object, sort of like editor? */
+    /** @todo add in redirect to any object, sort of like editor? */
     if (query_editor(this_object())) {
 	if (strlen(str) != 0 && str[0] == '!') {
 	    str = str[1 ..];
 	} else {
 	    str = editor(str);
 	    if (str) {
-		message(str);
+            message(str);
 	    }
 	    return;
 	}
@@ -128,13 +131,12 @@ static void process(string str)
     }
 }
 
-/*
-* NAME:	cmd_summon()
-* DESCRIPTION:	summon player to you
-*/
+/**
+ * @brief cmd_summon() summon player to you
+ */
 static void cmd_summon(object user, string cmd, string str)
 {
-    object player, *users; /* hackish for now */
+    object player, *users; /** @brief hackish for now */
     int i;
 
     if (!str) {
@@ -142,12 +144,12 @@ static void cmd_summon(object user, string cmd, string str)
 	return;
     }
 
-    str = str;/* lowercase */
+    str = lowercase(str);
     users = users();
     if(!(i = sizeof(users)))
 	return;
 
-    while(i--){/* code to use find_player() */
+    while(i--){/** @todo code to use find_player() */
 	if(users[i]->query_name() == str){
 	    player = users[i]->query_body();
 	    break;
@@ -161,6 +163,11 @@ static void cmd_summon(object user, string cmd, string str)
     player->move(this_user()->query_body()->query_environment(), "", 1);
     message("You summon " + player->query_Name()+".\n");
 }
+
+/**
+ * @brief cmd_spectrum Display color spectrum to wiz
+ * @todo change this over to pinkfish
+ */
 static void cmd_spectrum(object user, string cmd, string str)
 {
     int i;
@@ -174,10 +181,9 @@ static void cmd_spectrum(object user, string cmd, string str)
     message(ret);
 }
 
-/*
-*  * NAME:	cmd_clone()
-*   * DESCRIPTION:	clone an object, move it to cloners dir
-*    */
+/**
+ * @brief cmd_clone() clone an object, move it to cloners dir
+ */
 static void cmd_clone(object user, string cmd, string str)
 {
     mixed obj;
@@ -222,10 +228,9 @@ static void cmd_clone(object user, string cmd, string str)
     }
 }
 
-/*
-* NAME:	cmd_ls() override of inherited
-* DESCRIPTION:	list files
-*/
+/**
+ * @brief cmd_ls() override of inherited, list files
+ */
 static void cmd_ls(object user, string cmd, string str)
 {
     mixed *files, *objects;
@@ -280,7 +285,7 @@ static void cmd_ls(object user, string cmd, string str)
 	}
     }
     if (long) {
-	len = strlen((string) len) + 1 + 11;/* Hymael added some for colors */
+	len = strlen((string) len) + 1 + 11;/**< @todo check this */
 	max += len + 14;
 	ancient = time() - 6 * 30 * 24 * 60 * 60;
     }
@@ -336,9 +341,9 @@ static void cmd_ls(object user, string cmd, string str)
     message(dirlist);
 }
 
-/*
-* dest: destructs an object in wizard's inventory or environ
-*/
+/**
+ * @brief dest destructs an object in wizard's inventory or environ
+ */
 static void cmd_dest(object user, string cmd, string str){
     mixed thing;
     int i;
@@ -347,14 +352,14 @@ static void cmd_dest(object user, string cmd, string str){
 	message("Usage: dest <object>\n");
 	return;
     }
-    /* add in check for $num functionality */
+    /** @todo add in check for $num functionality */
     if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
-	message("You destruct : "+thing->query_short()+".\n");/* may have to make query_short more elaborate */
+	message("You destruct : "+thing->query_short()+".\n"); /** @todo may have to make query_short more elaborate */
 	destruct_object(thing);
 	return;
     }
 
-    /* check inventory */
+    /** check inventory */
     if(thing = user->query_body()->present(str)){
 	message("You destruct : "+thing->query_short()+".\n");
 	user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
@@ -362,7 +367,7 @@ static void cmd_dest(object user, string cmd, string str){
 	return;
     }
 
-    /* check environment */
+    /** check environment */
     if(thing = user->query_body()->query_environment()->present(str)){
 	message("You destruct : "+thing->query_short()+".\n");
 	user->query_body()->query_environment()->message(user->query_Name()+" dests: "+thing->query_short()+"\n", ({user->query_body()}));
@@ -372,9 +377,9 @@ static void cmd_dest(object user, string cmd, string str){
     message("No "+str +" to dest.\n");
 }
 
-/*
-* actions: finds actions performable by an object
-*/
+/**
+ * @brief actions finds actions performable by an object
+ */
 static void cmd_actions(object user, string cmd, string str){
     mixed thing;
     mapping coms;
@@ -402,7 +407,7 @@ static void cmd_actions(object user, string cmd, string str){
     }
 	return;
     }
-    /* add in check for $num functionality */
+    /** @todo add in check for $num functionality */
     if (sscanf(str, "$%d", i) && (thing = parse_obj(str))){
     coms = thing->query_commands();
     if(!coms)
@@ -420,7 +425,7 @@ static void cmd_actions(object user, string cmd, string str){
 	return;
     }
 
-    /* check inventory */
+    /** check inventory */
     if(thing = user->query_body()->present(str)){
     coms = thing->query_commands();
     if(!coms)
@@ -438,7 +443,7 @@ static void cmd_actions(object user, string cmd, string str){
 	return;
     }
 
-    /* check environment */
+    /** check environment */
     if(thing = user->query_body()->query_environment()->present(str)){
 	 coms = thing->query_commands();
     if(!coms)
@@ -459,18 +464,17 @@ static void cmd_actions(object user, string cmd, string str){
     message("No "+str +" to lookup actions on.\n");
 }
 
-/*
-* more: pager for a file, make wiztool input_to_obj?
+/** 
+* @todo more: pager for a file, make wiztool input_to_obj?
 */
 
-/*
-* home: returns you to your workroom
+/**
+* @todo home: returns you to your workroom
 */
 
-/*
-* goto: trans you to the named room, or player
-*/
-
+/**
+ * @brief goto: trans you to the named room, or player
+ */
 static void cmd_goto(object user, string cmd, string str){
     mixed thing;
     int i;
@@ -479,9 +483,9 @@ static void cmd_goto(object user, string cmd, string str){
 	message("Usage: goto <object/room>\n");
 	return;
     }
-    /* add in check for $num functionality */
+    /** @todo add in check for $num functionality */
     if (sscanf(str, "$%d", i) && (thing = fetch(i))){
-	if(thing->is_room()){/* suitable destination */
+	if(thing->is_room()){/**< suitable destination */
 	    user->query_body()->move(thing, "", 1);
 	    message("You move to " + thing->query_short() + ".\n");
 	    return;
@@ -492,48 +496,36 @@ static void cmd_goto(object user, string cmd, string str){
 	    user->query_body()->move(thing->query_environment(), "", 1);
 	    message("You move to " + thing->query_Name() + "'s room.\n");
 	    thing->message(this_player()->query_Name() + " appears in your room.\n");
-	    /* add message to others */
+	    /** @todo add message to others */
 	    return;
 	}
-	/* add in instance of file */
+	/** @todo add in instance of file */
 
     }
-    message("Not a suitable destination.\n");/* may have to make query_short more elaborate */
+    message("Not a suitable destination.\n");/** @todo may have to make query_short more elaborate */
     return;
     message("No "+str +" to dest.\n");
 }
 
-/*
-* invis: turns you invis, requires the coding of a query_vision
+/**
+* @todo invis: turns you invis, requires the coding of a query_vision
 */
 
-/*
-* force: forces a body to do a command
+/**
+* @todo force: forces a body to do a command
 */
 
-/*
-* nuke: destroys a given player/wiz
+/**
+* @todo nuke: destroys a given player/wiz
 */
 
-/*
-* wall: realm echo
+/**
+* @todo wall: realm echo
 */
 
-/*
- * home: go to your workroom or to the start room
+/**
+ * @brief helper functions
  */
-
-/*
-* NAME:	cmd_summon()
-* DESCRIPTION:	summon player to you
-*/
-static void cmd_newcommand(object user, string cmd, string str)
-{
-
-
-    message("This is a dummy command.\n");
-}
-
 static mixed get_value(string str)
 {
     mixed result;
@@ -566,8 +558,12 @@ static mixed get_value(string str)
 }
 
 
-/* return array with ({ mixed value, TYPE }) ? */ 
-mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
+/**
+ * @brief helper call
+ * @retval return array with ({ mixed value, TYPE })
+ * @todo trouble materializing mappings and such
+ */ 
+mixed parse_call(string str){
     string parsed;
     mixed ret;
     int i;
@@ -583,7 +579,7 @@ mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
 
     if(find_player(str))return ({ find_player(str), T_OBJECT });
 
-    if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/* treat as file, unless nil */
+    if(sscanf(str, "#%d", i) || sscanf(str, "/%s", parsed)){/**< treat as file, unless nil */
 	return ({ find_object(str), T_OBJECT });
     }
 
@@ -591,11 +587,10 @@ mixed parse_call(string str){/* TODO: trouble materializing mappings and such */
     return ({ ret, typeof(ret) });
 }
 
-/*
-* cmd_call
-* wiz can call an object or himself and execute a functionality
-*/
-
+/**
+ * @brief cmd_call wiz can call an object or himself and execute a functionality
+ * @todo Fix this up
+ */
 static void cmd_call(object user, string cmd, string str){
     string id, function, args, *calls;
     mixed ret, obj, obj2;
@@ -604,7 +599,7 @@ static void cmd_call(object user, string cmd, string str){
 	message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
 	return;
     }
-    /* TODO: strip leading and ending spaces */
+    /** @todo strip leading and ending spaces */
     /* calls populated by ; exploded array */
     switch(sizeof(calls)){
     case 1:/* just have one object to deal with, just store it in history */
@@ -689,10 +684,8 @@ static void cmd_call(object user, string cmd, string str){
     message("Usage: call <object $/here/name of player/me>;function(;argument)\n");
 }
 
-# define TAIL_MAX 30
-
-/*
- * tail: prints the last bit of a file
+/**
+ * @brief tail: prints the last bit of a file
  */
 static void cmd_tail(object user, string cmd, string str){
     string *lines;
@@ -707,8 +700,8 @@ static void cmd_tail(object user, string cmd, string str){
     message(implode(lines[i..], "\n") + "\n");
 }
 
-/*
- * head: prints the first bit of a file
+/**
+ * @brief head: prints the first bit of a file
  */
 static void cmd_head(object user, string cmd, string str){
     string *lines;
@@ -722,9 +715,9 @@ static void cmd_head(object user, string cmd, string str){
     i = TAIL_MAX-1;
     message(implode(lines[..i], "\n") + "\n");
 }
-/*
-* gauge: calculates the given ticks/time of the given command
-*/
+/**
+ * @brief gauge: calculates the given ticks/time of the given command
+ */
 static void cmd_gauge(object user, string cmd, string str){
     int ticks, temp;
     float time, temp2;
@@ -741,10 +734,9 @@ static void cmd_gauge(object user, string cmd, string str){
     time = temp2 - time;
     message("\n\n<command "+str+">\nTime:  "+time+"\nTicks:  "+ticks+"\n");
 }
-/*
- * scan objects
+/**
+ * @brief scan inventory for objects
  */
-
 static void cmd_scan(object user, string cmd, string str, varargs int recurse){
     object env;
     object *contents;
@@ -775,6 +767,9 @@ static void cmd_scan(object user, string cmd, string str, varargs int recurse){
     }
 }
 
+/**
+ * @brief cmd_od_report report on object
+ */
 static void cmd_od_report(object user, string cmd, string str)
 {
     int    i, hmax;
@@ -825,7 +820,10 @@ static void cmd_od_report(object user, string cmd, string str)
     message(str);
 }
 
-
+/**
+ * @brief cmd_full_rebuild recompile auto
+ * @todo more calls to objectd
+ */
 static void cmd_full_rebuild(object user, string cmd, string str) {
     if(str && !strlen(str)) {
 	user->message("Usage: " + cmd + "\n");

@@ -1,8 +1,9 @@
-/***************************
- * this handles subscribed *
- * events in the daemon    *
- * -Hymael                 *
- ***************************/
+/**
+ * this handles subscribed 
+ * events in the daemon   
+ * @author Hymael           
+ * @todo determine if this is needed 
+ */
 #include <config.h>
 
 void evt_logon(mixed args...){

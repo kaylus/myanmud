@@ -1,35 +1,35 @@
-/**********************************************************
- *                     health.c                           *
- * This will hold the functionality for health it will    *
- * contain the query_has_health, query_health,            *
- * receive_damage, receive_healing, do_tick, and some     *
- * other things which should be encapsulated in this      *
- * function and executed each heartbeat                   *
- *  -Hymael                                               *
- **********************************************************/
+/**
+ *                     health.c                           
+ * This will hold the functionality for health it will    
+ * contain the query_has_health, query_health,            
+ * receive_damage, receive_healing, do_tick, and some     
+ * other things which should be encapsulated in this      
+ * function and executed each heartbeat                   
+ *  @author Hymael                                               
+ */
 # include <game/body.h>
 
 private int max_hp, cur_hp;
 
 void init_health(){
-    cur_hp=max_hp=250;/* for now */
+    cur_hp = max_hp = 250;/* for now */
 }
 
 void set_health(int hp){/* mainly for monsters */
-    cur_hp=max_hp=hp;
+    cur_hp = max_hp = hp;
 }
 
-/**************************
- * this may be unncessary *
- **************************/
+/**
+ * this may be unncessary 
+ */
 int query_has_health(){
     return 1;
 }
 
-/*************************************
- * this returns our current health,  *
- * later to be in abstract form      *
-*************************************/
+/**
+ * this returns our current health,  
+ * later to be in abstract form      
+ */
 int query_health(){
     return cur_hp;
 }
@@ -38,11 +38,11 @@ int query_max_health(){
     return max_hp;
 }
 
-/*****************************************************************************
-* receive sent damage, attack if need be, resist - stuff of that nature     *
-* return of 1 denotes damage taken, 0 denotes no damage, 2 denotes resisted *
-* some -- May change this over to just return amount of damage done         *
-*****************************************************************************/
+/**
+ * receive sent damage, attack if need be, resist - stuff of that nature     
+ * @retval return of 1 denotes damage taken, 0 denotes no damage, 2 denotes resisted some
+ * @todo May change this over to just return amount of damage done         
+ */
 int receive_damage(int damage, object dealer, varargs string type){
     /* this will eventually mask damage against a body's given resists */
     if(damage < 0 || cur_hp < 0)return 0;
@@ -54,9 +54,9 @@ int receive_damage(int damage, object dealer, varargs string type){
     return 1;
 }
 
-/****************************
-* and its brother function *
-****************************/
+/**
+ * and its brother function 
+ */
 int receive_healing(int healing){
     if(healing < 0 || cur_hp == max_hp)return 0;
     cur_hp += healing;
@@ -64,13 +64,13 @@ int receive_healing(int healing){
     return 1;
 }
 
-/**************************************************************
-* this heals us up, may also add other per heart beat things *
-* this will eventually become race specific and such         *
-**************************************************************/
+/**
+ * this heals us up, may also add other per heart beat things 
+ * this will eventually become race specific and such         
+ */
 void do_tick(){
     receive_healing(2);
-    /* do other things, like empty stomachs */
+    /** @todo do other things, like empty stomachs */
 }
 
 string query_xa(){
@@ -95,7 +95,7 @@ void refresh_health(){
   cur_hp = max_hp;
 }
 
-/* wrapper for dropping corpse, TODO error checking */
+/** wrapper for dropping corpse, @todo error checking */
 static void _die(){
 	int i, sz;
 	object *inv, corpse;
@@ -126,7 +126,7 @@ void die(){
 	
 	this_object()->move(ROOMD->query_labyrinth(), "", 1, 1);
 	refresh_health();
-	/* TODO: print death message to them */
+	/** @todo print death message to them */
 	
 	LOGD->log(this_object()->query_Name()+" died", "combat");
 

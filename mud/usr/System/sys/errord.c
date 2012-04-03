@@ -1,49 +1,29 @@
-/*
- * $Id: errord.c,v 1.1.1.1 2004/05/28 01:02:43 nick Exp $
- *
- * External interface:
+/**
+ * @brief External interface:
  *
  *     void compile_error(string file, int line, string err);
  *     void runtime_error(string str, int caught, mixed **trace);
  *     void atomic_error(string str, int atom, mixed **trace);
- *	TODO everything rewrite Hymael
+ *	@todo rewrite everything Hymael
  */
-
-/*
-    * void runtime_error(string error, int caught, mixed **trace)
-
-	A runtime error has occurred.
-
-    * void atomic_error(string error, int atom, mixed **trace)
-
-	A runtime error has occurred in atomic code.
-
-    * void compile_error(string file, int line, string error)
-
-	A compile-time error has occurred.
-*/
 
 #include <kernel/kernel.h>
 #include <trace.h>
 
 private mapping compile_errors;
 
-/*
- * Register this object as the new error manager.
+/**
+ * @brief Register this object as the new error manager.
  */
-static void
-create()
-{
+static void create(){
     compile_errors = ([ ]);
     find_object(DRIVER)->set_error_manager(this_object());
 }
 
-/*
- * Align the int/string by appending spaces.
+/**
+ *  @brief Align the int/string by appending spaces.
  */
-private string
-lalign(mixed s, int width)
-{
+private string lalign(mixed s, int width){
     int len;
     string str;
 
@@ -61,12 +41,10 @@ lalign(mixed s, int width)
     return s + str[..width - 1];
 }
 
-/*
- * Align the int/string by inserting spaces.
+/**
+ *  @brief Align the int/string by inserting spaces.
  */
-private string
-ralign(mixed s, int width)
-{
+private string ralign(mixed s, int width){
     int len;
     string str;
 
@@ -84,12 +62,10 @@ ralign(mixed s, int width)
     return str[..width - 1] + s;
 }
 
-/*
- * Format one group of compile errors.
+/**
+ *  @brief Format one group of compile errors.
  */
-private string
-format_compile_error(string file, int timestamp, mapping lines)
-{
+private string format_compile_error(string file, int timestamp, mapping lines){
     int    i, sz, *linenrs, total;
     string str, **errors;
 
@@ -107,24 +83,22 @@ format_compile_error(string file, int timestamp, mapping lines)
 	total += sizeof(errors[i]);
     }
     if (total == 1) {
-	str = "Compile error in " + file + "\n" + str;
+        str = "Compile error in " + file + "\n" + str;
     } else {
-	str = "Compile errors in " + file + "\n" + str;
+        str = "Compile errors in " + file + "\n" + str;
     }
     #if 0
-    if(sscanf(file, "%*s/_code")){/* show resulting code to a wiz */
-	LOGD->log("Code was: "+read_file(file), "evals");
+    if(sscanf(file, "%*s/_code")){/**< @todo show resulting code to a wiz */
+        LOGD->log("Code was: "+read_file(file), "evals");
     }
     #endif
     return str;
 }
 
-/*
- * Flush compile errors to their respective files.
+/**
+ *  @brief Flush compile errors to their respective files.
  */
-private void
-flush_compile_errors()
-{
+private void flush_compile_errors(){
     int    i, sz;
     string *files;
     mixed  **data;
@@ -136,24 +110,22 @@ flush_compile_errors()
     files = map_indices(compile_errors);
     data  = map_values(compile_errors);
     for (i = 0; i < sz; i++) {
-	string file, text;
+        string file, text;
 
-	file = files[i];
-	text = format_compile_error(file,
-	  data[i][0],
-	  data[i][1]) + "\n";
-	find_object(DRIVER)->message(text);
-	LOGD->log(text, "compile_errors");
+        file = files[i];
+        text = format_compile_error(file,
+                                    data[i][0],
+                                    data[i][1]) + "\n";
+        find_object(DRIVER)->message(text);
+        LOGD->log(text, "compile_errors");
     }
     compile_errors = ([ ]);
 }
 
-/*
- * Store compile error in mapping.
+/**
+ *  @brief Store compile error in mapping.
  */
-void
-compile_error(string file, int line, string err)
-{
+void compile_error(string file, int line, string err){
     mixed *data;
 
     data = compile_errors[file];
@@ -169,24 +141,21 @@ compile_error(string file, int line, string err)
     } else {
 	compile_errors[file] = ({ time(), ([ line: ({ err }) ]) });
     }
-    flush_compile_errors();/* added */
+    flush_compile_errors();/**< added */
 }
 
-/*
- * Reformat a filepath.
+/**
+ *  @brief Reformat a filepath.
  */
-private string
-format_path(string path)
+private string format_path(string path)
 {
     return sscanf(path, "/usr/%*s/") ? "~" + path[5..] : path;
 }
 
-/*
- * Process a call trace.
+/**
+ *  @brief Process a call trace.
  */
-private string
-format_trace(mixed **trace, int marker)
-{
+private string format_trace(mixed **trace, int marker){
     int i, j, sz, maxlen;
     string result, **lines;
 
@@ -243,39 +212,36 @@ format_trace(mixed **trace, int marker)
     return result;
 }
 
-/*
- * Process a runtime error trace.
+/**
+ *  @brief Process a runtime error trace.
  */
-void
-runtime_error(string str, int caught, mixed **trace)
-{
+void runtime_error(string str, int caught, mixed **trace){
     flush_compile_errors();
 
-    /*find_object(DRIVER)->message(str + (caught ? " [caught]\n" : "\n") +
+    /** @todo find_object(DRIVER)->message(str + (caught ? " [caught]\n" : "\n") +
 				 format_trace(trace[..sizeof(trace) - 2],
 					      caught - 1) +
 				 "\n");*/
     if(!caught){
-	LOGD->log(str + (caught ? " [caught]\n" : "\n") +
-	  format_trace(trace[..sizeof(trace) - 2],
-	  caught - 1) +
-	  "\n", "runtime_errors");
+        LOGD->log(str + (caught ? " [caught]\n" : "\n") +
+          format_trace(trace[..sizeof(trace) - 2],
+          caught - 1) +
+          "\n", "runtime_errors");
     }
 }
 
-/*
- * Process an atomic error trace.
+/**
+ *  @brief Process an atomic error trace.
+ *  @todo Prints on $ and other things
  */
-void
-atomic_error(string str, int atom, mixed **trace)
-{
+void atomic_error(string str, int atom, mixed **trace){
     /*flush_compile_errors();*/
 
     /*find_object(DRIVER)->message(str + " [atomic]\n" +
 				 format_trace(trace[atom..sizeof(trace) - 2],
 					      - 1) +
 				 "\n");*/
-    /* hack in atomic response code */
+    /** @todo hack in atomic response code */
     /*if(str[0] != '$' && this_user())*/
     this_player()->message(str);
 

@@ -1,0 +1,11 @@
+Wed, Mar 28, 2012  5:41:12 PM
+Mar 28 17:41:13 ** DGD 1.4.13
+Mar 28 17:41:13 ** State restored.
+
+Mar 28 17:47:23 ** Compile error in /usr/hymael/_code
+   10   too few arguments for function find_object
+
+Mar 29 21:26:43 ** Compile error in /usr/Common/obj/cmds/cmd_hp.c
+   12   syntax error
+
+Apr  2 07:30:55 ** System halted.

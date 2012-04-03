@@ -1,14 +1,14 @@
-/**********************************************************
- *                     stats.c                            *
- *  -Hymael                                               *
- **********************************************************/
+/**
+ *                     stats.c                            
+ *  @author Hymael                                               
+ */
 #define ATTRIBUTES ({ "strength", "constitution", "dexterity", "intelligence", "wisdom", "charisma" })
 #define ROLL_STAT  ( random(6) + random(6) + random(6) + 3 )
 
-mapping stats;           		/* our stats */
-static mapping stats_boost;     /* temporary stat boosts */
+mapping stats;           		/**< our stats */
+static mapping stats_boost;     /**< temporary stat boosts */
 
-void roll_stats(){/* this will randomly populate stats */
+void roll_stats(){/**< this will randomly populate stats */
     int i;
     if(!stats) stats = ([]);
     i = sizeof(ATTRIBUTES);
@@ -38,7 +38,7 @@ int query_stat(string stat){
     return i;
 }
 
-mapping query_stats(){/* full mapping */
+mapping query_stats(){/**< full mapping */
     mapping ret;
     int i;
     if(!stats) stats = ([]);

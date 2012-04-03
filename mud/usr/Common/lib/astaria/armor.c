@@ -5,11 +5,11 @@
 
 inherit OBJECT;
 
-static string type;              /* what slot is this armor? */
-static int ac;                   /* armor's inherent armor class */
-static string equip_func;        /* function called when armor is equipped */
-static string unequip_func;      /* function called when armor is unequipped */
-static string hit_func;          /* possibly called when player is hit */
+static string type;              /**< what slot is this armor? */
+static int ac;                   /**< armor's inherent armor class */
+static string equip_func;        /**< function called when armor is equipped */
+static string unequip_func;      /**< function called when armor is unequipped */
+static string hit_func;          /**< possibly called when player is hit */
 
 
 /****************

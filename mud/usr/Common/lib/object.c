@@ -12,24 +12,25 @@
 
 inherit WEIGHT;
 
-static string short_desc;          /* description of the object in inventories */
-static string long_desc;           /* description of the object when looked at */
-static object environment;         /* object that contains this object */
-static string *id;                 /* an array of string that name this object */
-static mapping commands;           /* command words defined by this object */
-private static mapping temp_var;   /* this will contain temporary variables */
-mapping vars;            	       /* very against this but somethings it is necessary to
+static string short_desc;          /**< description of the object in inventories */
+static string long_desc;           /**< description of the object when looked at */
+static object environment;         /**< object that contains this object */
+static string *id;                 /**< an array of string that name this object */
+static mapping commands;           /**< command words defined by this object */
+private static mapping temp_var;   /**< this will contain temporary variables */
+mapping vars;            	       /**< very against this but somethings it is necessary to
 									  have a dynamic set of variables that hang around */
 
 
 int is_object(){
- return 1; 
+    return 1; 
 }
 
 mapping query_commands()/* mainly for wizzes */
 {
     return commands;
 }
+
 /***PROPS***/
 void set_temp(string var, mixed val){
     if(!temp_var)

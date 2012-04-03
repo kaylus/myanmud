@@ -1,11 +1,12 @@
-/***************
- * Sea handler *
- ***************/
+/**
+ * Sea handler 
+ * @todo mass overhaul
+ */
 
 #include <game/sea_grid.h>
 
 mixed _grid; /**< this will be our ocean */
-object *ships; /* handles on created ships */
+object *ships; /**< handles on created ships */
 
 void create(varargs int clone){
     int i;
@@ -62,7 +63,11 @@ void create(varargs int clone){
 }
 
 /* below is where we add attachments to this system */
-/** this is called when a ship arrives in the associated square */
+/** 
+ * @brief sg_port this is called when a ship arrives in the associated square
+ * @param room the port arrived at
+ * @param ship the ship arriving
+ */
 void sg_port(object room, object ship){
     /* make a gangplank to board this particular ship */
     ship->ahoy("The ship has arrived at port.\n");
@@ -70,14 +75,23 @@ void sg_port(object room, object ship){
     /*ship->set_plank(room);*/
 }
 
-/** this is a default sea square, or nil */
+/** 
+ * @brief sg_default this is a default sea square, or nil 
+ * this is called when we have an uninteresting square entered
+ * @param ship object of ship entering square
+ */
 void sg_default(object ship){
     /* can change weather or other such thing */
     ship->ahoy("The winds buffet your sails as the ship moves on.\n");
 }
 
 /* manipulants */
-/** may need some ship_leave function */
+/** @todo may need some ship_leave function */
+/**
+ * @brief ship_enter ship is entering the coordinates given
+ * @param ship The ship
+ * @param *coords an array of int that contains the coordinates entered
+ */
 void ship_enter(object ship, int *coords){
     ship->entre(coords);/* for now this is how the ship is self aware,
          later need way for ships to be aware of what ships are in the current vicinity */
@@ -88,7 +102,14 @@ void ship_enter(object ship, int *coords){
         sg_default(ship);
     }
 }
-/* TODO ship_leave function */
+/**
+ * @brief ship_move moves a ship
+ * @param ship Ship to be moved
+ * @param heading The heading the ship is moving in, an array of int with units
+ * @param coords The coordinates currently residing at
+ * @retval atomically returns an error
+ * @todo transfer errors over to $?
+ */
 atomic void ship_move(object ship, int *heading, int *coords){
 	mixed grid_idx;
 	
@@ -111,7 +132,7 @@ atomic void ship_move(object ship, int *heading, int *coords){
     }
     ship->entre(coords);/* for now this is how the ship is self aware */
 }
-
+/** @todo audit these lower commands */
 object query_coords(int *coords){
     return _grid[coords[H_X]][coords[H_Y]][SG_ROOM];
 }
@@ -120,10 +141,18 @@ int set_coords(int *coords){
 
 }
 
+/**
+ * @brief register_ship register a ship to the list
+ * @todo security?
+ */
 void register_ship(object obj){
 	ships += ({ obj });
 }
 
+/**
+ * @brief query_ships get the ships in the list
+ * @todo security
+ */
 object *query_ships(){
 	return ships;
 }

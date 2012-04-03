@@ -9,14 +9,14 @@ inherit OBJECT;
 #define  R_BREAK aname + "'s blow " + "breaks " + vname + "'s " + thisname + "!\n"
 #define BR_BREAK "Your blow breaks " + vname + "'s " + thisname + "!\n"
 
-static string type;              /* what's type name of this armor? */
-static string slot;              /* what slot does this armor fit */
-static int ac;                   /* armor's inherent armor class */
-static string equip_func;        /* function called when armor is equipped */
-static string unequip_func;      /* function called when armor is unequipped */
-static string hit_func;          /* possibly called when player is hit */
-static int quality;              /* the quality of a weapon scaled 1-100 */
-static int _broke;               /* whether it is broke or not */
+static string type;              /**< what's type name of this armor? */
+static string slot;              /**< what slot does this armor fit */
+static int ac;                   /**< armor's inherent armor class */
+static string equip_func;        /**< function called when armor is equipped */
+static string unequip_func;      /**< function called when armor is unequipped */
+static string hit_func;          /**< possibly called when player is hit */
+static int quality;              /**< the quality of a weapon scaled 1-100 */
+static int _broke;               /**< whether it is broke or not */
 
 void create(varargs int clone){
     set_short("armor");
